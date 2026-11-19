@@ -1,0 +1,51 @@
+{
+  "repository": "Card-Forge/forge",
+  "pinned_default_sha": "9748ef2c96d18bcb55271e20e63c32bdee3e991c",
+  "default_branch": "master",
+  "fetched_default_tip": "9748ef2c96d18bcb55271e20e63c32bdee3e991c",
+  "default": {
+    "total_commits": 76296,
+    "two_parent_merges": 11038,
+    "octopus_merges": 0,
+    "all_merge_commits": 11038,
+    "two_parent_merge_bases": {
+      "unique": 10975,
+      "multiple": 63,
+      "none": 0
+    },
+    "oldest_committer_time": "2011-08-05T15:01:29Z",
+    "newest_committer_time": "2026-11-19T13:02:00Z",
+    "commits_since_recent_from": 946
+  },
+  "all_heads_tags": {
+    "total_commits": 77002,
+    "two_parent_merges": 11148,
+    "octopus_merges": 0,
+    "all_merge_commits": 11148,
+    "two_parent_merge_bases": {
+      "unique": 11085,
+      "multiple": 63,
+      "none": 0
+    },
+    "oldest_committer_time": "2011-08-05T15:01:29Z",
+    "newest_committer_time": "2026-11-19T13:03:00Z",
+    "commits_since_recent_from": 1251
+  },
+  "fetch_refspecs": [
+    "refs/heads/*",
+    "refs/tags/*"
+  ],
+  "shallow": false,
+  "filter": "tree:0",
+  "recent_from_inclusive": "2026-10-20T00:00:00Z",
+  "fetched_at_utc": "2026-11-19T14:57:14.644507Z",
+  "evidence_url": "https://github.com/Card-Forge/forge/commit/9748ef2c96d18bcb55271e20e63c32bdee3e991c",
+  "head_count": 145,
+  "tag_count": 197,
+  "ref_manifest": "forge.refs.tsv.gz",
+  "refs_uncompressed_sha256": "ccbee28d02dc19c0218fd0dc4bc1455f9de5638aeb8077688e0ca308bf5c23c1",
+  "metadata_mirror_file_bytes": 28969326,
+  "git_version": "git version 2.56.1",
+  "fetch_seconds": 2.361,
+  "inventory_seconds": 15.601
+}

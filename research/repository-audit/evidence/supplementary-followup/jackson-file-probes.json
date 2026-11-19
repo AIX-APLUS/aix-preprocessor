@@ -1,0 +1,240 @@
+{
+  "measured_at": "2026-11-19 UTC",
+  "git_version": "git version 2.55.0.windows.5",
+  "command": "git merge-file --stdout p1 base p2",
+  "method": "One (base, first parent, second parent) triple per observed unchanged-path modified-Java intersection. Fetch regular file bytes through Git blob URLs at the pinned trees, verify sha1('blob '+byte length+NUL+bytes) and expected size, decode strict UTF-8 and reject NUL. In an empty temporary directory replay the three blobs with git merge-file. Return 0 = clean, 1..127 = textual conflict regions (clamped), negative/tool error excluded. No repository attributes, unique-base proof, full tree, extractor history or model features; these are not production labels or a repository conflict rate.",
+  "observations": [
+    {
+      "repo": "FasterXML/jackson-databind",
+      "path": "src/main/java/tools/jackson/databind/type/TypeFactory.java",
+      "merge": "338750bf01d3df75be258c9c649b3ef43e5ef30a",
+      "refs": [
+        "a48ee7a3949cc62226d9589e232113957da757f8",
+        "c1d037a71213e6dd44756a9937d8e3c2c9d29f6f",
+        "7e16c8bc18d9a3704878d9ddcdb262eec36c4d43"
+      ],
+      "files": [
+        {
+          "sha": "cd9dca0e538a7abd0a590a87e0ea1ff88a35eed8",
+          "size": 72746,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/cd9dca0e538a7abd0a590a87e0ea1ff88a35eed8"
+        },
+        {
+          "sha": "0f0a8bfafd63f0f197dd8eafe01e23f9b178aba8",
+          "size": 74508,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/0f0a8bfafd63f0f197dd8eafe01e23f9b178aba8"
+        },
+        {
+          "sha": "5a44717164c9e3a1a643bd05eb733b4abb51fe88",
+          "size": 73053,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/5a44717164c9e3a1a643bd05eb733b4abb51fe88"
+        }
+      ],
+      "returncode": 0,
+      "file_text_conflict": false
+    },
+    {
+      "repo": "FasterXML/jackson-databind",
+      "path": "src/test/java/tools/jackson/databind/type/TypeFactoryTest.java",
+      "merge": "338750bf01d3df75be258c9c649b3ef43e5ef30a",
+      "refs": [
+        "a48ee7a3949cc62226d9589e232113957da757f8",
+        "c1d037a71213e6dd44756a9937d8e3c2c9d29f6f",
+        "7e16c8bc18d9a3704878d9ddcdb262eec36c4d43"
+      ],
+      "files": [
+        {
+          "sha": "a071de0ee1f7dfffb52c7a3a500c9db55bf583c0",
+          "size": 42113,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/a071de0ee1f7dfffb52c7a3a500c9db55bf583c0"
+        },
+        {
+          "sha": "1a3619908410c32c77f23af90ee09059f04073c0",
+          "size": 43639,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/1a3619908410c32c77f23af90ee09059f04073c0"
+        },
+        {
+          "sha": "781f6d6178e4addebc389e0a26120a89e0d460f2",
+          "size": 44161,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/781f6d6178e4addebc389e0a26120a89e0d460f2"
+        }
+      ],
+      "returncode": 0,
+      "file_text_conflict": false
+    },
+    {
+      "repo": "FasterXML/jackson-databind",
+      "path": "src/main/java/tools/jackson/databind/type/TypeFactory.java",
+      "merge": "7e16c8bc18d9a3704878d9ddcdb262eec36c4d43",
+      "refs": [
+        "e99b599b3760f54be41b7c4f4974b94bec6c0b21",
+        "a48ee7a3949cc62226d9589e232113957da757f8",
+        "b123abc538208dc2005bb58cea97bfe0cfefa648"
+      ],
+      "files": [
+        {
+          "sha": "475094a625ed1ad8d37006c4841c294417ff7c82",
+          "size": 72782,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/475094a625ed1ad8d37006c4841c294417ff7c82"
+        },
+        {
+          "sha": "cd9dca0e538a7abd0a590a87e0ea1ff88a35eed8",
+          "size": 72746,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/cd9dca0e538a7abd0a590a87e0ea1ff88a35eed8"
+        },
+        {
+          "sha": "fe2c015f7e6d88321dc55505ac69855bd84d41f2",
+          "size": 73089,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/fe2c015f7e6d88321dc55505ac69855bd84d41f2"
+        }
+      ],
+      "returncode": 0,
+      "file_text_conflict": false
+    },
+    {
+      "repo": "FasterXML/jackson-databind",
+      "path": "src/main/java/tools/jackson/databind/DeserializationContext.java",
+      "merge": "abe0a501f0544a908eae41599f4e867f6ada5acc",
+      "refs": [
+        "037966f4e6d26cc163f8ee28ab79eafa04895354",
+        "f28318b540dc3ee2369fa54408ea03570e2fa228",
+        "a2f3801d5787a9c5e49165d7b9f56c0077271e88"
+      ],
+      "files": [
+        {
+          "sha": "2457dd9740c1e07fd7463e9978ad2e6c9e519740",
+          "size": 87801,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/2457dd9740c1e07fd7463e9978ad2e6c9e519740"
+        },
+        {
+          "sha": "dc8e7a8936e641da384f271b3d36bbb548c983d8",
+          "size": 87779,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/dc8e7a8936e641da384f271b3d36bbb548c983d8"
+        },
+        {
+          "sha": "6366cdd07f466b06ccedb30866a305d66f606ff6",
+          "size": 87300,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/6366cdd07f466b06ccedb30866a305d66f606ff6"
+        }
+      ],
+      "returncode": 0,
+      "file_text_conflict": false
+    },
+    {
+      "repo": "FasterXML/jackson-databind",
+      "path": "src/main/java/tools/jackson/databind/InjectableValues.java",
+      "merge": "abe0a501f0544a908eae41599f4e867f6ada5acc",
+      "refs": [
+        "037966f4e6d26cc163f8ee28ab79eafa04895354",
+        "f28318b540dc3ee2369fa54408ea03570e2fa228",
+        "a2f3801d5787a9c5e49165d7b9f56c0077271e88"
+      ],
+      "files": [
+        {
+          "sha": "93578db19dc2afd712dc3e9d1ed41dd9f521d91f",
+          "size": 4082,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/93578db19dc2afd712dc3e9d1ed41dd9f521d91f"
+        },
+        {
+          "sha": "cb259ebec24719a05e0ee7eeae7dad70f4093e92",
+          "size": 4109,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/cb259ebec24719a05e0ee7eeae7dad70f4093e92"
+        },
+        {
+          "sha": "91c2d167c29071e0eb15157f5889d63b09fc33a6",
+          "size": 6666,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/91c2d167c29071e0eb15157f5889d63b09fc33a6"
+        }
+      ],
+      "returncode": 1,
+      "file_text_conflict": true
+    },
+    {
+      "repo": "FasterXML/jackson-databind",
+      "path": "src/main/java/com/fasterxml/jackson/databind/SerializationConfig.java",
+      "merge": "5a2fac6b8802569a94821346584e77e66f7f82db",
+      "refs": [
+        "5f453187344922b21346100fe7f442922d0bd554",
+        "0291979966f3850c8804d43dd4ab9e2dc8fa0c5d",
+        "0088a66cead424ad536464d992a8297d98a392f2"
+      ],
+      "files": [
+        {
+          "sha": "eece8c62eac999b516eb7735685c1731bfd12557",
+          "size": 29046,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/eece8c62eac999b516eb7735685c1731bfd12557"
+        },
+        {
+          "sha": "16312edb07e8d82383e48fb9c513a9e0bdc86883",
+          "size": 20401,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/16312edb07e8d82383e48fb9c513a9e0bdc86883"
+        },
+        {
+          "sha": "09dedfa1eb1939b0e70b9e88457b280242e97b93",
+          "size": 32265,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/09dedfa1eb1939b0e70b9e88457b280242e97b93"
+        }
+      ],
+      "returncode": 2,
+      "file_text_conflict": true
+    },
+    {
+      "repo": "FasterXML/jackson-databind",
+      "path": "src/main/java/com/fasterxml/jackson/databind/json/JsonMapper.java",
+      "merge": "0291979966f3850c8804d43dd4ab9e2dc8fa0c5d",
+      "refs": [
+        "396c4daed0cfe8d101b50a6f68320203151edd9f",
+        "4a7fb129f73173e18280f77c350c6fdc1f101428",
+        "5f453187344922b21346100fe7f442922d0bd554"
+      ],
+      "files": [
+        {
+          "sha": "18ab72bdfc18fd4f84f019344e898a359013586c",
+          "size": 2011,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/18ab72bdfc18fd4f84f019344e898a359013586c"
+        },
+        {
+          "sha": "b7915b145f4174cdc872910de4492acd094be238",
+          "size": 5198,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/b7915b145f4174cdc872910de4492acd094be238"
+        },
+        {
+          "sha": "a139282a23239f2871d70b2957dda041ced5f086",
+          "size": 4109,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/a139282a23239f2871d70b2957dda041ced5f086"
+        }
+      ],
+      "returncode": 2,
+      "file_text_conflict": true
+    },
+    {
+      "repo": "FasterXML/jackson-databind",
+      "path": "src/main/java/com/fasterxml/jackson/databind/ser/std/ByteBufferSerializer.java",
+      "merge": "ef4d09426b8d0a9cf2a52b0d124d7d785f68795c",
+      "refs": [
+        "53bdf77b778fd455308b646e1c158609752b91be",
+        "f6ee23e3deba69ca9258fdc52f59f596a2ee8643",
+        "396c4daed0cfe8d101b50a6f68320203151edd9f"
+      ],
+      "files": [
+        {
+          "sha": "d381b2b44b4430e9dc861a20767b4a2b55bf62b4",
+          "size": 1801,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/d381b2b44b4430e9dc861a20767b4a2b55bf62b4"
+        },
+        {
+          "sha": "302b4edd91d587ac814884732a5adabf7844d5e4",
+          "size": 1818,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/302b4edd91d587ac814884732a5adabf7844d5e4"
+        },
+        {
+          "sha": "302b4edd91d587ac814884732a5adabf7844d5e4",
+          "size": 1818,
+          "url": "https://api.github.com/repos/FasterXML/jackson-databind/git/blobs/302b4edd91d587ac814884732a5adabf7844d5e4"
+        }
+      ],
+      "returncode": 0,
+      "file_text_conflict": false
+    }
+  ]
+}

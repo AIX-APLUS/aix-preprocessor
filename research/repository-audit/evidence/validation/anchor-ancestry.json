@@ -1,0 +1,56 @@
+{
+  "method": "GitHub Compare API projection of pilot anchor as base and pinned default SHA as head. File diffs and commit listings are not retained. total_commits_field reached 10000 in each large comparison; never used as a history count.",
+  "queried_utc": "2026-11-19T15:17:57.037Z",
+  "comparisons": [
+    {
+      "repository": "spring-projects/spring-boot",
+      "base": "53d24301d125b543664a79cf6ece530624597f9a",
+      "head": "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+      "status": "ahead",
+      "ahead_by": 61423,
+      "behind_by": 0,
+      "total_commits_field": 10000,
+      "url": "https://api.github.com/repos/spring-projects/spring-boot/compare/53d24301d125b543664a79cf6ece530624597f9a...dd87919e93e71b2ba270ec4f2f142645e06c7610"
+    },
+    {
+      "repository": "jenkinsci/jenkins",
+      "base": "285741a5240f3658c6e5191edc9ba65fe7d5793c",
+      "head": "e8ba485c828e25422d54c1d46e0bea1cb0305d03",
+      "status": "ahead",
+      "ahead_by": 27833,
+      "behind_by": 0,
+      "total_commits_field": 10000,
+      "url": "https://api.github.com/repos/jenkinsci/jenkins/compare/285741a5240f3658c6e5191edc9ba65fe7d5793c...e8ba485c828e25422d54c1d46e0bea1cb0305d03"
+    },
+    {
+      "repository": "Card-Forge/forge",
+      "base": "215699c878fbeee37cef6ebd78e15e338b32a37b",
+      "head": "9748ef2c96d18bcb55271e20e63c32bdee3e991c",
+      "status": "ahead",
+      "ahead_by": 63383,
+      "behind_by": 0,
+      "total_commits_field": 10000,
+      "url": "https://api.github.com/repos/Card-Forge/forge/compare/215699c878fbeee37cef6ebd78e15e338b32a37b...9748ef2c96d18bcb55271e20e63c32bdee3e991c"
+    },
+    {
+      "repository": "JabRef/jabref",
+      "base": "8d22827be20de435b01844f8643fe014aa910daa",
+      "head": "75b35b962c1d1f45cbd5be8af025b16cde9cc290",
+      "status": "ahead",
+      "ahead_by": 20785,
+      "behind_by": 0,
+      "total_commits_field": 10000,
+      "url": "https://api.github.com/repos/JabRef/jabref/compare/8d22827be20de435b01844f8643fe014aa910daa...75b35b962c1d1f45cbd5be8af025b16cde9cc290"
+    },
+    {
+      "repository": "quarkusio/quarkus",
+      "base": "0ef2742d330604ca4ea130db6323b8f577b9260e",
+      "head": "61d971888943ff815b86a179fbfcd1db22857730",
+      "status": "ahead",
+      "ahead_by": 63354,
+      "behind_by": 0,
+      "total_commits_field": 10000,
+      "url": "https://api.github.com/repos/quarkusio/quarkus/compare/0ef2742d330604ca4ea130db6323b8f577b9260e...61d971888943ff815b86a179fbfcd1db22857730"
+    }
+  ]
+}

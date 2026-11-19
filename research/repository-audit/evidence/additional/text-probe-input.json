@@ -1,0 +1,248 @@
+{
+  "repositories": [
+    {
+      "repository": "apache/cassandra",
+      "observations": [
+        {
+          "merge": "53c3561e9db3fa0b1ed8e29ce462fde6ce566ff0",
+          "merge_base": "ce47c4e30246ea0e2e0aeb741d61e0fe80eccd9b",
+          "parents": [
+            "e97bc75bc19c746233416fefaa8b482a5b2f058c",
+            "59e7362323990dd5ab25e1d3b6c0c6b39d1e971b"
+          ],
+          "overlaps": [
+            {
+              "original": "src/java/org/apache/cassandra/config/CassandraRelevantProperties.java",
+              "blobs": [
+                {
+                  "sha": "a107613f303431c19f55fd5b4df9ee8bd4cf3d2c",
+                  "bytes": 64015
+                },
+                {
+                  "sha": "409cb80458bad759878f0a4bf489b9b299f7a58d",
+                  "bytes": 64013
+                },
+                {
+                  "sha": "c0a23e2fd2435469e28e2e811d5445f367748f24",
+                  "bytes": 64564
+                }
+              ]
+            },
+            {
+              "original": "src/java/org/apache/cassandra/config/DatabaseDescriptor.java",
+              "blobs": [
+                {
+                  "sha": "9b066bfb1b787422215d8b213dc4a1d8e3ab8960",
+                  "bytes": 243049
+                },
+                {
+                  "sha": "fe5a3a1071eeed30e7b3544a729bea17ba189c5c",
+                  "bytes": 243928
+                },
+                {
+                  "sha": "b42618b482f816a97b900478cd3e82a1a9435d61",
+                  "bytes": 244382
+                }
+              ]
+            },
+            {
+              "original": "test/unit/org/apache/cassandra/config/DatabaseDescriptorTest.java",
+              "blobs": [
+                {
+                  "sha": "40c8f2a45a0e8879d047dfb09b1bee3d9214bf8d",
+                  "bytes": 60565
+                },
+                {
+                  "sha": "4c2fbf7c358749385ac940c2218d90b5230486df",
+                  "bytes": 60565
+                },
+                {
+                  "sha": "db76bddc137f06f8744b6846a086763f48642098",
+                  "bytes": 61469
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "h2database/h2database",
+      "observations": [
+        {
+          "merge": "9c0bd44d741215871a8600bb7dad21aa7304e687",
+          "merge_base": "519b0d26825ea6ce546a04764d8a61fc15d37975",
+          "parents": [
+            "98ceee4b768979d54e8fc9dfa195ec48b1ebb641",
+            "4304b04aff5a9d80eb20393b9c80c819d2368cdf"
+          ],
+          "overlaps": [
+            {
+              "original": "h2/src/main/org/h2/mvstore/FileStore.java",
+              "blobs": [
+                {
+                  "sha": "712ec1705d19ef10df0ed59c9edee6475639bade",
+                  "bytes": 86512
+                },
+                {
+                  "sha": "50757dd902c1c67c7c8b9936fda5cad6a0fcdc8c",
+                  "bytes": 86535
+                },
+                {
+                  "sha": "b761c4f5daac2cb0ac769b8a5e893f3f33732b82",
+                  "bytes": 86862
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "merge": "e8f99400a3f71312f8edbc86f088becb67210cf5",
+          "merge_base": "05b546d52be96569bda5d1dd43186b81f31d3b92",
+          "parents": [
+            "57b2b3ae8fefca0483410a831f0115b78fed963e",
+            "8d9565d8cbda289ee44e8c588a3431acbc894d4a"
+          ],
+          "overlaps": [
+            {
+              "original": "h2/src/main/org/h2/command/dml/Insert.java",
+              "blobs": [
+                {
+                  "sha": "10edf99a81c9cdb1b1e229c439163d6d6de89ee6",
+                  "bytes": 16937
+                },
+                {
+                  "sha": "0cb5e58859c71a8554d697cda151d789e36963db",
+                  "bytes": 16958
+                },
+                {
+                  "sha": "04ba6159e36cb1796b831169d085c3b80222322a",
+                  "bytes": 17323
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "eclipse-jgit/jgit",
+      "observations": []
+    },
+    {
+      "repository": "Anuken/Mindustry",
+      "observations": [
+        {
+          "merge": "377fb2329cb818d5a7a17dbacf6f01429ae5f4cf",
+          "merge_base": "51a51833d4b0d99880101b3edff00a880e0d4189",
+          "parents": [
+            "285ee665ee23b86574d3f4810c0c0654bdc9fdfc",
+            "b09b03a427c308bcbd74f751d039040820ae2306"
+          ],
+          "overlaps": [
+            {
+              "original": "core/src/io/anuke/mindustry/content/blocks/PowerBlocks.java",
+              "blobs": [
+                {
+                  "sha": "1420f0c83819f28d4fdcc3a8360ef67c1df43c4c",
+                  "bytes": 2741
+                },
+                {
+                  "sha": "1c13f76742cd8a3ed500d0136b12871b44cdc64a",
+                  "bytes": 2751
+                },
+                {
+                  "sha": "54bd88f2f379bccf432a11d2a7342da4d3c29d3a",
+                  "bytes": 2622
+                }
+              ]
+            },
+            {
+              "original": "core/src/io/anuke/mindustry/world/BaseBlock.java",
+              "blobs": [
+                {
+                  "sha": "6cc2c79119d33bcc880a6fe8c0c5ba8ce4f26748",
+                  "bytes": 11198
+                },
+                {
+                  "sha": "bb4466221fc48a2a4358fd150aa6097f0b6ca7df",
+                  "bytes": 10900
+                },
+                {
+                  "sha": "6b3ef027e78c7649577157600a799eb7bf695e6d",
+                  "bytes": 11197
+                }
+              ]
+            },
+            {
+              "original": "core/src/io/anuke/mindustry/world/blocks/power/PowerGraph.java",
+              "blobs": [
+                {
+                  "sha": "5fecfbeba3c1210e95a9efb72c7f8420a7cf8632",
+                  "bytes": 4698
+                },
+                {
+                  "sha": "d817d423a260a46fe7cf478834dcee58f3046cf1",
+                  "bytes": 5370
+                },
+                {
+                  "sha": "490391b3d614e7a4e8e8334b39b2720ecd0caabc",
+                  "bytes": 5788
+                }
+              ]
+            },
+            {
+              "original": "core/src/io/anuke/mindustry/world/modules/PowerModule.java",
+              "blobs": [
+                {
+                  "sha": "96b889209ae0db919f41f59caa3c89464a45c9e0",
+                  "bytes": 964
+                },
+                {
+                  "sha": "363a4066613a1308f5d59b0120b78a304960306d",
+                  "bytes": 860
+                },
+                {
+                  "sha": "b2a7342e84c7fdb6888b07705b62066ddf31d19e",
+                  "bytes": 1126
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "osmandapp/OsmAnd",
+      "observations": [
+        {
+          "merge": "8dd275e0f1c59e97ff6f98f86638abaaf6dfebf1",
+          "merge_base": "75b77fd44171af4c63808c8171114207351f1017",
+          "parents": [
+            "d9001d8a8cebaeeeceecd0e780f70ca2df03ae1a",
+            "5ef17d4ac34eb691cb31e1dc3f9dd7d044475355"
+          ],
+          "overlaps": [
+            {
+              "original": "OsmAnd/src/net/osmand/plus/download/ui/UpdatesIndexFragment.java",
+              "blobs": [
+                {
+                  "sha": "e2aa2984bb1ccd086162710363a356a3eaf9624d",
+                  "bytes": 21962
+                },
+                {
+                  "sha": "3146f7e32ba014e0e8566266c7306eb802939325",
+                  "bytes": 21927
+                },
+                {
+                  "sha": "de912ca1b0a543c72662ba379f6127d0d822cf17",
+                  "bytes": 22007
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,421 @@
+{
+  "observed_utc": "2026-11-19T13:50:29.351Z",
+  "api_source": "https://api.github.com",
+  "repositories": [
+    {
+      "repo": "spring-projects/spring-boot",
+      "sha": "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+      "tree": "2533e24286cd9f1377b2b8fc7ec7982e26e6ed44",
+      "default_branch": "main",
+      "id": 6296790,
+      "url": "https://github.com/spring-projects/spring-boot",
+      "created_at": "2012-10-19T15:02:57Z",
+      "pushed_at": "2026-11-17T19:53:20Z",
+      "size_kib": 226975,
+      "license": "Apache-2.0",
+      "primary_language": "Java",
+      "head_date": "2026-11-17T15:23:44Z",
+      "recent_commits": {
+        "since": "2026-10-20T00:00:00Z",
+        "until": "2026-11-18T23:59:59Z",
+        "count": 678,
+        "last_page": "https://api.github.com/repos/spring-projects/spring-boot/commits?sha=dd87919e93e71b2ba270ec4f2f142645e06c7610&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=1&page=678",
+        "empty_page": "https://api.github.com/repos/spring-projects/spring-boot/commits?sha=dd87919e93e71b2ba270ec4f2f142645e06c7610&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=1&page=679"
+      },
+      "metadata_url": "https://api.github.com/repos/spring-projects/spring-boot",
+      "ref_url": "https://api.github.com/repos/spring-projects/spring-boot/branches/main",
+      "commit_url": "https://github.com/spring-projects/spring-boot/commit/dd87919e93e71b2ba270ec4f2f142645e06c7610"
+    },
+    {
+      "repo": "jenkinsci/jenkins",
+      "sha": "e8ba485c828e25422d54c1d46e0bea1cb0305d03",
+      "tree": "6cf2a9982455342faaaf57c91abc39731684c6ef",
+      "default_branch": "master",
+      "id": 1103607,
+      "url": "https://github.com/jenkinsci/jenkins",
+      "created_at": "2010-11-22T21:21:23Z",
+      "pushed_at": "2026-11-19T11:09:06Z",
+      "size_kib": 174915,
+      "license": "MIT",
+      "primary_language": "Java",
+      "head_date": "2026-11-19T11:06:54Z",
+      "recent_commits": {
+        "since": "2026-10-20T00:00:00Z",
+        "until": "2026-11-18T23:59:59Z",
+        "count": 130,
+        "last_page": "https://api.github.com/repos/jenkinsci/jenkins/commits?sha=e8ba485c828e25422d54c1d46e0bea1cb0305d03&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=1&page=130",
+        "empty_page": "https://api.github.com/repos/jenkinsci/jenkins/commits?sha=e8ba485c828e25422d54c1d46e0bea1cb0305d03&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=1&page=131"
+      },
+      "metadata_url": "https://api.github.com/repos/jenkinsci/jenkins",
+      "ref_url": "https://api.github.com/repos/jenkinsci/jenkins/branches/master",
+      "commit_url": "https://github.com/jenkinsci/jenkins/commit/e8ba485c828e25422d54c1d46e0bea1cb0305d03"
+    },
+    {
+      "repo": "JabRef/jabref",
+      "sha": "75b35b962c1d1f45cbd5be8af025b16cde9cc290",
+      "tree": "e6de09d60eea87733f09ca5141b1d25fe27e03f8",
+      "default_branch": "main",
+      "id": 17634071,
+      "url": "https://github.com/JabRef/jabref",
+      "created_at": "2014-03-11T14:48:42Z",
+      "pushed_at": "2026-11-19T13:44:31Z",
+      "size_kib": 289139,
+      "license": "MIT",
+      "primary_language": "Java",
+      "head_date": "2026-11-19T09:02:08Z",
+      "recent_commits": {
+        "since": "2026-10-20T00:00:00Z",
+        "until": "2026-11-18T23:59:59Z",
+        "count": 280,
+        "last_page": "https://api.github.com/repos/JabRef/jabref/commits?sha=75b35b962c1d1f45cbd5be8af025b16cde9cc290&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=1&page=280",
+        "empty_page": "https://api.github.com/repos/JabRef/jabref/commits?sha=75b35b962c1d1f45cbd5be8af025b16cde9cc290&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=1&page=281"
+      },
+      "metadata_url": "https://api.github.com/repos/JabRef/jabref",
+      "ref_url": "https://api.github.com/repos/JabRef/jabref/branches/main",
+      "commit_url": "https://github.com/JabRef/jabref/commit/75b35b962c1d1f45cbd5be8af025b16cde9cc290"
+    },
+    {
+      "repo": "quarkusio/quarkus",
+      "sha": "61d971888943ff815b86a179fbfcd1db22857730",
+      "tree": "ccdf24da802ce57eda1d5073ccc509b0f4c67a46",
+      "default_branch": "main",
+      "id": 139914932,
+      "url": "https://github.com/quarkusio/quarkus",
+      "created_at": "2018-07-06T00:44:20Z",
+      "pushed_at": "2026-11-19T13:43:43Z",
+      "size_kib": 550560,
+      "license": "Apache-2.0",
+      "primary_language": "Java",
+      "head_date": "2026-11-19T13:43:42Z",
+      "recent_commits": {
+        "since": "2026-10-20T00:00:00Z",
+        "until": "2026-11-18T23:59:59Z",
+        "count": 1037,
+        "last_page": "https://api.github.com/repos/quarkusio/quarkus/commits?sha=61d971888943ff815b86a179fbfcd1db22857730&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=1&page=1037",
+        "empty_page": "https://api.github.com/repos/quarkusio/quarkus/commits?sha=61d971888943ff815b86a179fbfcd1db22857730&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=1&page=1038"
+      },
+      "metadata_url": "https://api.github.com/repos/quarkusio/quarkus",
+      "ref_url": "https://api.github.com/repos/quarkusio/quarkus/branches/main",
+      "commit_url": "https://github.com/quarkusio/quarkus/commit/61d971888943ff815b86a179fbfcd1db22857730"
+    },
+    {
+      "repo": "Card-Forge/forge",
+      "sha": "9748ef2c96d18bcb55271e20e63c32bdee3e991c",
+      "tree": "8b9be6fca016a4b61e97be96e2d48720a3f76f14",
+      "default_branch": "master",
+      "id": 479890272,
+      "url": "https://github.com/Card-Forge/forge",
+      "created_at": "2022-04-10T02:09:17Z",
+      "pushed_at": "2026-11-19T13:03:12Z",
+      "size_kib": 1094914,
+      "license": "GPL-3.0",
+      "primary_language": "Java",
+      "head_date": "2026-11-19T13:02:00Z",
+      "recent_commits": {
+        "since": "2026-10-20T00:00:00Z",
+        "until": "2026-11-18T23:59:59Z",
+        "count": 936,
+        "last_page": "https://api.github.com/repos/Card-Forge/forge/commits?sha=9748ef2c96d18bcb55271e20e63c32bdee3e991c&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=1&page=936",
+        "empty_page": "https://api.github.com/repos/Card-Forge/forge/commits?sha=9748ef2c96d18bcb55271e20e63c32bdee3e991c&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=1&page=937"
+      },
+      "metadata_url": "https://api.github.com/repos/Card-Forge/forge",
+      "ref_url": "https://api.github.com/repos/Card-Forge/forge/branches/master",
+      "commit_url": "https://github.com/Card-Forge/forge/commit/9748ef2c96d18bcb55271e20e63c32bdee3e991c"
+    }
+  ],
+  "pr_sampling": "For each default branch: query `repo:<owner/name> is:pr is:merged base:<default> merged:<=2026-11-18` with sort updated descending and per_page=3. Frozen PR numbers below; repeating the sorted search may change as new updates arrive. Fetched REST PR and resulting git commit. merge_method absent in REST PR payload; parent shape is observable. These endpoints cannot separate historical squash/rebase/other linear integrations with one parent.",
+  "pull_requests": [
+    {
+      "repo": "spring-projects/spring-boot",
+      "pr": 52813,
+      "url": "https://github.com/spring-projects/spring-boot/pull/52813",
+      "merged_at": "2026-11-15T16:43:46Z",
+      "base": "main",
+      "head_sha": "ba43ded1a9c2745f692e724d40139e799205b526",
+      "merge_commit_sha": "0cdcd62b4a2503e907ab6ed57e845258fdf042b2",
+      "commits": 1,
+      "merge_method": null,
+      "pr_url": "https://api.github.com/repos/spring-projects/spring-boot/pulls/52813",
+      "parent_shas": [
+        "9e8d20d7417af0220bd2780a4bcb51ce9e84722f",
+        "ba43ded1a9c2745f692e724d40139e799205b526"
+      ],
+      "parent_count": 2,
+      "pr_head_is_parent": true,
+      "commit_url": "https://github.com/spring-projects/spring-boot/commit/0cdcd62b4a2503e907ab6ed57e845258fdf042b2",
+      "commit_subject": "Merge pull request #52813 from kzander91"
+    },
+    {
+      "repo": "spring-projects/spring-boot",
+      "pr": 52814,
+      "url": "https://github.com/spring-projects/spring-boot/pull/52814",
+      "merged_at": "2026-11-15T16:44:44Z",
+      "base": "main",
+      "head_sha": "3c81843362ec9c5826df8b7e564b02d290fa3fd5",
+      "merge_commit_sha": "3d8ad8ecf3899381514e413877a90e16e6a52b00",
+      "commits": 1,
+      "merge_method": null,
+      "pr_url": "https://api.github.com/repos/spring-projects/spring-boot/pulls/52814",
+      "parent_shas": [
+        "0cdcd62b4a2503e907ab6ed57e845258fdf042b2",
+        "3c81843362ec9c5826df8b7e564b02d290fa3fd5"
+      ],
+      "parent_count": 2,
+      "pr_head_is_parent": true,
+      "commit_url": "https://github.com/spring-projects/spring-boot/commit/3d8ad8ecf3899381514e413877a90e16e6a52b00",
+      "commit_subject": "Merge pull request #52814 from ShakilUrRehman21"
+    },
+    {
+      "repo": "spring-projects/spring-boot",
+      "pr": 52807,
+      "url": "https://github.com/spring-projects/spring-boot/pull/52807",
+      "merged_at": "2026-11-13T17:47:00Z",
+      "base": "main",
+      "head_sha": "78c191b92a89a8b3fd6f117b9700e72c64c570a2",
+      "merge_commit_sha": "9e8d20d7417af0220bd2780a4bcb51ce9e84722f",
+      "commits": 1,
+      "merge_method": null,
+      "pr_url": "https://api.github.com/repos/spring-projects/spring-boot/pulls/52807",
+      "parent_shas": [
+        "f458ae90c8a6a7fee377242a2e60d5429fd61521",
+        "78c191b92a89a8b3fd6f117b9700e72c64c570a2"
+      ],
+      "parent_count": 2,
+      "pr_head_is_parent": true,
+      "commit_url": "https://github.com/spring-projects/spring-boot/commit/9e8d20d7417af0220bd2780a4bcb51ce9e84722f",
+      "commit_subject": "Merge pull request #52807 from agentgt"
+    },
+    {
+      "repo": "jenkinsci/jenkins",
+      "pr": 27805,
+      "url": "https://github.com/jenkinsci/jenkins/pull/27805",
+      "merged_at": "2026-11-18T10:35:26Z",
+      "base": "master",
+      "head_sha": "83de473863fe30bb2f8337802931f766127d4f33",
+      "merge_commit_sha": "58b54e94f8f5d7eaeaf7b3ef7867613f06315e03",
+      "commits": 1,
+      "merge_method": null,
+      "pr_url": "https://api.github.com/repos/jenkinsci/jenkins/pulls/27805",
+      "parent_shas": [
+        "1302bbe246f9a3484b1a5b46f6538f0f4913bbf6"
+      ],
+      "parent_count": 1,
+      "pr_head_is_parent": false,
+      "commit_url": "https://github.com/jenkinsci/jenkins/commit/58b54e94f8f5d7eaeaf7b3ef7867613f06315e03",
+      "commit_subject": "Use setStatus instead of sendError for successful HTTP 204 job description updates (#27805)"
+    },
+    {
+      "repo": "jenkinsci/jenkins",
+      "pr": 27797,
+      "url": "https://github.com/jenkinsci/jenkins/pull/27797",
+      "merged_at": "2026-11-18T08:54:09Z",
+      "base": "master",
+      "head_sha": "6569ec09c9d21f30316f778083fba6bb53f97e7c",
+      "merge_commit_sha": "1302bbe246f9a3484b1a5b46f6538f0f4913bbf6",
+      "commits": 1,
+      "merge_method": null,
+      "pr_url": "https://api.github.com/repos/jenkinsci/jenkins/pulls/27797",
+      "parent_shas": [
+        "c28857eb57b9b50af3a77811a40af01ca0d4defb"
+      ],
+      "parent_count": 1,
+      "pr_head_is_parent": false,
+      "commit_url": "https://github.com/jenkinsci/jenkins/commit/1302bbe246f9a3484b1a5b46f6538f0f4913bbf6",
+      "commit_subject": "Update dependency postcss to v8.5.33 (#27797)"
+    },
+    {
+      "repo": "jenkinsci/jenkins",
+      "pr": 27801,
+      "url": "https://github.com/jenkinsci/jenkins/pull/27801",
+      "merged_at": "2026-11-18T08:48:41Z",
+      "base": "master",
+      "head_sha": "0f38c22001609519e824678eb5fa4a7717b5e3b6",
+      "merge_commit_sha": "c28857eb57b9b50af3a77811a40af01ca0d4defb",
+      "commits": 2,
+      "merge_method": null,
+      "pr_url": "https://api.github.com/repos/jenkinsci/jenkins/pulls/27801",
+      "parent_shas": [
+        "bbfdba192c931225c508b070d67c1373b625d5a7"
+      ],
+      "parent_count": 1,
+      "pr_head_is_parent": false,
+      "commit_url": "https://github.com/jenkinsci/jenkins/commit/c28857eb57b9b50af3a77811a40af01ca0d4defb",
+      "commit_subject": "Show live-updating build times (#27801)"
+    },
+    {
+      "repo": "JabRef/jabref",
+      "pr": 17084,
+      "url": "https://github.com/JabRef/jabref/pull/17084",
+      "merged_at": "2026-11-18T21:26:15Z",
+      "base": "main",
+      "head_sha": "88086b4bddde62c34a39431215221c0f0f288b35",
+      "merge_commit_sha": "59e1dcf6ab4c2a92906c1c7c68b9c1c8cff0cadf",
+      "commits": 35,
+      "merge_method": null,
+      "pr_url": "https://api.github.com/repos/JabRef/jabref/pulls/17084",
+      "parent_shas": [
+        "98b3e4c0222a5c78987fa7010660273516818bc0"
+      ],
+      "parent_count": 1,
+      "pr_head_is_parent": false,
+      "commit_url": "https://github.com/JabRef/jabref/commit/59e1dcf6ab4c2a92906c1c7c68b9c1c8cff0cadf",
+      "commit_subject": "use the font size to also determine the size of list and table cell size (#17084)"
+    },
+    {
+      "repo": "JabRef/jabref",
+      "pr": 17867,
+      "url": "https://github.com/JabRef/jabref/pull/17867",
+      "merged_at": "2026-11-18T20:48:41Z",
+      "base": "main",
+      "head_sha": "412edcf86c03d1f3a9666233d3fc48110dae4f9a",
+      "merge_commit_sha": "98b3e4c0222a5c78987fa7010660273516818bc0",
+      "commits": 1,
+      "merge_method": null,
+      "pr_url": "https://api.github.com/repos/JabRef/jabref/pulls/17867",
+      "parent_shas": [
+        "df564e6e271a1e0e20e7e808b5b02021fcef41da"
+      ],
+      "parent_count": 1,
+      "pr_head_is_parent": false,
+      "commit_url": "https://github.com/JabRef/jabref/commit/98b3e4c0222a5c78987fa7010660273516818bc0",
+      "commit_subject": "chore(deps): update dependency de.undercouch:citeproc-java to v3.5.3 (#17867)"
+    },
+    {
+      "repo": "JabRef/jabref",
+      "pr": 17865,
+      "url": "https://github.com/JabRef/jabref/pull/17865",
+      "merged_at": "2026-11-18T20:36:19Z",
+      "base": "main",
+      "head_sha": "1eded6a4f2ea9c08fd3f6b8aeee5bbddcc53f815",
+      "merge_commit_sha": "df564e6e271a1e0e20e7e808b5b02021fcef41da",
+      "commits": 1,
+      "merge_method": null,
+      "pr_url": "https://api.github.com/repos/JabRef/jabref/pulls/17865",
+      "parent_shas": [
+        "454ee663981cf6c51b5fc3f190fb0ed0fcdf799b"
+      ],
+      "parent_count": 1,
+      "pr_head_is_parent": false,
+      "commit_url": "https://github.com/JabRef/jabref/commit/df564e6e271a1e0e20e7e808b5b02021fcef41da",
+      "commit_subject": "Fix JBang CI with cached jablib snapshots (#17865)"
+    },
+    {
+      "repo": "quarkusio/quarkus",
+      "pr": 57521,
+      "url": "https://github.com/quarkusio/quarkus/pull/57521",
+      "merged_at": "2026-11-18T22:29:04Z",
+      "base": "main",
+      "head_sha": "8ceb8a5a6ad22f26b4a1d51e8ba7c6afb028b4a0",
+      "merge_commit_sha": "e5bb3cadaa5044a8957de37a09c8fda297ac8544",
+      "commits": 1,
+      "merge_method": null,
+      "pr_url": "https://api.github.com/repos/quarkusio/quarkus/pulls/57521",
+      "parent_shas": [
+        "dd963ba9cc51c8b677719689c9e4cc4e57d37a2e",
+        "8ceb8a5a6ad22f26b4a1d51e8ba7c6afb028b4a0"
+      ],
+      "parent_count": 2,
+      "pr_head_is_parent": true,
+      "commit_url": "https://github.com/quarkusio/quarkus/commit/e5bb3cadaa5044a8957de37a09c8fda297ac8544",
+      "commit_subject": "Merge pull request #57521 from sberyozkin/smallrye-jwt-nimbus-jwt"
+    },
+    {
+      "repo": "quarkusio/quarkus",
+      "pr": 58323,
+      "url": "https://github.com/quarkusio/quarkus/pull/58323",
+      "merged_at": "2026-11-18T17:27:36Z",
+      "base": "main",
+      "head_sha": "756388f2245d2aaf8c2f99adb831183acb75e63e",
+      "merge_commit_sha": "8b3e3d606e71bd6010963766ac88c860d3c131c3",
+      "commits": 1,
+      "merge_method": null,
+      "pr_url": "https://api.github.com/repos/quarkusio/quarkus/pulls/58323",
+      "parent_shas": [
+        "27bd98671fa76e63fe850a05fc3363b51b3cde71",
+        "756388f2245d2aaf8c2f99adb831183acb75e63e"
+      ],
+      "parent_count": 2,
+      "pr_head_is_parent": true,
+      "commit_url": "https://github.com/quarkusio/quarkus/commit/8b3e3d606e71bd6010963766ac88c860d3c131c3",
+      "commit_subject": "Merge pull request #58323 from yuhaibohotmail/arc-observer-resolution-cache"
+    },
+    {
+      "repo": "quarkusio/quarkus",
+      "pr": 58442,
+      "url": "https://github.com/quarkusio/quarkus/pull/58442",
+      "merged_at": "2026-11-17T09:28:27Z",
+      "base": "main",
+      "head_sha": "25c93e59f24a1705bb077e5d882c2d12b0189462",
+      "merge_commit_sha": "bb9b4ed769e2b02605332edb83bd29194e632959",
+      "commits": 1,
+      "merge_method": null,
+      "pr_url": "https://api.github.com/repos/quarkusio/quarkus/pulls/58442",
+      "parent_shas": [
+        "82733bcbdf74d72f8ce470e661cec1fba2d4843e",
+        "25c93e59f24a1705bb077e5d882c2d12b0189462"
+      ],
+      "parent_count": 2,
+      "pr_head_is_parent": true,
+      "commit_url": "https://github.com/quarkusio/quarkus/commit/bb9b4ed769e2b02605332edb83bd29194e632959",
+      "commit_subject": "Merge pull request #58442 from zakkak/fix-native-sources-argument-quoting"
+    },
+    {
+      "repo": "Card-Forge/forge",
+      "pr": 12942,
+      "url": "https://github.com/Card-Forge/forge/pull/12942",
+      "merged_at": "2026-11-18T20:58:13Z",
+      "base": "master",
+      "head_sha": "4887abd58609de7027b2d837fc1717e2cf62f6a7",
+      "merge_commit_sha": "2d8fef80a0a201c75fd18097d0066dab1c440771",
+      "commits": 2,
+      "merge_method": null,
+      "pr_url": "https://api.github.com/repos/Card-Forge/forge/pulls/12942",
+      "parent_shas": [
+        "d9ae6615afc3f1a44a4f5317a49d447c927875de"
+      ],
+      "parent_count": 1,
+      "pr_head_is_parent": false,
+      "commit_url": "https://github.com/Card-Forge/forge/commit/2d8fef80a0a201c75fd18097d0066dab1c440771",
+      "commit_subject": "not choose tap pain land when it not necessary (#12940) (#12942)"
+    },
+    {
+      "repo": "Card-Forge/forge",
+      "pr": 12931,
+      "url": "https://github.com/Card-Forge/forge/pull/12931",
+      "merged_at": "2026-11-18T04:34:28Z",
+      "base": "master",
+      "head_sha": "f657d5eb468e175329b3c9b626a5df4a40d28cfc",
+      "merge_commit_sha": "183ff4b92f6df54549f34ad6b7022a425659249e",
+      "commits": 1,
+      "merge_method": null,
+      "pr_url": "https://api.github.com/repos/Card-Forge/forge/pulls/12931",
+      "parent_shas": [
+        "84410f037cb9c929134c02f3197271d068b0e4e0"
+      ],
+      "parent_count": 1,
+      "pr_head_is_parent": false,
+      "commit_url": "https://github.com/Card-Forge/forge/commit/183ff4b92f6df54549f34ad6b7022a425659249e",
+      "commit_subject": "Added precon shop areas; minor item fix, attempted bugfix to yule town, small balist edit (#12931)"
+    },
+    {
+      "repo": "Card-Forge/forge",
+      "pr": 12816,
+      "url": "https://github.com/Card-Forge/forge/pull/12816",
+      "merged_at": "2026-11-18T11:56:05Z",
+      "base": "master",
+      "head_sha": "81b243f9ab8e8f8e1df07dc48df77a48892b2e34",
+      "merge_commit_sha": "d9ae6615afc3f1a44a4f5317a49d447c927875de",
+      "commits": 7,
+      "merge_method": null,
+      "pr_url": "https://api.github.com/repos/Card-Forge/forge/pulls/12816",
+      "parent_shas": [
+        "ae94e6dec4b16f5ad2f6c533686b60b6107796fd"
+      ],
+      "parent_count": 1,
+      "pr_head_is_parent": false,
+      "commit_url": "https://github.com/Card-Forge/forge/commit/d9ae6615afc3f1a44a4f5317a49d447c927875de",
+      "commit_subject": "Remember last-known information only for cards that actually moved with ChangeZone and ChangeZoneAll (#12816)"
+    }
+  ],
+  "forge_observed_utc": "2026-11-19T14:38:56.864Z"
+}

@@ -1,0 +1,2 @@
+2026-11-19: first complete historical prefix pilot; all published heads and tags inventory.
+2026-11-20: verify the reviewed d82dee3 study on Ubuntu against run 44549292132.

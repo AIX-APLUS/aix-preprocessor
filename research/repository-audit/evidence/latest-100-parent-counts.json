@@ -1,0 +1,75 @@
+{
+  "scope": "First 100 commits in GitHub commits listing from pinned default, not first-parent and not a representative estimate of history or of PR merge methods",
+  "repos": [
+    {
+      "repository": "spring-projects/spring-boot",
+      "endpoint": "https://api.github.com/repos/spring-projects/spring-boot/commits?sha=dd87919e93e71b2ba270ec4f2f142645e06c7610&per_page=100",
+      "n": 100,
+      "first": "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+      "last": "84e18c1fa3de2284d0c453fc403da23ab45e2f1d",
+      "last_committer_date": "2026-11-11T11:12:42Z",
+      "parents": {
+        "one": 47,
+        "two": 53,
+        "octopus": 0,
+        "root": 0
+      }
+    },
+    {
+      "repository": "jenkinsci/jenkins",
+      "endpoint": "https://api.github.com/repos/jenkinsci/jenkins/commits?sha=e8ba485c828e25422d54c1d46e0bea1cb0305d03&per_page=100",
+      "n": 100,
+      "first": "e8ba485c828e25422d54c1d46e0bea1cb0305d03",
+      "last": "fa6c8b62c7a9604f1586fe89485fd3291d08e6d4",
+      "last_committer_date": "2026-11-07T11:30:43Z",
+      "parents": {
+        "one": 100,
+        "two": 0,
+        "octopus": 0,
+        "root": 0
+      }
+    },
+    {
+      "repository": "JabRef/jabref",
+      "endpoint": "https://api.github.com/repos/JabRef/jabref/commits?sha=75b35b962c1d1f45cbd5be8af025b16cde9cc290&per_page=100",
+      "n": 100,
+      "first": "75b35b962c1d1f45cbd5be8af025b16cde9cc290",
+      "last": "3326428d71e90209bbc56a7e98286647a392266d",
+      "last_committer_date": "2026-11-09T05:50:42Z",
+      "parents": {
+        "one": 100,
+        "two": 0,
+        "octopus": 0,
+        "root": 0
+      }
+    },
+    {
+      "repository": "quarkusio/quarkus",
+      "endpoint": "https://api.github.com/repos/quarkusio/quarkus/commits?sha=61d971888943ff815b86a179fbfcd1db22857730&per_page=100",
+      "n": 100,
+      "first": "61d971888943ff815b86a179fbfcd1db22857730",
+      "last": "36683cecb5683e6721c92da7f4106690cadfc8dc",
+      "last_committer_date": "2026-11-16T17:00:11Z",
+      "parents": {
+        "one": 47,
+        "two": 53,
+        "octopus": 0,
+        "root": 0
+      }
+    },
+    {
+      "repository": "Card-Forge/forge",
+      "endpoint": "https://api.github.com/repos/Card-Forge/forge/commits?sha=9748ef2c96d18bcb55271e20e63c32bdee3e991c&per_page=100",
+      "n": 100,
+      "first": "9748ef2c96d18bcb55271e20e63c32bdee3e991c",
+      "last": "e17b1f506a128d307f12a039109c3bdef64b8ac7",
+      "last_committer_date": "2026-11-12T04:56:28Z",
+      "parents": {
+        "one": 91,
+        "two": 9,
+        "octopus": 0,
+        "root": 0
+      }
+    }
+  ]
+}

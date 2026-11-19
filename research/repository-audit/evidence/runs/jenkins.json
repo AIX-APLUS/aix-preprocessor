@@ -1,0 +1,51 @@
+{
+  "repository": "jenkinsci/jenkins",
+  "pinned_default_sha": "e8ba485c828e25422d54c1d46e0bea1cb0305d03",
+  "default_branch": "master",
+  "fetched_default_tip": "e8ba485c828e25422d54c1d46e0bea1cb0305d03",
+  "default": {
+    "total_commits": 38921,
+    "two_parent_merges": 5529,
+    "octopus_merges": 0,
+    "all_merge_commits": 5529,
+    "two_parent_merge_bases": {
+      "unique": 5424,
+      "multiple": 102,
+      "none": 3
+    },
+    "oldest_committer_time": "2006-11-05T21:16:01Z",
+    "newest_committer_time": "2026-11-19T11:06:54Z",
+    "commits_since_recent_from": 135
+  },
+  "all_heads_tags": {
+    "total_commits": 41267,
+    "two_parent_merges": 5772,
+    "octopus_merges": 2,
+    "all_merge_commits": 5774,
+    "two_parent_merge_bases": {
+      "unique": 5665,
+      "multiple": 104,
+      "none": 3
+    },
+    "oldest_committer_time": "2006-11-05T21:16:01Z",
+    "newest_committer_time": "2026-11-19T11:08:57Z",
+    "commits_since_recent_from": 168
+  },
+  "fetch_refspecs": [
+    "refs/heads/*",
+    "refs/tags/*"
+  ],
+  "shallow": false,
+  "filter": "tree:0",
+  "recent_from_inclusive": "2026-10-20T00:00:00Z",
+  "fetched_at_utc": "2026-11-19T14:57:09.205601Z",
+  "evidence_url": "https://github.com/jenkinsci/jenkins/commit/e8ba485c828e25422d54c1d46e0bea1cb0305d03",
+  "head_count": 55,
+  "tag_count": 1943,
+  "ref_manifest": "jenkins.refs.tsv.gz",
+  "refs_uncompressed_sha256": "05480b5b9563c2274ae10d143370a6fcab3ad9b96505c02c1840e1b9708bcf0c",
+  "metadata_mirror_file_bytes": 18423365,
+  "git_version": "git version 2.56.1",
+  "fetch_seconds": 1.762,
+  "inventory_seconds": 11.995
+}

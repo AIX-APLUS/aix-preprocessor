@@ -1,0 +1,62 @@
+{
+  "source_run": 44549292132,
+  "git_version": "git version 2.55.0.windows.5",
+  "scope": "Single archived pilot ref per repository, default rename limit, labels from Git text merges.",
+  "repositories": {
+    "Card-Forge/forge": {
+      "anchor": "215699c878fbeee37cef6ebd78e15e338b32a37b",
+      "two_parent_merges": 2,
+      "samples": 1,
+      "positive": 0,
+      "negative": 1,
+      "logical_sha256": "7c45f551eb50f4bfcb268afbdcbb489962a1c53b7a6a928a9e991f225f0ff6c0",
+      "candidate_keys_recovered": 1,
+      "merge_tree_labels_matched": 1,
+      "merge_file_labels_matched": 1
+    },
+    "JabRef/jabref": {
+      "anchor": "8d22827be20de435b01844f8643fe014aa910daa",
+      "two_parent_merges": 234,
+      "samples": 195,
+      "positive": 26,
+      "negative": 169,
+      "logical_sha256": "30087ec40ca43c74d8de5a728ff79c3ec96514f783507a2a2162239023a9642b",
+      "candidate_keys_recovered": 195,
+      "merge_tree_labels_matched": 195,
+      "merge_file_labels_matched": 195
+    },
+    "jenkinsci/jenkins": {
+      "anchor": "285741a5240f3658c6e5191edc9ba65fe7d5793c",
+      "two_parent_merges": 213,
+      "samples": 148,
+      "positive": 21,
+      "negative": 127,
+      "logical_sha256": "62ae7852c3b87c83c0019e28b4f86b623e18d561e71848a8c1477b94ab343ea3",
+      "candidate_keys_recovered": 148,
+      "merge_tree_labels_matched": 148,
+      "merge_file_labels_matched": 148
+    },
+    "quarkusio/quarkus": {
+      "anchor": "0ef2742d330604ca4ea130db6323b8f577b9260e",
+      "two_parent_merges": 101,
+      "samples": 9,
+      "positive": 0,
+      "negative": 9,
+      "logical_sha256": "8401e8ce3d35a3203b9b85cf4377c134915f4b225e357118087b1515be5d62fd",
+      "candidate_keys_recovered": 9,
+      "merge_tree_labels_matched": 9,
+      "merge_file_labels_matched": 9
+    },
+    "spring-projects/spring-boot": {
+      "anchor": "53d24301d125b543664a79cf6ece530624597f9a",
+      "two_parent_merges": 101,
+      "samples": 27,
+      "positive": 7,
+      "negative": 20,
+      "logical_sha256": "2f12249ad98017643b8d8a11ae2395d0d6eb04ade1d89be6ea2879ae910cc1c3",
+      "candidate_keys_recovered": 27,
+      "merge_tree_labels_matched": 27,
+      "merge_file_labels_matched": 27
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "git_version": "git version 2.55.0.windows.5",
+  "command": "git merge-file --stdout p1 base p2",
+  "scope": "Default Git file merge on three verified UTF-8 non-NUL blobs in an empty directory. No repository attributes, custom drivers, tree/rename/context replay, history or production eligibility. These experimental flags are not extractor labels.",
+  "observations": [
+    {
+      "repo": "apache/cassandra",
+      "merge": "53c3561e9db3fa0b1ed8e29ce462fde6ce566ff0",
+      "path": "src/java/org/apache/cassandra/config/CassandraRelevantProperties.java",
+      "blob_ids_base_p1_p2": [
+        "a107613f303431c19f55fd5b4df9ee8bd4cf3d2c",
+        "409cb80458bad759878f0a4bf489b9b299f7a58d",
+        "c0a23e2fd2435469e28e2e811d5445f367748f24"
+      ],
+      "returncode": 0,
+      "file_text_conflict": false
+    },
+    {
+      "repo": "apache/cassandra",
+      "merge": "53c3561e9db3fa0b1ed8e29ce462fde6ce566ff0",
+      "path": "src/java/org/apache/cassandra/config/DatabaseDescriptor.java",
+      "blob_ids_base_p1_p2": [
+        "9b066bfb1b787422215d8b213dc4a1d8e3ab8960",
+        "fe5a3a1071eeed30e7b3544a729bea17ba189c5c",
+        "b42618b482f816a97b900478cd3e82a1a9435d61"
+      ],
+      "returncode": 0,
+      "file_text_conflict": false
+    },
+    {
+      "repo": "apache/cassandra",
+      "merge": "53c3561e9db3fa0b1ed8e29ce462fde6ce566ff0",
+      "path": "test/unit/org/apache/cassandra/config/DatabaseDescriptorTest.java",
+      "blob_ids_base_p1_p2": [
+        "40c8f2a45a0e8879d047dfb09b1bee3d9214bf8d",
+        "4c2fbf7c358749385ac940c2218d90b5230486df",
+        "db76bddc137f06f8744b6846a086763f48642098"
+      ],
+      "returncode": 0,
+      "file_text_conflict": false
+    },
+    {
+      "repo": "h2database/h2database",
+      "merge": "9c0bd44d741215871a8600bb7dad21aa7304e687",
+      "path": "h2/src/main/org/h2/mvstore/FileStore.java",
+      "blob_ids_base_p1_p2": [
+        "712ec1705d19ef10df0ed59c9edee6475639bade",
+        "50757dd902c1c67c7c8b9936fda5cad6a0fcdc8c",
+        "b761c4f5daac2cb0ac769b8a5e893f3f33732b82"
+      ],
+      "returncode": 0,
+      "file_text_conflict": false
+    },
+    {
+      "repo": "h2database/h2database",
+      "merge": "e8f99400a3f71312f8edbc86f088becb67210cf5",
+      "path": "h2/src/main/org/h2/command/dml/Insert.java",
+      "blob_ids_base_p1_p2": [
+        "10edf99a81c9cdb1b1e229c439163d6d6de89ee6",
+        "0cb5e58859c71a8554d697cda151d789e36963db",
+        "04ba6159e36cb1796b831169d085c3b80222322a"
+      ],
+      "returncode": 0,
+      "file_text_conflict": false
+    },
+    {
+      "repo": "Anuken/Mindustry",
+      "merge": "377fb2329cb818d5a7a17dbacf6f01429ae5f4cf",
+      "path": "core/src/io/anuke/mindustry/content/blocks/PowerBlocks.java",
+      "blob_ids_base_p1_p2": [
+        "1420f0c83819f28d4fdcc3a8360ef67c1df43c4c",
+        "1c13f76742cd8a3ed500d0136b12871b44cdc64a",
+        "54bd88f2f379bccf432a11d2a7342da4d3c29d3a"
+      ],
+      "returncode": 0,
+      "file_text_conflict": false
+    },
+    {
+      "repo": "Anuken/Mindustry",
+      "merge": "377fb2329cb818d5a7a17dbacf6f01429ae5f4cf",
+      "path": "core/src/io/anuke/mindustry/world/BaseBlock.java",
+      "blob_ids_base_p1_p2": [
+        "6cc2c79119d33bcc880a6fe8c0c5ba8ce4f26748",
+        "bb4466221fc48a2a4358fd150aa6097f0b6ca7df",
+        "6b3ef027e78c7649577157600a799eb7bf695e6d"
+      ],
+      "returncode": 0,
+      "file_text_conflict": false
+    },
+    {
+      "repo": "Anuken/Mindustry",
+      "merge": "377fb2329cb818d5a7a17dbacf6f01429ae5f4cf",
+      "path": "core/src/io/anuke/mindustry/world/blocks/power/PowerGraph.java",
+      "blob_ids_base_p1_p2": [
+        "5fecfbeba3c1210e95a9efb72c7f8420a7cf8632",
+        "d817d423a260a46fe7cf478834dcee58f3046cf1",
+        "490391b3d614e7a4e8e8334b39b2720ecd0caabc"
+      ],
+      "returncode": 1,
+      "file_text_conflict": true
+    },
+    {
+      "repo": "Anuken/Mindustry",
+      "merge": "377fb2329cb818d5a7a17dbacf6f01429ae5f4cf",
+      "path": "core/src/io/anuke/mindustry/world/modules/PowerModule.java",
+      "blob_ids_base_p1_p2": [
+        "96b889209ae0db919f41f59caa3c89464a45c9e0",
+        "363a4066613a1308f5d59b0120b78a304960306d",
+        "b2a7342e84c7fdb6888b07705b62066ddf31d19e"
+      ],
+      "returncode": 1,
+      "file_text_conflict": true
+    },
+    {
+      "repo": "osmandapp/OsmAnd",
+      "merge": "8dd275e0f1c59e97ff6f98f86638abaaf6dfebf1",
+      "path": "OsmAnd/src/net/osmand/plus/download/ui/UpdatesIndexFragment.java",
+      "blob_ids_base_p1_p2": [
+        "e2aa2984bb1ccd086162710363a356a3eaf9624d",
+        "3146f7e32ba014e0e8566266c7306eb802939325",
+        "de912ca1b0a543c72662ba379f6127d0d822cf17"
+      ],
+      "returncode": 1,
+      "file_text_conflict": true
+    }
+  ]
+}

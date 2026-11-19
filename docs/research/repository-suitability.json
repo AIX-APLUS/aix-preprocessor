@@ -1,0 +1,2149 @@
+[
+  {
+    "repository": "spring-projects/spring-boot",
+    "github_url": "https://github.com/spring-projects/spring-boot",
+    "pinned_sha": "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+    "default_branch": "main",
+    "analyzed_refs": {
+      "default_git_graph": "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+      "all_graph": [
+        "refs/heads/*",
+        "refs/tags/*"
+      ],
+      "sample_parquet": [
+        "53d24301d125b543664a79cf6ece530624597f9a refs/heads/pilot"
+      ]
+    },
+    "total_commits": 64085,
+    "total_commits_source": "git_rev_list",
+    "two_parent_merges": 21489,
+    "octopus_merges": 0,
+    "all_default_merges": 21489,
+    "default_unique_base_merges": 21459,
+    "all_heads_tags": {
+      "total_commits": 64737,
+      "two_parent_merges": 21497,
+      "octopus_merges": 0,
+      "all_merge_commits": 21497,
+      "two_parent_merge_bases": {
+        "unique": 21466,
+        "multiple": 30,
+        "none": 1
+      },
+      "oldest_committer_time": "2012-10-21T17:53:52Z",
+      "newest_committer_time": "2026-11-17T19:53:09Z",
+      "commits_since_recent_from": 683
+    },
+    "github_size_kib": 226975,
+    "java_paths_at_tip": 8729,
+    "public_heads": 27,
+    "public_tags": 399,
+    "latest_closed_30d_total": 678,
+    "latest_closed_30d_two_parent": 341,
+    "eight_merge_proxy": {
+      "year": 2026,
+      "merges": 8,
+      "overlapping_java_paths": 0
+    },
+    "pilot_sha": "53d24301d125b543664a79cf6ece530624597f9a",
+    "pilot_two_parent_merges": 101,
+    "eligible_samples": 27,
+    "positive_samples": 7,
+    "negative_samples": 20,
+    "positive_rate": 0.25925925925925924,
+    "extraction_seconds": 2.438552,
+    "parquet_bytes": 73105,
+    "max_process_rss_kib": 148908,
+    "pilot_git_bytes": 12265725,
+    "git_version": "git version 2.56.1",
+    "extractor_sha": "06e755ebabed1707a3413ec99ffa2511b046c543",
+    "extraction_status": "success",
+    "evidence": [
+      "https://api.github.com/repos/spring-projects/spring-boot",
+      "https://api.github.com/repos/spring-projects/spring-boot/git/trees/2533e24286cd9f1377b2b8fc7ec7982e26e6ed44?recursive=1",
+      "https://api.github.com/repos/spring-projects/spring-boot/commits?sha=dd87919e93e71b2ba270ec4f2f142645e06c7610&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "https://api.github.com/repos/spring-projects/spring-boot/commits?sha=dd87919e93e71b2ba270ec4f2f142645e06c7610&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "evidence/runs/spring.json",
+      "evidence/runs/pilot-spring-projects__spring-boot.json",
+      "evidence/runs/quality.json",
+      "evidence/validation/pilot-integrity.json",
+      "evidence/run-44549292132-provenance.json",
+      "evidence/pilot-enrichment.json",
+      "evidence/validation/pilot-notices.json"
+    ],
+    "limitations": [
+      "Full default history and historical pilot are distinct populations.",
+      "Full-scope eligible rows, labels and current conflict prevalence were not measured."
+    ],
+    "record_type": "primary_candidate",
+    "total_commits_pinned_rest": 64085,
+    "fetched_default_tip": "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+    "github_license_metadata": "Apache-2.0",
+    "pilot_total_commits": 2662,
+    "pilot_all_merges": 101,
+    "pilot_octopus_merges": 0,
+    "pilot_tip_committed_at": "2014-07-28T15:41:42-07:00",
+    "pilot_anchor_policy": {
+      "first_parent_two_parent_milestone": 100,
+      "max_reachable_commits": 14000,
+      "max_reachable_two_parent_merges": 450
+    },
+    "pilot_milestone_used": 100,
+    "pilot_funnel": {
+      "two_parent_merges": 101,
+      "zero_base": 0,
+      "multiple_bases": 0,
+      "unique_base": 101,
+      "parent_is_base": 55,
+      "left_has_no_java_edit": 0,
+      "no_joint_java_edit": 36,
+      "merges_with_joint_edits": 10,
+      "joint_java_file_occurrences": 27
+    },
+    "reported_skips": {},
+    "efficiency": {
+      "rows_per_pilot_two_parent_merge": 0.26732673267326734,
+      "positives_per_pilot_two_parent_merge": 0.06930693069306931,
+      "rows_per_extraction_second": 11.072144452937644,
+      "positives_per_extraction_second": 2.87055596928013
+    },
+    "parquet_validation": {
+      "samples": 27,
+      "positive": 7,
+      "negative": 20,
+      "logical_sha256": "2f12249ad98017643b8d8a11ae2395d0d6eb04ade1d89be6ea2879ae910cc1c3"
+    },
+    "schema_columns_validated": [
+      "repo_id",
+      "merge_sha",
+      "parent1_sha",
+      "parent2_sha",
+      "base_sha",
+      "base_path",
+      "base_blob_sha",
+      "base_code",
+      "commit_count_90d",
+      "days_since_last_change",
+      "author_count_90d",
+      "top_author_share_90d",
+      "lines_added_90d",
+      "lines_deleted_90d",
+      "has_text_conflict"
+    ],
+    "duplicate_sample_keys_in_pilot": 0,
+    "pilot_quality": {
+      "measurement_source": "Ubuntu Actions aggregate-pilot-results (quality.json and pilot JSON)",
+      "filename": "spring-projects__spring-boot.parquet",
+      "repo_id": "spring-projects/spring-boot",
+      "stats_positive_rate_display": "25.93%",
+      "rows": 27,
+      "positive": 7,
+      "negative": 20,
+      "positive_fraction": 0.25925925925925924,
+      "contributing_merges": 10,
+      "unique_paths": 23,
+      "paths_seen_multiple_times": 2,
+      "rows_on_repeated_paths": 6,
+      "max_rows_per_path": 4,
+      "top_level_path_rows": [
+        {
+          "top_level": "spring-boot-actuator",
+          "rows": 9,
+          "positive": 3
+        },
+        {
+          "top_level": "spring-boot-tools",
+          "rows": 7,
+          "positive": 1
+        },
+        {
+          "top_level": "spring-boot-autoconfigure",
+          "rows": 6,
+          "positive": 2
+        },
+        {
+          "top_level": "spring-boot-cli",
+          "rows": 3,
+          "positive": 1
+        },
+        {
+          "top_level": "spring-boot",
+          "rows": 2,
+          "positive": 0
+        }
+      ],
+      "distinct_exact_code": 26,
+      "repeated_code_excess_rows": 1,
+      "code_hashes_at_multiple_paths": 0,
+      "code_hashes_with_both_labels": 0,
+      "rows_in_both_label_code_groups": 0,
+      "minority_rows_in_both_label_code_groups": 0,
+      "base_code_unicode_characters": {
+        "min": 1495,
+        "p50": 6119,
+        "p90": 13871,
+        "p95": 17525,
+        "max": 20881
+      },
+      "base_code_utf8_bytes": {
+        "min": 1495,
+        "p50": 6119,
+        "p90": 13871,
+        "p95": 17525,
+        "max": 20881
+      },
+      "base_code_tokens": {
+        "min": 313,
+        "p50": 1365,
+        "p90": 3054,
+        "p95": 3620,
+        "max": 4741
+      },
+      "source_lines": {
+        "min": 46,
+        "p50": 200,
+        "p90": 371,
+        "p95": 535,
+        "max": 590
+      },
+      "rows_with_tab_indented_line": 27,
+      "rows_with_crlf": 0,
+      "rows_under_src_test_java": 6,
+      "positive_contributing_merges": null,
+      "history_feature_distributions": null,
+      "strictly_longer_base_code_rows_bounds": {
+        "4096": [
+          1,
+          1
+        ],
+        "8192": [
+          0,
+          0
+        ],
+        "32768": [
+          0,
+          0
+        ]
+      }
+    },
+    "full_default_rows": null,
+    "full_default_positive": null,
+    "full_default_positive_rate": null,
+    "pilot_two_parent_share_of_default": 0.00470007911024245,
+    "ubuntu_run": {
+      "run_id": 44549292132,
+      "run_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132",
+      "research_sha": "a6a7c7ea2c699eb84d87c4b391e33497fd35cc5e",
+      "pilot_artifact_id": 14543915089,
+      "graph_artifact_id": 14541832229,
+      "runner": "Ubuntu 24.04.5 LTS",
+      "extractor_threads": 2
+    },
+    "pilot_remeasurement": {
+      "measurement_source": "evidence/pilot-enrichment.json",
+      "source_pilot": "evidence/runs/pilot-spring-projects__spring-boot.json",
+      "pilot_anchor": "53d24301d125b543664a79cf6ece530624597f9a",
+      "logical_sha256": "2f12249ad98017643b8d8a11ae2395d0d6eb04ade1d89be6ea2879ae910cc1c3",
+      "validation": "all_15_fields_logical_sha256_matches_ubuntu",
+      "rows": 27,
+      "positive_rows": 7,
+      "negative_rows": 20,
+      "unique_positive_merges": 4,
+      "unique_positive_paths": 7,
+      "max_positives_from_one_merge": 3,
+      "history_features": {
+        "commit_count_90d": {
+          "min": 0,
+          "p50": 3,
+          "p90": 6,
+          "p95": 7,
+          "max": 8,
+          "zero_rows": 7
+        },
+        "days_since_last_change": {
+          "min": 6,
+          "p50": 37,
+          "p90": 122,
+          "p95": 122,
+          "max": 128,
+          "zero_rows": 0
+        },
+        "author_count_90d": {
+          "min": 0,
+          "p50": 2,
+          "p90": 3,
+          "p95": 3,
+          "max": 4,
+          "zero_rows": 7
+        },
+        "top_author_share_90d": {
+          "min": 0.0,
+          "p50": 0.5,
+          "p90": 1.0,
+          "p95": 1.0,
+          "max": 1.0,
+          "zero_rows": 7
+        },
+        "lines_added_90d": {
+          "min": 0,
+          "p50": 16,
+          "p90": 112,
+          "p95": 114,
+          "max": 122,
+          "zero_rows": 7
+        },
+        "lines_deleted_90d": {
+          "min": 0,
+          "p50": 3,
+          "p90": 24,
+          "p95": 31,
+          "max": 85,
+          "zero_rows": 11
+        }
+      },
+      "base_code_tokens_gt": {
+        "4096": 1,
+        "8192": 0,
+        "16384": 0,
+        "32768": 0
+      },
+      "positive_base_code_tokens_gt": {
+        "4096": 0,
+        "8192": 0,
+        "16384": 0,
+        "32768": 0
+      },
+      "base_code_utf8_bytes_gt": {
+        "16384": 2,
+        "65536": 0
+      }
+    },
+    "historical_notice_rows": {
+      "Apache-2.0": {
+        "rows": 27,
+        "positive": 7
+      }
+    }
+  },
+  {
+    "repository": "jenkinsci/jenkins",
+    "github_url": "https://github.com/jenkinsci/jenkins",
+    "pinned_sha": "e8ba485c828e25422d54c1d46e0bea1cb0305d03",
+    "default_branch": "master",
+    "analyzed_refs": {
+      "default_git_graph": "e8ba485c828e25422d54c1d46e0bea1cb0305d03",
+      "all_graph": [
+        "refs/heads/*",
+        "refs/tags/*"
+      ],
+      "sample_parquet": [
+        "285741a5240f3658c6e5191edc9ba65fe7d5793c refs/heads/pilot"
+      ]
+    },
+    "total_commits": 38921,
+    "total_commits_source": "git_rev_list",
+    "two_parent_merges": 5529,
+    "octopus_merges": 0,
+    "all_default_merges": 5529,
+    "default_unique_base_merges": 5424,
+    "all_heads_tags": {
+      "total_commits": 41267,
+      "two_parent_merges": 5772,
+      "octopus_merges": 2,
+      "all_merge_commits": 5774,
+      "two_parent_merge_bases": {
+        "unique": 5665,
+        "multiple": 104,
+        "none": 3
+      },
+      "oldest_committer_time": "2006-11-05T21:16:01Z",
+      "newest_committer_time": "2026-11-19T11:08:57Z",
+      "commits_since_recent_from": 168
+    },
+    "github_size_kib": 174915,
+    "java_paths_at_tip": 1988,
+    "public_heads": 55,
+    "public_tags": 1943,
+    "latest_closed_30d_total": 130,
+    "latest_closed_30d_two_parent": 0,
+    "eight_merge_proxy": {
+      "year": 2020,
+      "merges": 8,
+      "overlapping_java_paths": 0
+    },
+    "pilot_sha": "285741a5240f3658c6e5191edc9ba65fe7d5793c",
+    "pilot_two_parent_merges": 213,
+    "eligible_samples": 148,
+    "positive_samples": 21,
+    "negative_samples": 127,
+    "positive_rate": 0.14189189189189189,
+    "extraction_seconds": 5.181802,
+    "parquet_bytes": 1609575,
+    "max_process_rss_kib": 230112,
+    "pilot_git_bytes": 58242943,
+    "git_version": "git version 2.56.1",
+    "extractor_sha": "06e755ebabed1707a3413ec99ffa2511b046c543",
+    "extraction_status": "success",
+    "evidence": [
+      "https://api.github.com/repos/jenkinsci/jenkins",
+      "https://api.github.com/repos/jenkinsci/jenkins/git/trees/6cf2a9982455342faaaf57c91abc39731684c6ef?recursive=1",
+      "https://api.github.com/repos/jenkinsci/jenkins/commits?sha=e8ba485c828e25422d54c1d46e0bea1cb0305d03&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "https://api.github.com/repos/jenkinsci/jenkins/commits?sha=e8ba485c828e25422d54c1d46e0bea1cb0305d03&since=2020-10-20T00:00:00Z&until=2020-11-18T23:59:59Z&per_page=100",
+      "evidence/runs/jenkins.json",
+      "evidence/runs/pilot-jenkinsci__jenkins.json",
+      "evidence/runs/quality.json",
+      "evidence/validation/pilot-integrity.json",
+      "evidence/run-44549292132-provenance.json",
+      "evidence/pilot-enrichment.json",
+      "evidence/validation/pilot-notices.json"
+    ],
+    "limitations": [
+      "Full default history and historical pilot are distinct populations.",
+      "Full-scope eligible rows, labels and current conflict prevalence were not measured."
+    ],
+    "record_type": "primary_candidate",
+    "total_commits_pinned_rest": 38921,
+    "fetched_default_tip": "e8ba485c828e25422d54c1d46e0bea1cb0305d03",
+    "github_license_metadata": "MIT",
+    "pilot_total_commits": 11088,
+    "pilot_all_merges": 213,
+    "pilot_octopus_merges": 0,
+    "pilot_tip_committed_at": "2011-06-07T09:32:18-07:00",
+    "pilot_anchor_policy": {
+      "first_parent_two_parent_milestone": 100,
+      "max_reachable_commits": 14000,
+      "max_reachable_two_parent_merges": 450
+    },
+    "pilot_milestone_used": 100,
+    "pilot_funnel": {
+      "two_parent_merges": 213,
+      "zero_base": 1,
+      "multiple_bases": 9,
+      "unique_base": 203,
+      "parent_is_base": 13,
+      "left_has_no_java_edit": 41,
+      "no_joint_java_edit": 105,
+      "merges_with_joint_edits": 44,
+      "joint_java_file_occurrences": 148
+    },
+    "reported_skips": {
+      "no unique merge base": 10
+    },
+    "efficiency": {
+      "rows_per_pilot_two_parent_merge": 0.6948356807511737,
+      "positives_per_pilot_two_parent_merge": 0.09859154929577464,
+      "rows_per_extraction_second": 28.561492700801764,
+      "positives_per_extraction_second": 4.052644234573224
+    },
+    "parquet_validation": {
+      "samples": 148,
+      "positive": 21,
+      "negative": 127,
+      "logical_sha256": "62ae7852c3b87c83c0019e28b4f86b623e18d561e71848a8c1477b94ab343ea3"
+    },
+    "schema_columns_validated": [
+      "repo_id",
+      "merge_sha",
+      "parent1_sha",
+      "parent2_sha",
+      "base_sha",
+      "base_path",
+      "base_blob_sha",
+      "base_code",
+      "commit_count_90d",
+      "days_since_last_change",
+      "author_count_90d",
+      "top_author_share_90d",
+      "lines_added_90d",
+      "lines_deleted_90d",
+      "has_text_conflict"
+    ],
+    "duplicate_sample_keys_in_pilot": 0,
+    "pilot_quality": {
+      "measurement_source": "Ubuntu Actions aggregate-pilot-results (quality.json and pilot JSON)",
+      "filename": "jenkinsci__jenkins.parquet",
+      "repo_id": "jenkinsci/jenkins",
+      "stats_positive_rate_display": "14.19%",
+      "rows": 148,
+      "positive": 21,
+      "negative": 127,
+      "positive_fraction": 0.14189189189189189,
+      "contributing_merges": 44,
+      "unique_paths": 101,
+      "paths_seen_multiple_times": 19,
+      "rows_on_repeated_paths": 66,
+      "max_rows_per_path": 13,
+      "top_level_path_rows": [
+        {
+          "top_level": "core",
+          "rows": 86,
+          "positive": 14
+        },
+        {
+          "top_level": "test",
+          "rows": 27,
+          "positive": 6
+        },
+        {
+          "top_level": "maven-plugin",
+          "rows": 24,
+          "positive": 1
+        },
+        {
+          "top_level": "remoting",
+          "rows": 9,
+          "positive": 0
+        },
+        {
+          "top_level": "maven-agent",
+          "rows": 1,
+          "positive": 0
+        }
+      ],
+      "distinct_exact_code": 141,
+      "repeated_code_excess_rows": 7,
+      "code_hashes_at_multiple_paths": 0,
+      "code_hashes_with_both_labels": 1,
+      "rows_in_both_label_code_groups": 2,
+      "minority_rows_in_both_label_code_groups": 1,
+      "base_code_unicode_characters": {
+        "min": 508,
+        "p50": 12681,
+        "p90": 73107,
+        "p95": 110887,
+        "max": 131934
+      },
+      "base_code_utf8_bytes": {
+        "min": 508,
+        "p50": 12681,
+        "p90": 73107,
+        "p95": 110887,
+        "max": 131934
+      },
+      "base_code_tokens": {
+        "min": 108,
+        "p50": 2577,
+        "p90": 14624,
+        "p95": 22806,
+        "max": 27412
+      },
+      "source_lines": {
+        "min": 17,
+        "p50": 320,
+        "p90": 1869,
+        "p95": 3245,
+        "max": 3797
+      },
+      "rows_with_tab_indented_line": 39,
+      "rows_with_crlf": 3,
+      "rows_under_src_test_java": 17,
+      "positive_contributing_merges": null,
+      "history_feature_distributions": null,
+      "strictly_longer_base_code_rows_bounds": {
+        "4096": [
+          15,
+          74
+        ],
+        "8192": [
+          15,
+          74
+        ],
+        "32768": [
+          0,
+          0
+        ]
+      }
+    },
+    "full_default_rows": null,
+    "full_default_positive": null,
+    "full_default_positive_rate": null,
+    "pilot_two_parent_share_of_default": 0.0385241454150841,
+    "ubuntu_run": {
+      "run_id": 44549292132,
+      "run_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132",
+      "research_sha": "a6a7c7ea2c699eb84d87c4b391e33497fd35cc5e",
+      "pilot_artifact_id": 14543915089,
+      "graph_artifact_id": 14542600183,
+      "runner": "Ubuntu 24.04.5 LTS",
+      "extractor_threads": 2
+    },
+    "pilot_remeasurement": {
+      "measurement_source": "evidence/pilot-enrichment.json",
+      "source_pilot": "evidence/runs/pilot-jenkinsci__jenkins.json",
+      "pilot_anchor": "285741a5240f3658c6e5191edc9ba65fe7d5793c",
+      "logical_sha256": "62ae7852c3b87c83c0019e28b4f86b623e18d561e71848a8c1477b94ab343ea3",
+      "validation": "all_15_fields_logical_sha256_matches_ubuntu",
+      "rows": 148,
+      "positive_rows": 21,
+      "negative_rows": 127,
+      "unique_positive_merges": 13,
+      "unique_positive_paths": 16,
+      "max_positives_from_one_merge": 5,
+      "history_features": {
+        "commit_count_90d": {
+          "min": 0,
+          "p50": 2,
+          "p90": 13,
+          "p95": 19,
+          "max": 90,
+          "zero_rows": 53
+        },
+        "days_since_last_change": {
+          "min": 0,
+          "p50": 46,
+          "p90": 500,
+          "p95": 633,
+          "max": 783,
+          "zero_rows": 25
+        },
+        "author_count_90d": {
+          "min": 0,
+          "p50": 1,
+          "p90": 4,
+          "p95": 5,
+          "max": 9,
+          "zero_rows": 53
+        },
+        "top_author_share_90d": {
+          "min": 0.0,
+          "p50": 0.5555555820465088,
+          "p90": 1.0,
+          "p95": 1.0,
+          "max": 1.0,
+          "zero_rows": 53
+        },
+        "lines_added_90d": {
+          "min": 0,
+          "p50": 20,
+          "p90": 211,
+          "p95": 380,
+          "max": 1017,
+          "zero_rows": 56
+        },
+        "lines_deleted_90d": {
+          "min": 0,
+          "p50": 2,
+          "p90": 91,
+          "p95": 185,
+          "max": 541,
+          "zero_rows": 64
+        }
+      },
+      "base_code_tokens_gt": {
+        "4096": 57,
+        "8192": 38,
+        "16384": 8,
+        "32768": 0
+      },
+      "positive_base_code_tokens_gt": {
+        "4096": 9,
+        "8192": 7,
+        "16384": 0,
+        "32768": 0
+      },
+      "base_code_utf8_bytes_gt": {
+        "16384": 63,
+        "65536": 24
+      }
+    },
+    "historical_notice_rows": {
+      "MIT": {
+        "rows": 140,
+        "positive": 20
+      },
+      "no listed notice matched": {
+        "rows": 8,
+        "positive": 1
+      }
+    }
+  },
+  {
+    "repository": "Card-Forge/forge",
+    "github_url": "https://github.com/Card-Forge/forge",
+    "pinned_sha": "9748ef2c96d18bcb55271e20e63c32bdee3e991c",
+    "default_branch": "master",
+    "analyzed_refs": {
+      "default_git_graph": "9748ef2c96d18bcb55271e20e63c32bdee3e991c",
+      "all_graph": [
+        "refs/heads/*",
+        "refs/tags/*"
+      ],
+      "sample_parquet": [
+        "215699c878fbeee37cef6ebd78e15e338b32a37b refs/heads/pilot"
+      ]
+    },
+    "total_commits": 76296,
+    "total_commits_source": "git_rev_list",
+    "two_parent_merges": 11038,
+    "octopus_merges": 0,
+    "all_default_merges": 11038,
+    "default_unique_base_merges": 10975,
+    "all_heads_tags": {
+      "total_commits": 77002,
+      "two_parent_merges": 11148,
+      "octopus_merges": 0,
+      "all_merge_commits": 11148,
+      "two_parent_merge_bases": {
+        "unique": 11085,
+        "multiple": 63,
+        "none": 0
+      },
+      "oldest_committer_time": "2011-08-05T15:01:29Z",
+      "newest_committer_time": "2026-11-19T13:03:00Z",
+      "commits_since_recent_from": 1251
+    },
+    "github_size_kib": 1094914,
+    "java_paths_at_tip": 2919,
+    "public_heads": 145,
+    "public_tags": 197,
+    "latest_closed_30d_total": 936,
+    "latest_closed_30d_two_parent": 75,
+    "eight_merge_proxy": {
+      "year": 2026,
+      "merges": 8,
+      "overlapping_java_paths": 1
+    },
+    "pilot_sha": "215699c878fbeee37cef6ebd78e15e338b32a37b",
+    "pilot_two_parent_merges": 2,
+    "eligible_samples": 1,
+    "positive_samples": 0,
+    "negative_samples": 1,
+    "positive_rate": 0.0,
+    "extraction_seconds": 14.949954,
+    "parquet_bytes": 59587,
+    "max_process_rss_kib": 237868,
+    "pilot_git_bytes": 49751512,
+    "git_version": "git version 2.56.1",
+    "extractor_sha": "06e755ebabed1707a3413ec99ffa2511b046c543",
+    "extraction_status": "success",
+    "evidence": [
+      "https://api.github.com/repos/Card-Forge/forge",
+      "https://api.github.com/repos/Card-Forge/forge/git/trees/8b9be6fca016a4b61e97be96e2d48720a3f76f14?recursive=1",
+      "https://api.github.com/repos/Card-Forge/forge/commits?sha=9748ef2c96d18bcb55271e20e63c32bdee3e991c&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "https://api.github.com/repos/Card-Forge/forge/commits?sha=9748ef2c96d18bcb55271e20e63c32bdee3e991c&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "evidence/runs/forge.json",
+      "evidence/runs/pilot-Card-Forge__forge.json",
+      "evidence/runs/quality.json",
+      "evidence/validation/pilot-integrity.json",
+      "evidence/run-44549292132-provenance.json",
+      "evidence/pilot-enrichment.json",
+      "evidence/validation/pilot-notices.json"
+    ],
+    "limitations": [
+      "Full default history and historical pilot are distinct populations.",
+      "Full-scope eligible rows, labels and current conflict prevalence were not measured."
+    ],
+    "record_type": "primary_candidate",
+    "total_commits_pinned_rest": 76296,
+    "fetched_default_tip": "9748ef2c96d18bcb55271e20e63c32bdee3e991c",
+    "github_license_metadata": "GPL-3.0",
+    "pilot_total_commits": 12913,
+    "pilot_all_merges": 2,
+    "pilot_octopus_merges": 0,
+    "pilot_tip_committed_at": "2012-01-02T19:52:49Z",
+    "pilot_anchor_policy": {
+      "first_parent_two_parent_milestone": 100,
+      "max_reachable_commits": 14000,
+      "max_reachable_two_parent_merges": 450
+    },
+    "pilot_milestone_used": 1,
+    "pilot_funnel": {
+      "two_parent_merges": 2,
+      "zero_base": 0,
+      "multiple_bases": 0,
+      "unique_base": 2,
+      "parent_is_base": 0,
+      "left_has_no_java_edit": 0,
+      "no_joint_java_edit": 1,
+      "merges_with_joint_edits": 1,
+      "joint_java_file_occurrences": 1
+    },
+    "reported_skips": {},
+    "efficiency": {
+      "rows_per_pilot_two_parent_merge": 0.5,
+      "positives_per_pilot_two_parent_merge": 0.0,
+      "rows_per_extraction_second": 0.06688983792190932,
+      "positives_per_extraction_second": 0.0
+    },
+    "parquet_validation": {
+      "samples": 1,
+      "positive": 0,
+      "negative": 1,
+      "logical_sha256": "7c45f551eb50f4bfcb268afbdcbb489962a1c53b7a6a928a9e991f225f0ff6c0"
+    },
+    "schema_columns_validated": [
+      "repo_id",
+      "merge_sha",
+      "parent1_sha",
+      "parent2_sha",
+      "base_sha",
+      "base_path",
+      "base_blob_sha",
+      "base_code",
+      "commit_count_90d",
+      "days_since_last_change",
+      "author_count_90d",
+      "top_author_share_90d",
+      "lines_added_90d",
+      "lines_deleted_90d",
+      "has_text_conflict"
+    ],
+    "duplicate_sample_keys_in_pilot": 0,
+    "pilot_quality": {
+      "measurement_source": "Ubuntu Actions aggregate-pilot-results (quality.json and pilot JSON)",
+      "filename": "Card-Forge__forge.parquet",
+      "repo_id": "Card-Forge/forge",
+      "stats_positive_rate_display": "0.00%",
+      "rows": 1,
+      "positive": 0,
+      "negative": 1,
+      "positive_fraction": 0.0,
+      "contributing_merges": 1,
+      "unique_paths": 1,
+      "paths_seen_multiple_times": 0,
+      "rows_on_repeated_paths": 0,
+      "max_rows_per_path": 1,
+      "top_level_path_rows": [
+        {
+          "top_level": "src",
+          "rows": 1,
+          "positive": 0
+        }
+      ],
+      "distinct_exact_code": 1,
+      "repeated_code_excess_rows": 0,
+      "code_hashes_at_multiple_paths": 0,
+      "code_hashes_with_both_labels": 0,
+      "rows_in_both_label_code_groups": 0,
+      "minority_rows_in_both_label_code_groups": 0,
+      "base_code_unicode_characters": {
+        "min": 234919,
+        "p50": 234919,
+        "p90": 234919,
+        "p95": 234919,
+        "max": 234919
+      },
+      "base_code_utf8_bytes": {
+        "min": 234919,
+        "p50": 234919,
+        "p90": 234919,
+        "p95": 234919,
+        "max": 234919
+      },
+      "base_code_tokens": {
+        "min": 55637,
+        "p50": 55637,
+        "p90": 55637,
+        "p95": 55637,
+        "max": 55637
+      },
+      "source_lines": {
+        "min": 8676,
+        "p50": 8676,
+        "p90": 8676,
+        "p95": 8676,
+        "max": 8676
+      },
+      "rows_with_tab_indented_line": 0,
+      "rows_with_crlf": 0,
+      "rows_under_src_test_java": 0,
+      "positive_contributing_merges": 0,
+      "history_feature_distributions": null,
+      "strictly_longer_base_code_rows_bounds": {
+        "4096": [
+          1,
+          1
+        ],
+        "8192": [
+          1,
+          1
+        ],
+        "32768": [
+          1,
+          1
+        ]
+      }
+    },
+    "full_default_rows": null,
+    "full_default_positive": null,
+    "full_default_positive_rate": null,
+    "pilot_two_parent_share_of_default": 0.0001811922449719152,
+    "ubuntu_run": {
+      "run_id": 44549292132,
+      "run_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132",
+      "research_sha": "a6a7c7ea2c699eb84d87c4b391e33497fd35cc5e",
+      "pilot_artifact_id": 14543915089,
+      "graph_artifact_id": 14539719864,
+      "runner": "Ubuntu 24.04.5 LTS",
+      "extractor_threads": 2
+    },
+    "pilot_remeasurement": {
+      "measurement_source": "evidence/pilot-enrichment.json",
+      "source_pilot": "evidence/runs/pilot-Card-Forge__forge.json",
+      "pilot_anchor": "215699c878fbeee37cef6ebd78e15e338b32a37b",
+      "logical_sha256": "7c45f551eb50f4bfcb268afbdcbb489962a1c53b7a6a928a9e991f225f0ff6c0",
+      "validation": "all_15_fields_logical_sha256_matches_ubuntu",
+      "rows": 1,
+      "positive_rows": 0,
+      "negative_rows": 1,
+      "unique_positive_merges": 0,
+      "unique_positive_paths": 0,
+      "max_positives_from_one_merge": 0,
+      "history_features": {
+        "commit_count_90d": {
+          "min": 109,
+          "p50": 109,
+          "p90": 109,
+          "p95": 109,
+          "max": 109,
+          "zero_rows": 0
+        },
+        "days_since_last_change": {
+          "min": 4,
+          "p50": 4,
+          "p90": 4,
+          "p95": 4,
+          "max": 4,
+          "zero_rows": 0
+        },
+        "author_count_90d": {
+          "min": 7,
+          "p50": 7,
+          "p90": 7,
+          "p95": 7,
+          "max": 7,
+          "zero_rows": 0
+        },
+        "top_author_share_90d": {
+          "min": 0.4862385392189026,
+          "p50": 0.4862385392189026,
+          "p90": 0.4862385392189026,
+          "p95": 0.4862385392189026,
+          "max": 0.4862385392189026,
+          "zero_rows": 0
+        },
+        "lines_added_90d": {
+          "min": 6460,
+          "p50": 6460,
+          "p90": 6460,
+          "p95": 6460,
+          "max": 6460,
+          "zero_rows": 0
+        },
+        "lines_deleted_90d": {
+          "min": 4048,
+          "p50": 4048,
+          "p90": 4048,
+          "p95": 4048,
+          "max": 4048,
+          "zero_rows": 0
+        }
+      },
+      "base_code_tokens_gt": {
+        "4096": 1,
+        "8192": 1,
+        "16384": 1,
+        "32768": 1
+      },
+      "positive_base_code_tokens_gt": {
+        "4096": 0,
+        "8192": 0,
+        "16384": 0,
+        "32768": 0
+      },
+      "base_code_utf8_bytes_gt": {
+        "16384": 1,
+        "65536": 1
+      }
+    },
+    "historical_notice_rows": {
+      "GPL-3.0-or-later": {
+        "rows": 1,
+        "positive": 0
+      }
+    }
+  },
+  {
+    "repository": "JabRef/jabref",
+    "github_url": "https://github.com/JabRef/jabref",
+    "pinned_sha": "75b35b962c1d1f45cbd5be8af025b16cde9cc290",
+    "default_branch": "main",
+    "analyzed_refs": {
+      "default_git_graph": "75b35b962c1d1f45cbd5be8af025b16cde9cc290",
+      "all_graph": [
+        "refs/heads/*",
+        "refs/tags/*"
+      ],
+      "sample_parquet": [
+        "8d22827be20de435b01844f8643fe014aa910daa refs/heads/pilot"
+      ]
+    },
+    "total_commits": 25390,
+    "total_commits_source": "git_rev_list",
+    "two_parent_merges": 2817,
+    "octopus_merges": 0,
+    "all_default_merges": 2817,
+    "default_unique_base_merges": 2800,
+    "all_heads_tags": {
+      "total_commits": 26811,
+      "two_parent_merges": 3446,
+      "octopus_merges": 0,
+      "all_merge_commits": 3446,
+      "two_parent_merge_bases": {
+        "unique": 3420,
+        "multiple": 21,
+        "none": 5
+      },
+      "oldest_committer_time": "2003-10-14T21:38:35Z",
+      "newest_committer_time": "2026-11-19T14:46:07Z",
+      "commits_since_recent_from": 601
+    },
+    "github_size_kib": 289139,
+    "java_paths_at_tip": 3290,
+    "public_heads": 101,
+    "public_tags": 66,
+    "latest_closed_30d_total": 280,
+    "latest_closed_30d_two_parent": 0,
+    "eight_merge_proxy": {
+      "year": 2023,
+      "merges": 8,
+      "overlapping_java_paths": 0
+    },
+    "pilot_sha": "8d22827be20de435b01844f8643fe014aa910daa",
+    "pilot_two_parent_merges": 234,
+    "eligible_samples": 195,
+    "positive_samples": 26,
+    "negative_samples": 169,
+    "positive_rate": 0.13333333333333333,
+    "extraction_seconds": 4.816146,
+    "parquet_bytes": 2461793,
+    "max_process_rss_kib": 221996,
+    "pilot_git_bytes": 62020096,
+    "git_version": "git version 2.56.1",
+    "extractor_sha": "06e755ebabed1707a3413ec99ffa2511b046c543",
+    "extraction_status": "success",
+    "evidence": [
+      "https://api.github.com/repos/JabRef/jabref",
+      "https://api.github.com/repos/JabRef/jabref/git/trees/e6de09d60eea87733f09ca5141b1d25fe27e03f8?recursive=1",
+      "https://api.github.com/repos/JabRef/jabref/commits?sha=75b35b962c1d1f45cbd5be8af025b16cde9cc290&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "https://api.github.com/repos/JabRef/jabref/commits?sha=75b35b962c1d1f45cbd5be8af025b16cde9cc290&since=2023-10-20T00:00:00Z&until=2023-11-18T23:59:59Z&per_page=100",
+      "evidence/runs/jabref.json",
+      "evidence/runs/pilot-JabRef__jabref.json",
+      "evidence/runs/quality.json",
+      "evidence/validation/pilot-integrity.json",
+      "evidence/run-44549292132-provenance.json",
+      "evidence/pilot-enrichment.json",
+      "evidence/validation/pilot-notices.json"
+    ],
+    "limitations": [
+      "Full default history and historical pilot are distinct populations.",
+      "Full-scope eligible rows, labels and current conflict prevalence were not measured.",
+      "The advertised default ref had advanced. Default counts use the pinned SHA; all-heads/tags use the fetch-time manifest."
+    ],
+    "record_type": "primary_candidate",
+    "total_commits_pinned_rest": 25390,
+    "fetched_default_tip": "c8e4b2dd91aaa0bb4ec6aa15cd8aa98e21c11f82",
+    "github_license_metadata": "MIT",
+    "pilot_total_commits": 4605,
+    "pilot_all_merges": 234,
+    "pilot_octopus_merges": 0,
+    "pilot_tip_committed_at": "2015-08-14T14:57:50+02:00",
+    "pilot_anchor_policy": {
+      "first_parent_two_parent_milestone": 100,
+      "max_reachable_commits": 14000,
+      "max_reachable_two_parent_merges": 450
+    },
+    "pilot_milestone_used": 100,
+    "pilot_funnel": {
+      "two_parent_merges": 234,
+      "zero_base": 1,
+      "multiple_bases": 1,
+      "unique_base": 232,
+      "parent_is_base": 49,
+      "left_has_no_java_edit": 48,
+      "no_joint_java_edit": 86,
+      "merges_with_joint_edits": 49,
+      "joint_java_file_occurrences": 195
+    },
+    "reported_skips": {
+      "no unique merge base": 2
+    },
+    "efficiency": {
+      "rows_per_pilot_two_parent_merge": 0.8333333333333334,
+      "positives_per_pilot_two_parent_merge": 0.1111111111111111,
+      "rows_per_extraction_second": 40.48880577955901,
+      "positives_per_extraction_second": 5.398507437274534
+    },
+    "parquet_validation": {
+      "samples": 195,
+      "positive": 26,
+      "negative": 169,
+      "logical_sha256": "30087ec40ca43c74d8de5a728ff79c3ec96514f783507a2a2162239023a9642b"
+    },
+    "schema_columns_validated": [
+      "repo_id",
+      "merge_sha",
+      "parent1_sha",
+      "parent2_sha",
+      "base_sha",
+      "base_path",
+      "base_blob_sha",
+      "base_code",
+      "commit_count_90d",
+      "days_since_last_change",
+      "author_count_90d",
+      "top_author_share_90d",
+      "lines_added_90d",
+      "lines_deleted_90d",
+      "has_text_conflict"
+    ],
+    "duplicate_sample_keys_in_pilot": 0,
+    "pilot_quality": {
+      "measurement_source": "Ubuntu Actions aggregate-pilot-results (quality.json and pilot JSON)",
+      "filename": "JabRef__jabref.parquet",
+      "repo_id": "JabRef/jabref",
+      "stats_positive_rate_display": "13.33%",
+      "rows": 195,
+      "positive": 26,
+      "negative": 169,
+      "positive_fraction": 0.13333333333333333,
+      "contributing_merges": 49,
+      "unique_paths": 129,
+      "paths_seen_multiple_times": 32,
+      "rows_on_repeated_paths": 98,
+      "max_rows_per_path": 9,
+      "top_level_path_rows": [
+        {
+          "top_level": "src",
+          "rows": 195,
+          "positive": 26
+        }
+      ],
+      "distinct_exact_code": 192,
+      "repeated_code_excess_rows": 3,
+      "code_hashes_at_multiple_paths": 0,
+      "code_hashes_with_both_labels": 1,
+      "rows_in_both_label_code_groups": 2,
+      "minority_rows_in_both_label_code_groups": 1,
+      "base_code_unicode_characters": {
+        "min": 342,
+        "p50": 20799,
+        "p90": 97752,
+        "p95": 114263,
+        "max": 130359
+      },
+      "base_code_utf8_bytes": {
+        "min": 342,
+        "p50": 20799,
+        "p90": 97752,
+        "p95": 114263,
+        "max": 130359
+      },
+      "base_code_tokens": {
+        "min": 80,
+        "p50": 4134,
+        "p90": 20484,
+        "p95": 22718,
+        "max": 25605
+      },
+      "source_lines": {
+        "min": 18,
+        "p50": 542,
+        "p90": 2608,
+        "p95": 2971,
+        "max": 3199
+      },
+      "rows_with_tab_indented_line": 84,
+      "rows_with_crlf": 1,
+      "rows_under_src_test_java": 19,
+      "positive_contributing_merges": null,
+      "history_feature_distributions": null,
+      "strictly_longer_base_code_rows_bounds": {
+        "4096": [
+          98,
+          194
+        ],
+        "8192": [
+          20,
+          97
+        ],
+        "32768": [
+          0,
+          0
+        ]
+      }
+    },
+    "full_default_rows": null,
+    "full_default_positive": null,
+    "full_default_positive_rate": null,
+    "pilot_two_parent_share_of_default": 0.08306709265175719,
+    "ubuntu_run": {
+      "run_id": 44549292132,
+      "run_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132",
+      "research_sha": "a6a7c7ea2c699eb84d87c4b391e33497fd35cc5e",
+      "pilot_artifact_id": 14543915089,
+      "graph_artifact_id": 14542805212,
+      "runner": "Ubuntu 24.04.5 LTS",
+      "extractor_threads": 2
+    },
+    "pilot_remeasurement": {
+      "measurement_source": "evidence/pilot-enrichment.json",
+      "source_pilot": "evidence/runs/pilot-JabRef__jabref.json",
+      "pilot_anchor": "8d22827be20de435b01844f8643fe014aa910daa",
+      "logical_sha256": "30087ec40ca43c74d8de5a728ff79c3ec96514f783507a2a2162239023a9642b",
+      "validation": "all_15_fields_logical_sha256_matches_ubuntu",
+      "rows": 195,
+      "positive_rows": 26,
+      "negative_rows": 169,
+      "unique_positive_merges": 16,
+      "unique_positive_paths": 20,
+      "max_positives_from_one_merge": 4,
+      "history_features": {
+        "commit_count_90d": {
+          "min": 0,
+          "p50": 4,
+          "p90": 16,
+          "p95": 30,
+          "max": 60,
+          "zero_rows": 32
+        },
+        "days_since_last_change": {
+          "min": 0,
+          "p50": 21,
+          "p90": 258,
+          "p95": 262,
+          "max": 438,
+          "zero_rows": 32
+        },
+        "author_count_90d": {
+          "min": 0,
+          "p50": 2,
+          "p90": 5,
+          "p95": 7,
+          "max": 10,
+          "zero_rows": 32
+        },
+        "top_author_share_90d": {
+          "min": 0.0,
+          "p50": 0.5714285969734192,
+          "p90": 1.0,
+          "p95": 1.0,
+          "max": 1.0,
+          "zero_rows": 32
+        },
+        "lines_added_90d": {
+          "min": 0,
+          "p50": 75,
+          "p90": 608,
+          "p95": 1740,
+          "max": 3076,
+          "zero_rows": 32
+        },
+        "lines_deleted_90d": {
+          "min": 0,
+          "p50": 26,
+          "p90": 465,
+          "p95": 1185,
+          "max": 2945,
+          "zero_rows": 39
+        }
+      },
+      "base_code_tokens_gt": {
+        "4096": 99,
+        "8192": 68,
+        "16384": 35,
+        "32768": 0
+      },
+      "positive_base_code_tokens_gt": {
+        "4096": 8,
+        "8192": 6,
+        "16384": 3,
+        "32768": 0
+      },
+      "base_code_utf8_bytes_gt": {
+        "16384": 114,
+        "65536": 37
+      }
+    },
+    "historical_notice_rows": {
+      "GPL-2.0-or-later": {
+        "rows": 161,
+        "positive": 20
+      },
+      "no listed notice matched": {
+        "rows": 34,
+        "positive": 6
+      }
+    }
+  },
+  {
+    "repository": "quarkusio/quarkus",
+    "github_url": "https://github.com/quarkusio/quarkus",
+    "pinned_sha": "61d971888943ff815b86a179fbfcd1db22857730",
+    "default_branch": "main",
+    "analyzed_refs": {
+      "default_git_graph": "61d971888943ff815b86a179fbfcd1db22857730",
+      "all_graph": [
+        "refs/heads/*",
+        "refs/tags/*"
+      ],
+      "sample_parquet": [
+        "0ef2742d330604ca4ea130db6323b8f577b9260e refs/heads/pilot"
+      ]
+    },
+    "total_commits": 64169,
+    "total_commits_source": "git_rev_list",
+    "two_parent_merges": 27298,
+    "octopus_merges": 0,
+    "all_default_merges": 27298,
+    "default_unique_base_merges": 27297,
+    "all_heads_tags": {
+      "total_commits": 81641,
+      "two_parent_merges": 28552,
+      "octopus_merges": 0,
+      "all_merge_commits": 28552,
+      "two_parent_merge_bases": {
+        "unique": 28551,
+        "multiple": 0,
+        "none": 1
+      },
+      "oldest_committer_time": "2018-06-22T06:05:28Z",
+      "newest_committer_time": "2026-11-19T13:43:42Z",
+      "commits_since_recent_from": 1457
+    },
+    "github_size_kib": 550560,
+    "java_paths_at_tip": 23762,
+    "public_heads": 132,
+    "public_tags": 535,
+    "latest_closed_30d_total": 1037,
+    "latest_closed_30d_two_parent": 448,
+    "eight_merge_proxy": {
+      "year": 2026,
+      "merges": 8,
+      "overlapping_java_paths": 2
+    },
+    "pilot_sha": "0ef2742d330604ca4ea130db6323b8f577b9260e",
+    "pilot_two_parent_merges": 101,
+    "eligible_samples": 9,
+    "positive_samples": 0,
+    "negative_samples": 9,
+    "positive_rate": 0.0,
+    "extraction_seconds": 1.515219,
+    "parquet_bytes": 28014,
+    "max_process_rss_kib": 124080,
+    "pilot_git_bytes": 9604487,
+    "git_version": "git version 2.56.1",
+    "extractor_sha": "06e755ebabed1707a3413ec99ffa2511b046c543",
+    "extraction_status": "success",
+    "evidence": [
+      "https://api.github.com/repos/quarkusio/quarkus",
+      "https://api.github.com/repos/quarkusio/quarkus/git/trees/ccdf24da802ce57eda1d5073ccc509b0f4c67a46?recursive=1",
+      "https://api.github.com/repos/quarkusio/quarkus/commits?sha=61d971888943ff815b86a179fbfcd1db22857730&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "https://api.github.com/repos/quarkusio/quarkus/commits?sha=61d971888943ff815b86a179fbfcd1db22857730&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "evidence/runs/quarkus.json",
+      "evidence/runs/pilot-quarkusio__quarkus.json",
+      "evidence/runs/quality.json",
+      "evidence/validation/pilot-integrity.json",
+      "evidence/run-44549292132-provenance.json",
+      "evidence/pilot-enrichment.json",
+      "evidence/validation/pilot-notices.json"
+    ],
+    "limitations": [
+      "Full default history and historical pilot are distinct populations.",
+      "Full-scope eligible rows, labels and current conflict prevalence were not measured."
+    ],
+    "record_type": "primary_candidate",
+    "total_commits_pinned_rest": 64169,
+    "fetched_default_tip": "61d971888943ff815b86a179fbfcd1db22857730",
+    "github_license_metadata": "Apache-2.0",
+    "pilot_total_commits": 815,
+    "pilot_all_merges": 101,
+    "pilot_octopus_merges": 0,
+    "pilot_tip_committed_at": "2018-11-29T13:11:19+11:00",
+    "pilot_anchor_policy": {
+      "first_parent_two_parent_milestone": 100,
+      "max_reachable_commits": 14000,
+      "max_reachable_two_parent_merges": 450
+    },
+    "pilot_milestone_used": 100,
+    "pilot_funnel": {
+      "two_parent_merges": 101,
+      "zero_base": 1,
+      "multiple_bases": 0,
+      "unique_base": 100,
+      "parent_is_base": 41,
+      "left_has_no_java_edit": 7,
+      "no_joint_java_edit": 46,
+      "merges_with_joint_edits": 6,
+      "joint_java_file_occurrences": 9
+    },
+    "reported_skips": {
+      "no unique merge base": 1
+    },
+    "efficiency": {
+      "rows_per_pilot_two_parent_merge": 0.0891089108910891,
+      "positives_per_pilot_two_parent_merge": 0.0,
+      "rows_per_extraction_second": 5.939735444183316,
+      "positives_per_extraction_second": 0.0
+    },
+    "parquet_validation": {
+      "samples": 9,
+      "positive": 0,
+      "negative": 9,
+      "logical_sha256": "8401e8ce3d35a3203b9b85cf4377c134915f4b225e357118087b1515be5d62fd"
+    },
+    "schema_columns_validated": [
+      "repo_id",
+      "merge_sha",
+      "parent1_sha",
+      "parent2_sha",
+      "base_sha",
+      "base_path",
+      "base_blob_sha",
+      "base_code",
+      "commit_count_90d",
+      "days_since_last_change",
+      "author_count_90d",
+      "top_author_share_90d",
+      "lines_added_90d",
+      "lines_deleted_90d",
+      "has_text_conflict"
+    ],
+    "duplicate_sample_keys_in_pilot": 0,
+    "pilot_quality": {
+      "measurement_source": "Ubuntu Actions aggregate-pilot-results (quality.json and pilot JSON)",
+      "filename": "quarkusio__quarkus.parquet",
+      "repo_id": "quarkusio/quarkus",
+      "stats_positive_rate_display": "0.00%",
+      "rows": 9,
+      "positive": 0,
+      "negative": 9,
+      "positive_fraction": 0.0,
+      "contributing_merges": 6,
+      "unique_paths": 8,
+      "paths_seen_multiple_times": 1,
+      "rows_on_repeated_paths": 2,
+      "max_rows_per_path": 2,
+      "top_level_path_rows": [
+        {
+          "top_level": "ext",
+          "rows": 3,
+          "positive": 0
+        },
+        {
+          "top_level": "arc",
+          "rows": 3,
+          "positive": 0
+        },
+        {
+          "top_level": "builder",
+          "rows": 1,
+          "positive": 0
+        },
+        {
+          "top_level": "agroal",
+          "rows": 1,
+          "positive": 0
+        },
+        {
+          "top_level": "undertow",
+          "rows": 1,
+          "positive": 0
+        }
+      ],
+      "distinct_exact_code": 9,
+      "repeated_code_excess_rows": 0,
+      "code_hashes_at_multiple_paths": 0,
+      "code_hashes_with_both_labels": 0,
+      "rows_in_both_label_code_groups": 0,
+      "minority_rows_in_both_label_code_groups": 0,
+      "base_code_unicode_characters": {
+        "min": 2457,
+        "p50": 6514,
+        "p90": 14914,
+        "p95": 14914,
+        "max": 14914
+      },
+      "base_code_utf8_bytes": {
+        "min": 2457,
+        "p50": 6514,
+        "p90": 14914,
+        "p95": 14914,
+        "max": 14914
+      },
+      "base_code_tokens": {
+        "min": 405,
+        "p50": 1218,
+        "p90": 3140,
+        "p95": 3140,
+        "max": 3140
+      },
+      "source_lines": {
+        "min": 74,
+        "p50": 185,
+        "p90": 342,
+        "p95": 342,
+        "max": 342
+      },
+      "rows_with_tab_indented_line": 0,
+      "rows_with_crlf": 0,
+      "rows_under_src_test_java": 0,
+      "positive_contributing_merges": 0,
+      "history_feature_distributions": null,
+      "strictly_longer_base_code_rows_bounds": {
+        "4096": [
+          0,
+          0
+        ],
+        "8192": [
+          0,
+          0
+        ],
+        "32768": [
+          0,
+          0
+        ]
+      }
+    },
+    "full_default_rows": null,
+    "full_default_positive": null,
+    "full_default_positive_rate": null,
+    "pilot_two_parent_share_of_default": 0.003699904754927101,
+    "ubuntu_run": {
+      "run_id": 44549292132,
+      "run_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132",
+      "research_sha": "a6a7c7ea2c699eb84d87c4b391e33497fd35cc5e",
+      "pilot_artifact_id": 14543915089,
+      "graph_artifact_id": 14541634198,
+      "runner": "Ubuntu 24.04.5 LTS",
+      "extractor_threads": 2
+    },
+    "pilot_remeasurement": {
+      "measurement_source": "evidence/pilot-enrichment.json",
+      "source_pilot": "evidence/runs/pilot-quarkusio__quarkus.json",
+      "pilot_anchor": "0ef2742d330604ca4ea130db6323b8f577b9260e",
+      "logical_sha256": "8401e8ce3d35a3203b9b85cf4377c134915f4b225e357118087b1515be5d62fd",
+      "validation": "all_15_fields_logical_sha256_matches_ubuntu",
+      "rows": 9,
+      "positive_rows": 0,
+      "negative_rows": 9,
+      "unique_positive_merges": 0,
+      "unique_positive_paths": 0,
+      "max_positives_from_one_merge": 0,
+      "history_features": {
+        "commit_count_90d": {
+          "min": 1,
+          "p50": 5,
+          "p90": 23,
+          "p95": 23,
+          "max": 23,
+          "zero_rows": 0
+        },
+        "days_since_last_change": {
+          "min": 0,
+          "p50": 7,
+          "p90": 30,
+          "p95": 30,
+          "max": 30,
+          "zero_rows": 3
+        },
+        "author_count_90d": {
+          "min": 1,
+          "p50": 2,
+          "p90": 3,
+          "p95": 3,
+          "max": 3,
+          "zero_rows": 0
+        },
+        "top_author_share_90d": {
+          "min": 0.5,
+          "p50": 0.6666666865348816,
+          "p90": 1.0,
+          "p95": 1.0,
+          "max": 1.0,
+          "zero_rows": 0
+        },
+        "lines_added_90d": {
+          "min": 78,
+          "p50": 212,
+          "p90": 358,
+          "p95": 358,
+          "max": 358,
+          "zero_rows": 0
+        },
+        "lines_deleted_90d": {
+          "min": 0,
+          "p50": 5,
+          "p90": 63,
+          "p95": 63,
+          "max": 63,
+          "zero_rows": 1
+        }
+      },
+      "base_code_tokens_gt": {
+        "4096": 0,
+        "8192": 0,
+        "16384": 0,
+        "32768": 0
+      },
+      "positive_base_code_tokens_gt": {
+        "4096": 0,
+        "8192": 0,
+        "16384": 0,
+        "32768": 0
+      },
+      "base_code_utf8_bytes_gt": {
+        "16384": 0,
+        "65536": 0
+      }
+    },
+    "historical_notice_rows": {
+      "Apache-2.0": {
+        "rows": 1,
+        "positive": 0
+      },
+      "LGPL-2.1-or-later": {
+        "rows": 1,
+        "positive": 0
+      },
+      "no listed notice matched": {
+        "rows": 7,
+        "positive": 0
+      }
+    }
+  },
+  {
+    "record_type": "supplementary_candidate",
+    "repository": "mockito/mockito",
+    "github_url": "https://github.com/mockito/mockito",
+    "pinned_sha": "10b31ba2a8252cf340bc154c9e05224802a84691",
+    "default_branch": "main",
+    "github_license_metadata": "MIT",
+    "github_size_kib": 49825,
+    "total_commits": 6383,
+    "total_commits_source": "github_rest",
+    "java_paths_at_tip": 1015,
+    "two_parent_merges": null,
+    "pilot_sha": null,
+    "pilot_two_parent_merges": null,
+    "eligible_samples": null,
+    "positive_samples": null,
+    "negative_samples": null,
+    "positive_rate": null,
+    "extraction_seconds": null,
+    "max_process_rss_kib": null,
+    "parquet_bytes": null,
+    "extraction_status": "unmeasured",
+    "screening": {
+      "java_bytes": 3648723,
+      "java_bytes_scope": "regular Java blob paths at the pinned tree",
+      "windows": [
+        {
+          "name": "pinned_tip",
+          "commits": 25,
+          "two_parent": 0
+        },
+        {
+          "name": "2025-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 0
+        },
+        {
+          "name": "2018-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 4
+        }
+      ],
+      "bilateral_checked_merges": 4,
+      "bilateral_merges_with_observed_paths": 0,
+      "bilateral_path_pairs_observed_lower_bound": 0,
+      "isolated_text_probe_positive": null,
+      "isolated_text_probe_negative": null
+    },
+    "evidence": [
+      "evidence/supplementary-screen.json",
+      "evidence/supplementary-followup/inventory.json"
+    ]
+  },
+  {
+    "record_type": "supplementary_candidate",
+    "repository": "jgrapht/jgrapht",
+    "github_url": "https://github.com/jgrapht/jgrapht",
+    "pinned_sha": "ee3a1084f7373cf2873bcba59ee5c1b6b17ec8ad",
+    "default_branch": "master",
+    "github_license_metadata": "EPL-2.0",
+    "github_size_kib": 351480,
+    "total_commits": 3586,
+    "total_commits_source": "github_rest",
+    "java_paths_at_tip": 1011,
+    "two_parent_merges": null,
+    "pilot_sha": null,
+    "pilot_two_parent_merges": null,
+    "eligible_samples": null,
+    "positive_samples": null,
+    "negative_samples": null,
+    "positive_rate": null,
+    "extraction_seconds": null,
+    "max_process_rss_kib": null,
+    "parquet_bytes": null,
+    "extraction_status": "unmeasured",
+    "screening": {
+      "java_bytes": 8836725,
+      "java_bytes_scope": "regular Java blob paths at the pinned tree",
+      "windows": [
+        {
+          "name": "pinned_tip",
+          "commits": 25,
+          "two_parent": 0
+        },
+        {
+          "name": "2025-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 0
+        },
+        {
+          "name": "2018-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 1
+        }
+      ],
+      "bilateral_checked_merges": 1,
+      "bilateral_merges_with_observed_paths": 0,
+      "bilateral_path_pairs_observed_lower_bound": 0,
+      "isolated_text_probe_positive": null,
+      "isolated_text_probe_negative": null
+    },
+    "evidence": [
+      "evidence/supplementary-screen.json",
+      "evidence/supplementary-followup/inventory.json"
+    ]
+  },
+  {
+    "record_type": "supplementary_candidate",
+    "repository": "apache/kafka",
+    "github_url": "https://github.com/apache/kafka",
+    "pinned_sha": "db02bf715f34b7e998210b12e246973ece611459",
+    "default_branch": "trunk",
+    "github_license_metadata": "Apache-2.0",
+    "github_size_kib": 327962,
+    "total_commits": 18732,
+    "total_commits_source": "github_rest",
+    "java_paths_at_tip": 6309,
+    "two_parent_merges": null,
+    "pilot_sha": null,
+    "pilot_two_parent_merges": null,
+    "eligible_samples": null,
+    "positive_samples": null,
+    "negative_samples": null,
+    "positive_rate": null,
+    "extraction_seconds": null,
+    "max_process_rss_kib": null,
+    "parquet_bytes": null,
+    "extraction_status": "unmeasured",
+    "screening": {
+      "java_bytes": 74281825,
+      "java_bytes_scope": "regular Java blob paths at the pinned tree",
+      "windows": [
+        {
+          "name": "pinned_tip",
+          "commits": 25,
+          "two_parent": 0
+        },
+        {
+          "name": "2025-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 0
+        },
+        {
+          "name": "2018-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 0
+        }
+      ],
+      "bilateral_checked_merges": 0,
+      "bilateral_merges_with_observed_paths": null,
+      "bilateral_path_pairs_observed_lower_bound": null,
+      "isolated_text_probe_positive": null,
+      "isolated_text_probe_negative": null
+    },
+    "evidence": [
+      "evidence/supplementary-screen.json",
+      "evidence/supplementary-followup/inventory.json"
+    ]
+  },
+  {
+    "record_type": "supplementary_candidate",
+    "repository": "graphhopper/graphhopper",
+    "github_url": "https://github.com/graphhopper/graphhopper",
+    "pinned_sha": "70e8293630cae820a0bd34811f6357b7dc6d5faa",
+    "default_branch": "master",
+    "github_license_metadata": "Apache-2.0",
+    "github_size_kib": 143763,
+    "total_commits": 7141,
+    "total_commits_source": "github_rest",
+    "java_paths_at_tip": 975,
+    "two_parent_merges": null,
+    "pilot_sha": null,
+    "pilot_two_parent_merges": null,
+    "eligible_samples": null,
+    "positive_samples": null,
+    "negative_samples": null,
+    "positive_rate": null,
+    "extraction_seconds": null,
+    "max_process_rss_kib": null,
+    "parquet_bytes": null,
+    "extraction_status": "unmeasured",
+    "screening": {
+      "java_bytes": 6895050,
+      "java_bytes_scope": "regular Java blob paths at the pinned tree",
+      "windows": [
+        {
+          "name": "pinned_tip",
+          "commits": 25,
+          "two_parent": 0
+        },
+        {
+          "name": "2025-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 0
+        },
+        {
+          "name": "2018-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 1
+        }
+      ],
+      "bilateral_checked_merges": 1,
+      "bilateral_merges_with_observed_paths": 0,
+      "bilateral_path_pairs_observed_lower_bound": 0,
+      "isolated_text_probe_positive": null,
+      "isolated_text_probe_negative": null
+    },
+    "evidence": [
+      "evidence/supplementary-screen.json",
+      "evidence/supplementary-followup/inventory.json"
+    ]
+  },
+  {
+    "record_type": "supplementary_candidate",
+    "repository": "FasterXML/jackson-databind",
+    "github_url": "https://github.com/FasterXML/jackson-databind",
+    "pinned_sha": "2a1dcbcc6d188f271e6360f16d2be3a4bb8eff9f",
+    "default_branch": "3.x",
+    "github_license_metadata": "Apache-2.0",
+    "github_size_kib": 90669,
+    "total_commits": 13947,
+    "total_commits_source": "github_rest",
+    "java_paths_at_tip": 1439,
+    "two_parent_merges": null,
+    "pilot_sha": null,
+    "pilot_two_parent_merges": null,
+    "eligible_samples": null,
+    "positive_samples": null,
+    "negative_samples": null,
+    "positive_rate": null,
+    "extraction_seconds": null,
+    "max_process_rss_kib": null,
+    "parquet_bytes": null,
+    "extraction_status": "unmeasured",
+    "screening": {
+      "java_bytes": 12147326,
+      "java_bytes_scope": "regular Java blob paths at the pinned tree",
+      "windows": [
+        {
+          "name": "pinned_tip",
+          "commits": 25,
+          "two_parent": 12
+        },
+        {
+          "name": "2025-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 6
+        },
+        {
+          "name": "2018-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 4
+        }
+      ],
+      "bilateral_checked_merges": 11,
+      "bilateral_merges_with_observed_paths": 6,
+      "bilateral_path_pairs_observed_lower_bound": 8,
+      "isolated_text_probe_positive": 3,
+      "isolated_text_probe_negative": 5
+    },
+    "evidence": [
+      "evidence/supplementary-screen.json",
+      "evidence/supplementary-followup/inventory.json"
+    ]
+  },
+  {
+    "record_type": "supplementary_candidate",
+    "repository": "apache/cassandra",
+    "github_url": "https://github.com/apache/cassandra",
+    "pinned_sha": "53c3561e9db3fa0b1ed8e29ce462fde6ce566ff0",
+    "default_branch": "trunk",
+    "github_license_metadata": "Apache-2.0",
+    "github_size_kib": 474806,
+    "total_commits": 32631,
+    "total_commits_source": "github_rest",
+    "java_paths_at_tip": 6540,
+    "two_parent_merges": null,
+    "pilot_sha": null,
+    "pilot_two_parent_merges": null,
+    "eligible_samples": null,
+    "positive_samples": null,
+    "negative_samples": null,
+    "positive_rate": null,
+    "extraction_seconds": null,
+    "max_process_rss_kib": null,
+    "parquet_bytes": null,
+    "extraction_status": "unmeasured",
+    "screening": {
+      "java_bytes": 61227061,
+      "java_bytes_scope": "Java blob paths at the pinned tree",
+      "windows": [
+        {
+          "name": "tip",
+          "commits": 25,
+          "two_parent": 17
+        },
+        {
+          "name": "2025",
+          "commits": 25,
+          "two_parent": 11
+        },
+        {
+          "name": "2018",
+          "commits": 25,
+          "two_parent": 14
+        }
+      ],
+      "bilateral_checked_merges": 6,
+      "bilateral_merges_with_observed_paths": 1,
+      "bilateral_path_pairs_observed_lower_bound": 3,
+      "comparisons_capped_or_failed": 5,
+      "isolated_text_probe_positive": 0,
+      "isolated_text_probe_negative": 3
+    },
+    "evidence": [
+      "evidence/additional/screen.json",
+      "evidence/additional/text-probe.json"
+    ]
+  },
+  {
+    "record_type": "supplementary_candidate",
+    "repository": "h2database/h2database",
+    "github_url": "https://github.com/h2database/h2database",
+    "pinned_sha": "1a1ca49da6ee10ed0502da0eeba0a18649f0e13e",
+    "default_branch": "master",
+    "github_license_metadata": "NOASSERTION",
+    "github_size_kib": 93629,
+    "total_commits": 14919,
+    "total_commits_source": "github_rest",
+    "java_paths_at_tip": 1261,
+    "two_parent_merges": null,
+    "pilot_sha": null,
+    "pilot_two_parent_merges": null,
+    "eligible_samples": null,
+    "positive_samples": null,
+    "negative_samples": null,
+    "positive_rate": null,
+    "extraction_seconds": null,
+    "max_process_rss_kib": null,
+    "parquet_bytes": null,
+    "extraction_status": "unmeasured",
+    "screening": {
+      "java_bytes": 12013805,
+      "java_bytes_scope": "Java blob paths at the pinned tree",
+      "windows": [
+        {
+          "name": "tip",
+          "commits": 25,
+          "two_parent": 15
+        },
+        {
+          "name": "2025",
+          "commits": 25,
+          "two_parent": 9
+        },
+        {
+          "name": "2018",
+          "commits": 25,
+          "two_parent": 7
+        }
+      ],
+      "bilateral_checked_merges": 6,
+      "bilateral_merges_with_observed_paths": 2,
+      "bilateral_path_pairs_observed_lower_bound": 2,
+      "comparisons_capped_or_failed": 0,
+      "isolated_text_probe_positive": 0,
+      "isolated_text_probe_negative": 2
+    },
+    "evidence": [
+      "evidence/additional/screen.json",
+      "evidence/additional/text-probe.json"
+    ]
+  },
+  {
+    "record_type": "supplementary_candidate",
+    "repository": "eclipse-jgit/jgit",
+    "github_url": "https://github.com/eclipse-jgit/jgit",
+    "pinned_sha": "c746b7ff5a14955884a46134ea14b1967e29ba06",
+    "default_branch": "master",
+    "github_license_metadata": "NOASSERTION",
+    "github_size_kib": 163160,
+    "total_commits": 11678,
+    "total_commits_source": "github_rest",
+    "java_paths_at_tip": 1905,
+    "two_parent_merges": null,
+    "pilot_sha": null,
+    "pilot_two_parent_merges": null,
+    "eligible_samples": null,
+    "positive_samples": null,
+    "negative_samples": null,
+    "positive_rate": null,
+    "extraction_seconds": null,
+    "max_process_rss_kib": null,
+    "parquet_bytes": null,
+    "extraction_status": "unmeasured",
+    "screening": {
+      "java_bytes": 14335901,
+      "java_bytes_scope": "Java blob paths at the pinned tree",
+      "windows": [
+        {
+          "name": "tip",
+          "commits": 25,
+          "two_parent": 14
+        },
+        {
+          "name": "2025",
+          "commits": 25,
+          "two_parent": 8
+        },
+        {
+          "name": "2018",
+          "commits": 25,
+          "two_parent": 3
+        }
+      ],
+      "bilateral_checked_merges": 6,
+      "bilateral_merges_with_observed_paths": 0,
+      "bilateral_path_pairs_observed_lower_bound": 0,
+      "comparisons_capped_or_failed": 0,
+      "isolated_text_probe_positive": null,
+      "isolated_text_probe_negative": null
+    },
+    "evidence": [
+      "evidence/additional/screen.json"
+    ]
+  },
+  {
+    "record_type": "supplementary_candidate",
+    "repository": "Anuken/Mindustry",
+    "github_url": "https://github.com/Anuken/Mindustry",
+    "pinned_sha": "19a0f40d44514f4802a8b79770456e7e32e34da0",
+    "default_branch": "master",
+    "github_license_metadata": "GPL-3.0",
+    "github_size_kib": 2013704,
+    "total_commits": 21598,
+    "total_commits_source": "github_rest",
+    "java_paths_at_tip": 871,
+    "two_parent_merges": null,
+    "pilot_sha": null,
+    "pilot_two_parent_merges": null,
+    "eligible_samples": null,
+    "positive_samples": null,
+    "negative_samples": null,
+    "positive_rate": null,
+    "extraction_seconds": null,
+    "max_process_rss_kib": null,
+    "parquet_bytes": null,
+    "extraction_status": "unmeasured",
+    "screening": {
+      "java_bytes": 6612901,
+      "java_bytes_scope": "Java blob paths at the pinned tree",
+      "windows": [
+        {
+          "name": "tip",
+          "commits": 25,
+          "two_parent": 3
+        },
+        {
+          "name": "2025",
+          "commits": 25,
+          "two_parent": 2
+        },
+        {
+          "name": "2018",
+          "commits": 25,
+          "two_parent": 3
+        }
+      ],
+      "bilateral_checked_merges": 6,
+      "bilateral_merges_with_observed_paths": 1,
+      "bilateral_path_pairs_observed_lower_bound": 4,
+      "comparisons_capped_or_failed": 0,
+      "isolated_text_probe_positive": 2,
+      "isolated_text_probe_negative": 2
+    },
+    "evidence": [
+      "evidence/additional/screen.json",
+      "evidence/additional/text-probe.json"
+    ]
+  },
+  {
+    "record_type": "supplementary_candidate",
+    "repository": "osmandapp/OsmAnd",
+    "github_url": "https://github.com/osmandapp/OsmAnd",
+    "pinned_sha": "dddbd54ae754161741d8c5657959ce7fae10af5b",
+    "default_branch": "master",
+    "github_license_metadata": "NOASSERTION",
+    "github_size_kib": 1513822,
+    "total_commits": 112424,
+    "total_commits_source": "github_rest",
+    "java_paths_at_tip": 3467,
+    "two_parent_merges": null,
+    "pilot_sha": null,
+    "pilot_two_parent_merges": null,
+    "eligible_samples": null,
+    "positive_samples": null,
+    "negative_samples": null,
+    "positive_rate": null,
+    "extraction_seconds": null,
+    "max_process_rss_kib": null,
+    "parquet_bytes": null,
+    "extraction_status": "unmeasured",
+    "screening": {
+      "java_bytes": 30647649,
+      "java_bytes_scope": "Java blob paths at the pinned tree",
+      "windows": [
+        {
+          "name": "tip",
+          "commits": 25,
+          "two_parent": 7
+        },
+        {
+          "name": "2025",
+          "commits": 25,
+          "two_parent": 3
+        },
+        {
+          "name": "2018",
+          "commits": 25,
+          "two_parent": 1
+        }
+      ],
+      "bilateral_checked_merges": 5,
+      "bilateral_merges_with_observed_paths": 1,
+      "bilateral_path_pairs_observed_lower_bound": 1,
+      "comparisons_capped_or_failed": 0,
+      "isolated_text_probe_positive": 1,
+      "isolated_text_probe_negative": 0
+    },
+    "evidence": [
+      "evidence/additional/screen.json",
+      "evidence/additional/text-probe.json"
+    ]
+  }
+]

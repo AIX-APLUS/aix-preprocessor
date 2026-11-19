@@ -1,0 +1,204 @@
+{
+  "measured_at": "2026-11-19 UTC",
+  "comparisons": [
+    {
+      "repo": "jgrapht/jgrapht",
+      "merge": "938bb575efd38c6f1558104057e46db5f5541db1",
+      "parents": [
+        "9d460d2389b2c0faa11da0e6e80b4564f4cd4144",
+        "e117c7b257ab42b6eee3d172f5cb7d6b2186a882"
+      ],
+      "merge_url": "https://api.github.com/repos/jgrapht/jgrapht/git/commits/938bb575efd38c6f1558104057e46db5f5541db1",
+      "compare_urls": [
+        "https://api.github.com/repos/jgrapht/jgrapht/compare/e117c7b257ab42b6eee3d172f5cb7d6b2186a882...9d460d2389b2c0faa11da0e6e80b4564f4cd4144?per_page=1",
+        "https://api.github.com/repos/jgrapht/jgrapht/compare/9d460d2389b2c0faa11da0e6e80b4564f4cd4144...e117c7b257ab42b6eee3d172f5cb7d6b2186a882?per_page=1"
+      ],
+      "bases": [
+        "bf508ebdd03a9ecbe84e43e8780f7277eecee143",
+        "bf508ebdd03a9ecbe84e43e8780f7277eecee143"
+      ],
+      "compared_files": [
+        18,
+        1
+      ],
+      "common": [],
+      "potential_list_truncation": false
+    },
+    {
+      "repo": "graphhopper/graphhopper",
+      "merge": "ed52f3f7f521ca6bb69a6a2e3ca93946eda7da30",
+      "parents": [
+        "60b4da93e1b7f6cdbfa5e0cf6b42c8f834db7ced",
+        "7aa11048d0ad92be4e08346a3497116faeafe8f1"
+      ],
+      "merge_url": "https://api.github.com/repos/graphhopper/graphhopper/git/commits/ed52f3f7f521ca6bb69a6a2e3ca93946eda7da30",
+      "compare_urls": [
+        "https://api.github.com/repos/graphhopper/graphhopper/compare/7aa11048d0ad92be4e08346a3497116faeafe8f1...60b4da93e1b7f6cdbfa5e0cf6b42c8f834db7ced?per_page=1",
+        "https://api.github.com/repos/graphhopper/graphhopper/compare/60b4da93e1b7f6cdbfa5e0cf6b42c8f834db7ced...7aa11048d0ad92be4e08346a3497116faeafe8f1?per_page=1"
+      ],
+      "bases": [
+        "879977097538ed8262ba6711daa0ca9fac4c1bbe",
+        "879977097538ed8262ba6711daa0ca9fac4c1bbe"
+      ],
+      "compared_files": [
+        79,
+        25
+      ],
+      "common": [],
+      "potential_list_truncation": false
+    },
+    {
+      "repo": "FasterXML/jackson-databind",
+      "until": "2025-11-19T00:00:00Z",
+      "merge": "abe0a501f0544a908eae41599f4e867f6ada5acc",
+      "parents": [
+        "f28318b540dc3ee2369fa54408ea03570e2fa228",
+        "a2f3801d5787a9c5e49165d7b9f56c0077271e88"
+      ],
+      "merge_url": "https://api.github.com/repos/FasterXML/jackson-databind/git/commits/abe0a501f0544a908eae41599f4e867f6ada5acc",
+      "compare_urls": [
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/a2f3801d5787a9c5e49165d7b9f56c0077271e88...f28318b540dc3ee2369fa54408ea03570e2fa228?per_page=1",
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/f28318b540dc3ee2369fa54408ea03570e2fa228...a2f3801d5787a9c5e49165d7b9f56c0077271e88?per_page=1"
+      ],
+      "bases": [
+        "037966f4e6d26cc163f8ee28ab79eafa04895354",
+        "037966f4e6d26cc163f8ee28ab79eafa04895354"
+      ],
+      "compared_files": [
+        52,
+        23
+      ],
+      "common": [
+        "src/main/java/tools/jackson/databind/DeserializationContext.java",
+        "src/main/java/tools/jackson/databind/InjectableValues.java"
+      ],
+      "potential_list_truncation": false
+    },
+    {
+      "repo": "FasterXML/jackson-databind",
+      "until": "2025-11-19T00:00:00Z",
+      "merge": "f258201902749d3ea41d0c17c4622fe86afa34be",
+      "parents": [
+        "d295931b052ce4b2c984af6600f89341da6ee37c",
+        "84ff962dcf5581300f54ac3022bee5483ee72492"
+      ],
+      "merge_url": "https://api.github.com/repos/FasterXML/jackson-databind/git/commits/f258201902749d3ea41d0c17c4622fe86afa34be",
+      "compare_urls": [
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/84ff962dcf5581300f54ac3022bee5483ee72492...d295931b052ce4b2c984af6600f89341da6ee37c?per_page=1",
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/d295931b052ce4b2c984af6600f89341da6ee37c...84ff962dcf5581300f54ac3022bee5483ee72492?per_page=1"
+      ],
+      "bases": [
+        "090c3ec54220e7ae5fa03213c3104ee9f254dc10",
+        "090c3ec54220e7ae5fa03213c3104ee9f254dc10"
+      ],
+      "compared_files": [
+        300,
+        19
+      ],
+      "common": [],
+      "potential_list_truncation": true
+    },
+    {
+      "repo": "FasterXML/jackson-databind",
+      "until": "2025-11-19T00:00:00Z",
+      "merge": "d295931b052ce4b2c984af6600f89341da6ee37c",
+      "parents": [
+        "f4c26a2467e14d546aee4e789514cc91f4586e00",
+        "090c3ec54220e7ae5fa03213c3104ee9f254dc10"
+      ],
+      "merge_url": "https://api.github.com/repos/FasterXML/jackson-databind/git/commits/d295931b052ce4b2c984af6600f89341da6ee37c",
+      "compare_urls": [
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/090c3ec54220e7ae5fa03213c3104ee9f254dc10...f4c26a2467e14d546aee4e789514cc91f4586e00?per_page=1",
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/f4c26a2467e14d546aee4e789514cc91f4586e00...090c3ec54220e7ae5fa03213c3104ee9f254dc10?per_page=1"
+      ],
+      "bases": [
+        "55ef6a945c4557241c658f0ed2b61f87c8898ad8",
+        "55ef6a945c4557241c658f0ed2b61f87c8898ad8"
+      ],
+      "compared_files": [
+        300,
+        2
+      ],
+      "common": [],
+      "potential_list_truncation": true
+    },
+    {
+      "repo": "FasterXML/jackson-databind",
+      "until": "2018-11-19T00:00:00Z",
+      "merge": "5a2fac6b8802569a94821346584e77e66f7f82db",
+      "parents": [
+        "0291979966f3850c8804d43dd4ab9e2dc8fa0c5d",
+        "0088a66cead424ad536464d992a8297d98a392f2"
+      ],
+      "merge_url": "https://api.github.com/repos/FasterXML/jackson-databind/git/commits/5a2fac6b8802569a94821346584e77e66f7f82db",
+      "compare_urls": [
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/0088a66cead424ad536464d992a8297d98a392f2...0291979966f3850c8804d43dd4ab9e2dc8fa0c5d?per_page=1",
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/0291979966f3850c8804d43dd4ab9e2dc8fa0c5d...0088a66cead424ad536464d992a8297d98a392f2?per_page=1"
+      ],
+      "bases": [
+        "5f453187344922b21346100fe7f442922d0bd554",
+        "5f453187344922b21346100fe7f442922d0bd554"
+      ],
+      "compared_files": [
+        300,
+        1
+      ],
+      "common": [
+        "src/main/java/com/fasterxml/jackson/databind/SerializationConfig.java"
+      ],
+      "potential_list_truncation": true
+    },
+    {
+      "repo": "FasterXML/jackson-databind",
+      "until": "2018-11-19T00:00:00Z",
+      "merge": "0291979966f3850c8804d43dd4ab9e2dc8fa0c5d",
+      "parents": [
+        "4a7fb129f73173e18280f77c350c6fdc1f101428",
+        "5f453187344922b21346100fe7f442922d0bd554"
+      ],
+      "merge_url": "https://api.github.com/repos/FasterXML/jackson-databind/git/commits/0291979966f3850c8804d43dd4ab9e2dc8fa0c5d",
+      "compare_urls": [
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/5f453187344922b21346100fe7f442922d0bd554...4a7fb129f73173e18280f77c350c6fdc1f101428?per_page=1",
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/4a7fb129f73173e18280f77c350c6fdc1f101428...5f453187344922b21346100fe7f442922d0bd554?per_page=1"
+      ],
+      "bases": [
+        "396c4daed0cfe8d101b50a6f68320203151edd9f",
+        "396c4daed0cfe8d101b50a6f68320203151edd9f"
+      ],
+      "compared_files": [
+        300,
+        6
+      ],
+      "common": [
+        "src/main/java/com/fasterxml/jackson/databind/json/JsonMapper.java"
+      ],
+      "potential_list_truncation": true
+    },
+    {
+      "repo": "FasterXML/jackson-databind",
+      "until": "2018-11-19T00:00:00Z",
+      "merge": "ef4d09426b8d0a9cf2a52b0d124d7d785f68795c",
+      "parents": [
+        "f6ee23e3deba69ca9258fdc52f59f596a2ee8643",
+        "396c4daed0cfe8d101b50a6f68320203151edd9f"
+      ],
+      "merge_url": "https://api.github.com/repos/FasterXML/jackson-databind/git/commits/ef4d09426b8d0a9cf2a52b0d124d7d785f68795c",
+      "compare_urls": [
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/396c4daed0cfe8d101b50a6f68320203151edd9f...f6ee23e3deba69ca9258fdc52f59f596a2ee8643?per_page=1",
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/f6ee23e3deba69ca9258fdc52f59f596a2ee8643...396c4daed0cfe8d101b50a6f68320203151edd9f?per_page=1"
+      ],
+      "bases": [
+        "53bdf77b778fd455308b646e1c158609752b91be",
+        "53bdf77b778fd455308b646e1c158609752b91be"
+      ],
+      "compared_files": [
+        300,
+        4
+      ],
+      "common": [
+        "src/main/java/com/fasterxml/jackson/databind/ser/std/ByteBufferSerializer.java"
+      ],
+      "potential_list_truncation": true
+    }
+  ]
+}

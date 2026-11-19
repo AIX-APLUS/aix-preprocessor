@@ -1,0 +1,273 @@
+{
+  "repository": "AIX-APLUS/aix-preprocessor",
+  "run_id": 44549292132,
+  "run_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132",
+  "workflow_file": ".github/workflows/repository-suitability-study.yml",
+  "run_head": "a6a7c7ea2c699eb84d87c4b391e33497fd35cc5e",
+  "run_branch": "research/dataset-repository-audit",
+  "extractor_sha": "06e755ebabed1707a3413ec99ffa2511b046c543",
+  "jobs": [
+    {
+      "id": 135648324860,
+      "name": "pilot",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 135648325365,
+      "name": "graph (jenkins)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 135648325373,
+      "name": "graph (forge)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 135648325428,
+      "name": "graph (jabref)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 135648325459,
+      "name": "graph (quarkus)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 135648325647,
+      "name": "graph (spring)",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "pilot_runner": {
+    "runner_image": "ubuntu-24.04",
+    "image_version": "20261111.370.1",
+    "os_version": "Ubuntu 24.04.5 LTS",
+    "runner_version": "2.338.2",
+    "git": "2.56.1",
+    "jdk": "Temurin 17.0.21+9",
+    "python": "3.12.3",
+    "runner_vcpus": 4,
+    "extractor_threads": 2,
+    "java_max_heap": "2g",
+    "source": "pilot job log and pilot JSON"
+  },
+  "artifact_recovery": "Direct GitHub Actions ZIP download. ZIP SHA-256 and byte size were verified against the Actions artifacts endpoint. ZIP member CRC and JSON decoding were checked before comparison to evidence/runs.",
+  "graph_manifest_comparison": "All five existing .refs.tsv.gz files differ from their archived member only at gzip header offset 9 (OS byte: existing 255, archived 3). The decompressed bytes match exactly. Existing files were preserved.",
+  "pilot_log_crosscheck": {
+    "job_id": 135648324860,
+    "job_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132/job/135648324860",
+    "format": "Strict Base64, gzip decompress, UTF-8 JSON parse, compare original bytes with ZIP member and evidence/runs.",
+    "members": {
+      "pilot-Card-Forge__forge.json": {
+        "emitted_at": "2026-11-19T14:59:44.0347221Z",
+        "decoded_sha256": "003580850fa3dee47b2f56b2798d72b7aab6b85726c4073c39c6e2bc6608abcb"
+      },
+      "pilot-JabRef__jabref.json": {
+        "emitted_at": "2026-11-19T14:59:44.0364696Z",
+        "decoded_sha256": "0af89a284324341e4cb448d9845fef30b386b1b6cc1692ca1eaff7738d4027bf"
+      },
+      "pilot-jenkinsci__jenkins.json": {
+        "emitted_at": "2026-11-19T14:59:44.0386027Z",
+        "decoded_sha256": "8c0ca654a00ce5d2f93bdeda0887c836aa9c11933358278e8c42c6b0f09d63fd"
+      },
+      "pilot-quarkusio__quarkus.json": {
+        "emitted_at": "2026-11-19T14:59:44.0404604Z",
+        "decoded_sha256": "6bba03072b587fb394bfeda8678251b9b57f0be2caec990d8c1c3e6b7fd5c578"
+      },
+      "pilot-spring-projects__spring-boot.json": {
+        "emitted_at": "2026-11-19T14:59:44.0422113Z",
+        "decoded_sha256": "41a755fe07514d82873fabbfc795bcd6aaf9b9a676c4e4f4d4111fb6d9646a65"
+      },
+      "quality.json": {
+        "emitted_at": "2026-11-19T14:59:44.0444130Z",
+        "decoded_sha256": "b3e4aaa63080965ab3d2a71f6c30bd6cf23d0e5cd148fb3c5d49458cf61d20d5"
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "name": "aggregate-pilot-results",
+      "id": 14543915089,
+      "archive_url": "https://api.github.com/repos/AIX-APLUS/aix-preprocessor/actions/artifacts/14543915089/zip",
+      "artifact_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132/artifacts/14543915089",
+      "created_at": "2026-11-19T14:59:44Z",
+      "expires_at": "2026-12-03T14:59:44Z",
+      "archive_bytes": 9758,
+      "github_zip_sha256": "445995e42870f9adc5e1d864144051df549611a87949bfc22d3db0037e0e0b09",
+      "members": [
+        {
+          "name": "pilot-Card-Forge__forge.json",
+          "bytes": 2648,
+          "archive_member_sha256": "003580850fa3dee47b2f56b2798d72b7aab6b85726c4073c39c6e2bc6608abcb",
+          "evidence_sha256": "003580850fa3dee47b2f56b2798d72b7aab6b85726c4073c39c6e2bc6608abcb"
+        },
+        {
+          "name": "pilot-JabRef__jabref.json",
+          "bytes": 2801,
+          "archive_member_sha256": "0af89a284324341e4cb448d9845fef30b386b1b6cc1692ca1eaff7738d4027bf",
+          "evidence_sha256": "0af89a284324341e4cb448d9845fef30b386b1b6cc1692ca1eaff7738d4027bf"
+        },
+        {
+          "name": "pilot-jenkinsci__jenkins.json",
+          "bytes": 2986,
+          "archive_member_sha256": "8c0ca654a00ce5d2f93bdeda0887c836aa9c11933358278e8c42c6b0f09d63fd",
+          "evidence_sha256": "8c0ca654a00ce5d2f93bdeda0887c836aa9c11933358278e8c42c6b0f09d63fd"
+        },
+        {
+          "name": "pilot-quarkusio__quarkus.json",
+          "bytes": 2742,
+          "archive_member_sha256": "6bba03072b587fb394bfeda8678251b9b57f0be2caec990d8c1c3e6b7fd5c578",
+          "evidence_sha256": "6bba03072b587fb394bfeda8678251b9b57f0be2caec990d8c1c3e6b7fd5c578"
+        },
+        {
+          "name": "pilot-spring-projects__spring-boot.json",
+          "bytes": 2735,
+          "archive_member_sha256": "41a755fe07514d82873fabbfc795bcd6aaf9b9a676c4e4f4d4111fb6d9646a65",
+          "evidence_sha256": "41a755fe07514d82873fabbfc795bcd6aaf9b9a676c4e4f4d4111fb6d9646a65"
+        },
+        {
+          "name": "quality.json",
+          "bytes": 13341,
+          "archive_member_sha256": "b3e4aaa63080965ab3d2a71f6c30bd6cf23d0e5cd148fb3c5d49458cf61d20d5",
+          "evidence_sha256": "b3e4aaa63080965ab3d2a71f6c30bd6cf23d0e5cd148fb3c5d49458cf61d20d5"
+        }
+      ]
+    },
+    {
+      "name": "graph-jabref",
+      "id": 14542805212,
+      "archive_url": "https://api.github.com/repos/AIX-APLUS/aix-preprocessor/actions/artifacts/14542805212/zip",
+      "artifact_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132/artifacts/14542805212",
+      "created_at": "2026-11-19T14:57:21Z",
+      "expires_at": "2026-12-03T14:57:20Z",
+      "archive_bytes": 6942,
+      "github_zip_sha256": "134dd580ef81e3a632f3fa66d6642e1039035761e8d4bf33e94976c1a127a268",
+      "members": [
+        {
+          "name": "jabref.json",
+          "bytes": 1588,
+          "archive_member_sha256": "85a15ce1b52a89ee39c0603b57b191460204b45da2dda3ccfb0b259a6e632cf9",
+          "evidence_sha256": "85a15ce1b52a89ee39c0603b57b191460204b45da2dda3ccfb0b259a6e632cf9"
+        },
+        {
+          "name": "jabref.refs.tsv.gz",
+          "bytes": 5997,
+          "archive_member_sha256": "f4633e912d0efce755902699a7c2132a706041756bd4b773e5f88a0e84868fad",
+          "evidence_sha256": "0a6ba5a2633bf6e32cdf0a1f89454f944507a3227e30c2d186e3e99a69ba555a",
+          "uncompressed_sha256": "9756929326045cfb8ccda310888bcb38c29ed568909a9e379e06496a3a9f8059",
+          "ref_rows": 171
+        }
+      ]
+    },
+    {
+      "name": "graph-jenkins",
+      "id": 14542600183,
+      "archive_url": "https://api.github.com/repos/AIX-APLUS/aix-preprocessor/actions/artifacts/14542600183/zip",
+      "artifact_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132/artifacts/14542600183",
+      "created_at": "2026-11-19T14:57:20Z",
+      "expires_at": "2026-12-03T14:57:19Z",
+      "archive_bytes": 48420,
+      "github_zip_sha256": "c6de5d257a216cd32d708f2f443871171747e3d3dedd8d41a4a9772d82a92563",
+      "members": [
+        {
+          "name": "jenkins.json",
+          "bytes": 1603,
+          "archive_member_sha256": "f36d53585c783315c6547a2dee62742b5b11f4cbdc5c997937c296bce66238ce",
+          "evidence_sha256": "f36d53585c783315c6547a2dee62742b5b11f4cbdc5c997937c296bce66238ce"
+        },
+        {
+          "name": "jenkins.refs.tsv.gz",
+          "bytes": 47756,
+          "archive_member_sha256": "79c0f2f2cdc4f0a8b7d1c9240a18c7a9d3c19cd06a3f09fbdee18e0baa2d7a38",
+          "evidence_sha256": "a6167161c07952f20c5d3652f70eade0a1beefd04184845976f98b816f604a56",
+          "uncompressed_sha256": "05480b5b9563c2274ae10d143370a6fcab3ad9b96505c02c1840e1b9708bcf0c",
+          "ref_rows": 1998
+        }
+      ]
+    },
+    {
+      "name": "graph-spring",
+      "id": 14541832229,
+      "archive_url": "https://api.github.com/repos/AIX-APLUS/aix-preprocessor/actions/artifacts/14541832229/zip",
+      "artifact_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132/artifacts/14541832229",
+      "created_at": "2026-11-19T14:57:43Z",
+      "expires_at": "2026-12-03T14:57:42Z",
+      "archive_bytes": 12991,
+      "github_zip_sha256": "75926b4f91b63ec9ab3e8f5b02d16a13ca943bac6ef8f23a8298f92eed59a777",
+      "members": [
+        {
+          "name": "spring.json",
+          "bytes": 1623,
+          "archive_member_sha256": "9723c4e5cc81f480f99b868b8a29198cb5cdc85019ad8fe1f3f52c88479da066",
+          "evidence_sha256": "9723c4e5cc81f480f99b868b8a29198cb5cdc85019ad8fe1f3f52c88479da066"
+        },
+        {
+          "name": "spring.refs.tsv.gz",
+          "bytes": 12070,
+          "archive_member_sha256": "047720e4e7accafbd8960d4af26c2d9ec0013d8b9c34a0b511c414fa0f8d27da",
+          "evidence_sha256": "3acbd2c1fbc83266355021aa65ee1232fc4dc55731ac5bd4e5536cfd142bacd3",
+          "uncompressed_sha256": "f3f4480ef2eedb696559776b9ff1661a5d363368c4494fdf18a540025c7513b8",
+          "ref_rows": 426
+        }
+      ]
+    },
+    {
+      "name": "graph-quarkus",
+      "id": 14541634198,
+      "archive_url": "https://api.github.com/repos/AIX-APLUS/aix-preprocessor/actions/artifacts/14541634198/zip",
+      "artifact_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132/artifacts/14541634198",
+      "created_at": "2026-11-19T14:58:09Z",
+      "expires_at": "2026-12-03T14:58:08Z",
+      "archive_bytes": 20594,
+      "github_zip_sha256": "c92e2dd2a6301c331417575023a6d6a9ffbe32cc55ada20ec5207dc917853a8f",
+      "members": [
+        {
+          "name": "quarkus.json",
+          "bytes": 1604,
+          "archive_member_sha256": "1d9cdeee00264c74fcbccf0802dda3fcac347450fb6ea0c2d8731f02791ca2e8",
+          "evidence_sha256": "1d9cdeee00264c74fcbccf0802dda3fcac347450fb6ea0c2d8731f02791ca2e8"
+        },
+        {
+          "name": "quarkus.refs.tsv.gz",
+          "bytes": 19678,
+          "archive_member_sha256": "ac5e0017a61ac25d5b34ce5a26ab537134a9727c24f9674fe2da7dd378a93a3a",
+          "evidence_sha256": "6e9142b916e19c1cf389613d10d0dadc728716c09f346b05e25d93b4873df6dd",
+          "uncompressed_sha256": "b098e282ea53b50a0edf31561d93ee5a9ca5df2f6ec8d4a3c2a1b8b8bfe5955b",
+          "ref_rows": 667
+        }
+      ]
+    },
+    {
+      "name": "graph-forge",
+      "id": 14539719864,
+      "archive_url": "https://api.github.com/repos/AIX-APLUS/aix-preprocessor/actions/artifacts/14539719864/zip",
+      "artifact_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132/artifacts/14539719864",
+      "created_at": "2026-11-19T14:57:29Z",
+      "expires_at": "2026-12-03T14:57:28Z",
+      "archive_bytes": 11774,
+      "github_zip_sha256": "6311838f99fce3087217222732b4e0a12c3c817ab4b82eff2f4b204211db7e41",
+      "members": [
+        {
+          "name": "forge.json",
+          "bytes": 1604,
+          "archive_member_sha256": "397a2cc5c81cbc32b4c54456079dd5ee93f765098f09bbb9b991bc54e4946c25",
+          "evidence_sha256": "397a2cc5c81cbc32b4c54456079dd5ee93f765098f09bbb9b991bc54e4946c25"
+        },
+        {
+          "name": "forge.refs.tsv.gz",
+          "bytes": 10862,
+          "archive_member_sha256": "98932bd1b4c92a8de2357025d87ca383f8867479a5645783259134aff303826a",
+          "evidence_sha256": "2756acc0f4db7d410ab29589506bcca9a4ec9bdeebca06c01f3f0df201b04b73",
+          "uncompressed_sha256": "ccbee28d02dc19c0218fd0dc4bc1455f9de5638aeb8077688e0ca308bf5c23c1",
+          "ref_rows": 342
+        }
+      ]
+    }
+  ]
+}

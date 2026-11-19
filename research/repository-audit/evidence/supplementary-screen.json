@@ -1,0 +1,497 @@
+{
+  "scope": "Supplementary candidate screen, separate from five selected repositories. GitHub API data only. No dataset rows or labels inferred.",
+  "display_date_korea": "2026-11-19",
+  "sampling": "For each pinned default tip, API first page of 25 reachable commit records, for unbounded time or until 2025-11-19 and 2018-11-19 00:00:00Z. This is API listing order, not first-parent traversal or a random sample.",
+  "repositories": [
+    {
+      "repo": "mockito/mockito",
+      "sha": "10b31ba2a8252cf340bc154c9e05224802a84691",
+      "branch": "main",
+      "size_kib": 49825,
+      "about": "Most popular Mocking framework for unit tests written in Java",
+      "license": "MIT",
+      "root_licenses": [
+        "https://github.com/mockito/mockito/blob/10b31ba2a8252cf340bc154c9e05224802a84691/LICENSE"
+      ],
+      "parquet_rows": null,
+      "positive_rate": null,
+      "windows": [
+        {
+          "until": null,
+          "evidence": "https://api.github.com/repos/mockito/mockito/commits?sha=10b31ba2a8252cf340bc154c9e05224802a84691&per_page=25",
+          "sample_n": 25,
+          "first_sha": "10b31ba2a8252cf340bc154c9e05224802a84691",
+          "last_sha": "8ac1bef1221385b108cc1cf369b26257eaf067a0",
+          "parent_count_histogram": {
+            "1": 25
+          },
+          "two_parent_shas": []
+        },
+        {
+          "until": "2025-11-19T00:00:00Z",
+          "evidence": "https://api.github.com/repos/mockito/mockito/commits?sha=10b31ba2a8252cf340bc154c9e05224802a84691&per_page=25&until=2025-11-19T00:00:00Z",
+          "sample_n": 25,
+          "first_sha": "756a3cf3fa890437603704f1dc2932e908ef3951",
+          "last_sha": "0776d973fc5b06d7f7a16ac31e45aff24f1ab888",
+          "parent_count_histogram": {
+            "1": 25
+          },
+          "two_parent_shas": []
+        },
+        {
+          "until": "2018-11-19T00:00:00Z",
+          "evidence": "https://api.github.com/repos/mockito/mockito/commits?sha=10b31ba2a8252cf340bc154c9e05224802a84691&per_page=25&until=2018-11-19T00:00:00Z",
+          "sample_n": 25,
+          "first_sha": "7799c469390a78b7d28cf222bd275593747aa3cd",
+          "last_sha": "704121b8c662a1c8125b68ff7d694b96baedf37d",
+          "parent_count_histogram": {
+            "1": 21,
+            "2": 4
+          },
+          "two_parent_shas": [
+            "a2fc469fd9063e0e9a98adb1f3e35c29561dfff2",
+            "b1fd36569aa40dd654bb0b702c8042a0897335a7",
+            "48a7bfd76ed6497837c3716ccb4b11cbae4279d8",
+            "5ac3e13fd6b325b35ae94717ecb8d03860039414"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "jgrapht/jgrapht",
+      "sha": "ee3a1084f7373cf2873bcba59ee5c1b6b17ec8ad",
+      "branch": "master",
+      "size_kib": 351480,
+      "about": "Master repository for the JGraphT project",
+      "license": "EPL-2.0",
+      "root_licenses": [
+        "https://github.com/jgrapht/jgrapht/blob/ee3a1084f7373cf2873bcba59ee5c1b6b17ec8ad/license-EPL.txt",
+        "https://github.com/jgrapht/jgrapht/blob/ee3a1084f7373cf2873bcba59ee5c1b6b17ec8ad/license-LGPL.txt"
+      ],
+      "source_license": "EPL-2.0 OR LGPL-2.1-or-later according to project documentation; check each historical file",
+      "parquet_rows": null,
+      "positive_rate": null,
+      "windows": [
+        {
+          "until": null,
+          "evidence": "https://api.github.com/repos/jgrapht/jgrapht/commits?sha=ee3a1084f7373cf2873bcba59ee5c1b6b17ec8ad&per_page=25",
+          "sample_n": 25,
+          "first_sha": "ee3a1084f7373cf2873bcba59ee5c1b6b17ec8ad",
+          "last_sha": "7ad02a744619a7e97499946a66257f46ea25ef13",
+          "parent_count_histogram": {
+            "1": 25
+          },
+          "two_parent_shas": []
+        },
+        {
+          "until": "2025-11-19T00:00:00Z",
+          "evidence": "https://api.github.com/repos/jgrapht/jgrapht/commits?sha=ee3a1084f7373cf2873bcba59ee5c1b6b17ec8ad&per_page=25&until=2025-11-19T00:00:00Z",
+          "sample_n": 25,
+          "first_sha": "5d592920ade8378211684d3c871495ce1190a4ce",
+          "last_sha": "6324b1354547505d5b62f65a9bf507b54b04e41a",
+          "parent_count_histogram": {
+            "1": 25
+          },
+          "two_parent_shas": []
+        },
+        {
+          "until": "2018-11-19T00:00:00Z",
+          "evidence": "https://api.github.com/repos/jgrapht/jgrapht/commits?sha=ee3a1084f7373cf2873bcba59ee5c1b6b17ec8ad&per_page=25&until=2018-11-19T00:00:00Z",
+          "sample_n": 25,
+          "first_sha": "1842ca364e554dec431d5c7da41ad386674e20bf",
+          "last_sha": "586729e66c8fcefcdcd713b03086762337c1ffd7",
+          "parent_count_histogram": {
+            "1": 24,
+            "2": 1
+          },
+          "two_parent_shas": [
+            "938bb575efd38c6f1558104057e46db5f5541db1"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "apache/kafka",
+      "sha": "db02bf715f34b7e998210b12e246973ece611459",
+      "branch": "trunk",
+      "size_kib": 327962,
+      "about": "Apache Kafka - A distributed event streaming platform",
+      "license": "Apache-2.0",
+      "root_licenses": [
+        "https://github.com/apache/kafka/blob/db02bf715f34b7e998210b12e246973ece611459/LICENSE",
+        "https://github.com/apache/kafka/blob/db02bf715f34b7e998210b12e246973ece611459/NOTICE"
+      ],
+      "parquet_rows": null,
+      "positive_rate": null,
+      "windows": [
+        {
+          "until": null,
+          "evidence": "https://api.github.com/repos/apache/kafka/commits?sha=db02bf715f34b7e998210b12e246973ece611459&per_page=25",
+          "sample_n": 25,
+          "first_sha": "db02bf715f34b7e998210b12e246973ece611459",
+          "last_sha": "c3cbf35565aaf8754f266320f8f8a73a7189abd2",
+          "parent_count_histogram": {
+            "1": 25
+          },
+          "two_parent_shas": []
+        },
+        {
+          "until": "2025-11-19T00:00:00Z",
+          "evidence": "https://api.github.com/repos/apache/kafka/commits?sha=db02bf715f34b7e998210b12e246973ece611459&per_page=25&until=2025-11-19T00:00:00Z",
+          "sample_n": 25,
+          "first_sha": "5373f2d208ec85ecc00d20f0a85f99906a21764e",
+          "last_sha": "21f19e0a1ae07d031b03a754eae63888eb299065",
+          "parent_count_histogram": {
+            "1": 25
+          },
+          "two_parent_shas": []
+        },
+        {
+          "until": "2018-11-19T00:00:00Z",
+          "evidence": "https://api.github.com/repos/apache/kafka/commits?sha=db02bf715f34b7e998210b12e246973ece611459&per_page=25&until=2018-11-19T00:00:00Z",
+          "sample_n": 25,
+          "first_sha": "9646602d6832ad0a5f2e9b65af5df1a80a571691",
+          "last_sha": "29383d6d6a3d42d30e815fbbb084275d449928c8",
+          "parent_count_histogram": {
+            "1": 25
+          },
+          "two_parent_shas": []
+        }
+      ]
+    },
+    {
+      "repo": "graphhopper/graphhopper",
+      "sha": "70e8293630cae820a0bd34811f6357b7dc6d5faa",
+      "branch": "master",
+      "size_kib": 143763,
+      "about": "Open source routing engine for OpenStreetMap. Use it as Java library or standalone web server.",
+      "license": "Apache-2.0",
+      "root_licenses": [
+        "https://github.com/graphhopper/graphhopper/blob/70e8293630cae820a0bd34811f6357b7dc6d5faa/LICENSE.txt",
+        "https://github.com/graphhopper/graphhopper/blob/70e8293630cae820a0bd34811f6357b7dc6d5faa/NOTICE.md"
+      ],
+      "parquet_rows": null,
+      "positive_rate": null,
+      "windows": [
+        {
+          "until": null,
+          "evidence": "https://api.github.com/repos/graphhopper/graphhopper/commits?sha=70e8293630cae820a0bd34811f6357b7dc6d5faa&per_page=25",
+          "sample_n": 25,
+          "first_sha": "70e8293630cae820a0bd34811f6357b7dc6d5faa",
+          "last_sha": "3b04038b6f5e20dd3a427b6cd4bd5f154e80c4bf",
+          "parent_count_histogram": {
+            "1": 25
+          },
+          "two_parent_shas": []
+        },
+        {
+          "until": "2025-11-19T00:00:00Z",
+          "evidence": "https://api.github.com/repos/graphhopper/graphhopper/commits?sha=70e8293630cae820a0bd34811f6357b7dc6d5faa&per_page=25&until=2025-11-19T00:00:00Z",
+          "sample_n": 25,
+          "first_sha": "2e03e7d85393f2acc056f29b8d32c7a4dd23ca65",
+          "last_sha": "5626d066dbe856653cb8c3aea00fab657e4e2998",
+          "parent_count_histogram": {
+            "1": 25
+          },
+          "two_parent_shas": []
+        },
+        {
+          "until": "2018-11-19T00:00:00Z",
+          "evidence": "https://api.github.com/repos/graphhopper/graphhopper/commits?sha=70e8293630cae820a0bd34811f6357b7dc6d5faa&per_page=25&until=2018-11-19T00:00:00Z",
+          "sample_n": 25,
+          "first_sha": "6c469c7f9e76c25419925636ab924261cb1f25ff",
+          "last_sha": "28caa44f90fd82baf1111c9b828aae023a693f31",
+          "parent_count_histogram": {
+            "1": 24,
+            "2": 1
+          },
+          "two_parent_shas": [
+            "ed52f3f7f521ca6bb69a6a2e3ca93946eda7da30"
+          ]
+        }
+      ]
+    },
+    {
+      "repo": "FasterXML/jackson-databind",
+      "sha": "2a1dcbcc6d188f271e6360f16d2be3a4bb8eff9f",
+      "branch": "3.x",
+      "size_kib": 90669,
+      "about": "General data-binding package for Jackson: works on streaming API (core) implementation(s)",
+      "license": "Apache-2.0",
+      "root_licenses": [
+        "https://github.com/FasterXML/jackson-databind/blob/2a1dcbcc6d188f271e6360f16d2be3a4bb8eff9f/LICENSE"
+      ],
+      "parquet_rows": null,
+      "positive_rate": null,
+      "windows": [
+        {
+          "until": null,
+          "evidence": "https://api.github.com/repos/FasterXML/jackson-databind/commits?sha=2a1dcbcc6d188f271e6360f16d2be3a4bb8eff9f&per_page=25",
+          "sample_n": 25,
+          "first_sha": "2a1dcbcc6d188f271e6360f16d2be3a4bb8eff9f",
+          "last_sha": "67a398307569beeb54eb073b224be18344b0d20f",
+          "parent_count_histogram": {
+            "1": 13,
+            "2": 12
+          },
+          "two_parent_shas": [
+            "2a1dcbcc6d188f271e6360f16d2be3a4bb8eff9f",
+            "338750bf01d3df75be258c9c649b3ef43e5ef30a",
+            "7e16c8bc18d9a3704878d9ddcdb262eec36c4d43",
+            "b123abc538208dc2005bb58cea97bfe0cfefa648",
+            "bd83aee363f4b5db1cc27a65473af94e3f6dfdf2",
+            "c1d037a71213e6dd44756a9937d8e3c2c9d29f6f",
+            "a48ee7a3949cc62226d9589e232113957da757f8",
+            "e99b599b3760f54be41b7c4f4974b94bec6c0b21",
+            "37804386348721ba1bb7242fea4d9b95477a4152",
+            "043e38d5e6b5076e7778ed8c0d939044be0ba29e",
+            "7a5df5844b2326488d6a8bbd76d7129ae9390658",
+            "272042d693c54347d13a2de8df735946da639544"
+          ]
+        },
+        {
+          "until": "2025-11-19T00:00:00Z",
+          "evidence": "https://api.github.com/repos/FasterXML/jackson-databind/commits?sha=2a1dcbcc6d188f271e6360f16d2be3a4bb8eff9f&per_page=25&until=2025-11-19T00:00:00Z",
+          "sample_n": 25,
+          "first_sha": "278037add1c5b3305af960c5e33f49f2104c0316",
+          "last_sha": "d4f80c67449524bd21c2dc04ce2690e5f80260d7",
+          "parent_count_histogram": {
+            "1": 19,
+            "2": 6
+          },
+          "two_parent_shas": [
+            "abe0a501f0544a908eae41599f4e867f6ada5acc",
+            "f258201902749d3ea41d0c17c4622fe86afa34be",
+            "d295931b052ce4b2c984af6600f89341da6ee37c",
+            "f4c26a2467e14d546aee4e789514cc91f4586e00",
+            "ed70776eb59b5ec126c588bb8f347dd1678c710b",
+            "037966f4e6d26cc163f8ee28ab79eafa04895354"
+          ]
+        },
+        {
+          "until": "2018-11-19T00:00:00Z",
+          "evidence": "https://api.github.com/repos/FasterXML/jackson-databind/commits?sha=2a1dcbcc6d188f271e6360f16d2be3a4bb8eff9f&per_page=25&until=2018-11-19T00:00:00Z",
+          "sample_n": 25,
+          "first_sha": "b631af0dc6974db91f201c18958929b2b9b52e73",
+          "last_sha": "c1acc4f96a6f1b9dd432e1e88706666e72055dde",
+          "parent_count_histogram": {
+            "1": 21,
+            "2": 4
+          },
+          "two_parent_shas": [
+            "5a2fac6b8802569a94821346584e77e66f7f82db",
+            "0291979966f3850c8804d43dd4ab9e2dc8fa0c5d",
+            "ef4d09426b8d0a9cf2a52b0d124d7d785f68795c",
+            "396c4daed0cfe8d101b50a6f68320203151edd9f"
+          ]
+        }
+      ]
+    }
+  ],
+  "both_parent_path_checks": [
+    {
+      "merge": "2a1dcbcc6d188f271e6360f16d2be3a4bb8eff9f",
+      "repo": "FasterXML/jackson-databind",
+      "parents": [
+        "7726deebb593bf361265acfaf7d8dea0c9ac49e4",
+        "338750bf01d3df75be258c9c649b3ef43e5ef30a"
+      ],
+      "bases": [
+        "c1d037a71213e6dd44756a9937d8e3c2c9d29f6f",
+        "c1d037a71213e6dd44756a9937d8e3c2c9d29f6f"
+      ],
+      "compared_files": [
+        74,
+        6
+      ],
+      "common": [],
+      "compare_urls": [
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/338750bf01d3df75be258c9c649b3ef43e5ef30a...7726deebb593bf361265acfaf7d8dea0c9ac49e4?per_page=1",
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/7726deebb593bf361265acfaf7d8dea0c9ac49e4...338750bf01d3df75be258c9c649b3ef43e5ef30a?per_page=1"
+      ],
+      "potential_list_truncation": false
+    },
+    {
+      "merge": "338750bf01d3df75be258c9c649b3ef43e5ef30a",
+      "repo": "FasterXML/jackson-databind",
+      "parents": [
+        "c1d037a71213e6dd44756a9937d8e3c2c9d29f6f",
+        "7e16c8bc18d9a3704878d9ddcdb262eec36c4d43"
+      ],
+      "bases": [
+        "a48ee7a3949cc62226d9589e232113957da757f8",
+        "a48ee7a3949cc62226d9589e232113957da757f8"
+      ],
+      "compared_files": [
+        237,
+        6
+      ],
+      "common": [
+        "src/main/java/tools/jackson/databind/type/TypeFactory.java",
+        "src/test/java/tools/jackson/databind/type/TypeFactoryTest.java"
+      ],
+      "compare_urls": [
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/7e16c8bc18d9a3704878d9ddcdb262eec36c4d43...c1d037a71213e6dd44756a9937d8e3c2c9d29f6f?per_page=1",
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/c1d037a71213e6dd44756a9937d8e3c2c9d29f6f...7e16c8bc18d9a3704878d9ddcdb262eec36c4d43?per_page=1"
+      ],
+      "potential_list_truncation": false
+    },
+    {
+      "merge": "7e16c8bc18d9a3704878d9ddcdb262eec36c4d43",
+      "repo": "FasterXML/jackson-databind",
+      "parents": [
+        "a48ee7a3949cc62226d9589e232113957da757f8",
+        "b123abc538208dc2005bb58cea97bfe0cfefa648"
+      ],
+      "bases": [
+        "e99b599b3760f54be41b7c4f4974b94bec6c0b21",
+        "e99b599b3760f54be41b7c4f4974b94bec6c0b21"
+      ],
+      "compared_files": [
+        300,
+        6
+      ],
+      "common": [
+        "src/main/java/tools/jackson/databind/type/TypeFactory.java"
+      ],
+      "compare_urls": [
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/b123abc538208dc2005bb58cea97bfe0cfefa648...a48ee7a3949cc62226d9589e232113957da757f8?per_page=1",
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/a48ee7a3949cc62226d9589e232113957da757f8...b123abc538208dc2005bb58cea97bfe0cfefa648?per_page=1"
+      ],
+      "potential_list_truncation": true
+    },
+    {
+      "merge": "b123abc538208dc2005bb58cea97bfe0cfefa648",
+      "repo": "FasterXML/jackson-databind",
+      "parents": [
+        "e99b599b3760f54be41b7c4f4974b94bec6c0b21",
+        "03bfcb7481207dc53e6d09be6389bad77576f0e4"
+      ],
+      "bases": [
+        "9ca94760c97c098ce609d567b1d026ab841c9b1b",
+        "9ca94760c97c098ce609d567b1d026ab841c9b1b"
+      ],
+      "compared_files": [
+        300,
+        4
+      ],
+      "common": [],
+      "compare_urls": [
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/03bfcb7481207dc53e6d09be6389bad77576f0e4...e99b599b3760f54be41b7c4f4974b94bec6c0b21?per_page=1",
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/e99b599b3760f54be41b7c4f4974b94bec6c0b21...03bfcb7481207dc53e6d09be6389bad77576f0e4?per_page=1"
+      ],
+      "potential_list_truncation": true
+    },
+    {
+      "merge": "bd83aee363f4b5db1cc27a65473af94e3f6dfdf2",
+      "repo": "FasterXML/jackson-databind",
+      "parents": [
+        "043e38d5e6b5076e7778ed8c0d939044be0ba29e",
+        "c1d037a71213e6dd44756a9937d8e3c2c9d29f6f"
+      ],
+      "bases": [
+        "7a5df5844b2326488d6a8bbd76d7129ae9390658",
+        "7a5df5844b2326488d6a8bbd76d7129ae9390658"
+      ],
+      "compared_files": [
+        48,
+        6
+      ],
+      "common": [],
+      "compare_urls": [
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/c1d037a71213e6dd44756a9937d8e3c2c9d29f6f...043e38d5e6b5076e7778ed8c0d939044be0ba29e?per_page=1",
+        "https://api.github.com/repos/FasterXML/jackson-databind/compare/043e38d5e6b5076e7778ed8c0d939044be0ba29e...c1d037a71213e6dd44756a9937d8e3c2c9d29f6f?per_page=1"
+      ],
+      "potential_list_truncation": false
+    },
+    {
+      "merge": "a2fc469fd9063e0e9a98adb1f3e35c29561dfff2",
+      "repo": "mockito/mockito",
+      "parents": [
+        "57d877de14e72c301d78d9163d9c5c5442754b4b",
+        "a420e87bc818f7a7daf42b8ea19acf0add002152"
+      ],
+      "bases": [
+        "57d877de14e72c301d78d9163d9c5c5442754b4b",
+        "57d877de14e72c301d78d9163d9c5c5442754b4b"
+      ],
+      "compared_files": [
+        0,
+        1
+      ],
+      "common": [],
+      "compare_urls": [
+        "https://api.github.com/repos/mockito/mockito/compare/a420e87bc818f7a7daf42b8ea19acf0add002152...57d877de14e72c301d78d9163d9c5c5442754b4b?per_page=1",
+        "https://api.github.com/repos/mockito/mockito/compare/57d877de14e72c301d78d9163d9c5c5442754b4b...a420e87bc818f7a7daf42b8ea19acf0add002152?per_page=1"
+      ],
+      "potential_list_truncation": false
+    },
+    {
+      "merge": "b1fd36569aa40dd654bb0b702c8042a0897335a7",
+      "repo": "mockito/mockito",
+      "parents": [
+        "11e28796ecd89470ca50632e0fe9b2e4260e323a",
+        "ed951112e5c11a0a2ba97671d9708859cbe3eb67"
+      ],
+      "bases": [
+        "23d63ea4a49ff7c2eb160160e89f2992e4fcefef",
+        "23d63ea4a49ff7c2eb160160e89f2992e4fcefef"
+      ],
+      "compared_files": [
+        9,
+        1
+      ],
+      "common": [],
+      "compare_urls": [
+        "https://api.github.com/repos/mockito/mockito/compare/ed951112e5c11a0a2ba97671d9708859cbe3eb67...11e28796ecd89470ca50632e0fe9b2e4260e323a?per_page=1",
+        "https://api.github.com/repos/mockito/mockito/compare/11e28796ecd89470ca50632e0fe9b2e4260e323a...ed951112e5c11a0a2ba97671d9708859cbe3eb67?per_page=1"
+      ],
+      "potential_list_truncation": false
+    },
+    {
+      "merge": "48a7bfd76ed6497837c3716ccb4b11cbae4279d8",
+      "repo": "mockito/mockito",
+      "parents": [
+        "3cf2141b26c26b74a56fc8fb0083a858507dc903",
+        "3a9765c0194dfd6d897e4b5ce521c902a069a807"
+      ],
+      "bases": [
+        "3cf2141b26c26b74a56fc8fb0083a858507dc903",
+        "3cf2141b26c26b74a56fc8fb0083a858507dc903"
+      ],
+      "compared_files": [
+        0,
+        1
+      ],
+      "common": [],
+      "compare_urls": [
+        "https://api.github.com/repos/mockito/mockito/compare/3a9765c0194dfd6d897e4b5ce521c902a069a807...3cf2141b26c26b74a56fc8fb0083a858507dc903?per_page=1",
+        "https://api.github.com/repos/mockito/mockito/compare/3cf2141b26c26b74a56fc8fb0083a858507dc903...3a9765c0194dfd6d897e4b5ce521c902a069a807?per_page=1"
+      ],
+      "potential_list_truncation": false
+    },
+    {
+      "merge": "5ac3e13fd6b325b35ae94717ecb8d03860039414",
+      "repo": "mockito/mockito",
+      "parents": [
+        "75dc95525e8e9e945a1415ed6b29a600718e3da4",
+        "069a0d39e15a4cfe4ad1797c9e9697adbba39c1e"
+      ],
+      "bases": [
+        "75dc95525e8e9e945a1415ed6b29a600718e3da4",
+        "75dc95525e8e9e945a1415ed6b29a600718e3da4"
+      ],
+      "compared_files": [
+        0,
+        1
+      ],
+      "common": [],
+      "compare_urls": [
+        "https://api.github.com/repos/mockito/mockito/compare/069a0d39e15a4cfe4ad1797c9e9697adbba39c1e...75dc95525e8e9e945a1415ed6b29a600718e3da4?per_page=1",
+        "https://api.github.com/repos/mockito/mockito/compare/75dc95525e8e9e945a1415ed6b29a600718e3da4...069a0d39e15a4cfe4ad1797c9e9697adbba39c1e?per_page=1"
+      ],
+      "potential_list_truncation": false
+    }
+  ],
+  "path_check_method": "Only status modified with case-sensitive .java suffix and same path on both parent sides; GitHub Compare reports one merge base and at most 300 files per comparison. This screen certifies neither unique merge base, Git text-conflict outcome nor parquet rows."
+}

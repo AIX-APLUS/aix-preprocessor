@@ -1,0 +1,132 @@
+{
+  "repository": "jenkinsci/jenkins",
+  "pilot_anchor": "285741a5240f3658c6e5191edc9ba65fe7d5793c",
+  "two_parent_merges": 213,
+  "source": {
+    "workflow_run_id": 44549292132,
+    "artifact_id": 14543915089,
+    "json": "../runs/pilot-jenkinsci__jenkins.json",
+    "json_sha256": "8c0ca654a00ce5d2f93bdeda0887c836aa9c11933358278e8c42c6b0f09d63fd",
+    "parquet_validation": {
+      "samples": 148,
+      "positive": 21,
+      "negative": 127,
+      "logical_sha256": "62ae7852c3b87c83c0019e28b4f86b623e18d561e71848a8c1477b94ab343ea3"
+    }
+  },
+  "git_version": "git version 2.55.0.windows.5",
+  "extractor_sha": "06e755ebabed1707a3413ec99ffa2511b046c543",
+  "classpath_jar_sha256": "7fa721cd099f18f997f9bdd02368b46708584ddaec1e7e3079372d8e909b2fd7",
+  "method": "As in pilot-enrichment.md, call Extraction.run / DatasetWriter (2 threads) in a private bare repository for each mode. Its single pilot ref points at the CI anchor; read-only alternate supplies the objects. Only the unlimited copy has local diff.renameLimit=0. Inspect both resulting Parquets with benchmarks/dataset.py. No change to the input repository.",
+  "warning_merge": "067fcb824bc1d9bb8c62ff1437e3a9a6be11a427",
+  "diff_command": [
+    "git",
+    "--literal-pathspecs",
+    "-C",
+    "PRIVATE_BARE",
+    "diff",
+    "--raw",
+    "-z",
+    "--no-abbrev",
+    "--find-renames",
+    "--no-ext-diff",
+    "BASE",
+    "PARENT"
+  ],
+  "modes": {
+    "default": {
+      "diff_renameLimit": null,
+      "refs": [
+        "285741a5240f3658c6e5191edc9ba65fe7d5793c refs/heads/pilot"
+      ],
+      "parent_diffs": [
+        {
+          "parent_sha": "7da580e86ea89308603754d517ce0e2b95ee96ca",
+          "stderr": [],
+          "raw_status_counts": {
+            "A": 1,
+            "M": 16
+          },
+          "eligible_java_base_paths": 6,
+          "raw_diff_stdout_sha256": "ab933995f8ecc5b32dd7d70b2de2e84b84ee56b489564cdaf63afcd9e8a6ccfa"
+        },
+        {
+          "parent_sha": "d488238370943c2cd3db961d45b9aeba6c91ad8f",
+          "stderr": [
+            "warning: exhaustive rename detection was skipped due to too many files.",
+            "warning: you may want to set your diff.renameLimit variable to at least 2856 and retry the command."
+          ],
+          "raw_status_counts": {
+            "A": 2856,
+            "D": 466,
+            "M": 1480,
+            "R": 948
+          },
+          "eligible_java_base_paths": 475,
+          "raw_diff_stdout_sha256": "3efa136bb7bde7fadbe754894d81b47ef52d184cdba7d4c879f44966fe764fc6"
+        }
+      ],
+      "joint_java_base_paths_at_warning_merge": [
+        "core/src/main/java/hudson/model/DownloadService.java",
+        "core/src/main/java/hudson/slaves/NodeDescriptor.java",
+        "core/src/main/java/hudson/tools/ZipExtractionInstaller.java",
+        "core/src/main/java/hudson/util/ProcessTreeKiller.java",
+        "maven-plugin/src/main/java/hudson/maven/MavenUtil.java",
+        "test/src/test/java/hudson/maven/MavenProjectTest.java"
+      ],
+      "extraction_rename_warnings": 1,
+      "parquet_validation": {
+        "samples": 148,
+        "positive": 21,
+        "negative": 127,
+        "logical_sha256": "62ae7852c3b87c83c0019e28b4f86b623e18d561e71848a8c1477b94ab343ea3"
+      }
+    },
+    "unlimited": {
+      "diff_renameLimit": 0,
+      "refs": [
+        "285741a5240f3658c6e5191edc9ba65fe7d5793c refs/heads/pilot"
+      ],
+      "parent_diffs": [
+        {
+          "parent_sha": "7da580e86ea89308603754d517ce0e2b95ee96ca",
+          "stderr": [],
+          "raw_status_counts": {
+            "A": 1,
+            "M": 16
+          },
+          "eligible_java_base_paths": 6,
+          "raw_diff_stdout_sha256": "ab933995f8ecc5b32dd7d70b2de2e84b84ee56b489564cdaf63afcd9e8a6ccfa"
+        },
+        {
+          "parent_sha": "d488238370943c2cd3db961d45b9aeba6c91ad8f",
+          "stderr": [],
+          "raw_status_counts": {
+            "A": 2722,
+            "D": 332,
+            "M": 1480,
+            "R": 1082
+          },
+          "eligible_java_base_paths": 484,
+          "raw_diff_stdout_sha256": "dc991b3f505ef6b41dac356ea6777458831af181f95a0f33377e2d11fd2ba859"
+        }
+      ],
+      "joint_java_base_paths_at_warning_merge": [
+        "core/src/main/java/hudson/model/DownloadService.java",
+        "core/src/main/java/hudson/slaves/NodeDescriptor.java",
+        "core/src/main/java/hudson/tools/ZipExtractionInstaller.java",
+        "core/src/main/java/hudson/util/ProcessTreeKiller.java",
+        "maven-plugin/src/main/java/hudson/maven/MavenUtil.java",
+        "test/src/test/java/hudson/maven/MavenProjectTest.java"
+      ],
+      "extraction_rename_warnings": 0,
+      "parquet_validation": {
+        "samples": 148,
+        "positive": 21,
+        "negative": 127,
+        "logical_sha256": "62ae7852c3b87c83c0019e28b4f86b623e18d561e71848a8c1477b94ab343ea3"
+      }
+    }
+  },
+  "warning_merge_base": "ea0ed93558a0d34bc5d4aea125c92a587fbc7cf3"
+}

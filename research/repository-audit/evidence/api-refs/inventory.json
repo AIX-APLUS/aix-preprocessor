@@ -1,0 +1,61 @@
+{
+  "recorded_at_utc": "2026-11-19T14:44:21.338817+00:00",
+  "scope": "Separate GitHub REST matching-refs/heads and matching-refs/tags reads; non-atomic. Compare sha256 with hosted Git fetch before calling these manifests identical. Tag object IDs are preserved.",
+  "repositories": [
+    {
+      "repository": "spring-projects/spring-boot",
+      "ref_manifest": "spring-boot.refs.tsv.gz",
+      "head_count": 27,
+      "tag_count": 399,
+      "refs_uncompressed_sha256": "f3f4480ef2eedb696559776b9ff1661a5d363368c4494fdf18a540025c7513b8",
+      "evidence_urls": [
+        "https://api.github.com/repos/spring-projects/spring-boot/git/matching-refs/heads/",
+        "https://api.github.com/repos/spring-projects/spring-boot/git/matching-refs/tags/"
+      ]
+    },
+    {
+      "repository": "jenkinsci/jenkins",
+      "ref_manifest": "jenkins.refs.tsv.gz",
+      "head_count": 55,
+      "tag_count": 1943,
+      "refs_uncompressed_sha256": "05480b5b9563c2274ae10d143370a6fcab3ad9b96505c02c1840e1b9708bcf0c",
+      "evidence_urls": [
+        "https://api.github.com/repos/jenkinsci/jenkins/git/matching-refs/heads/",
+        "https://api.github.com/repos/jenkinsci/jenkins/git/matching-refs/tags/"
+      ]
+    },
+    {
+      "repository": "JabRef/jabref",
+      "ref_manifest": "jabref.refs.tsv.gz",
+      "head_count": 101,
+      "tag_count": 66,
+      "refs_uncompressed_sha256": "d5116b909e8f54bd3d8168dcd2ab7fca5454814c81a2ac976558a63e1ef007df",
+      "evidence_urls": [
+        "https://api.github.com/repos/JabRef/jabref/git/matching-refs/heads/",
+        "https://api.github.com/repos/JabRef/jabref/git/matching-refs/tags/"
+      ]
+    },
+    {
+      "repository": "quarkusio/quarkus",
+      "ref_manifest": "quarkus.refs.tsv.gz",
+      "head_count": 132,
+      "tag_count": 535,
+      "refs_uncompressed_sha256": "b098e282ea53b50a0edf31561d93ee5a9ca5df2f6ec8d4a3c2a1b8b8bfe5955b",
+      "evidence_urls": [
+        "https://api.github.com/repos/quarkusio/quarkus/git/matching-refs/heads/",
+        "https://api.github.com/repos/quarkusio/quarkus/git/matching-refs/tags/"
+      ]
+    },
+    {
+      "repository": "Card-Forge/forge",
+      "ref_manifest": "forge.refs.tsv.gz",
+      "head_count": 145,
+      "tag_count": 197,
+      "refs_uncompressed_sha256": "ccbee28d02dc19c0218fd0dc4bc1455f9de5638aeb8077688e0ca308bf5c23c1",
+      "evidence_urls": [
+        "https://api.github.com/repos/Card-Forge/forge/git/matching-refs/heads/",
+        "https://api.github.com/repos/Card-Forge/forge/git/matching-refs/tags/"
+      ]
+    }
+  ]
+}

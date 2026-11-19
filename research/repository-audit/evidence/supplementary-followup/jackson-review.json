@@ -1,0 +1,59 @@
+{
+  "scope": "Eight isolated file merges. Includes every Jackson comparison with at least one observed both-modified Java path. GitHub commit subjects indicate the named source branch, not the development intent of a change.",
+  "git_version": "git version 2.55.0.windows.5",
+  "command": "git merge-file --stdout p1 base p2",
+  "unique_blobs_validated": 22,
+  "probe_source": "jackson-file-probes.json",
+  "merges": [
+    {
+      "sha": "338750bf01d3df75be258c9c649b3ef43e5ef30a",
+      "subject": "Merge branch '3.2' into 3.3",
+      "url": "https://api.github.com/repos/FasterXML/jackson-databind/commits/338750bf01d3df75be258c9c649b3ef43e5ef30a",
+      "probe_exit_codes_in_source_order": [
+        0,
+        0
+      ]
+    },
+    {
+      "sha": "7e16c8bc18d9a3704878d9ddcdb262eec36c4d43",
+      "subject": "Merge branch '3.1' into 3.2",
+      "url": "https://api.github.com/repos/FasterXML/jackson-databind/commits/7e16c8bc18d9a3704878d9ddcdb262eec36c4d43",
+      "probe_exit_codes_in_source_order": [
+        0
+      ]
+    },
+    {
+      "sha": "abe0a501f0544a908eae41599f4e867f6ada5acc",
+      "subject": "Merge branch '3.0' into 3.x",
+      "url": "https://api.github.com/repos/FasterXML/jackson-databind/commits/abe0a501f0544a908eae41599f4e867f6ada5acc",
+      "probe_exit_codes_in_source_order": [
+        0,
+        1
+      ]
+    },
+    {
+      "sha": "5a2fac6b8802569a94821346584e77e66f7f82db",
+      "subject": "Merge branch '2.10'",
+      "url": "https://api.github.com/repos/FasterXML/jackson-databind/commits/5a2fac6b8802569a94821346584e77e66f7f82db",
+      "probe_exit_codes_in_source_order": [
+        2
+      ]
+    },
+    {
+      "sha": "0291979966f3850c8804d43dd4ab9e2dc8fa0c5d",
+      "subject": "Merge branch '2.10'",
+      "url": "https://api.github.com/repos/FasterXML/jackson-databind/commits/0291979966f3850c8804d43dd4ab9e2dc8fa0c5d",
+      "probe_exit_codes_in_source_order": [
+        2
+      ]
+    },
+    {
+      "sha": "ef4d09426b8d0a9cf2a52b0d124d7d785f68795c",
+      "subject": "Merge branch '2.10'",
+      "url": "https://api.github.com/repos/FasterXML/jackson-databind/commits/ef4d09426b8d0a9cf2a52b0d124d7d785f68795c",
+      "probe_exit_codes_in_source_order": [
+        0
+      ]
+    }
+  ]
+}

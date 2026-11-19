@@ -1,0 +1,3433 @@
+{
+  "method": {
+    "observed_utc_date": "2026-11-19",
+    "candidate_selection": "Purposive secondary screen: varied Java domains, accessible pinned default-tip trees and enough observed two-parent history to justify limited path checks; not a random comparison.",
+    "commits_at_pin": "Size of the GitHub commits endpoint listing reachable from pin (all parents within this ancestry, no other ref tips). per_page=1 final nonempty page and following empty page verified.",
+    "java_size": "Count and sum of Git tree blob-entry sizes (.java suffix). Includes tests and vendored/generated Java where present; no LOC, token or runtime interpretation.",
+    "windows": "First 25 REST API commits at pin, and first 25 at or before 2025-11-19T00:00:00Z / 2018-11-19T00:00:00Z within pin ancestry. Records are [merge-or-ordinary commit SHA,[all parent SHAs]].",
+    "overlaps": "First two two-parent commits per window, or all if fewer, in API order. Compare p2...p1 and p1...p2, require same reported merge-base, intersect status=modified case-sensitive .java paths. At 300 returned files or a surfaced limit, observed intersections are lower bounds. Multiple merge-base ambiguity, renames and attributes are not resolved.",
+    "size_kib": "GitHub live repository size snapshot (KiB), a rough relative transfer-cost signal. Extraction runtime, transfer bytes and memory have not been measured.",
+    "coverage": "Metadata, pinned trees, bounded parent comparisons and isolated text probes. No production extraction, so no Parquet rows or class rates."
+  },
+  "repositories": [
+    {
+      "repository": "apache/cassandra",
+      "url": "https://github.com/apache/cassandra",
+      "pin": "53c3561e9db3fa0b1ed8e29ce462fde6ce566ff0",
+      "default_branch": "trunk",
+      "meta_url": "https://api.github.com/repos/apache/cassandra",
+      "pinned_commit_url": "https://api.github.com/repos/apache/cassandra/git/commits/53c3561e9db3fa0b1ed8e29ce462fde6ce566ff0",
+      "primary_language": "Java",
+      "license": "Apache-2.0; NOTICE and bundled exceptions",
+      "github_license_spdx_snapshot": "Apache-2.0",
+      "license_files": [
+        {
+          "path": "LICENSE.txt",
+          "sha": "5211e7dc27869166a608e12e7cc7fe09f1a95652",
+          "url": "https://github.com/apache/cassandra/blob/53c3561e9db3fa0b1ed8e29ce462fde6ce566ff0/LICENSE.txt"
+        },
+        {
+          "path": "NOTICE.txt",
+          "sha": "fd185210450f9fb67117f5873a4972e1652a11eb",
+          "url": "https://github.com/apache/cassandra/blob/53c3561e9db3fa0b1ed8e29ce462fde6ce566ff0/NOTICE.txt"
+        }
+      ],
+      "java_files_at_pin": 6540,
+      "java_bytes_at_pin": 61227061,
+      "java_tree": {
+        "java_files": 6540,
+        "bytes": 61227061,
+        "truncated": false,
+        "url": "https://api.github.com/repos/apache/cassandra/git/trees/f57a06d7978078b7cc19f5ad2618a415b015a85d?recursive=1",
+        "tree_sha": "f57a06d7978078b7cc19f5ad2618a415b015a85d"
+      },
+      "commits_at_pin": 32631,
+      "commit_page_boundary": {
+        "count": 32631,
+        "last_sha": "1f91e99223b0d1b7ed8390400d4a06ac08e4aa85",
+        "last_url": "https://api.github.com/repos/apache/cassandra/commits?sha=53c3561e9db3fa0b1ed8e29ce462fde6ce566ff0&per_page=1&page=32631",
+        "empty_next_url": "https://api.github.com/repos/apache/cassandra/commits?sha=53c3561e9db3fa0b1ed8e29ce462fde6ce566ff0&per_page=1&page=32632"
+      },
+      "total_two_parent_at_pin": null,
+      "windows": [
+        {
+          "name": "tip",
+          "url": "https://api.github.com/repos/apache/cassandra/commits?sha=53c3561e9db3fa0b1ed8e29ce462fde6ce566ff0&per_page=25",
+          "commits": 25,
+          "two_parent": 17,
+          "records": [
+            [
+              "53c3561e9db3fa0b1ed8e29ce462fde6ce566ff0",
+              [
+                "e97bc75bc19c746233416fefaa8b482a5b2f058c",
+                "59e7362323990dd5ab25e1d3b6c0c6b39d1e971b"
+              ]
+            ],
+            [
+              "59e7362323990dd5ab25e1d3b6c0c6b39d1e971b",
+              [
+                "ce47c4e30246ea0e2e0aeb741d61e0fe80eccd9b",
+                "5f11d4bd5c27b1b9c711efb43fc15dda6b643065"
+              ]
+            ],
+            [
+              "5f11d4bd5c27b1b9c711efb43fc15dda6b643065",
+              [
+                "77a030d8c92cc6e2315af77b590eb8824bb7da0b"
+              ]
+            ],
+            [
+              "e97bc75bc19c746233416fefaa8b482a5b2f058c",
+              [
+                "7d7d6b30dbd3c4d87c7dd89de87ab1318977be39",
+                "ce47c4e30246ea0e2e0aeb741d61e0fe80eccd9b"
+              ]
+            ],
+            [
+              "ce47c4e30246ea0e2e0aeb741d61e0fe80eccd9b",
+              [
+                "d60653e71c16818ebb62e49b8091d54171760bc1",
+                "77a030d8c92cc6e2315af77b590eb8824bb7da0b"
+              ]
+            ],
+            [
+              "77a030d8c92cc6e2315af77b590eb8824bb7da0b",
+              [
+                "9e36adecefd7b3b587c3a256f65b025c8fab4ee3"
+              ]
+            ],
+            [
+              "7d7d6b30dbd3c4d87c7dd89de87ab1318977be39",
+              [
+                "1085b1823f432a792dbb0bebd47c9f43dffca105",
+                "d60653e71c16818ebb62e49b8091d54171760bc1"
+              ]
+            ],
+            [
+              "d60653e71c16818ebb62e49b8091d54171760bc1",
+              [
+                "ee7b57dfef5d5186d0163540c6a48a98daa4e096",
+                "9e36adecefd7b3b587c3a256f65b025c8fab4ee3"
+              ]
+            ],
+            [
+              "9e36adecefd7b3b587c3a256f65b025c8fab4ee3",
+              [
+                "41fb172e73a2502d6da3583b5ba5fcb42a430f03",
+                "e3e00c22a0ec7ecac2d9f5d8c4224a94769334c9"
+              ]
+            ],
+            [
+              "e3e00c22a0ec7ecac2d9f5d8c4224a94769334c9",
+              [
+                "bfab7d3188d6f4b7a951d8a2ee6fdfed2d610da5"
+              ]
+            ],
+            [
+              "1085b1823f432a792dbb0bebd47c9f43dffca105",
+              [
+                "30b73cadf3458db49add274d6105f7ae93ea6e5e",
+                "ee7b57dfef5d5186d0163540c6a48a98daa4e096"
+              ]
+            ],
+            [
+              "ee7b57dfef5d5186d0163540c6a48a98daa4e096",
+              [
+                "383ed3c5ad5c5f20d94aac509187490f7cba4d7c",
+                "41fb172e73a2502d6da3583b5ba5fcb42a430f03"
+              ]
+            ],
+            [
+              "41fb172e73a2502d6da3583b5ba5fcb42a430f03",
+              [
+                "531e98928dea170b5d07aeb5e9f5615394543ea4",
+                "bfab7d3188d6f4b7a951d8a2ee6fdfed2d610da5"
+              ]
+            ],
+            [
+              "bfab7d3188d6f4b7a951d8a2ee6fdfed2d610da5",
+              [
+                "3ce4744fd372b2eb33ae71dd2641c3344abc2f98",
+                "ff5a1eb859c6e840f983729317dedade25801ccf"
+              ]
+            ],
+            [
+              "ff5a1eb859c6e840f983729317dedade25801ccf",
+              [
+                "edcafb055f3b8c145b224cfe800900054e76f71f"
+              ]
+            ],
+            [
+              "30b73cadf3458db49add274d6105f7ae93ea6e5e",
+              [
+                "2249e37b51af9fd2a72865bbb56c1197e0d0d1ed",
+                "383ed3c5ad5c5f20d94aac509187490f7cba4d7c"
+              ]
+            ],
+            [
+              "383ed3c5ad5c5f20d94aac509187490f7cba4d7c",
+              [
+                "84bca651efc28f74262e043b87c7150663e31e96",
+                "531e98928dea170b5d07aeb5e9f5615394543ea4"
+              ]
+            ],
+            [
+              "531e98928dea170b5d07aeb5e9f5615394543ea4",
+              [
+                "fb7f1b7aeebb9565305aad76025530dc30f697fb"
+              ]
+            ],
+            [
+              "2249e37b51af9fd2a72865bbb56c1197e0d0d1ed",
+              [
+                "197b73dcdf78f0554e7ae8fe411f4296b7875640",
+                "84bca651efc28f74262e043b87c7150663e31e96"
+              ]
+            ],
+            [
+              "84bca651efc28f74262e043b87c7150663e31e96",
+              [
+                "10d54546bdc3bb1eeddd7074efe879402bd0f651"
+              ]
+            ],
+            [
+              "197b73dcdf78f0554e7ae8fe411f4296b7875640",
+              [
+                "47de09f327523e080f99cc56474711ecc0144344",
+                "10d54546bdc3bb1eeddd7074efe879402bd0f651"
+              ]
+            ],
+            [
+              "10d54546bdc3bb1eeddd7074efe879402bd0f651",
+              [
+                "affff1607280af86e0016b2bc0792d0d29da8659"
+              ]
+            ],
+            [
+              "47de09f327523e080f99cc56474711ecc0144344",
+              [
+                "fcb9696c811dc85a53800ea00fe04014447518c6",
+                "affff1607280af86e0016b2bc0792d0d29da8659"
+              ]
+            ],
+            [
+              "affff1607280af86e0016b2bc0792d0d29da8659",
+              [
+                "f3e71d163d24fc834a5829341db6f76cfdd7a844"
+              ]
+            ],
+            [
+              "fcb9696c811dc85a53800ea00fe04014447518c6",
+              [
+                "4ad8be643c28914c45b202c7bccbc04169c4dafc",
+                "f3e71d163d24fc834a5829341db6f76cfdd7a844"
+              ]
+            ]
+          ]
+        },
+        {
+          "name": "2025",
+          "url": "https://api.github.com/repos/apache/cassandra/commits?sha=53c3561e9db3fa0b1ed8e29ce462fde6ce566ff0&per_page=25&until=2025-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 11,
+          "records": [
+            [
+              "e621d8a6c1bb175bea4e7e25f1f39dcd3d648f76",
+              [
+                "6b57acc7f41357afb2ced62271f8f16b865f99c8"
+              ]
+            ],
+            [
+              "6b57acc7f41357afb2ced62271f8f16b865f99c8",
+              [
+                "4cf684b464d949da09f79a84980dce32992c9340"
+              ]
+            ],
+            [
+              "4cf684b464d949da09f79a84980dce32992c9340",
+              [
+                "99be618ec16439c1bd8791ae9e93ca74184ac144",
+                "2fec119f0995fefe0adc926f5df36c2bff94b9b8"
+              ]
+            ],
+            [
+              "2fec119f0995fefe0adc926f5df36c2bff94b9b8",
+              [
+                "e2f74ed65bbda8e8d515075a7122b963a13ffbe7",
+                "ed7d5840b7756eebf53307df680fd24c50922615"
+              ]
+            ],
+            [
+              "ed7d5840b7756eebf53307df680fd24c50922615",
+              [
+                "e4ea61c1cc836aee61e8df2513383660b239e280",
+                "3f079b23452a44ab443b4519b3b1301c2b4d3563"
+              ]
+            ],
+            [
+              "3f079b23452a44ab443b4519b3b1301c2b4d3563",
+              [
+                "61014f2ae7cd2c3126042275e627f6a90560b5ef"
+              ]
+            ],
+            [
+              "99be618ec16439c1bd8791ae9e93ca74184ac144",
+              [
+                "136e5fd222a087d6104d9dce307d759d1f6a5d3e",
+                "e2f74ed65bbda8e8d515075a7122b963a13ffbe7"
+              ]
+            ],
+            [
+              "e2f74ed65bbda8e8d515075a7122b963a13ffbe7",
+              [
+                "965eb1d223f7d43c2b2cb414b2230264315e1a42"
+              ]
+            ],
+            [
+              "136e5fd222a087d6104d9dce307d759d1f6a5d3e",
+              [
+                "494c3c7befeb291a0bf1d36dd9b958da032a1e43"
+              ]
+            ],
+            [
+              "494c3c7befeb291a0bf1d36dd9b958da032a1e43",
+              [
+                "cf8050393c7667519f448ac399a5debfc18922ca"
+              ]
+            ],
+            [
+              "cf8050393c7667519f448ac399a5debfc18922ca",
+              [
+                "f43d9d0f7f090bcd3679097a453ff0ae2b33ee8e"
+              ]
+            ],
+            [
+              "f43d9d0f7f090bcd3679097a453ff0ae2b33ee8e",
+              [
+                "f6fd49566ff1dbcdc921a1b5876c53713e4c12d5"
+              ]
+            ],
+            [
+              "f6fd49566ff1dbcdc921a1b5876c53713e4c12d5",
+              [
+                "4b7ef7c8f3fe819b32bdf8c35b381e8d8cdad9fd"
+              ]
+            ],
+            [
+              "4b7ef7c8f3fe819b32bdf8c35b381e8d8cdad9fd",
+              [
+                "9a534ba06f14729c08eb55b90878ef32d5423782",
+                "965eb1d223f7d43c2b2cb414b2230264315e1a42"
+              ]
+            ],
+            [
+              "965eb1d223f7d43c2b2cb414b2230264315e1a42",
+              [
+                "4091613298089e9b4908f977bc379c728dcf7e8c"
+              ]
+            ],
+            [
+              "9a534ba06f14729c08eb55b90878ef32d5423782",
+              [
+                "f0cb7f1c1a34f9a0323a67a504a9bc89c3654a20",
+                "4091613298089e9b4908f977bc379c728dcf7e8c"
+              ]
+            ],
+            [
+              "4091613298089e9b4908f977bc379c728dcf7e8c",
+              [
+                "5ea935d6b8a2edb157a440b4f98a4ff8b0a32653",
+                "e4ea61c1cc836aee61e8df2513383660b239e280"
+              ]
+            ],
+            [
+              "e4ea61c1cc836aee61e8df2513383660b239e280",
+              [
+                "7b312d4329611b4d814af8701e96b91e4987e88f",
+                "61014f2ae7cd2c3126042275e627f6a90560b5ef"
+              ]
+            ],
+            [
+              "61014f2ae7cd2c3126042275e627f6a90560b5ef",
+              [
+                "2d7e99f7b9108204978d733c7b3162274078898d"
+              ]
+            ],
+            [
+              "f0cb7f1c1a34f9a0323a67a504a9bc89c3654a20",
+              [
+                "aa5c3aba1d5a2fd3812f8062502fe85cfa0c4757",
+                "5ea935d6b8a2edb157a440b4f98a4ff8b0a32653"
+              ]
+            ],
+            [
+              "5ea935d6b8a2edb157a440b4f98a4ff8b0a32653",
+              [
+                "a3ad539c99354890cecc84e8627be5b89a177f8f",
+                "7b312d4329611b4d814af8701e96b91e4987e88f"
+              ]
+            ],
+            [
+              "7b312d4329611b4d814af8701e96b91e4987e88f",
+              [
+                "fca850c7376902c091d1e83303485f62cc6117c0",
+                "2d7e99f7b9108204978d733c7b3162274078898d"
+              ]
+            ],
+            [
+              "2d7e99f7b9108204978d733c7b3162274078898d",
+              [
+                "aa0e2f1631ae343e35334e5419b193a9a1cfa0a6"
+              ]
+            ],
+            [
+              "aa5c3aba1d5a2fd3812f8062502fe85cfa0c4757",
+              [
+                "1a96b8803a3d139a315b2fdc10a2ee704d562a28"
+              ]
+            ],
+            [
+              "1a96b8803a3d139a315b2fdc10a2ee704d562a28",
+              [
+                "c9e31f297c4bac795c4eb4068bd108d30922cbc2"
+              ]
+            ]
+          ]
+        },
+        {
+          "name": "2018",
+          "url": "https://api.github.com/repos/apache/cassandra/commits?sha=53c3561e9db3fa0b1ed8e29ce462fde6ce566ff0&per_page=25&until=2018-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 14,
+          "records": [
+            [
+              "521542ff26f9482b733e4f0f86281f07c3af29da",
+              [
+                "f22fec927de7ac291266660c2f34de5b8cc1c695",
+                "2ed7c6a6b8f747806b2dfa8e9919582306ed6522"
+              ]
+            ],
+            [
+              "2ed7c6a6b8f747806b2dfa8e9919582306ed6522",
+              [
+                "5431b87ede5f2b41fc0d6b9775ca5256de211d92",
+                "60a8cfe115b78cee7e4d8024984fa1f8367685db"
+              ]
+            ],
+            [
+              "60a8cfe115b78cee7e4d8024984fa1f8367685db",
+              [
+                "9eee7aa7874c17ab28d43ff58c97da889c87e397"
+              ]
+            ],
+            [
+              "f22fec927de7ac291266660c2f34de5b8cc1c695",
+              [
+                "7877035081bafad1b2dad80ae8c600004f74cfd5"
+              ]
+            ],
+            [
+              "7877035081bafad1b2dad80ae8c600004f74cfd5",
+              [
+                "a4af73d2e16ccdd144e1e6a2d9b23f8df45446bf"
+              ]
+            ],
+            [
+              "a4af73d2e16ccdd144e1e6a2d9b23f8df45446bf",
+              [
+                "b80f6c65fb0b97a8c79f6da027deac06a4af9801",
+                "5431b87ede5f2b41fc0d6b9775ca5256de211d92"
+              ]
+            ],
+            [
+              "5431b87ede5f2b41fc0d6b9775ca5256de211d92",
+              [
+                "a03424ef95559c9df2bb7f86e1ac1edca1436058",
+                "9eee7aa7874c17ab28d43ff58c97da889c87e397"
+              ]
+            ],
+            [
+              "b80f6c65fb0b97a8c79f6da027deac06a4af9801",
+              [
+                "caf50de31b034ed77140b3c1597e7ca6ddc44e17",
+                "a03424ef95559c9df2bb7f86e1ac1edca1436058"
+              ]
+            ],
+            [
+              "a03424ef95559c9df2bb7f86e1ac1edca1436058",
+              [
+                "d17836dec7ed9bd1aebb7ad9f369c7ab26317e31"
+              ]
+            ],
+            [
+              "caf50de31b034ed77140b3c1597e7ca6ddc44e17",
+              [
+                "801cb70ee811c956e987718a00695638d5bec1b6"
+              ]
+            ],
+            [
+              "9eee7aa7874c17ab28d43ff58c97da889c87e397",
+              [
+                "a270ee78207cc2d889bd0bb4aa95d1367496f560"
+              ]
+            ],
+            [
+              "801cb70ee811c956e987718a00695638d5bec1b6",
+              [
+                "918b1d8c643aae06ac7d8a34a5cf42e658e13969"
+              ]
+            ],
+            [
+              "918b1d8c643aae06ac7d8a34a5cf42e658e13969",
+              [
+                "2adfa92044381aa9093104f3a105f3dbd7dda94c",
+                "d17836dec7ed9bd1aebb7ad9f369c7ab26317e31"
+              ]
+            ],
+            [
+              "d17836dec7ed9bd1aebb7ad9f369c7ab26317e31",
+              [
+                "af600c7931e7e1e7d8cac960b3fc506d18c26243",
+                "a270ee78207cc2d889bd0bb4aa95d1367496f560"
+              ]
+            ],
+            [
+              "a270ee78207cc2d889bd0bb4aa95d1367496f560",
+              [
+                "7bf617165e910f08db81917742ab8036215ab300"
+              ]
+            ],
+            [
+              "2adfa92044381aa9093104f3a105f3dbd7dda94c",
+              [
+                "0ad056432f357800c717b4474d15c15462c079c4"
+              ]
+            ],
+            [
+              "0ad056432f357800c717b4474d15c15462c079c4",
+              [
+                "3ebeef6d21d5feeb5305335b8ec9a7a3b3ef6311",
+                "af600c7931e7e1e7d8cac960b3fc506d18c26243"
+              ]
+            ],
+            [
+              "af600c7931e7e1e7d8cac960b3fc506d18c26243",
+              [
+                "7eecf891f5a12a0f74b69a9aa60a91f584235d0c",
+                "7bf617165e910f08db81917742ab8036215ab300"
+              ]
+            ],
+            [
+              "3ebeef6d21d5feeb5305335b8ec9a7a3b3ef6311",
+              [
+                "51c8387deac074ee404eba0070016867253d90b1",
+                "4b2692fc978764d93209db27c13b0fbdb5896034"
+              ]
+            ],
+            [
+              "4b2692fc978764d93209db27c13b0fbdb5896034",
+              [
+                "a6a9dce157a4ed14e7d08e854c504423dd199daa",
+                "e04efab3f9a60e5e8c34c845548b6ab6d0570376"
+              ]
+            ],
+            [
+              "7bf617165e910f08db81917742ab8036215ab300",
+              [
+                "e04efab3f9a60e5e8c34c845548b6ab6d0570376"
+              ]
+            ],
+            [
+              "51c8387deac074ee404eba0070016867253d90b1",
+              [
+                "6ec445282ad2ed0620d7fd16f23fab256123e7cf",
+                "7eecf891f5a12a0f74b69a9aa60a91f584235d0c"
+              ]
+            ],
+            [
+              "7eecf891f5a12a0f74b69a9aa60a91f584235d0c",
+              [
+                "a6a9dce157a4ed14e7d08e854c504423dd199daa",
+                "e04efab3f9a60e5e8c34c845548b6ab6d0570376"
+              ]
+            ],
+            [
+              "e04efab3f9a60e5e8c34c845548b6ab6d0570376",
+              [
+                "d60c78358b6f599a83f3c112bfd6ce72c1129c9f"
+              ]
+            ],
+            [
+              "6ec445282ad2ed0620d7fd16f23fab256123e7cf",
+              [
+                "bfbc5274f2b3a5af2cbbe9679f0e78f1066ef638",
+                "a6a9dce157a4ed14e7d08e854c504423dd199daa"
+              ]
+            ]
+          ]
+        }
+      ],
+      "overlaps": [
+        {
+          "window": "tip",
+          "merge": "59e7362323990dd5ab25e1d3b6c0c6b39d1e971b",
+          "parents": [
+            "ce47c4e30246ea0e2e0aeb741d61e0fe80eccd9b",
+            "5f11d4bd5c27b1b9c711efb43fc15dda6b643065"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/apache/cassandra/compare/5f11d4bd5c27b1b9c711efb43fc15dda6b643065...ce47c4e30246ea0e2e0aeb741d61e0fe80eccd9b",
+            "https://api.github.com/repos/apache/cassandra/compare/ce47c4e30246ea0e2e0aeb741d61e0fe80eccd9b...5f11d4bd5c27b1b9c711efb43fc15dda6b643065"
+          ],
+          "common_base": "77a030d8c92cc6e2315af77b590eb8824bb7da0b",
+          "returned_files": [
+            300,
+            19
+          ],
+          "capped_or_failed": true,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "tip",
+          "merge": "53c3561e9db3fa0b1ed8e29ce462fde6ce566ff0",
+          "parents": [
+            "e97bc75bc19c746233416fefaa8b482a5b2f058c",
+            "59e7362323990dd5ab25e1d3b6c0c6b39d1e971b"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/apache/cassandra/compare/59e7362323990dd5ab25e1d3b6c0c6b39d1e971b...e97bc75bc19c746233416fefaa8b482a5b2f058c",
+            "https://api.github.com/repos/apache/cassandra/compare/e97bc75bc19c746233416fefaa8b482a5b2f058c...59e7362323990dd5ab25e1d3b6c0c6b39d1e971b"
+          ],
+          "common_base": "ce47c4e30246ea0e2e0aeb741d61e0fe80eccd9b",
+          "returned_files": [
+            297,
+            19
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [
+            "src/java/org/apache/cassandra/config/CassandraRelevantProperties.java",
+            "src/java/org/apache/cassandra/config/DatabaseDescriptor.java",
+            "test/unit/org/apache/cassandra/config/DatabaseDescriptorTest.java"
+          ],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2025",
+          "merge": "4cf684b464d949da09f79a84980dce32992c9340",
+          "parents": [
+            "99be618ec16439c1bd8791ae9e93ca74184ac144",
+            "2fec119f0995fefe0adc926f5df36c2bff94b9b8"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/apache/cassandra/compare/2fec119f0995fefe0adc926f5df36c2bff94b9b8...99be618ec16439c1bd8791ae9e93ca74184ac144",
+            "https://api.github.com/repos/apache/cassandra/compare/99be618ec16439c1bd8791ae9e93ca74184ac144...2fec119f0995fefe0adc926f5df36c2bff94b9b8"
+          ],
+          "common_base": "e2f74ed65bbda8e8d515075a7122b963a13ffbe7",
+          "returned_files": [
+            300,
+            3
+          ],
+          "capped_or_failed": true,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2018",
+          "merge": "521542ff26f9482b733e4f0f86281f07c3af29da",
+          "parents": [
+            "f22fec927de7ac291266660c2f34de5b8cc1c695",
+            "2ed7c6a6b8f747806b2dfa8e9919582306ed6522"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/apache/cassandra/compare/2ed7c6a6b8f747806b2dfa8e9919582306ed6522...f22fec927de7ac291266660c2f34de5b8cc1c695",
+            "https://api.github.com/repos/apache/cassandra/compare/f22fec927de7ac291266660c2f34de5b8cc1c695...2ed7c6a6b8f747806b2dfa8e9919582306ed6522"
+          ],
+          "common_base": "5431b87ede5f2b41fc0d6b9775ca5256de211d92",
+          "returned_files": [
+            300,
+            1
+          ],
+          "capped_or_failed": true,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2025",
+          "merge": "2fec119f0995fefe0adc926f5df36c2bff94b9b8",
+          "parents": [
+            "e2f74ed65bbda8e8d515075a7122b963a13ffbe7",
+            "ed7d5840b7756eebf53307df680fd24c50922615"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/apache/cassandra/compare/ed7d5840b7756eebf53307df680fd24c50922615...e2f74ed65bbda8e8d515075a7122b963a13ffbe7",
+            "https://api.github.com/repos/apache/cassandra/compare/e2f74ed65bbda8e8d515075a7122b963a13ffbe7...ed7d5840b7756eebf53307df680fd24c50922615"
+          ],
+          "common_base": "e4ea61c1cc836aee61e8df2513383660b239e280",
+          "returned_files": [
+            300,
+            4
+          ],
+          "capped_or_failed": true,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2018",
+          "merge": "2ed7c6a6b8f747806b2dfa8e9919582306ed6522",
+          "parents": [
+            "5431b87ede5f2b41fc0d6b9775ca5256de211d92",
+            "60a8cfe115b78cee7e4d8024984fa1f8367685db"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/apache/cassandra/compare/60a8cfe115b78cee7e4d8024984fa1f8367685db...5431b87ede5f2b41fc0d6b9775ca5256de211d92",
+            "https://api.github.com/repos/apache/cassandra/compare/5431b87ede5f2b41fc0d6b9775ca5256de211d92...60a8cfe115b78cee7e4d8024984fa1f8367685db"
+          ],
+          "common_base": "9eee7aa7874c17ab28d43ff58c97da889c87e397",
+          "returned_files": [
+            300,
+            1
+          ],
+          "capped_or_failed": true,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        }
+      ],
+      "repo_size_kib_snapshot": 474806,
+      "cost": "wide",
+      "assessment": "Release maintenance merges are frequent in the three windows. Five parent comparisons reach the API file cap; use local Git for a capped pilot.",
+      "production_rows": null,
+      "production_positives": null,
+      "production_negatives": null,
+      "production_seconds": null,
+      "production_peak_rss_bytes": null
+    },
+    {
+      "repository": "h2database/h2database",
+      "url": "https://github.com/h2database/h2database",
+      "pin": "1a1ca49da6ee10ed0502da0eeba0a18649f0e13e",
+      "default_branch": "master",
+      "meta_url": "https://api.github.com/repos/h2database/h2database",
+      "pinned_commit_url": "https://api.github.com/repos/h2database/h2database/git/commits/1a1ca49da6ee10ed0502da0eeba0a18649f0e13e",
+      "primary_language": "Java",
+      "license": "MPL-2.0 OR EPL-1.0",
+      "github_license_spdx_snapshot": "NOASSERTION",
+      "license_files": [
+        {
+          "path": "LICENSE.txt",
+          "sha": "eed8e4b1a1ed197b0488480accec2d1d38a3a86e",
+          "url": "https://github.com/h2database/h2database/blob/1a1ca49da6ee10ed0502da0eeba0a18649f0e13e/LICENSE.txt"
+        }
+      ],
+      "java_files_at_pin": 1261,
+      "java_bytes_at_pin": 12013805,
+      "java_tree": {
+        "java_files": 1261,
+        "bytes": 12013805,
+        "truncated": false,
+        "url": "https://api.github.com/repos/h2database/h2database/git/trees/854af66c34e001496e95ffb717e9a1f2a2fe50b4?recursive=1",
+        "tree_sha": "854af66c34e001496e95ffb717e9a1f2a2fe50b4"
+      },
+      "commits_at_pin": 14919,
+      "commit_page_boundary": {
+        "count": 14919,
+        "last_sha": "57e341e4402477c684f46fc58e2e7575f213c9c4",
+        "last_url": "https://api.github.com/repos/h2database/h2database/commits?sha=1a1ca49da6ee10ed0502da0eeba0a18649f0e13e&per_page=1&page=14919",
+        "empty_next_url": "https://api.github.com/repos/h2database/h2database/commits?sha=1a1ca49da6ee10ed0502da0eeba0a18649f0e13e&per_page=1&page=14920"
+      },
+      "total_two_parent_at_pin": null,
+      "windows": [
+        {
+          "name": "tip",
+          "url": "https://api.github.com/repos/h2database/h2database/commits?sha=1a1ca49da6ee10ed0502da0eeba0a18649f0e13e&per_page=25",
+          "commits": 25,
+          "two_parent": 15,
+          "records": [
+            [
+              "1a1ca49da6ee10ed0502da0eeba0a18649f0e13e",
+              [
+                "9c0bd44d741215871a8600bb7dad21aa7304e687",
+                "10cd621729ddf09bd143f5b0da479bb4373834b3"
+              ]
+            ],
+            [
+              "10cd621729ddf09bd143f5b0da479bb4373834b3",
+              [
+                "9c0bd44d741215871a8600bb7dad21aa7304e687"
+              ]
+            ],
+            [
+              "9c0bd44d741215871a8600bb7dad21aa7304e687",
+              [
+                "98ceee4b768979d54e8fc9dfa195ec48b1ebb641",
+                "4304b04aff5a9d80eb20393b9c80c819d2368cdf"
+              ]
+            ],
+            [
+              "98ceee4b768979d54e8fc9dfa195ec48b1ebb641",
+              [
+                "c42ac2858d43165f3c38125bb13e0fbeec9570f3",
+                "4accc757b630e26627c295312045b5a5d04876b3"
+              ]
+            ],
+            [
+              "c42ac2858d43165f3c38125bb13e0fbeec9570f3",
+              [
+                "564aa99f0ecb9fea33693ade0f73ea48846dd2ca",
+                "f6625e68402a6fb0aac774842dad7edf857e9e8b"
+              ]
+            ],
+            [
+              "564aa99f0ecb9fea33693ade0f73ea48846dd2ca",
+              [
+                "dd267d28ab3907c551414dbfaae4709672944b35",
+                "af2e240aaae64a3c24e1de1f22e9a031468f3ddf"
+              ]
+            ],
+            [
+              "dd267d28ab3907c551414dbfaae4709672944b35",
+              [
+                "519b0d26825ea6ce546a04764d8a61fc15d37975"
+              ]
+            ],
+            [
+              "f6625e68402a6fb0aac774842dad7edf857e9e8b",
+              [
+                "519b0d26825ea6ce546a04764d8a61fc15d37975"
+              ]
+            ],
+            [
+              "af2e240aaae64a3c24e1de1f22e9a031468f3ddf",
+              [
+                "af936e7ce2c203d666f4117edc4588e28bb4e345"
+              ]
+            ],
+            [
+              "af936e7ce2c203d666f4117edc4588e28bb4e345",
+              [
+                "519b0d26825ea6ce546a04764d8a61fc15d37975"
+              ]
+            ],
+            [
+              "4accc757b630e26627c295312045b5a5d04876b3",
+              [
+                "39e6c7d3b9eb11c8f045a5470d1c69394e5692c1"
+              ]
+            ],
+            [
+              "39e6c7d3b9eb11c8f045a5470d1c69394e5692c1",
+              [
+                "fced720eb5c5997d2ef2801bdb98c270adea6707"
+              ]
+            ],
+            [
+              "fced720eb5c5997d2ef2801bdb98c270adea6707",
+              [
+                "0f41ec1875e3ab71d7cbec7e0254956558c3fe35"
+              ]
+            ],
+            [
+              "0f41ec1875e3ab71d7cbec7e0254956558c3fe35",
+              [
+                "519b0d26825ea6ce546a04764d8a61fc15d37975"
+              ]
+            ],
+            [
+              "4304b04aff5a9d80eb20393b9c80c819d2368cdf",
+              [
+                "43ba48fa2d723b0cdeb3ebdbe90a2336c70c595e",
+                "519b0d26825ea6ce546a04764d8a61fc15d37975"
+              ]
+            ],
+            [
+              "519b0d26825ea6ce546a04764d8a61fc15d37975",
+              [
+                "6119064ad7fcf981a2e38c0be725032df7e1718d",
+                "156f1d17f0b63721e9dba34f5182cda170e4b9f2"
+              ]
+            ],
+            [
+              "6119064ad7fcf981a2e38c0be725032df7e1718d",
+              [
+                "04ea864468a6f1ecdb14ca86b5c80a19b5d3edf9",
+                "a237e781677bad88dede56c2423c8711e70d2a39"
+              ]
+            ],
+            [
+              "a237e781677bad88dede56c2423c8711e70d2a39",
+              [
+                "f505bc6ba431cfd02a37141198501f4f1f153050",
+                "04ea864468a6f1ecdb14ca86b5c80a19b5d3edf9"
+              ]
+            ],
+            [
+              "04ea864468a6f1ecdb14ca86b5c80a19b5d3edf9",
+              [
+                "2b7812b20a421be7116cc75b5abf95a5718f7119",
+                "059dbee0df1e3a3c1884a0166741fa95b61664a8"
+              ]
+            ],
+            [
+              "156f1d17f0b63721e9dba34f5182cda170e4b9f2",
+              [
+                "25182bd46b11cbe5654865024745b9a7e6248f44"
+              ]
+            ],
+            [
+              "2b7812b20a421be7116cc75b5abf95a5718f7119",
+              [
+                "df37ff0363c0b84758017c8788e313d34646d403",
+                "4c567633c7414e38161c28ae05ed5392620a5215"
+              ]
+            ],
+            [
+              "4c567633c7414e38161c28ae05ed5392620a5215",
+              [
+                "aec6cf0011ad0066be26c85f41341deecc1d5b59",
+                "df37ff0363c0b84758017c8788e313d34646d403"
+              ]
+            ],
+            [
+              "df37ff0363c0b84758017c8788e313d34646d403",
+              [
+                "14fc381e67c6e044c5112b5fdd847fc24b21ed6c",
+                "345d9208853b3a60828be9764b70f371c21942be"
+              ]
+            ],
+            [
+              "345d9208853b3a60828be9764b70f371c21942be",
+              [
+                "3ed70b19227d41d8aee255d67e0f9579ac9052c6",
+                "14fc381e67c6e044c5112b5fdd847fc24b21ed6c"
+              ]
+            ],
+            [
+              "14fc381e67c6e044c5112b5fdd847fc24b21ed6c",
+              [
+                "337f4245c1366efa3d5c04f8a41624ba604f4756",
+                "47f87082da79d83957eba55e3d6f581965475f5a"
+              ]
+            ]
+          ]
+        },
+        {
+          "name": "2025",
+          "url": "https://api.github.com/repos/h2database/h2database/commits?sha=1a1ca49da6ee10ed0502da0eeba0a18649f0e13e&per_page=25&until=2025-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 9,
+          "records": [
+            [
+              "cdd1d066e19ef85d2c52de372735647e5d78d1f9",
+              [
+                "9db82f105ebac213dd223ea7331f7b9c2234290c",
+                "e8df82c8fdb3652b4b33b2fec9de9a9d4e7468b1"
+              ]
+            ],
+            [
+              "e8df82c8fdb3652b4b33b2fec9de9a9d4e7468b1",
+              [
+                "6e2035c4a75ab441bd757324de8217cffaddec54"
+              ]
+            ],
+            [
+              "6e2035c4a75ab441bd757324de8217cffaddec54",
+              [
+                "9db82f105ebac213dd223ea7331f7b9c2234290c"
+              ]
+            ],
+            [
+              "9db82f105ebac213dd223ea7331f7b9c2234290c",
+              [
+                "8cb2827fda3b787592308147e7eed4e13eaa303d",
+                "f05f0b2ee15d5692591cc5ad4a7f5c0789d357ce"
+              ]
+            ],
+            [
+              "8cb2827fda3b787592308147e7eed4e13eaa303d",
+              [
+                "0605f7ec318c674711888b33385e43fabca87422",
+                "ebecac178e4e8edbec2c6e1e8873f0cde8710916"
+              ]
+            ],
+            [
+              "ebecac178e4e8edbec2c6e1e8873f0cde8710916",
+              [
+                "0605f7ec318c674711888b33385e43fabca87422"
+              ]
+            ],
+            [
+              "f05f0b2ee15d5692591cc5ad4a7f5c0789d357ce",
+              [
+                "0605f7ec318c674711888b33385e43fabca87422"
+              ]
+            ],
+            [
+              "0605f7ec318c674711888b33385e43fabca87422",
+              [
+                "e3754599d8159ce2189b067efd935c13f1273de9",
+                "4669486e5f1407ca5092c1d340721470830fce1c"
+              ]
+            ],
+            [
+              "4669486e5f1407ca5092c1d340721470830fce1c",
+              [
+                "7778b1bc7249a32c739149921f0acf487d4532c3"
+              ]
+            ],
+            [
+              "7778b1bc7249a32c739149921f0acf487d4532c3",
+              [
+                "48b7bca3e7387459b346404906b8393ca9f8b219"
+              ]
+            ],
+            [
+              "48b7bca3e7387459b346404906b8393ca9f8b219",
+              [
+                "e3754599d8159ce2189b067efd935c13f1273de9"
+              ]
+            ],
+            [
+              "e3754599d8159ce2189b067efd935c13f1273de9",
+              [
+                "418854956f14e343ff054d08d1c87b3c8ba2dac0",
+                "9d900c0737f3af146d6d9f05f6d1ffc9adb2f137"
+              ]
+            ],
+            [
+              "9d900c0737f3af146d6d9f05f6d1ffc9adb2f137",
+              [
+                "418854956f14e343ff054d08d1c87b3c8ba2dac0"
+              ]
+            ],
+            [
+              "418854956f14e343ff054d08d1c87b3c8ba2dac0",
+              [
+                "c8eb81be7a30786b7534377a7e475bdaa08aeeb8"
+              ]
+            ],
+            [
+              "c8eb81be7a30786b7534377a7e475bdaa08aeeb8",
+              [
+                "7ff5ee5cf0fa7d75ad341ebf53ff9301e390b537"
+              ]
+            ],
+            [
+              "7ff5ee5cf0fa7d75ad341ebf53ff9301e390b537",
+              [
+                "da4c337f0251d51b2aaeeb28133fb87c8da4907c",
+                "93373a819dc43781ff75bc11b93e11abef7d4fd9"
+              ]
+            ],
+            [
+              "da4c337f0251d51b2aaeeb28133fb87c8da4907c",
+              [
+                "d053544f6baa9d91339b51a1b30572d1fabfe705",
+                "d8a6cc3e20e028ac854c08764b9c3e41e360b72e"
+              ]
+            ],
+            [
+              "d053544f6baa9d91339b51a1b30572d1fabfe705",
+              [
+                "a448d91e083eceec493be60d398656f27a0ed4c7"
+              ]
+            ],
+            [
+              "a448d91e083eceec493be60d398656f27a0ed4c7",
+              [
+                "c45413cdc3f0c0bf77a62817c14cdaec65c87096",
+                "6672123e6a404d6fde309bc9871538ddf838b0b6"
+              ]
+            ],
+            [
+              "6672123e6a404d6fde309bc9871538ddf838b0b6",
+              [
+                "858e74abc3676686c547f0182a73519e9962044c"
+              ]
+            ],
+            [
+              "858e74abc3676686c547f0182a73519e9962044c",
+              [
+                "bce0ec1f9e116dae837d756af14281d3d566905d"
+              ]
+            ],
+            [
+              "bce0ec1f9e116dae837d756af14281d3d566905d",
+              [
+                "c45413cdc3f0c0bf77a62817c14cdaec65c87096"
+              ]
+            ],
+            [
+              "d8a6cc3e20e028ac854c08764b9c3e41e360b72e",
+              [
+                "c45413cdc3f0c0bf77a62817c14cdaec65c87096"
+              ]
+            ],
+            [
+              "c45413cdc3f0c0bf77a62817c14cdaec65c87096",
+              [
+                "e6171333a1e586d4f5cb7bd6c317142d9a8c349a",
+                "97a572e36e8b3aa58731f96b96bf5673d0c44a3f"
+              ]
+            ],
+            [
+              "97a572e36e8b3aa58731f96b96bf5673d0c44a3f",
+              [
+                "e6171333a1e586d4f5cb7bd6c317142d9a8c349a"
+              ]
+            ]
+          ]
+        },
+        {
+          "name": "2018",
+          "url": "https://api.github.com/repos/h2database/h2database/commits?sha=1a1ca49da6ee10ed0502da0eeba0a18649f0e13e&per_page=25&until=2018-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 7,
+          "records": [
+            [
+              "e8f99400a3f71312f8edbc86f088becb67210cf5",
+              [
+                "57b2b3ae8fefca0483410a831f0115b78fed963e",
+                "8d9565d8cbda289ee44e8c588a3431acbc894d4a"
+              ]
+            ],
+            [
+              "57b2b3ae8fefca0483410a831f0115b78fed963e",
+              [
+                "1b8bb91c0d5dd29eda7da1541e40aab23aa56c2f",
+                "3d53633981ece07d17495064f59e5d85d97e4ef2"
+              ]
+            ],
+            [
+              "3d53633981ece07d17495064f59e5d85d97e4ef2",
+              [
+                "feb5340c55029f14eb36559e36aa00280a7b90e5"
+              ]
+            ],
+            [
+              "feb5340c55029f14eb36559e36aa00280a7b90e5",
+              [
+                "fd85a3ad0453f180cd4e77abb323454e75d0b70d"
+              ]
+            ],
+            [
+              "fd85a3ad0453f180cd4e77abb323454e75d0b70d",
+              [
+                "1b8bb91c0d5dd29eda7da1541e40aab23aa56c2f"
+              ]
+            ],
+            [
+              "1b8bb91c0d5dd29eda7da1541e40aab23aa56c2f",
+              [
+                "fc0670d51cb583e9020896f8baca82440433d1fb",
+                "c7c92a093b3c5a97bff9015ee1719792705f715f"
+              ]
+            ],
+            [
+              "c7c92a093b3c5a97bff9015ee1719792705f715f",
+              [
+                "be50e1270c89d2c32f0eb48a54518191a7ad8939"
+              ]
+            ],
+            [
+              "be50e1270c89d2c32f0eb48a54518191a7ad8939",
+              [
+                "3e298a12f03ca547450c99b6f304f41baa39f104"
+              ]
+            ],
+            [
+              "3e298a12f03ca547450c99b6f304f41baa39f104",
+              [
+                "4339e509894834f9054bb935dd4cc3acf0667882"
+              ]
+            ],
+            [
+              "4339e509894834f9054bb935dd4cc3acf0667882",
+              [
+                "7500ae66cbef2a24515d9722d73e88cda3838a9f"
+              ]
+            ],
+            [
+              "7500ae66cbef2a24515d9722d73e88cda3838a9f",
+              [
+                "fc0670d51cb583e9020896f8baca82440433d1fb"
+              ]
+            ],
+            [
+              "fc0670d51cb583e9020896f8baca82440433d1fb",
+              [
+                "e8b0d6a8b7d976fbe4089eece262a622c1131feb",
+                "423bf71c50d3c80f9543f30c526f9d029be5d04e"
+              ]
+            ],
+            [
+              "423bf71c50d3c80f9543f30c526f9d029be5d04e",
+              [
+                "e833c48d1bc4a6aea39455c458750b470a30c8d2"
+              ]
+            ],
+            [
+              "e8b0d6a8b7d976fbe4089eece262a622c1131feb",
+              [
+                "285f7ff9ea54f2d459dc18128a1d7b25471f7b7c",
+                "2707339084558889ad1ba1606fdbe16c6d916f8e"
+              ]
+            ],
+            [
+              "2707339084558889ad1ba1606fdbe16c6d916f8e",
+              [
+                "c1dd5a5c5032211fdfe8bc31b1d52a01c100b6d1"
+              ]
+            ],
+            [
+              "c1dd5a5c5032211fdfe8bc31b1d52a01c100b6d1",
+              [
+                "57843714c289a20a60841525a4e2044941211b62"
+              ]
+            ],
+            [
+              "57843714c289a20a60841525a4e2044941211b62",
+              [
+                "32eb007eaf720aa9c92530bd1ff7da5c8f1e3703"
+              ]
+            ],
+            [
+              "32eb007eaf720aa9c92530bd1ff7da5c8f1e3703",
+              [
+                "285f7ff9ea54f2d459dc18128a1d7b25471f7b7c"
+              ]
+            ],
+            [
+              "e833c48d1bc4a6aea39455c458750b470a30c8d2",
+              [
+                "b824b78d8053b95ae7475503a71ad61f716f71c8"
+              ]
+            ],
+            [
+              "285f7ff9ea54f2d459dc18128a1d7b25471f7b7c",
+              [
+                "d29582d7b0c9fbab74985724b1c9ccd680439fb3",
+                "bc7d3f8a0a6559714279283059965ff17daf2b02"
+              ]
+            ],
+            [
+              "d29582d7b0c9fbab74985724b1c9ccd680439fb3",
+              [
+                "b824b78d8053b95ae7475503a71ad61f716f71c8",
+                "28ac20dda7ecb47d43e4320827331cfc7d766393"
+              ]
+            ],
+            [
+              "bc7d3f8a0a6559714279283059965ff17daf2b02",
+              [
+                "a18685a6e2fc2a6ed8a8fc237062bd0f1e690271"
+              ]
+            ],
+            [
+              "a18685a6e2fc2a6ed8a8fc237062bd0f1e690271",
+              [
+                "b824b78d8053b95ae7475503a71ad61f716f71c8"
+              ]
+            ],
+            [
+              "28ac20dda7ecb47d43e4320827331cfc7d766393",
+              [
+                "810e054fac59bf5d3a99acc474fade0828a78c9b"
+              ]
+            ],
+            [
+              "810e054fac59bf5d3a99acc474fade0828a78c9b",
+              [
+                "04c5aa106704fa988e2ced823c2f8bb8244d8593"
+              ]
+            ]
+          ]
+        }
+      ],
+      "overlaps": [
+        {
+          "window": "tip",
+          "merge": "1a1ca49da6ee10ed0502da0eeba0a18649f0e13e",
+          "parents": [
+            "9c0bd44d741215871a8600bb7dad21aa7304e687",
+            "10cd621729ddf09bd143f5b0da479bb4373834b3"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/h2database/h2database/compare/10cd621729ddf09bd143f5b0da479bb4373834b3...9c0bd44d741215871a8600bb7dad21aa7304e687",
+            "https://api.github.com/repos/h2database/h2database/compare/9c0bd44d741215871a8600bb7dad21aa7304e687...10cd621729ddf09bd143f5b0da479bb4373834b3"
+          ],
+          "common_base": "9c0bd44d741215871a8600bb7dad21aa7304e687",
+          "returned_files": [
+            0,
+            8
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2025",
+          "merge": "cdd1d066e19ef85d2c52de372735647e5d78d1f9",
+          "parents": [
+            "9db82f105ebac213dd223ea7331f7b9c2234290c",
+            "e8df82c8fdb3652b4b33b2fec9de9a9d4e7468b1"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/h2database/h2database/compare/e8df82c8fdb3652b4b33b2fec9de9a9d4e7468b1...9db82f105ebac213dd223ea7331f7b9c2234290c",
+            "https://api.github.com/repos/h2database/h2database/compare/9db82f105ebac213dd223ea7331f7b9c2234290c...e8df82c8fdb3652b4b33b2fec9de9a9d4e7468b1"
+          ],
+          "common_base": "9db82f105ebac213dd223ea7331f7b9c2234290c",
+          "returned_files": [
+            0,
+            2
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "tip",
+          "merge": "9c0bd44d741215871a8600bb7dad21aa7304e687",
+          "parents": [
+            "98ceee4b768979d54e8fc9dfa195ec48b1ebb641",
+            "4304b04aff5a9d80eb20393b9c80c819d2368cdf"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/h2database/h2database/compare/4304b04aff5a9d80eb20393b9c80c819d2368cdf...98ceee4b768979d54e8fc9dfa195ec48b1ebb641",
+            "https://api.github.com/repos/h2database/h2database/compare/98ceee4b768979d54e8fc9dfa195ec48b1ebb641...4304b04aff5a9d80eb20393b9c80c819d2368cdf"
+          ],
+          "common_base": "519b0d26825ea6ce546a04764d8a61fc15d37975",
+          "returned_files": [
+            27,
+            4
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [
+            "h2/src/main/org/h2/mvstore/FileStore.java"
+          ],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2025",
+          "merge": "9db82f105ebac213dd223ea7331f7b9c2234290c",
+          "parents": [
+            "8cb2827fda3b787592308147e7eed4e13eaa303d",
+            "f05f0b2ee15d5692591cc5ad4a7f5c0789d357ce"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/h2database/h2database/compare/f05f0b2ee15d5692591cc5ad4a7f5c0789d357ce...8cb2827fda3b787592308147e7eed4e13eaa303d",
+            "https://api.github.com/repos/h2database/h2database/compare/8cb2827fda3b787592308147e7eed4e13eaa303d...f05f0b2ee15d5692591cc5ad4a7f5c0789d357ce"
+          ],
+          "common_base": "0605f7ec318c674711888b33385e43fabca87422",
+          "returned_files": [
+            4,
+            4
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2018",
+          "merge": "57b2b3ae8fefca0483410a831f0115b78fed963e",
+          "parents": [
+            "1b8bb91c0d5dd29eda7da1541e40aab23aa56c2f",
+            "3d53633981ece07d17495064f59e5d85d97e4ef2"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/h2database/h2database/compare/3d53633981ece07d17495064f59e5d85d97e4ef2...1b8bb91c0d5dd29eda7da1541e40aab23aa56c2f",
+            "https://api.github.com/repos/h2database/h2database/compare/1b8bb91c0d5dd29eda7da1541e40aab23aa56c2f...3d53633981ece07d17495064f59e5d85d97e4ef2"
+          ],
+          "common_base": "1b8bb91c0d5dd29eda7da1541e40aab23aa56c2f",
+          "returned_files": [
+            0,
+            5
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2018",
+          "merge": "e8f99400a3f71312f8edbc86f088becb67210cf5",
+          "parents": [
+            "57b2b3ae8fefca0483410a831f0115b78fed963e",
+            "8d9565d8cbda289ee44e8c588a3431acbc894d4a"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/h2database/h2database/compare/8d9565d8cbda289ee44e8c588a3431acbc894d4a...57b2b3ae8fefca0483410a831f0115b78fed963e",
+            "https://api.github.com/repos/h2database/h2database/compare/57b2b3ae8fefca0483410a831f0115b78fed963e...8d9565d8cbda289ee44e8c588a3431acbc894d4a"
+          ],
+          "common_base": "05b546d52be96569bda5d1dd43186b81f31d3b92",
+          "returned_files": [
+            178,
+            1
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [
+            "h2/src/main/org/h2/command/dml/Insert.java"
+          ],
+          "errors": [
+            null,
+            null
+          ]
+        }
+      ],
+      "repo_size_kib_snapshot": 93629,
+      "cost": "small",
+      "assessment": "Smallest repository-size snapshot of the five and overlaps in two periods; prioritize a bounded production pilot.",
+      "production_rows": null,
+      "production_positives": null,
+      "production_negatives": null,
+      "production_seconds": null,
+      "production_peak_rss_bytes": null
+    },
+    {
+      "repository": "eclipse-jgit/jgit",
+      "url": "https://github.com/eclipse-jgit/jgit",
+      "pin": "c746b7ff5a14955884a46134ea14b1967e29ba06",
+      "default_branch": "master",
+      "meta_url": "https://api.github.com/repos/eclipse-jgit/jgit",
+      "pinned_commit_url": "https://api.github.com/repos/eclipse-jgit/jgit/git/commits/c746b7ff5a14955884a46134ea14b1967e29ba06",
+      "primary_language": "Java",
+      "license": "Eclipse Distribution License v1.0",
+      "github_license_spdx_snapshot": "NOASSERTION",
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha": "1b85c64665f461a1ac948345c5f8034b751eda93",
+          "url": "https://github.com/eclipse-jgit/jgit/blob/c746b7ff5a14955884a46134ea14b1967e29ba06/LICENSE"
+        },
+        {
+          "path": "NOTICE.md",
+          "sha": "31e8ed9a8c65440b176bcc7f31c5d692ee23e2af",
+          "url": "https://github.com/eclipse-jgit/jgit/blob/c746b7ff5a14955884a46134ea14b1967e29ba06/NOTICE.md"
+        }
+      ],
+      "java_files_at_pin": 1905,
+      "java_bytes_at_pin": 14335901,
+      "java_tree": {
+        "java_files": 1905,
+        "bytes": 14335901,
+        "truncated": false,
+        "url": "https://api.github.com/repos/eclipse-jgit/jgit/git/trees/48368344d7b8df26bf7a60a376c6a94b7aa08097?recursive=1",
+        "tree_sha": "48368344d7b8df26bf7a60a376c6a94b7aa08097"
+      },
+      "commits_at_pin": 11678,
+      "commit_page_boundary": {
+        "count": 11678,
+        "last_sha": "1a6964c8274c50f0253db75f010d78ef0e739343",
+        "last_url": "https://api.github.com/repos/eclipse-jgit/jgit/commits?sha=c746b7ff5a14955884a46134ea14b1967e29ba06&per_page=1&page=11678",
+        "empty_next_url": "https://api.github.com/repos/eclipse-jgit/jgit/commits?sha=c746b7ff5a14955884a46134ea14b1967e29ba06&per_page=1&page=11679"
+      },
+      "total_two_parent_at_pin": null,
+      "windows": [
+        {
+          "name": "tip",
+          "url": "https://api.github.com/repos/eclipse-jgit/jgit/commits?sha=c746b7ff5a14955884a46134ea14b1967e29ba06&per_page=25",
+          "commits": 25,
+          "two_parent": 14,
+          "records": [
+            [
+              "c746b7ff5a14955884a46134ea14b1967e29ba06",
+              [
+                "ef3578c35b88cbd6c953cedb5983873cfd6b484f",
+                "29dfa5028e9edfff9c42f8c515574b8a5daae1a2"
+              ]
+            ],
+            [
+              "ef3578c35b88cbd6c953cedb5983873cfd6b484f",
+              [
+                "00c6528f1c63b959fb30b7a00453e4f25e311757",
+                "fe1c712865f6466e329c0bad96fc05a1b9f3a53b"
+              ]
+            ],
+            [
+              "29dfa5028e9edfff9c42f8c515574b8a5daae1a2",
+              [
+                "00c6528f1c63b959fb30b7a00453e4f25e311757"
+              ]
+            ],
+            [
+              "00c6528f1c63b959fb30b7a00453e4f25e311757",
+              [
+                "71800d3b3bd955edbcc7d395c0ebefa646c77880"
+              ]
+            ],
+            [
+              "71800d3b3bd955edbcc7d395c0ebefa646c77880",
+              [
+                "d76ee721f9392c20aee260455b485d657fa3bbb9"
+              ]
+            ],
+            [
+              "d76ee721f9392c20aee260455b485d657fa3bbb9",
+              [
+                "caef2dbd1fd6233f36e36967cd0bb0cfc51839be"
+              ]
+            ],
+            [
+              "caef2dbd1fd6233f36e36967cd0bb0cfc51839be",
+              [
+                "500063e80a84162a025a30bb0f05c0022cab499a"
+              ]
+            ],
+            [
+              "500063e80a84162a025a30bb0f05c0022cab499a",
+              [
+                "bb905c8e7950a6dc08e8864d3774b94c6cda6153"
+              ]
+            ],
+            [
+              "bb905c8e7950a6dc08e8864d3774b94c6cda6153",
+              [
+                "647f93800d441746d4efabb0e524bcf685a69bbb",
+                "c6103ecdd81647c7217411907a15e7fa47b3d1cb"
+              ]
+            ],
+            [
+              "647f93800d441746d4efabb0e524bcf685a69bbb",
+              [
+                "4ceb7bf5407477a7d6c34933af1120a7f838d36d"
+              ]
+            ],
+            [
+              "c6103ecdd81647c7217411907a15e7fa47b3d1cb",
+              [
+                "282a8a38304f308b5d6e7ad2fea9a814bb6a2979"
+              ]
+            ],
+            [
+              "282a8a38304f308b5d6e7ad2fea9a814bb6a2979",
+              [
+                "80573f3b938c33796389fd0e72edda8a0f07b566"
+              ]
+            ],
+            [
+              "80573f3b938c33796389fd0e72edda8a0f07b566",
+              [
+                "3e0077e18620ffa20290de59d6666feb629915f2"
+              ]
+            ],
+            [
+              "3e0077e18620ffa20290de59d6666feb629915f2",
+              [
+                "0c46ff40592f3e8f60dba58f59eb33a0765e95b4",
+                "9534ce9df0d299e61c9ba72185cdcf27d2f942ed"
+              ]
+            ],
+            [
+              "9534ce9df0d299e61c9ba72185cdcf27d2f942ed",
+              [
+                "c4a4b513583c1a1205dd804bd30f6705a0d72f2d",
+                "17e09990e6347058bacb46cc2a9b519621ee4603"
+              ]
+            ],
+            [
+              "17e09990e6347058bacb46cc2a9b519621ee4603",
+              [
+                "a3e219a6084cb8762ec4fd0fa90d5bc69e841942",
+                "05678db1dba213cb680b3b595f1b2e93f5cac873"
+              ]
+            ],
+            [
+              "05678db1dba213cb680b3b595f1b2e93f5cac873",
+              [
+                "f6e0b4801021f0a0724c14be0890203d27770f8a",
+                "1d30195a0d50f7a0b932fc5aef729c85e32da36c"
+              ]
+            ],
+            [
+              "1d30195a0d50f7a0b932fc5aef729c85e32da36c",
+              [
+                "6d0442c16c4d975af206c12b5e3b38a7d2a84d52",
+                "7a114e4b99f5869b69000179b9c012b2bd923a4a"
+              ]
+            ],
+            [
+              "7a114e4b99f5869b69000179b9c012b2bd923a4a",
+              [
+                "99860139ec26644fdbad3d577b32d1c7a17ab694",
+                "ba48aaaa521cb3d69620b611d093ce1f16bfdaef"
+              ]
+            ],
+            [
+              "ba48aaaa521cb3d69620b611d093ce1f16bfdaef",
+              [
+                "95280f875a5fcc1c656e0d19f45bc61c8afa028f",
+                "acdf7d8a5a345fdd445011fad1ae5f538d1dcc5d"
+              ]
+            ],
+            [
+              "acdf7d8a5a345fdd445011fad1ae5f538d1dcc5d",
+              [
+                "84248caaeb5c075eec54e09ea5476f7523fec8ad",
+                "669e087ca8c67188e59afd24947d870bec411806"
+              ]
+            ],
+            [
+              "669e087ca8c67188e59afd24947d870bec411806",
+              [
+                "f4b9ab7ab7e55839a21dd36083f2430c55931da5",
+                "884f27dec3aabcd382c79b7923224f3108a644e4"
+              ]
+            ],
+            [
+              "0c46ff40592f3e8f60dba58f59eb33a0765e95b4",
+              [
+                "7d7445c8026fc386b9a1497b7450e9be614eb276",
+                "bb66bf21d9ea034b6a0595d46e4f19f69c4fa799"
+              ]
+            ],
+            [
+              "4ceb7bf5407477a7d6c34933af1120a7f838d36d",
+              [
+                "21f49b3d2938817ad37803515b871dd570343907"
+              ]
+            ],
+            [
+              "21f49b3d2938817ad37803515b871dd570343907",
+              [
+                "1e46351236294658b89227c24a2b45b63a1cf7be",
+                "f20b92b8ea4811449339e28f223fb359ed5481f4"
+              ]
+            ]
+          ]
+        },
+        {
+          "name": "2025",
+          "url": "https://api.github.com/repos/eclipse-jgit/jgit/commits?sha=c746b7ff5a14955884a46134ea14b1967e29ba06&per_page=25&until=2025-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 8,
+          "records": [
+            [
+              "3bcf880cbcbefe5d936182b9ff8cd2c736470253",
+              [
+                "1ca21fd8ccdaf82c630635636c935a30c3b33605"
+              ]
+            ],
+            [
+              "1ca21fd8ccdaf82c630635636c935a30c3b33605",
+              [
+                "44aac730cc026ac287033306f04f0dcefea2b1d5",
+                "98594883db1620b04cdce4415d42a11aa339a5c0"
+              ]
+            ],
+            [
+              "98594883db1620b04cdce4415d42a11aa339a5c0",
+              [
+                "a0ebfbe4dc10ab855c712b1a0b3cde1e1ab195f1"
+              ]
+            ],
+            [
+              "a0ebfbe4dc10ab855c712b1a0b3cde1e1ab195f1",
+              [
+                "2d39bfd381ee47c09ce145f390d4f76f980876eb"
+              ]
+            ],
+            [
+              "2d39bfd381ee47c09ce145f390d4f76f980876eb",
+              [
+                "07f5859303e998d387949afccdcea6e1b28e78a2"
+              ]
+            ],
+            [
+              "07f5859303e998d387949afccdcea6e1b28e78a2",
+              [
+                "1ecc2d1287aeef428627fbac62f203b1fae934b8"
+              ]
+            ],
+            [
+              "1ecc2d1287aeef428627fbac62f203b1fae934b8",
+              [
+                "9bfb258077593d3663ebbcc931afeab269ba538d"
+              ]
+            ],
+            [
+              "9bfb258077593d3663ebbcc931afeab269ba538d",
+              [
+                "f079409a4caed9600156bab9ea54911dfb316804"
+              ]
+            ],
+            [
+              "f079409a4caed9600156bab9ea54911dfb316804",
+              [
+                "90feb21a53652192234bb7aec14163cce185b621"
+              ]
+            ],
+            [
+              "90feb21a53652192234bb7aec14163cce185b621",
+              [
+                "5df4dcae35203c3b4fd8f875b50e3190fd5b75d6"
+              ]
+            ],
+            [
+              "5df4dcae35203c3b4fd8f875b50e3190fd5b75d6",
+              [
+                "772c7209233b76b2e3bfef1cecb083165f69afe5"
+              ]
+            ],
+            [
+              "772c7209233b76b2e3bfef1cecb083165f69afe5",
+              [
+                "3a5b03c7bdd18ca935477447bdefb7cd93ac98bb"
+              ]
+            ],
+            [
+              "3a5b03c7bdd18ca935477447bdefb7cd93ac98bb",
+              [
+                "59948c7ff16944025a72d7692cfc08fa6aff478d"
+              ]
+            ],
+            [
+              "59948c7ff16944025a72d7692cfc08fa6aff478d",
+              [
+                "91d5da7ba6f656a229f9b4021884d4ad616699fb",
+                "b2d3c518fefb6bee89ebd36d2b910990dc3ccdd8"
+              ]
+            ],
+            [
+              "b2d3c518fefb6bee89ebd36d2b910990dc3ccdd8",
+              [
+                "197688b953f07e20662894e13f0f90f48c945d17",
+                "7fc8f31ba96f6506a8c822604e7792f83b6a3e16"
+              ]
+            ],
+            [
+              "7fc8f31ba96f6506a8c822604e7792f83b6a3e16",
+              [
+                "d4b911e5f7d41215fdec50b315f2623abbb9a397",
+                "abc15c0bdbb8c6ac6d04a5a9f3a7bcfbcbec710f"
+              ]
+            ],
+            [
+              "91d5da7ba6f656a229f9b4021884d4ad616699fb",
+              [
+                "d407865f647b95d831c45f636f707f39ddf082e3",
+                "240022be2d72b8be63be01809981eb8e2711791f"
+              ]
+            ],
+            [
+              "abc15c0bdbb8c6ac6d04a5a9f3a7bcfbcbec710f",
+              [
+                "ea880e40a74d54f376e9cdc9d24f072a32dcaf8d",
+                "274d177b8d0e875a3f8b81a4976069b820d32b68"
+              ]
+            ],
+            [
+              "274d177b8d0e875a3f8b81a4976069b820d32b68",
+              [
+                "5dd48bcc3f81219abe816151a1a4a2a1c268dbad",
+                "02c8c7571464966324eb45ca0eb331d6cdac7fe2"
+              ]
+            ],
+            [
+              "02c8c7571464966324eb45ca0eb331d6cdac7fe2",
+              [
+                "b35ad6e914bad23de917448c23a6edf691aac2c3",
+                "8b23132d5874e1d4245e9cab4c279395f56328c3"
+              ]
+            ],
+            [
+              "8b23132d5874e1d4245e9cab4c279395f56328c3",
+              [
+                "39409b6c04836c0c71dbef80b0f393d2f26df843"
+              ]
+            ],
+            [
+              "39409b6c04836c0c71dbef80b0f393d2f26df843",
+              [
+                "d10e75c68daccee0c456eaf1d37078f22b8293ff"
+              ]
+            ],
+            [
+              "d407865f647b95d831c45f636f707f39ddf082e3",
+              [
+                "9997280e1f5b8e00d37c94da7a215777a68e6f49"
+              ]
+            ],
+            [
+              "240022be2d72b8be63be01809981eb8e2711791f",
+              [
+                "9997280e1f5b8e00d37c94da7a215777a68e6f49"
+              ]
+            ],
+            [
+              "9997280e1f5b8e00d37c94da7a215777a68e6f49",
+              [
+                "d782cc91595b87702c65143671b67a935e8b3d3c"
+              ]
+            ]
+          ]
+        },
+        {
+          "name": "2018",
+          "url": "https://api.github.com/repos/eclipse-jgit/jgit/commits?sha=c746b7ff5a14955884a46134ea14b1967e29ba06&per_page=25&until=2018-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 3,
+          "records": [
+            [
+              "c567b6ecde6b055441f52f0f36dcf8b9d0fe5068",
+              [
+                "00b235f0b86769ec6781a8114cd741f3cba08de5"
+              ]
+            ],
+            [
+              "00b235f0b86769ec6781a8114cd741f3cba08de5",
+              [
+                "1316d43e51d4f687e2b0cc32665495e7bc18c9f9"
+              ]
+            ],
+            [
+              "1316d43e51d4f687e2b0cc32665495e7bc18c9f9",
+              [
+                "6c14d273faa89ab1657e818315b68f3bd672ff87"
+              ]
+            ],
+            [
+              "6c14d273faa89ab1657e818315b68f3bd672ff87",
+              [
+                "7aaeb6489f9819227fa8ebe122a849b6029242b7"
+              ]
+            ],
+            [
+              "7aaeb6489f9819227fa8ebe122a849b6029242b7",
+              [
+                "d9ac7ddf1026123fee6c4477d172d614522dfc08"
+              ]
+            ],
+            [
+              "d9ac7ddf1026123fee6c4477d172d614522dfc08",
+              [
+                "c56afbf18cb14402705a56ca6a2dff6441208cd3"
+              ]
+            ],
+            [
+              "c56afbf18cb14402705a56ca6a2dff6441208cd3",
+              [
+                "32a7c9622e71b25706aac2785b9a60d8942fe490",
+                "ad379793c7dedc805819fadb8bfc97a4f51c6e29"
+              ]
+            ],
+            [
+              "32a7c9622e71b25706aac2785b9a60d8942fe490",
+              [
+                "a151190bef8769bb644f08e6fa423c7fe423a1dd"
+              ]
+            ],
+            [
+              "a151190bef8769bb644f08e6fa423c7fe423a1dd",
+              [
+                "c56fa51709278f2be4e155ae5fbad270188cbe64"
+              ]
+            ],
+            [
+              "c56fa51709278f2be4e155ae5fbad270188cbe64",
+              [
+                "c949da0d5f375415fba44080ee39d54ad6aab677"
+              ]
+            ],
+            [
+              "c949da0d5f375415fba44080ee39d54ad6aab677",
+              [
+                "ec1116627f251dbc434111840111a417263403ee",
+                "f4c0189f25f3488c5702985d7b860f77883b2632"
+              ]
+            ],
+            [
+              "f4c0189f25f3488c5702985d7b860f77883b2632",
+              [
+                "63a87b398ff67584069ab8cf6a17824f009a7102"
+              ]
+            ],
+            [
+              "ec1116627f251dbc434111840111a417263403ee",
+              [
+                "63a87b398ff67584069ab8cf6a17824f009a7102"
+              ]
+            ],
+            [
+              "63a87b398ff67584069ab8cf6a17824f009a7102",
+              [
+                "8001f4c1fe441ec2eb7416851e933e9dc347abd7"
+              ]
+            ],
+            [
+              "8001f4c1fe441ec2eb7416851e933e9dc347abd7",
+              [
+                "06387d4bfdddf96e0d590649cdc6b7f89a53e341"
+              ]
+            ],
+            [
+              "06387d4bfdddf96e0d590649cdc6b7f89a53e341",
+              [
+                "9b31969f3c8b10747ee4af4fff83e9f45c6b41b0"
+              ]
+            ],
+            [
+              "9b31969f3c8b10747ee4af4fff83e9f45c6b41b0",
+              [
+                "488d95571fbe5b896c929dc3f65dc0c0a7161d00"
+              ]
+            ],
+            [
+              "488d95571fbe5b896c929dc3f65dc0c0a7161d00",
+              [
+                "0173b25415fb334490396a2fa4150db888c56947"
+              ]
+            ],
+            [
+              "0173b25415fb334490396a2fa4150db888c56947",
+              [
+                "705691ee517900d3359868212a50d4dc7f048245"
+              ]
+            ],
+            [
+              "705691ee517900d3359868212a50d4dc7f048245",
+              [
+                "a630b45e50888e22e6762089b4fc1a3a80cbe7d8"
+              ]
+            ],
+            [
+              "a630b45e50888e22e6762089b4fc1a3a80cbe7d8",
+              [
+                "ddde2096556e094dee31470d5d41af7cb3b7cb72"
+              ]
+            ],
+            [
+              "ad379793c7dedc805819fadb8bfc97a4f51c6e29",
+              [
+                "54dd1d112a46a2b5a76fcdc1776c21fb110e497f"
+              ]
+            ],
+            [
+              "ddde2096556e094dee31470d5d41af7cb3b7cb72",
+              [
+                "54dd1d112a46a2b5a76fcdc1776c21fb110e497f"
+              ]
+            ],
+            [
+              "f9de9175477577c6c7d0a22ebe5a1c9a1c299c1a",
+              [
+                "9b6d30f2c145243bfdb1708bef847538a0df640d"
+              ]
+            ],
+            [
+              "54dd1d112a46a2b5a76fcdc1776c21fb110e497f",
+              [
+                "df21eec1adb87a9000a62562f46ef3ff76cad482",
+                "a0cd400c37bb861264fa2147f94123c6f0e19b7c"
+              ]
+            ]
+          ]
+        }
+      ],
+      "overlaps": [
+        {
+          "window": "tip",
+          "merge": "c746b7ff5a14955884a46134ea14b1967e29ba06",
+          "parents": [
+            "ef3578c35b88cbd6c953cedb5983873cfd6b484f",
+            "29dfa5028e9edfff9c42f8c515574b8a5daae1a2"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/eclipse-jgit/jgit/compare/29dfa5028e9edfff9c42f8c515574b8a5daae1a2...ef3578c35b88cbd6c953cedb5983873cfd6b484f",
+            "https://api.github.com/repos/eclipse-jgit/jgit/compare/ef3578c35b88cbd6c953cedb5983873cfd6b484f...29dfa5028e9edfff9c42f8c515574b8a5daae1a2"
+          ],
+          "common_base": "00c6528f1c63b959fb30b7a00453e4f25e311757",
+          "returned_files": [
+            2,
+            2
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "tip",
+          "merge": "ef3578c35b88cbd6c953cedb5983873cfd6b484f",
+          "parents": [
+            "00c6528f1c63b959fb30b7a00453e4f25e311757",
+            "fe1c712865f6466e329c0bad96fc05a1b9f3a53b"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/eclipse-jgit/jgit/compare/fe1c712865f6466e329c0bad96fc05a1b9f3a53b...00c6528f1c63b959fb30b7a00453e4f25e311757",
+            "https://api.github.com/repos/eclipse-jgit/jgit/compare/00c6528f1c63b959fb30b7a00453e4f25e311757...fe1c712865f6466e329c0bad96fc05a1b9f3a53b"
+          ],
+          "common_base": "7fdfbfac5fa62640548990ee25284ee6dd4af613",
+          "returned_files": [
+            53,
+            2
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2025",
+          "merge": "1ca21fd8ccdaf82c630635636c935a30c3b33605",
+          "parents": [
+            "44aac730cc026ac287033306f04f0dcefea2b1d5",
+            "98594883db1620b04cdce4415d42a11aa339a5c0"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/eclipse-jgit/jgit/compare/98594883db1620b04cdce4415d42a11aa339a5c0...44aac730cc026ac287033306f04f0dcefea2b1d5",
+            "https://api.github.com/repos/eclipse-jgit/jgit/compare/44aac730cc026ac287033306f04f0dcefea2b1d5...98594883db1620b04cdce4415d42a11aa339a5c0"
+          ],
+          "common_base": "2e0cef3e3b6803c7e79cbae8ea1a7d96b680d2d8",
+          "returned_files": [
+            0,
+            41
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2018",
+          "merge": "c949da0d5f375415fba44080ee39d54ad6aab677",
+          "parents": [
+            "ec1116627f251dbc434111840111a417263403ee",
+            "f4c0189f25f3488c5702985d7b860f77883b2632"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/eclipse-jgit/jgit/compare/f4c0189f25f3488c5702985d7b860f77883b2632...ec1116627f251dbc434111840111a417263403ee",
+            "https://api.github.com/repos/eclipse-jgit/jgit/compare/ec1116627f251dbc434111840111a417263403ee...f4c0189f25f3488c5702985d7b860f77883b2632"
+          ],
+          "common_base": "63a87b398ff67584069ab8cf6a17824f009a7102",
+          "returned_files": [
+            10,
+            3
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2018",
+          "merge": "c56afbf18cb14402705a56ca6a2dff6441208cd3",
+          "parents": [
+            "32a7c9622e71b25706aac2785b9a60d8942fe490",
+            "ad379793c7dedc805819fadb8bfc97a4f51c6e29"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/eclipse-jgit/jgit/compare/ad379793c7dedc805819fadb8bfc97a4f51c6e29...32a7c9622e71b25706aac2785b9a60d8942fe490",
+            "https://api.github.com/repos/eclipse-jgit/jgit/compare/32a7c9622e71b25706aac2785b9a60d8942fe490...ad379793c7dedc805819fadb8bfc97a4f51c6e29"
+          ],
+          "common_base": "54dd1d112a46a2b5a76fcdc1776c21fb110e497f",
+          "returned_files": [
+            154,
+            1
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2025",
+          "merge": "59948c7ff16944025a72d7692cfc08fa6aff478d",
+          "parents": [
+            "91d5da7ba6f656a229f9b4021884d4ad616699fb",
+            "b2d3c518fefb6bee89ebd36d2b910990dc3ccdd8"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/eclipse-jgit/jgit/compare/b2d3c518fefb6bee89ebd36d2b910990dc3ccdd8...91d5da7ba6f656a229f9b4021884d4ad616699fb",
+            "https://api.github.com/repos/eclipse-jgit/jgit/compare/91d5da7ba6f656a229f9b4021884d4ad616699fb...b2d3c518fefb6bee89ebd36d2b910990dc3ccdd8"
+          ],
+          "common_base": "197688b953f07e20662894e13f0f90f48c945d17",
+          "returned_files": [
+            189,
+            2
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        }
+      ],
+      "repo_size_kib_snapshot": 163160,
+      "cost": "medium",
+      "assessment": "Two-parent merges in all windows, but the six probes found no bilateral modified Java path.",
+      "production_rows": null,
+      "production_positives": null,
+      "production_negatives": null,
+      "production_seconds": null,
+      "production_peak_rss_bytes": null
+    },
+    {
+      "repository": "Anuken/Mindustry",
+      "url": "https://github.com/Anuken/Mindustry",
+      "pin": "19a0f40d44514f4802a8b79770456e7e32e34da0",
+      "default_branch": "master",
+      "meta_url": "https://api.github.com/repos/Anuken/Mindustry",
+      "pinned_commit_url": "https://api.github.com/repos/Anuken/Mindustry/git/commits/19a0f40d44514f4802a8b79770456e7e32e34da0",
+      "primary_language": "Java",
+      "license": "GPL-3.0 (root)",
+      "github_license_spdx_snapshot": "GPL-3.0",
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha": "bc08fe2e41e331fcf35fe07812c5f68f637f79ae",
+          "url": "https://github.com/Anuken/Mindustry/blob/19a0f40d44514f4802a8b79770456e7e32e34da0/LICENSE"
+        }
+      ],
+      "java_files_at_pin": 871,
+      "java_bytes_at_pin": 6612901,
+      "java_tree": {
+        "java_files": 871,
+        "bytes": 6612901,
+        "truncated": false,
+        "url": "https://api.github.com/repos/Anuken/Mindustry/git/trees/f580942b9ab393f669e493cd25bfbc104ddd4b81?recursive=1",
+        "tree_sha": "f580942b9ab393f669e493cd25bfbc104ddd4b81"
+      },
+      "commits_at_pin": 21598,
+      "commit_page_boundary": {
+        "count": 21598,
+        "last_sha": "74e0680841e0d235caf1d2b1a4ac6da64c50a40c",
+        "last_url": "https://api.github.com/repos/Anuken/Mindustry/commits?sha=19a0f40d44514f4802a8b79770456e7e32e34da0&per_page=1&page=21598",
+        "empty_next_url": "https://api.github.com/repos/Anuken/Mindustry/commits?sha=19a0f40d44514f4802a8b79770456e7e32e34da0&per_page=1&page=21599"
+      },
+      "total_two_parent_at_pin": null,
+      "windows": [
+        {
+          "name": "tip",
+          "url": "https://api.github.com/repos/Anuken/Mindustry/commits?sha=19a0f40d44514f4802a8b79770456e7e32e34da0&per_page=25",
+          "commits": 25,
+          "two_parent": 3,
+          "records": [
+            [
+              "19a0f40d44514f4802a8b79770456e7e32e34da0",
+              [
+                "2168bff2487c8ebef42c5ab951caae43884cf3bb"
+              ]
+            ],
+            [
+              "2168bff2487c8ebef42c5ab951caae43884cf3bb",
+              [
+                "9beb1f17bab073043c7e22e5ff6dbce1dd3f60ee"
+              ]
+            ],
+            [
+              "9beb1f17bab073043c7e22e5ff6dbce1dd3f60ee",
+              [
+                "18329d91fbfe968f94137ba5c878f2f9adbcf24f"
+              ]
+            ],
+            [
+              "18329d91fbfe968f94137ba5c878f2f9adbcf24f",
+              [
+                "5e00ee96271128daddeca81a6108fd7e76abe1d5"
+              ]
+            ],
+            [
+              "5e00ee96271128daddeca81a6108fd7e76abe1d5",
+              [
+                "c2f74b91a7f2591c5bb795c987f09988558d4d6b"
+              ]
+            ],
+            [
+              "c2f74b91a7f2591c5bb795c987f09988558d4d6b",
+              [
+                "1a22b880576d2f8f97550280f76bfdd0d0069543"
+              ]
+            ],
+            [
+              "1a22b880576d2f8f97550280f76bfdd0d0069543",
+              [
+                "b873c01ed559a8803c2dad5c5c79d7ad750d5b95"
+              ]
+            ],
+            [
+              "b873c01ed559a8803c2dad5c5c79d7ad750d5b95",
+              [
+                "07d62ea8f1c02bf84a8523a0f0da5b6dc68cf65a",
+                "1dff972adad2d0589d5ccf62b8fba20f7a33b49e"
+              ]
+            ],
+            [
+              "07d62ea8f1c02bf84a8523a0f0da5b6dc68cf65a",
+              [
+                "4e9adf10f97dba8c92213230501a270b511c9c7c"
+              ]
+            ],
+            [
+              "4e9adf10f97dba8c92213230501a270b511c9c7c",
+              [
+                "c3b49285e738bdb3f3ca7a47dfa0b3bf3876e22f"
+              ]
+            ],
+            [
+              "1dff972adad2d0589d5ccf62b8fba20f7a33b49e",
+              [
+                "c3b49285e738bdb3f3ca7a47dfa0b3bf3876e22f"
+              ]
+            ],
+            [
+              "c3b49285e738bdb3f3ca7a47dfa0b3bf3876e22f",
+              [
+                "05b53edddbcefc4bff29e6bf1cf7a7ddac84b8fd",
+                "84fd6bf8f42128bbdaa4799670694a83b6c61adb"
+              ]
+            ],
+            [
+              "05b53edddbcefc4bff29e6bf1cf7a7ddac84b8fd",
+              [
+                "17012d61d9e4c3cbd9820d87e81c24495486ac53"
+              ]
+            ],
+            [
+              "84fd6bf8f42128bbdaa4799670694a83b6c61adb",
+              [
+                "00913c17bccb4ef9342a2ae32729dcf8eaac2ed0"
+              ]
+            ],
+            [
+              "00913c17bccb4ef9342a2ae32729dcf8eaac2ed0",
+              [
+                "17012d61d9e4c3cbd9820d87e81c24495486ac53"
+              ]
+            ],
+            [
+              "17012d61d9e4c3cbd9820d87e81c24495486ac53",
+              [
+                "4c053138c4a366e1a864264b601727f7478673b1"
+              ]
+            ],
+            [
+              "4c053138c4a366e1a864264b601727f7478673b1",
+              [
+                "28e498f4c0b63b1eae217d8914946b03d162c1f4"
+              ]
+            ],
+            [
+              "28e498f4c0b63b1eae217d8914946b03d162c1f4",
+              [
+                "ca55a494abfe66165f5f0c072adeb414c99de3ae"
+              ]
+            ],
+            [
+              "ca55a494abfe66165f5f0c072adeb414c99de3ae",
+              [
+                "3daa03ae6b0fc9380e02b948418f946f55e402c3"
+              ]
+            ],
+            [
+              "3daa03ae6b0fc9380e02b948418f946f55e402c3",
+              [
+                "1fc88ad4cbeb5ab8b7db35052a822200debb9229",
+                "6f2b3b6ca4035b2d94c405821a54de9d8ea57188"
+              ]
+            ],
+            [
+              "1fc88ad4cbeb5ab8b7db35052a822200debb9229",
+              [
+                "1a4000805dc7753a6bacd8ba4b9e14dd9927b52d"
+              ]
+            ],
+            [
+              "6f2b3b6ca4035b2d94c405821a54de9d8ea57188",
+              [
+                "f8a016407e4cbd35d976dca4d80fe08f18c9f8b7"
+              ]
+            ],
+            [
+              "f8a016407e4cbd35d976dca4d80fe08f18c9f8b7",
+              [
+                "c622467ac4a6dd9445de74e919c297df10b28974"
+              ]
+            ],
+            [
+              "c622467ac4a6dd9445de74e919c297df10b28974",
+              [
+                "bc41536e5d12cadcc8f6ffbbc6b5027ce07c48e7"
+              ]
+            ],
+            [
+              "bc41536e5d12cadcc8f6ffbbc6b5027ce07c48e7",
+              [
+                "1a4000805dc7753a6bacd8ba4b9e14dd9927b52d"
+              ]
+            ]
+          ]
+        },
+        {
+          "name": "2025",
+          "url": "https://api.github.com/repos/Anuken/Mindustry/commits?sha=19a0f40d44514f4802a8b79770456e7e32e34da0&per_page=25&until=2025-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 2,
+          "records": [
+            [
+              "d8106cb88609dcd17e880ae9f53a00002c957f54",
+              [
+                "ef2736b3beb799bbe92ada79fe5316b99b4cea30"
+              ]
+            ],
+            [
+              "ef2736b3beb799bbe92ada79fe5316b99b4cea30",
+              [
+                "6b2825954be5b1c9bbcc216bb4d3d0c3c15e29f2",
+                "f48900d6de70ed53b7467e26b855a704d5748643"
+              ]
+            ],
+            [
+              "6b2825954be5b1c9bbcc216bb4d3d0c3c15e29f2",
+              [
+                "bb4534afdef2db469dde22ce6f57e015b23df93a"
+              ]
+            ],
+            [
+              "f48900d6de70ed53b7467e26b855a704d5748643",
+              [
+                "bb4534afdef2db469dde22ce6f57e015b23df93a"
+              ]
+            ],
+            [
+              "bb4534afdef2db469dde22ce6f57e015b23df93a",
+              [
+                "e8fc33ca9ee2ed5de599caa272913664c4fd0278"
+              ]
+            ],
+            [
+              "e8fc33ca9ee2ed5de599caa272913664c4fd0278",
+              [
+                "11542f8e17aec7a9a37b90f8d44ccd588114550b"
+              ]
+            ],
+            [
+              "11542f8e17aec7a9a37b90f8d44ccd588114550b",
+              [
+                "45e744949e4c68c54f0399121b6c005092485405"
+              ]
+            ],
+            [
+              "45e744949e4c68c54f0399121b6c005092485405",
+              [
+                "5397d8426ceecef320bf585d9fdb1a3d1b02ff51"
+              ]
+            ],
+            [
+              "d4d2a5e54c160674e7850ca634f71c1208534848",
+              [
+                "98b6ac2d94f6c2dab5ead7c21a7f30b8fc157111"
+              ]
+            ],
+            [
+              "98b6ac2d94f6c2dab5ead7c21a7f30b8fc157111",
+              [
+                "ed860e839587efd87b415641eb3c4a8737886a7e"
+              ]
+            ],
+            [
+              "ed860e839587efd87b415641eb3c4a8737886a7e",
+              [
+                "cc693f97b68aa6d4148cb20de759b49defeef744"
+              ]
+            ],
+            [
+              "cc693f97b68aa6d4148cb20de759b49defeef744",
+              [
+                "11773a5991b9b07e83dcf47f30b309fa45c09896"
+              ]
+            ],
+            [
+              "11773a5991b9b07e83dcf47f30b309fa45c09896",
+              [
+                "d33d355aa2898fdd3ef89302a6607c9a8304033b"
+              ]
+            ],
+            [
+              "d33d355aa2898fdd3ef89302a6607c9a8304033b",
+              [
+                "67495e628ba977b51fce33ce032d280bc3520eee"
+              ]
+            ],
+            [
+              "67495e628ba977b51fce33ce032d280bc3520eee",
+              [
+                "dd8c06192ee8328056ab0a1fd8d8c1aedb1a558d"
+              ]
+            ],
+            [
+              "dd8c06192ee8328056ab0a1fd8d8c1aedb1a558d",
+              [
+                "d934a02791773c459b57dd64b7be5732e5469f2f"
+              ]
+            ],
+            [
+              "d934a02791773c459b57dd64b7be5732e5469f2f",
+              [
+                "3b10100ae4d7d3334ad45e15594164c9c1e8c7b2"
+              ]
+            ],
+            [
+              "3b10100ae4d7d3334ad45e15594164c9c1e8c7b2",
+              [
+                "bec2ca3821e150df24ac9bf550ae6fde704fa6f1"
+              ]
+            ],
+            [
+              "bec2ca3821e150df24ac9bf550ae6fde704fa6f1",
+              [
+                "2042d6ef2911ec448cdee8b0931976737bd825ac"
+              ]
+            ],
+            [
+              "2042d6ef2911ec448cdee8b0931976737bd825ac",
+              [
+                "fddc6e53f3c741a0e8f275814fbca8641494caa6"
+              ]
+            ],
+            [
+              "fddc6e53f3c741a0e8f275814fbca8641494caa6",
+              [
+                "3f2aba4123ce98fc3a26c6dfbefff02f3034eeb0"
+              ]
+            ],
+            [
+              "3f2aba4123ce98fc3a26c6dfbefff02f3034eeb0",
+              [
+                "5397d8426ceecef320bf585d9fdb1a3d1b02ff51"
+              ]
+            ],
+            [
+              "5397d8426ceecef320bf585d9fdb1a3d1b02ff51",
+              [
+                "573db7d532c87738576deeccb4e5de691cba51d2"
+              ]
+            ],
+            [
+              "573db7d532c87738576deeccb4e5de691cba51d2",
+              [
+                "b393b053d0699c9561f51d796ce63e79bdbfe125"
+              ]
+            ],
+            [
+              "b393b053d0699c9561f51d796ce63e79bdbfe125",
+              [
+                "28ba7f0bb380af63b598b26baa9d87757b46c975",
+                "3ae1d9c273b296ffb9eafa1690f3d49ed29dd55e"
+              ]
+            ]
+          ]
+        },
+        {
+          "name": "2018",
+          "url": "https://api.github.com/repos/Anuken/Mindustry/commits?sha=19a0f40d44514f4802a8b79770456e7e32e34da0&per_page=25&until=2018-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 3,
+          "records": [
+            [
+              "6ba8a6a60098a18f257e18694f3b53a842bc2f2d",
+              [
+                "377fb2329cb818d5a7a17dbacf6f01429ae5f4cf"
+              ]
+            ],
+            [
+              "377fb2329cb818d5a7a17dbacf6f01429ae5f4cf",
+              [
+                "285ee665ee23b86574d3f4810c0c0654bdc9fdfc",
+                "b09b03a427c308bcbd74f751d039040820ae2306"
+              ]
+            ],
+            [
+              "285ee665ee23b86574d3f4810c0c0654bdc9fdfc",
+              [
+                "8091bec6bf8861ed56997c0b2ae76bbd9434335a"
+              ]
+            ],
+            [
+              "d8624985167a997f4e30dfc893603065432b73aa",
+              [
+                "0efaa1155375a1133849585c39a19c61697190fa"
+              ]
+            ],
+            [
+              "b09b03a427c308bcbd74f751d039040820ae2306",
+              [
+                "4ef2ede4cf4153c024bcd70fa206ff01e695dbe4"
+              ]
+            ],
+            [
+              "4ef2ede4cf4153c024bcd70fa206ff01e695dbe4",
+              [
+                "ea87b958ef97b9c7f1a6c47fdad7b79adb473436"
+              ]
+            ],
+            [
+              "0efaa1155375a1133849585c39a19c61697190fa",
+              [
+                "ff62f075d0b9313b97488dcfb7b10096795f36e0"
+              ]
+            ],
+            [
+              "ea87b958ef97b9c7f1a6c47fdad7b79adb473436",
+              [
+                "d1d4f799735b6eb9a684e362d02d8410fc0906aa"
+              ]
+            ],
+            [
+              "ff62f075d0b9313b97488dcfb7b10096795f36e0",
+              [
+                "348744086d3708810d929f4f1d000f8688fb02a7"
+              ]
+            ],
+            [
+              "348744086d3708810d929f4f1d000f8688fb02a7",
+              [
+                "2a3f7f8cb34493671954b30db53b0f5d78ed6934"
+              ]
+            ],
+            [
+              "d1d4f799735b6eb9a684e362d02d8410fc0906aa",
+              [
+                "2a3f7f8cb34493671954b30db53b0f5d78ed6934"
+              ]
+            ],
+            [
+              "2a3f7f8cb34493671954b30db53b0f5d78ed6934",
+              [
+                "7eaef11a84e5a7afeb27f44544ba60563a9941f6"
+              ]
+            ],
+            [
+              "7eaef11a84e5a7afeb27f44544ba60563a9941f6",
+              [
+                "efe93d011794f186bea98deb0aae52fab8b03ade"
+              ]
+            ],
+            [
+              "efe93d011794f186bea98deb0aae52fab8b03ade",
+              [
+                "7d12e18b9803e88310b9e074067d8c9f245c7673"
+              ]
+            ],
+            [
+              "7d12e18b9803e88310b9e074067d8c9f245c7673",
+              [
+                "de6bca424f04a55f28f7b5a64bbe03eca9354353",
+                "03268a5575004e59662baf93ebfea908bbfccf87"
+              ]
+            ],
+            [
+              "de6bca424f04a55f28f7b5a64bbe03eca9354353",
+              [
+                "bab81208143c420a8dc4f0c318ba27c833ee27ab"
+              ]
+            ],
+            [
+              "03268a5575004e59662baf93ebfea908bbfccf87",
+              [
+                "1251680a1c6d9e37a8f5cbd622fe713318d9b613"
+              ]
+            ],
+            [
+              "1251680a1c6d9e37a8f5cbd622fe713318d9b613",
+              [
+                "cd0e49914bbb099ab6b64e00310d537c00e62ac5"
+              ]
+            ],
+            [
+              "f8d55ba837df4dff9ee9fbf6ab63b814106dc8ab",
+              [
+                "c6f1f198663a99c38d5cc600b6ce2df6e2b9b0d8"
+              ]
+            ],
+            [
+              "cd0e49914bbb099ab6b64e00310d537c00e62ac5",
+              [
+                "700e84572731f58f79baa307e0b3c0376a4ad0b8"
+              ]
+            ],
+            [
+              "700e84572731f58f79baa307e0b3c0376a4ad0b8",
+              [
+                "bab81208143c420a8dc4f0c318ba27c833ee27ab"
+              ]
+            ],
+            [
+              "bab81208143c420a8dc4f0c318ba27c833ee27ab",
+              [
+                "afec65eb5634e42cdf7c6235deff1ea02e97a8e8"
+              ]
+            ],
+            [
+              "c6f1f198663a99c38d5cc600b6ce2df6e2b9b0d8",
+              [
+                "745592f5079d5152a952457ed7229f9ca61e8213"
+              ]
+            ],
+            [
+              "745592f5079d5152a952457ed7229f9ca61e8213",
+              [
+                "d52f5e6e03c41801e71d5a28ace4715dc3c85f83",
+                "afec65eb5634e42cdf7c6235deff1ea02e97a8e8"
+              ]
+            ],
+            [
+              "afec65eb5634e42cdf7c6235deff1ea02e97a8e8",
+              [
+                "d6661da0a7215b2355349d63d3499832b4efbc16"
+              ]
+            ]
+          ]
+        }
+      ],
+      "overlaps": [
+        {
+          "window": "2025",
+          "merge": "ef2736b3beb799bbe92ada79fe5316b99b4cea30",
+          "parents": [
+            "6b2825954be5b1c9bbcc216bb4d3d0c3c15e29f2",
+            "f48900d6de70ed53b7467e26b855a704d5748643"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/Anuken/Mindustry/compare/f48900d6de70ed53b7467e26b855a704d5748643...6b2825954be5b1c9bbcc216bb4d3d0c3c15e29f2",
+            "https://api.github.com/repos/Anuken/Mindustry/compare/6b2825954be5b1c9bbcc216bb4d3d0c3c15e29f2...f48900d6de70ed53b7467e26b855a704d5748643"
+          ],
+          "common_base": "bb4534afdef2db469dde22ce6f57e015b23df93a",
+          "returned_files": [
+            2,
+            8
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "tip",
+          "merge": "b873c01ed559a8803c2dad5c5c79d7ad750d5b95",
+          "parents": [
+            "07d62ea8f1c02bf84a8523a0f0da5b6dc68cf65a",
+            "1dff972adad2d0589d5ccf62b8fba20f7a33b49e"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/Anuken/Mindustry/compare/1dff972adad2d0589d5ccf62b8fba20f7a33b49e...07d62ea8f1c02bf84a8523a0f0da5b6dc68cf65a",
+            "https://api.github.com/repos/Anuken/Mindustry/compare/07d62ea8f1c02bf84a8523a0f0da5b6dc68cf65a...1dff972adad2d0589d5ccf62b8fba20f7a33b49e"
+          ],
+          "common_base": "c3b49285e738bdb3f3ca7a47dfa0b3bf3876e22f",
+          "returned_files": [
+            3,
+            1
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "tip",
+          "merge": "c3b49285e738bdb3f3ca7a47dfa0b3bf3876e22f",
+          "parents": [
+            "05b53edddbcefc4bff29e6bf1cf7a7ddac84b8fd",
+            "84fd6bf8f42128bbdaa4799670694a83b6c61adb"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/Anuken/Mindustry/compare/84fd6bf8f42128bbdaa4799670694a83b6c61adb...05b53edddbcefc4bff29e6bf1cf7a7ddac84b8fd",
+            "https://api.github.com/repos/Anuken/Mindustry/compare/05b53edddbcefc4bff29e6bf1cf7a7ddac84b8fd...84fd6bf8f42128bbdaa4799670694a83b6c61adb"
+          ],
+          "common_base": "17012d61d9e4c3cbd9820d87e81c24495486ac53",
+          "returned_files": [
+            1,
+            2
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2025",
+          "merge": "b393b053d0699c9561f51d796ce63e79bdbfe125",
+          "parents": [
+            "28ba7f0bb380af63b598b26baa9d87757b46c975",
+            "3ae1d9c273b296ffb9eafa1690f3d49ed29dd55e"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/Anuken/Mindustry/compare/3ae1d9c273b296ffb9eafa1690f3d49ed29dd55e...28ba7f0bb380af63b598b26baa9d87757b46c975",
+            "https://api.github.com/repos/Anuken/Mindustry/compare/28ba7f0bb380af63b598b26baa9d87757b46c975...3ae1d9c273b296ffb9eafa1690f3d49ed29dd55e"
+          ],
+          "common_base": "11a7a4164861bf195c7e086d029026b9447773fe",
+          "returned_files": [
+            4,
+            1
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2018",
+          "merge": "7d12e18b9803e88310b9e074067d8c9f245c7673",
+          "parents": [
+            "de6bca424f04a55f28f7b5a64bbe03eca9354353",
+            "03268a5575004e59662baf93ebfea908bbfccf87"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/Anuken/Mindustry/compare/03268a5575004e59662baf93ebfea908bbfccf87...de6bca424f04a55f28f7b5a64bbe03eca9354353",
+            "https://api.github.com/repos/Anuken/Mindustry/compare/de6bca424f04a55f28f7b5a64bbe03eca9354353...03268a5575004e59662baf93ebfea908bbfccf87"
+          ],
+          "common_base": "bab81208143c420a8dc4f0c318ba27c833ee27ab",
+          "returned_files": [
+            1,
+            5
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2018",
+          "merge": "377fb2329cb818d5a7a17dbacf6f01429ae5f4cf",
+          "parents": [
+            "285ee665ee23b86574d3f4810c0c0654bdc9fdfc",
+            "b09b03a427c308bcbd74f751d039040820ae2306"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/Anuken/Mindustry/compare/b09b03a427c308bcbd74f751d039040820ae2306...285ee665ee23b86574d3f4810c0c0654bdc9fdfc",
+            "https://api.github.com/repos/Anuken/Mindustry/compare/285ee665ee23b86574d3f4810c0c0654bdc9fdfc...b09b03a427c308bcbd74f751d039040820ae2306"
+          ],
+          "common_base": "51a51833d4b0d99880101b3edff00a880e0d4189",
+          "returned_files": [
+            10,
+            88
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [
+            "core/src/io/anuke/mindustry/content/blocks/PowerBlocks.java",
+            "core/src/io/anuke/mindustry/world/BaseBlock.java",
+            "core/src/io/anuke/mindustry/world/blocks/power/PowerGraph.java",
+            "core/src/io/anuke/mindustry/world/modules/PowerModule.java"
+          ],
+          "errors": [
+            null,
+            null
+          ]
+        }
+      ],
+      "repo_size_kib_snapshot": 2013704,
+      "cost": "large",
+      "assessment": "Game domain and four shared paths in one older merge; check repeated-merge weighting and packaged assets before transfer.",
+      "production_rows": null,
+      "production_positives": null,
+      "production_negatives": null,
+      "production_seconds": null,
+      "production_peak_rss_bytes": null
+    },
+    {
+      "repository": "osmandapp/OsmAnd",
+      "url": "https://github.com/osmandapp/OsmAnd",
+      "pin": "dddbd54ae754161741d8c5657959ce7fae10af5b",
+      "default_branch": "master",
+      "meta_url": "https://api.github.com/repos/osmandapp/OsmAnd",
+      "pinned_commit_url": "https://api.github.com/repos/osmandapp/OsmAnd/git/commits/dddbd54ae754161741d8c5657959ce7fae10af5b",
+      "primary_language": "Java",
+      "license": "GPLv3 code; separate artwork and third-party terms",
+      "github_license_spdx_snapshot": "NOASSERTION",
+      "license_files": [
+        {
+          "path": "LICENSE",
+          "sha": "54072109bde455fddd9cb03aa4ba55c9983076ae",
+          "url": "https://github.com/osmandapp/OsmAnd/blob/dddbd54ae754161741d8c5657959ce7fae10af5b/LICENSE"
+        },
+        {
+          "path": "PULL_REQUEST.MIT.LICENSE",
+          "sha": "bbefe265c48c5b22e153eea10ed7ace6552f96ba",
+          "url": "https://github.com/osmandapp/OsmAnd/blob/dddbd54ae754161741d8c5657959ce7fae10af5b/PULL_REQUEST.MIT.LICENSE"
+        }
+      ],
+      "java_files_at_pin": 3467,
+      "java_bytes_at_pin": 30647649,
+      "java_tree": {
+        "java_files": 3467,
+        "bytes": 30647649,
+        "truncated": false,
+        "url": "https://api.github.com/repos/osmandapp/OsmAnd/git/trees/50c30fc204ed52c073d0b4054ca32f91f6a173d5?recursive=1",
+        "tree_sha": "50c30fc204ed52c073d0b4054ca32f91f6a173d5"
+      },
+      "commits_at_pin": 112424,
+      "commit_page_boundary": {
+        "count": 112424,
+        "last_sha": "03efca14e4947eb4fb597553354f9ed77ac17737",
+        "last_url": "https://api.github.com/repos/osmandapp/OsmAnd/commits?sha=dddbd54ae754161741d8c5657959ce7fae10af5b&per_page=1&page=112424",
+        "empty_next_url": "https://api.github.com/repos/osmandapp/OsmAnd/commits?sha=dddbd54ae754161741d8c5657959ce7fae10af5b&per_page=1&page=112425"
+      },
+      "total_two_parent_at_pin": null,
+      "windows": [
+        {
+          "name": "tip",
+          "url": "https://api.github.com/repos/osmandapp/OsmAnd/commits?sha=dddbd54ae754161741d8c5657959ce7fae10af5b&per_page=25",
+          "commits": 25,
+          "two_parent": 7,
+          "records": [
+            [
+              "dddbd54ae754161741d8c5657959ce7fae10af5b",
+              [
+                "420dce93a28374f35331042458cdcc0e5b0e911f"
+              ]
+            ],
+            [
+              "420dce93a28374f35331042458cdcc0e5b0e911f",
+              [
+                "cbd212b1236382d6c3d2ebad3d1bfd6477c02c42"
+              ]
+            ],
+            [
+              "cbd212b1236382d6c3d2ebad3d1bfd6477c02c42",
+              [
+                "6aaba12851a50026d03d9713ef3038149eb19a90"
+              ]
+            ],
+            [
+              "6aaba12851a50026d03d9713ef3038149eb19a90",
+              [
+                "a182affab8be3d9d12d652b86a640bea7e1c8bd0"
+              ]
+            ],
+            [
+              "a182affab8be3d9d12d652b86a640bea7e1c8bd0",
+              [
+                "c5e28a84aa870ea63e136d46da6629fa6ced3dac"
+              ]
+            ],
+            [
+              "c5e28a84aa870ea63e136d46da6629fa6ced3dac",
+              [
+                "2c1ba933569a0d75a417508f593baf3038fc39e2",
+                "ec591656363e2b0c6927812a400d8449800a8a91"
+              ]
+            ],
+            [
+              "ec591656363e2b0c6927812a400d8449800a8a91",
+              [
+                "2c1ba933569a0d75a417508f593baf3038fc39e2"
+              ]
+            ],
+            [
+              "2c1ba933569a0d75a417508f593baf3038fc39e2",
+              [
+                "c134806256a364f80bbfbb258fd0ee30f5ef3585",
+                "13222b36b62b52621a19dc2d7e68d21bea5f9f87"
+              ]
+            ],
+            [
+              "c134806256a364f80bbfbb258fd0ee30f5ef3585",
+              [
+                "05d641594c3a6f5fda8ae03297ccb09291b127a1",
+                "206b57879cd24c3afb2fe26c370051828be46288"
+              ]
+            ],
+            [
+              "05d641594c3a6f5fda8ae03297ccb09291b127a1",
+              [
+                "af46e5c0df4596305853aa48209a0a41f0cd6561",
+                "82b04ba0eb03069fda8f7d4b0d49d07f45f0c99c"
+              ]
+            ],
+            [
+              "82b04ba0eb03069fda8f7d4b0d49d07f45f0c99c",
+              [
+                "658e19506a655bd2171afb96e527a3d2a2302e44"
+              ]
+            ],
+            [
+              "af46e5c0df4596305853aa48209a0a41f0cd6561",
+              [
+                "2d1764384a2ed1fbfee7d964952c217610382753"
+              ]
+            ],
+            [
+              "2d1764384a2ed1fbfee7d964952c217610382753",
+              [
+                "3bfca379d88c1eac0c30592ed2644a9c7d11617b",
+                "f6655b4737e8fd0b2ebb46635f083f7b7ab4bfac"
+              ]
+            ],
+            [
+              "f6655b4737e8fd0b2ebb46635f083f7b7ab4bfac",
+              [
+                "5091510508dafaf907484bba65c841a3392b7552"
+              ]
+            ],
+            [
+              "3bfca379d88c1eac0c30592ed2644a9c7d11617b",
+              [
+                "321b3f3acc125f47879a604cfcdc96a030391144",
+                "e0225c8077818f8e9da286c7c00b8b0615f4e9bf"
+              ]
+            ],
+            [
+              "5091510508dafaf907484bba65c841a3392b7552",
+              [
+                "e34c1e36eb97b329dcc2c431c981dc5550b634e7"
+              ]
+            ],
+            [
+              "e34c1e36eb97b329dcc2c431c981dc5550b634e7",
+              [
+                "321b3f3acc125f47879a604cfcdc96a030391144"
+              ]
+            ],
+            [
+              "e0225c8077818f8e9da286c7c00b8b0615f4e9bf",
+              [
+                "321b3f3acc125f47879a604cfcdc96a030391144"
+              ]
+            ],
+            [
+              "321b3f3acc125f47879a604cfcdc96a030391144",
+              [
+                "aa439989572975a5f6189a399377369ab0cf1742",
+                "bdcf942458f28a21f1a27eb3579653ed190a7b44"
+              ]
+            ],
+            [
+              "bdcf942458f28a21f1a27eb3579653ed190a7b44",
+              [
+                "b2abb93bcec5777f2fd9880ecbaa497896030d69"
+              ]
+            ],
+            [
+              "b2abb93bcec5777f2fd9880ecbaa497896030d69",
+              [
+                "39c0cf2a9708b97f1fae9d26d8591a1cdc946753"
+              ]
+            ],
+            [
+              "39c0cf2a9708b97f1fae9d26d8591a1cdc946753",
+              [
+                "9f34cdace334dc6df7c30575acf6c720c5348194"
+              ]
+            ],
+            [
+              "aa439989572975a5f6189a399377369ab0cf1742",
+              [
+                "10c885bb58c2f9d38959368ffbd642a43f7adb13"
+              ]
+            ],
+            [
+              "10c885bb58c2f9d38959368ffbd642a43f7adb13",
+              [
+                "9f34cdace334dc6df7c30575acf6c720c5348194"
+              ]
+            ],
+            [
+              "9f34cdace334dc6df7c30575acf6c720c5348194",
+              [
+                "ceb9b9d9d33dfe1313fd4282667a3fb636da1e3f"
+              ]
+            ]
+          ]
+        },
+        {
+          "name": "2025",
+          "url": "https://api.github.com/repos/osmandapp/OsmAnd/commits?sha=dddbd54ae754161741d8c5657959ce7fae10af5b&per_page=25&until=2025-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 3,
+          "records": [
+            [
+              "527951cf3ae95a4179c9f077a86b7940bda3d1ee",
+              [
+                "5ef17d4ac34eb691cb31e1dc3f9dd7d044475355"
+              ]
+            ],
+            [
+              "8dd275e0f1c59e97ff6f98f86638abaaf6dfebf1",
+              [
+                "d9001d8a8cebaeeeceecd0e780f70ca2df03ae1a",
+                "5ef17d4ac34eb691cb31e1dc3f9dd7d044475355"
+              ]
+            ],
+            [
+              "5ef17d4ac34eb691cb31e1dc3f9dd7d044475355",
+              [
+                "75b77fd44171af4c63808c8171114207351f1017",
+                "02b6d1f62236b6465bc169527c77dbb674909ba4"
+              ]
+            ],
+            [
+              "02b6d1f62236b6465bc169527c77dbb674909ba4",
+              [
+                "a26ba799b95dae40f9a4e7a72d2ebc606557e25a"
+              ]
+            ],
+            [
+              "d9001d8a8cebaeeeceecd0e780f70ca2df03ae1a",
+              [
+                "cb864f143d31d60deff74420b8d87e3517a155ed"
+              ]
+            ],
+            [
+              "a26ba799b95dae40f9a4e7a72d2ebc606557e25a",
+              [
+                "75b77fd44171af4c63808c8171114207351f1017"
+              ]
+            ],
+            [
+              "cb864f143d31d60deff74420b8d87e3517a155ed",
+              [
+                "a4dea9eefc41025711e8cef8e83799f95e6e1818"
+              ]
+            ],
+            [
+              "a4dea9eefc41025711e8cef8e83799f95e6e1818",
+              [
+                "bcd58fb39e8922af263d1f6b8959222d6dbdb132",
+                "e80b7bcdbce4da748e2a8d1cd4917f4505b60ac6"
+              ]
+            ],
+            [
+              "e80b7bcdbce4da748e2a8d1cd4917f4505b60ac6",
+              [
+                "9b4c143a681f46ce2dc634006ad9577f804bf261"
+              ]
+            ],
+            [
+              "9b4c143a681f46ce2dc634006ad9577f804bf261",
+              [
+                "1595ddd209c2b96fbdcb6b00cc4863bfe159d4f6"
+              ]
+            ],
+            [
+              "1595ddd209c2b96fbdcb6b00cc4863bfe159d4f6",
+              [
+                "c3745bd530265a0989d4ec586b40db7d674de6d0"
+              ]
+            ],
+            [
+              "c3745bd530265a0989d4ec586b40db7d674de6d0",
+              [
+                "5605d005f0e2796ca9c8bd0389c4bf902dc8569d"
+              ]
+            ],
+            [
+              "5605d005f0e2796ca9c8bd0389c4bf902dc8569d",
+              [
+                "9e6f09efdbd0de4e85d36b4f6830d5700df4b8a0"
+              ]
+            ],
+            [
+              "9e6f09efdbd0de4e85d36b4f6830d5700df4b8a0",
+              [
+                "65ea217b89073ba8065441541563a7315fd3c7db"
+              ]
+            ],
+            [
+              "65ea217b89073ba8065441541563a7315fd3c7db",
+              [
+                "f550b1d17dbac841c0cb883df230d014aab0f042"
+              ]
+            ],
+            [
+              "f550b1d17dbac841c0cb883df230d014aab0f042",
+              [
+                "c08291cfcfd32a2baafc1ec64ab444d9d45962d9"
+              ]
+            ],
+            [
+              "c08291cfcfd32a2baafc1ec64ab444d9d45962d9",
+              [
+                "0657ba07b3c4d61a206586d3fc044369a2cf362d"
+              ]
+            ],
+            [
+              "0657ba07b3c4d61a206586d3fc044369a2cf362d",
+              [
+                "bf48241d278455f42661d4366d8c59b32577cd67"
+              ]
+            ],
+            [
+              "bf48241d278455f42661d4366d8c59b32577cd67",
+              [
+                "e95586a2b7393caee8663e638df30cfd717f5454"
+              ]
+            ],
+            [
+              "e95586a2b7393caee8663e638df30cfd717f5454",
+              [
+                "5812cbe8fea5300d6f2a84f315903a6f32400a4a"
+              ]
+            ],
+            [
+              "5812cbe8fea5300d6f2a84f315903a6f32400a4a",
+              [
+                "df4e6d4d0db4de5dae89fffa4ea6b5b5ae27a535"
+              ]
+            ],
+            [
+              "df4e6d4d0db4de5dae89fffa4ea6b5b5ae27a535",
+              [
+                "a0b5859e1e2659da26a1c504f10177f59f7e66d8"
+              ]
+            ],
+            [
+              "a0b5859e1e2659da26a1c504f10177f59f7e66d8",
+              [
+                "f80cc9299a1abe8ab28967fb7ffbf1792d68bc36"
+              ]
+            ],
+            [
+              "f80cc9299a1abe8ab28967fb7ffbf1792d68bc36",
+              [
+                "47af66773f4f3f17a4ce00e947452862dd288524"
+              ]
+            ],
+            [
+              "47af66773f4f3f17a4ce00e947452862dd288524",
+              [
+                "0e731c7551298162ccea9fe02daf180317b6352e"
+              ]
+            ]
+          ]
+        },
+        {
+          "name": "2018",
+          "url": "https://api.github.com/repos/osmandapp/OsmAnd/commits?sha=dddbd54ae754161741d8c5657959ce7fae10af5b&per_page=25&until=2018-11-19T00:00:00Z",
+          "commits": 25,
+          "two_parent": 1,
+          "records": [
+            [
+              "cdf49f10f616d17214767694f3c7b5333c81201a",
+              [
+                "0d9121daf52a0967bc10fbf1bfff7bcd11d569da"
+              ]
+            ],
+            [
+              "0d9121daf52a0967bc10fbf1bfff7bcd11d569da",
+              [
+                "52bb53cb42a27e750d77f0ffd49284d8e0646118"
+              ]
+            ],
+            [
+              "52bb53cb42a27e750d77f0ffd49284d8e0646118",
+              [
+                "1ba0556418a0904e43ec62d938ce0b246e796705"
+              ]
+            ],
+            [
+              "1ba0556418a0904e43ec62d938ce0b246e796705",
+              [
+                "e1df96528629affef26336adf670f7b9e9469daa"
+              ]
+            ],
+            [
+              "e1df96528629affef26336adf670f7b9e9469daa",
+              [
+                "a55426875c7bc03de92295263c3fa006c67f9527"
+              ]
+            ],
+            [
+              "a55426875c7bc03de92295263c3fa006c67f9527",
+              [
+                "140c093bf533c1c2f1719387364429a296dc6fee"
+              ]
+            ],
+            [
+              "140c093bf533c1c2f1719387364429a296dc6fee",
+              [
+                "3f0974705005ec14b5ae251dc57ca83fb363edc2"
+              ]
+            ],
+            [
+              "3f0974705005ec14b5ae251dc57ca83fb363edc2",
+              [
+                "7f1413f69b565b626a4f9953c8710e461c14a11e"
+              ]
+            ],
+            [
+              "7f1413f69b565b626a4f9953c8710e461c14a11e",
+              [
+                "7c606add20b5008e4bf2fe47bbdfc876668fe890"
+              ]
+            ],
+            [
+              "7c606add20b5008e4bf2fe47bbdfc876668fe890",
+              [
+                "f0eb1d2bc0017de4594d0cf53c66b54318a59cbd"
+              ]
+            ],
+            [
+              "f0eb1d2bc0017de4594d0cf53c66b54318a59cbd",
+              [
+                "9d5a6551d644c9cd4e74293e816c2d2768f40273"
+              ]
+            ],
+            [
+              "9d5a6551d644c9cd4e74293e816c2d2768f40273",
+              [
+                "0c6a293ff24faa4e0332046175c3bbb75bfdbe46"
+              ]
+            ],
+            [
+              "0c6a293ff24faa4e0332046175c3bbb75bfdbe46",
+              [
+                "ae5ccc0d2b5d1cead68c81b09a663763c3998b93"
+              ]
+            ],
+            [
+              "ae5ccc0d2b5d1cead68c81b09a663763c3998b93",
+              [
+                "78b94f867429b89e1f38302924156ba1cb2b0718"
+              ]
+            ],
+            [
+              "78b94f867429b89e1f38302924156ba1cb2b0718",
+              [
+                "27197e1edc188609a29fc5b829163afdc20b66c0"
+              ]
+            ],
+            [
+              "27197e1edc188609a29fc5b829163afdc20b66c0",
+              [
+                "ee38c9c52134add4ef85ade5e0a71fd68d0ea3ae"
+              ]
+            ],
+            [
+              "ee38c9c52134add4ef85ade5e0a71fd68d0ea3ae",
+              [
+                "f76eb28d2db169ce293e52245add1e661ee1d40e"
+              ]
+            ],
+            [
+              "f76eb28d2db169ce293e52245add1e661ee1d40e",
+              [
+                "43768fbdf5041c229bd6b05904f49c3858d57044"
+              ]
+            ],
+            [
+              "43768fbdf5041c229bd6b05904f49c3858d57044",
+              [
+                "064ea4cc399b8034df44ef943ba44f18da21a90f"
+              ]
+            ],
+            [
+              "064ea4cc399b8034df44ef943ba44f18da21a90f",
+              [
+                "afcce37aab2bb6b10089ef0b41b896b2201171a8"
+              ]
+            ],
+            [
+              "afcce37aab2bb6b10089ef0b41b896b2201171a8",
+              [
+                "16ae878e322a60da2463be1c56ef6cf304e67191",
+                "a5ff8f37ba1c5470791bd93ce78d269ea3109502"
+              ]
+            ],
+            [
+              "a5ff8f37ba1c5470791bd93ce78d269ea3109502",
+              [
+                "422bc15d387b50291b130f60198b592b1bbbd2ad"
+              ]
+            ],
+            [
+              "422bc15d387b50291b130f60198b592b1bbbd2ad",
+              [
+                "e367523ae9ac10da3c6f64ef0ca05408e2523f5e"
+              ]
+            ],
+            [
+              "e367523ae9ac10da3c6f64ef0ca05408e2523f5e",
+              [
+                "060d3206531c97f935c08558bbc9adda7b4ac736"
+              ]
+            ],
+            [
+              "16ae878e322a60da2463be1c56ef6cf304e67191",
+              [
+                "4af021e157532120097600cfd4112c23c7a98b4b"
+              ]
+            ]
+          ]
+        }
+      ],
+      "overlaps": [
+        {
+          "window": "tip",
+          "merge": "c5e28a84aa870ea63e136d46da6629fa6ced3dac",
+          "parents": [
+            "2c1ba933569a0d75a417508f593baf3038fc39e2",
+            "ec591656363e2b0c6927812a400d8449800a8a91"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/osmandapp/OsmAnd/compare/ec591656363e2b0c6927812a400d8449800a8a91...2c1ba933569a0d75a417508f593baf3038fc39e2",
+            "https://api.github.com/repos/osmandapp/OsmAnd/compare/2c1ba933569a0d75a417508f593baf3038fc39e2...ec591656363e2b0c6927812a400d8449800a8a91"
+          ],
+          "common_base": "2c1ba933569a0d75a417508f593baf3038fc39e2",
+          "returned_files": [
+            0,
+            1
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "tip",
+          "merge": "2c1ba933569a0d75a417508f593baf3038fc39e2",
+          "parents": [
+            "c134806256a364f80bbfbb258fd0ee30f5ef3585",
+            "13222b36b62b52621a19dc2d7e68d21bea5f9f87"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/osmandapp/OsmAnd/compare/13222b36b62b52621a19dc2d7e68d21bea5f9f87...c134806256a364f80bbfbb258fd0ee30f5ef3585",
+            "https://api.github.com/repos/osmandapp/OsmAnd/compare/c134806256a364f80bbfbb258fd0ee30f5ef3585...13222b36b62b52621a19dc2d7e68d21bea5f9f87"
+          ],
+          "common_base": "38146dacd26b39b28e42e16c08405ca53eb03050",
+          "returned_files": [
+            239,
+            3
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2025",
+          "merge": "8dd275e0f1c59e97ff6f98f86638abaaf6dfebf1",
+          "parents": [
+            "d9001d8a8cebaeeeceecd0e780f70ca2df03ae1a",
+            "5ef17d4ac34eb691cb31e1dc3f9dd7d044475355"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/osmandapp/OsmAnd/compare/5ef17d4ac34eb691cb31e1dc3f9dd7d044475355...d9001d8a8cebaeeeceecd0e780f70ca2df03ae1a",
+            "https://api.github.com/repos/osmandapp/OsmAnd/compare/d9001d8a8cebaeeeceecd0e780f70ca2df03ae1a...5ef17d4ac34eb691cb31e1dc3f9dd7d044475355"
+          ],
+          "common_base": "75b77fd44171af4c63808c8171114207351f1017",
+          "returned_files": [
+            187,
+            2
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [
+            "OsmAnd/src/net/osmand/plus/download/ui/UpdatesIndexFragment.java"
+          ],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2025",
+          "merge": "5ef17d4ac34eb691cb31e1dc3f9dd7d044475355",
+          "parents": [
+            "75b77fd44171af4c63808c8171114207351f1017",
+            "02b6d1f62236b6465bc169527c77dbb674909ba4"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/osmandapp/OsmAnd/compare/02b6d1f62236b6465bc169527c77dbb674909ba4...75b77fd44171af4c63808c8171114207351f1017",
+            "https://api.github.com/repos/osmandapp/OsmAnd/compare/75b77fd44171af4c63808c8171114207351f1017...02b6d1f62236b6465bc169527c77dbb674909ba4"
+          ],
+          "common_base": "75b77fd44171af4c63808c8171114207351f1017",
+          "returned_files": [
+            0,
+            2
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        },
+        {
+          "window": "2018",
+          "merge": "afcce37aab2bb6b10089ef0b41b896b2201171a8",
+          "parents": [
+            "16ae878e322a60da2463be1c56ef6cf304e67191",
+            "a5ff8f37ba1c5470791bd93ce78d269ea3109502"
+          ],
+          "compare_urls": [
+            "https://api.github.com/repos/osmandapp/OsmAnd/compare/a5ff8f37ba1c5470791bd93ce78d269ea3109502...16ae878e322a60da2463be1c56ef6cf304e67191",
+            "https://api.github.com/repos/osmandapp/OsmAnd/compare/16ae878e322a60da2463be1c56ef6cf304e67191...a5ff8f37ba1c5470791bd93ce78d269ea3109502"
+          ],
+          "common_base": "0329cae253a1ad4e0b93a1b15356c66c1f56c76c",
+          "returned_files": [
+            8,
+            5
+          ],
+          "capped_or_failed": false,
+          "both_modified_java": [],
+          "errors": [
+            null,
+            null
+          ]
+        }
+      ],
+      "repo_size_kib_snapshot": 1513822,
+      "cost": "large",
+      "assessment": "Large commit ancestry; only one shared path in five sampled merges. Distinguish code from assets and third-party libraries.",
+      "production_rows": null,
+      "production_positives": null,
+      "production_negatives": null,
+      "production_seconds": null,
+      "production_peak_rss_bytes": null
+    }
+  ]
+}

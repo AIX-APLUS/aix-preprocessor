@@ -1,0 +1,556 @@
+{
+  "schema_columns_validated": [
+    "repo_id",
+    "merge_sha",
+    "parent1_sha",
+    "parent2_sha",
+    "base_sha",
+    "base_path",
+    "base_blob_sha",
+    "base_code",
+    "commit_count_90d",
+    "days_since_last_change",
+    "author_count_90d",
+    "top_author_share_90d",
+    "lines_added_90d",
+    "lines_deleted_90d",
+    "has_text_conflict"
+  ],
+  "quantile_method": "nearest rank, row weighted",
+  "tokenizer_json_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+  "inputs": [
+    {
+      "filename": "Card-Forge__forge.parquet",
+      "repo_id": "Card-Forge/forge",
+      "stats_positive_rate_display": "0.00%",
+      "rows": 1,
+      "positive": 0,
+      "negative": 1,
+      "positive_fraction": 0.0,
+      "contributing_merges": 1,
+      "unique_paths": 1,
+      "paths_seen_multiple_times": 0,
+      "rows_on_repeated_paths": 0,
+      "max_rows_per_path": 1,
+      "top_level_path_rows": [
+        {
+          "top_level": "src",
+          "rows": 1,
+          "positive": 0
+        }
+      ],
+      "distinct_exact_code": 1,
+      "repeated_code_excess_rows": 0,
+      "code_hashes_at_multiple_paths": 0,
+      "code_hashes_with_both_labels": 0,
+      "rows_in_both_label_code_groups": 0,
+      "minority_rows_in_both_label_code_groups": 0,
+      "base_code_unicode_characters": {
+        "min": 234919,
+        "p50": 234919,
+        "p90": 234919,
+        "p95": 234919,
+        "max": 234919
+      },
+      "base_code_utf8_bytes": {
+        "min": 234919,
+        "p50": 234919,
+        "p90": 234919,
+        "p95": 234919,
+        "max": 234919
+      },
+      "base_code_tokens": {
+        "min": 55637,
+        "p50": 55637,
+        "p90": 55637,
+        "p95": 55637,
+        "max": 55637
+      },
+      "source_lines": {
+        "min": 8676,
+        "p50": 8676,
+        "p90": 8676,
+        "p95": 8676,
+        "max": 8676
+      },
+      "rows_with_tab_indented_line": 0,
+      "rows_with_crlf": 0,
+      "rows_under_src_test_java": 0
+    },
+    {
+      "filename": "JabRef__jabref.parquet",
+      "repo_id": "JabRef/jabref",
+      "stats_positive_rate_display": "13.33%",
+      "rows": 195,
+      "positive": 26,
+      "negative": 169,
+      "positive_fraction": 0.13333333333333333,
+      "contributing_merges": 49,
+      "unique_paths": 129,
+      "paths_seen_multiple_times": 32,
+      "rows_on_repeated_paths": 98,
+      "max_rows_per_path": 9,
+      "top_level_path_rows": [
+        {
+          "top_level": "src",
+          "rows": 195,
+          "positive": 26
+        }
+      ],
+      "distinct_exact_code": 192,
+      "repeated_code_excess_rows": 3,
+      "code_hashes_at_multiple_paths": 0,
+      "code_hashes_with_both_labels": 1,
+      "rows_in_both_label_code_groups": 2,
+      "minority_rows_in_both_label_code_groups": 1,
+      "base_code_unicode_characters": {
+        "min": 342,
+        "p50": 20799,
+        "p90": 97752,
+        "p95": 114263,
+        "max": 130359
+      },
+      "base_code_utf8_bytes": {
+        "min": 342,
+        "p50": 20799,
+        "p90": 97752,
+        "p95": 114263,
+        "max": 130359
+      },
+      "base_code_tokens": {
+        "min": 80,
+        "p50": 4134,
+        "p90": 20484,
+        "p95": 22718,
+        "max": 25605
+      },
+      "source_lines": {
+        "min": 18,
+        "p50": 542,
+        "p90": 2608,
+        "p95": 2971,
+        "max": 3199
+      },
+      "rows_with_tab_indented_line": 84,
+      "rows_with_crlf": 1,
+      "rows_under_src_test_java": 19
+    },
+    {
+      "filename": "jenkinsci__jenkins.parquet",
+      "repo_id": "jenkinsci/jenkins",
+      "stats_positive_rate_display": "14.19%",
+      "rows": 148,
+      "positive": 21,
+      "negative": 127,
+      "positive_fraction": 0.14189189189189189,
+      "contributing_merges": 44,
+      "unique_paths": 101,
+      "paths_seen_multiple_times": 19,
+      "rows_on_repeated_paths": 66,
+      "max_rows_per_path": 13,
+      "top_level_path_rows": [
+        {
+          "top_level": "core",
+          "rows": 86,
+          "positive": 14
+        },
+        {
+          "top_level": "test",
+          "rows": 27,
+          "positive": 6
+        },
+        {
+          "top_level": "maven-plugin",
+          "rows": 24,
+          "positive": 1
+        },
+        {
+          "top_level": "remoting",
+          "rows": 9,
+          "positive": 0
+        },
+        {
+          "top_level": "maven-agent",
+          "rows": 1,
+          "positive": 0
+        }
+      ],
+      "distinct_exact_code": 141,
+      "repeated_code_excess_rows": 7,
+      "code_hashes_at_multiple_paths": 0,
+      "code_hashes_with_both_labels": 1,
+      "rows_in_both_label_code_groups": 2,
+      "minority_rows_in_both_label_code_groups": 1,
+      "base_code_unicode_characters": {
+        "min": 508,
+        "p50": 12681,
+        "p90": 73107,
+        "p95": 110887,
+        "max": 131934
+      },
+      "base_code_utf8_bytes": {
+        "min": 508,
+        "p50": 12681,
+        "p90": 73107,
+        "p95": 110887,
+        "max": 131934
+      },
+      "base_code_tokens": {
+        "min": 108,
+        "p50": 2577,
+        "p90": 14624,
+        "p95": 22806,
+        "max": 27412
+      },
+      "source_lines": {
+        "min": 17,
+        "p50": 320,
+        "p90": 1869,
+        "p95": 3245,
+        "max": 3797
+      },
+      "rows_with_tab_indented_line": 39,
+      "rows_with_crlf": 3,
+      "rows_under_src_test_java": 17
+    },
+    {
+      "filename": "quarkusio__quarkus.parquet",
+      "repo_id": "quarkusio/quarkus",
+      "stats_positive_rate_display": "0.00%",
+      "rows": 9,
+      "positive": 0,
+      "negative": 9,
+      "positive_fraction": 0.0,
+      "contributing_merges": 6,
+      "unique_paths": 8,
+      "paths_seen_multiple_times": 1,
+      "rows_on_repeated_paths": 2,
+      "max_rows_per_path": 2,
+      "top_level_path_rows": [
+        {
+          "top_level": "ext",
+          "rows": 3,
+          "positive": 0
+        },
+        {
+          "top_level": "arc",
+          "rows": 3,
+          "positive": 0
+        },
+        {
+          "top_level": "builder",
+          "rows": 1,
+          "positive": 0
+        },
+        {
+          "top_level": "agroal",
+          "rows": 1,
+          "positive": 0
+        },
+        {
+          "top_level": "undertow",
+          "rows": 1,
+          "positive": 0
+        }
+      ],
+      "distinct_exact_code": 9,
+      "repeated_code_excess_rows": 0,
+      "code_hashes_at_multiple_paths": 0,
+      "code_hashes_with_both_labels": 0,
+      "rows_in_both_label_code_groups": 0,
+      "minority_rows_in_both_label_code_groups": 0,
+      "base_code_unicode_characters": {
+        "min": 2457,
+        "p50": 6514,
+        "p90": 14914,
+        "p95": 14914,
+        "max": 14914
+      },
+      "base_code_utf8_bytes": {
+        "min": 2457,
+        "p50": 6514,
+        "p90": 14914,
+        "p95": 14914,
+        "max": 14914
+      },
+      "base_code_tokens": {
+        "min": 405,
+        "p50": 1218,
+        "p90": 3140,
+        "p95": 3140,
+        "max": 3140
+      },
+      "source_lines": {
+        "min": 74,
+        "p50": 185,
+        "p90": 342,
+        "p95": 342,
+        "max": 342
+      },
+      "rows_with_tab_indented_line": 0,
+      "rows_with_crlf": 0,
+      "rows_under_src_test_java": 0
+    },
+    {
+      "filename": "spring-projects__spring-boot.parquet",
+      "repo_id": "spring-projects/spring-boot",
+      "stats_positive_rate_display": "25.93%",
+      "rows": 27,
+      "positive": 7,
+      "negative": 20,
+      "positive_fraction": 0.25925925925925924,
+      "contributing_merges": 10,
+      "unique_paths": 23,
+      "paths_seen_multiple_times": 2,
+      "rows_on_repeated_paths": 6,
+      "max_rows_per_path": 4,
+      "top_level_path_rows": [
+        {
+          "top_level": "spring-boot-actuator",
+          "rows": 9,
+          "positive": 3
+        },
+        {
+          "top_level": "spring-boot-tools",
+          "rows": 7,
+          "positive": 1
+        },
+        {
+          "top_level": "spring-boot-autoconfigure",
+          "rows": 6,
+          "positive": 2
+        },
+        {
+          "top_level": "spring-boot-cli",
+          "rows": 3,
+          "positive": 1
+        },
+        {
+          "top_level": "spring-boot",
+          "rows": 2,
+          "positive": 0
+        }
+      ],
+      "distinct_exact_code": 26,
+      "repeated_code_excess_rows": 1,
+      "code_hashes_at_multiple_paths": 0,
+      "code_hashes_with_both_labels": 0,
+      "rows_in_both_label_code_groups": 0,
+      "minority_rows_in_both_label_code_groups": 0,
+      "base_code_unicode_characters": {
+        "min": 1495,
+        "p50": 6119,
+        "p90": 13871,
+        "p95": 17525,
+        "max": 20881
+      },
+      "base_code_utf8_bytes": {
+        "min": 1495,
+        "p50": 6119,
+        "p90": 13871,
+        "p95": 17525,
+        "max": 20881
+      },
+      "base_code_tokens": {
+        "min": 313,
+        "p50": 1365,
+        "p90": 3054,
+        "p95": 3620,
+        "max": 4741
+      },
+      "source_lines": {
+        "min": 46,
+        "p50": 200,
+        "p90": 371,
+        "p95": 535,
+        "max": 590
+      },
+      "rows_with_tab_indented_line": 27,
+      "rows_with_crlf": 0,
+      "rows_under_src_test_java": 6
+    }
+  ],
+  "code_hashes_at_multiple_repositories": 0,
+  "rows_matching_code_in_another_repository": 0,
+  "layout_hashes_at_multiple_repositories": 0,
+  "combined_profile": {
+    "rows": 380,
+    "positive": 54,
+    "negative": 326,
+    "positive_fraction": 0.14210526315789473,
+    "contributing_merges": 110,
+    "unique_paths": 262,
+    "paths_seen_multiple_times": 54,
+    "rows_on_repeated_paths": 172,
+    "max_rows_per_path": 13,
+    "top_level_path_rows": [
+      {
+        "top_level": "src",
+        "rows": 196,
+        "positive": 26
+      },
+      {
+        "top_level": "core",
+        "rows": 86,
+        "positive": 14
+      },
+      {
+        "top_level": "test",
+        "rows": 27,
+        "positive": 6
+      },
+      {
+        "top_level": "maven-plugin",
+        "rows": 24,
+        "positive": 1
+      },
+      {
+        "top_level": "remoting",
+        "rows": 9,
+        "positive": 0
+      }
+    ],
+    "distinct_exact_code": 369,
+    "repeated_code_excess_rows": 11,
+    "code_hashes_at_multiple_paths": 0,
+    "code_hashes_with_both_labels": 2,
+    "rows_in_both_label_code_groups": 4,
+    "minority_rows_in_both_label_code_groups": 2,
+    "base_code_unicode_characters": {
+      "min": 342,
+      "p50": 14914,
+      "p90": 83635,
+      "p95": 110887,
+      "max": 234919
+    },
+    "base_code_utf8_bytes": {
+      "min": 342,
+      "p50": 14914,
+      "p90": 83635,
+      "p95": 110887,
+      "max": 234919
+    },
+    "base_code_tokens": {
+      "min": 80,
+      "p50": 3161,
+      "p90": 18462,
+      "p95": 22551,
+      "max": 55637
+    },
+    "source_lines": {
+      "min": 17,
+      "p50": 375,
+      "p90": 1940,
+      "p95": 2962,
+      "max": 8676
+    },
+    "rows_with_tab_indented_line": 150,
+    "rows_with_crlf": 4,
+    "rows_under_src_test_java": 42
+  },
+  "merged": {
+    "full_rows_equal_in_input_order": true,
+    "stats_positive_rate_display": "14.21%"
+  },
+  "duplicate_control_rejected_without_output": true,
+  "invalid_schema_rejected_without_output": true,
+  "split_leakage": {
+    "repo_and_path": {
+      "groups_in_multiple_splits": 0,
+      "test_rows_seen_in_train": 0
+    },
+    "repo_and_merge": {
+      "groups_in_multiple_splits": 36,
+      "test_rows_seen_in_train": 54
+    },
+    "exact_code_sha256": {
+      "groups_in_multiple_splits": 0,
+      "test_rows_seen_in_train": 0
+    },
+    "layout_normalized_sha256": {
+      "groups_in_multiple_splits": 0,
+      "test_rows_seen_in_train": 0
+    }
+  },
+  "split_rows": {
+    "train": {
+      "rows": 267,
+      "positives": 38,
+      "by_repo": {
+        "Card-Forge/forge": {
+          "rows": 1,
+          "positive": 0
+        },
+        "JabRef/jabref": {
+          "rows": 137,
+          "positive": 18
+        },
+        "jenkinsci/jenkins": {
+          "rows": 104,
+          "positive": 15
+        },
+        "quarkusio/quarkus": {
+          "rows": 6,
+          "positive": 0
+        },
+        "spring-projects/spring-boot": {
+          "rows": 19,
+          "positive": 5
+        }
+      }
+    },
+    "val": {
+      "rows": 57,
+      "positives": 8,
+      "by_repo": {
+        "Card-Forge/forge": {
+          "rows": 0,
+          "positive": 0
+        },
+        "JabRef/jabref": {
+          "rows": 29,
+          "positive": 4
+        },
+        "jenkinsci/jenkins": {
+          "rows": 22,
+          "positive": 3
+        },
+        "quarkusio/quarkus": {
+          "rows": 2,
+          "positive": 0
+        },
+        "spring-projects/spring-boot": {
+          "rows": 4,
+          "positive": 1
+        }
+      }
+    },
+    "test": {
+      "rows": 56,
+      "positives": 8,
+      "by_repo": {
+        "Card-Forge/forge": {
+          "rows": 0,
+          "positive": 0
+        },
+        "JabRef/jabref": {
+          "rows": 29,
+          "positive": 4
+        },
+        "jenkinsci/jenkins": {
+          "rows": 22,
+          "positive": 3
+        },
+        "quarkusio/quarkus": {
+          "rows": 1,
+          "positive": 0
+        },
+        "spring-projects/spring-boot": {
+          "rows": 4,
+          "positive": 1
+        }
+      }
+    }
+  },
+  "strategies_identical_by_partition_all_fields": true
+}

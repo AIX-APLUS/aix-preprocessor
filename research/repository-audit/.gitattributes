@@ -1,0 +1,2 @@
+# The verifier compares these JSON files with the original Actions ZIP bytes.
+evidence/runs/*.json text eol=lf

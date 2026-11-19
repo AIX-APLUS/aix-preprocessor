@@ -1,0 +1,51 @@
+{
+  "repository": "JabRef/jabref",
+  "pinned_default_sha": "75b35b962c1d1f45cbd5be8af025b16cde9cc290",
+  "default_branch": "main",
+  "fetched_default_tip": "c8e4b2dd91aaa0bb4ec6aa15cd8aa98e21c11f82",
+  "default": {
+    "total_commits": 25390,
+    "two_parent_merges": 2817,
+    "octopus_merges": 0,
+    "all_merge_commits": 2817,
+    "two_parent_merge_bases": {
+      "unique": 2800,
+      "multiple": 12,
+      "none": 5
+    },
+    "oldest_committer_time": "2003-10-14T21:38:35Z",
+    "newest_committer_time": "2026-11-19T09:02:08Z",
+    "commits_since_recent_from": 282
+  },
+  "all_heads_tags": {
+    "total_commits": 26811,
+    "two_parent_merges": 3446,
+    "octopus_merges": 0,
+    "all_merge_commits": 3446,
+    "two_parent_merge_bases": {
+      "unique": 3420,
+      "multiple": 21,
+      "none": 5
+    },
+    "oldest_committer_time": "2003-10-14T21:38:35Z",
+    "newest_committer_time": "2026-11-19T14:46:07Z",
+    "commits_since_recent_from": 601
+  },
+  "fetch_refspecs": [
+    "refs/heads/*",
+    "refs/tags/*"
+  ],
+  "shallow": false,
+  "filter": "tree:0",
+  "recent_from_inclusive": "2026-10-20T00:00:00Z",
+  "fetched_at_utc": "2026-11-19T14:57:15.986278Z",
+  "evidence_url": "https://github.com/JabRef/jabref/commit/75b35b962c1d1f45cbd5be8af025b16cde9cc290",
+  "head_count": 105,
+  "tag_count": 66,
+  "ref_manifest": "jabref.refs.tsv.gz",
+  "refs_uncompressed_sha256": "9756929326045cfb8ccda310888bcb38c29ed568909a9e379e06496a3a9f8059",
+  "metadata_mirror_file_bytes": 14792767,
+  "git_version": "git version 2.56.1",
+  "fetch_seconds": 1.087,
+  "inventory_seconds": 5.127
+}
