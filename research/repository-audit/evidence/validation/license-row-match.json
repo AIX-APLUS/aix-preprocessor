@@ -1,0 +1,121 @@
+{
+  "workflow_run_id": 44549292132,
+  "artifact_id": 14543915089,
+  "scope": "Local replay data whose 15-column canonical logical digests and class counts match Ubuntu pilot aggregates; distinct positive base_path strings per repository. Header evidence covers only the matched historical source files.",
+  "repositories": [
+    {
+      "repository": "Card-Forge/forge",
+      "pilot_anchor": "215699c878fbeee37cef6ebd78e15e338b32a37b",
+      "reference": "runs/pilot-Card-Forge__forge.json",
+      "logical_validation": {
+        "samples": 1,
+        "positive": 0,
+        "negative": 1,
+        "logical_sha256": "7c45f551eb50f4bfcb268afbdcbb489962a1c53b7a6a928a9e991f225f0ff6c0"
+      },
+      "unique_positive_base_paths": 0,
+      "historical_keys_checked": 0,
+      "matched": []
+    },
+    {
+      "repository": "JabRef/jabref",
+      "pilot_anchor": "8d22827be20de435b01844f8643fe014aa910daa",
+      "reference": "runs/pilot-JabRef__jabref.json",
+      "logical_validation": {
+        "samples": 195,
+        "positive": 26,
+        "negative": 169,
+        "logical_sha256": "30087ec40ca43c74d8de5a728ff79c3ec96514f783507a2a2162239023a9642b"
+      },
+      "unique_positive_base_paths": 20,
+      "historical_keys_checked": 1,
+      "matched": [
+        {
+          "sample_key_repo_merge_path": [
+            "JabRef/jabref",
+            "baf58627a5a5c27c0232e458763016162399e787",
+            "src/main/java/net/sf/jabref/logic/mods/MODSEntry.java"
+          ],
+          "base_sha": "cf0cde78a0ea22204891eae7a245ba9332dd4e91",
+          "base_blob_sha": "b1b6d41fc5fe6869bf709cc3c0ab221a17998a2e",
+          "base_code_sha256": "419e4bfae3038a7c796d95a83633ebc95079508070b2784b1a09fa4a3a27f72e",
+          "parents_in_order": [
+            "6b94060334494d53ffb6c1aff75e4dd2a53fe71b",
+            "cb9ccf6ffef377ac4466735ab4d19a9f98eb5b5f"
+          ],
+          "has_text_conflict": true,
+          "source_url": "https://github.com/JabRef/jabref/blob/cf0cde78a0ea22204891eae7a245ba9332dd4e91/src/main/java/net/sf/jabref/logic/mods/MODSEntry.java",
+          "observed_notice": "GPL-2.0-or-later",
+          "parents_match": true,
+          "base_matches": true,
+          "blob_matches": true,
+          "source_bytes_match": true
+        }
+      ]
+    },
+    {
+      "repository": "jenkinsci/jenkins",
+      "pilot_anchor": "285741a5240f3658c6e5191edc9ba65fe7d5793c",
+      "reference": "runs/pilot-jenkinsci__jenkins.json",
+      "logical_validation": {
+        "samples": 148,
+        "positive": 21,
+        "negative": 127,
+        "logical_sha256": "62ae7852c3b87c83c0019e28b4f86b623e18d561e71848a8c1477b94ab343ea3"
+      },
+      "unique_positive_base_paths": 16,
+      "historical_keys_checked": 1,
+      "matched": [
+        {
+          "sample_key_repo_merge_path": [
+            "jenkinsci/jenkins",
+            "5abc651ceeab92833791f7c0922aabe42eb78930",
+            "core/src/main/java/hudson/ExtensionComponent.java"
+          ],
+          "base_sha": "fe452bfbc5a4332c81a7cdf2cbd52c3af37ee36d",
+          "base_blob_sha": "8b0af778d4fbb8c680b0326b1db5301839fcce6f",
+          "base_code_sha256": "3c5d87e305a4d2bc5880c9dcd51b381c6eae84808e981c93a55f5f06661e8250",
+          "parents_in_order": [
+            "5ea48db3d21247c75a019d372c4054e0b1549786",
+            "77290b9c98092f6830094b656bb09448f50444c1"
+          ],
+          "has_text_conflict": true,
+          "source_url": "https://github.com/jenkinsci/jenkins/blob/fe452bfbc5a4332c81a7cdf2cbd52c3af37ee36d/core/src/main/java/hudson/ExtensionComponent.java",
+          "observed_notice": "MIT",
+          "parents_match": true,
+          "base_matches": true,
+          "blob_matches": true,
+          "source_bytes_match": true
+        }
+      ]
+    },
+    {
+      "repository": "quarkusio/quarkus",
+      "pilot_anchor": "0ef2742d330604ca4ea130db6323b8f577b9260e",
+      "reference": "runs/pilot-quarkusio__quarkus.json",
+      "logical_validation": {
+        "samples": 9,
+        "positive": 0,
+        "negative": 9,
+        "logical_sha256": "8401e8ce3d35a3203b9b85cf4377c134915f4b225e357118087b1515be5d62fd"
+      },
+      "unique_positive_base_paths": 0,
+      "historical_keys_checked": 0,
+      "matched": []
+    },
+    {
+      "repository": "spring-projects/spring-boot",
+      "pilot_anchor": "53d24301d125b543664a79cf6ece530624597f9a",
+      "reference": "runs/pilot-spring-projects__spring-boot.json",
+      "logical_validation": {
+        "samples": 27,
+        "positive": 7,
+        "negative": 20,
+        "logical_sha256": "2f12249ad98017643b8d8a11ae2395d0d6eb04ade1d89be6ea2879ae910cc1c3"
+      },
+      "unique_positive_base_paths": 7,
+      "historical_keys_checked": 0,
+      "matched": []
+    }
+  ]
+}

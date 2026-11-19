@@ -2,7 +2,44 @@
 
 고정 전처리기는 `06e755ebabed1707a3413ec99ffa2511b046c543`이다. 본조사 대상 다섯 곳과 고정 기본 브랜치는 [pins.tsv](pins.tsv)에 있다. 파일 한 줄은 공백으로 구분한 별칭, owner/repository, 기본 브랜치, SHA다. 모든 실행은 새 작업 디렉터리를 사용한다. 저장소 클론, 소스가 든 Parquet, 토크나이저, 빌드 산출물은 연구 브랜치에 넣지 않는다.
 
-## 실험 환경과 명령
+## 보관된 원자료에서 재검산하기
+
+기준 실행은 [44549292132](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132), 연구 커밋은 `a6a7c7ea2c699eb84d87c4b391e33497fd35cc5e`다. [실행 명세](evidence/run-44549292132-provenance.json)에 그래프 ZIP 5개와 집계 ZIP 1개의 ID, 크기, GitHub SHA-256, ZIP 엔트리 해시와 Job ID가 있다. 이번 회수에서는 GitHub Actions 다운로드 주소에서 ZIP을 직접 받았고, 별도로 pilot 로그의 SUMMARY 6개를 받아 검산했다. 각 ZIP과 로그는 저장소 밖에 두었다. ZIP 보존기간이 지나도 다음 검사는 저장소에 보관한 소형 증거만으로 실행할 수 있다.
+
+저장소 루트에서 아래 명령을 실행했다. Python 3.10 이상을 사용한다. 정량 JSON을 다시 생성할 때는 지정한 출력 파일만 갱신된다.
+
+```console
+python research/repository-audit/verify_run_artifacts.py
+python research/repository-audit/verify_results.py --check research/repository-audit/evidence/validation/pilot-integrity.json
+python research/repository-audit/verify_additional_screen.py
+python research/repository-audit/comparison.py --output docs/research/repository-suitability.json
+python research/repository-audit/render_pilot.py --check
+```
+
+ZIP과 로그가 있다면, 여섯 ZIP의 파일명을 `aggregate-pilot-results.zip`, `graph-spring.zip`, `graph-jenkins.zip`, `graph-forge.zip`, `graph-jabref.zip`, `graph-quarkus.zip`으로 둔다. 이번 검산에서 아래 방식으로 원본 16개·ZIP 6개·로그 SUMMARY 6개의 일치를 확인했다. `DOWNLOADS`와 `PILOT_LOG`는 사용자가 저장한 경로로 치환한다.
+
+```console
+python research/repository-audit/verify_run_artifacts.py --zip-dir DOWNLOADS --pilot-log PILOT_LOG
+```
+
+로그는 [pilot job 135648324860](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132/job/135648324860)의 `Report aggregate evidence` 단계에서 받는다. ZIP을 구할 수 없으면 로그만 `--pilot-log PILOT_LOG`로 지정해도 된다. 검증기는 엄격한 Base64 디코딩 → gzip 해제 → UTF-8 JSON 파싱을 수행하고, 6개 자료의 이름·중복·누락·해시·보관 원문까지 검사한다. 그래프 refs는 [runs/](evidence/runs)의 TSV를 압축 해제해 graph JSON 해시와 대조한다. 기존 파일과 ZIP 내 파일의 gzip OS 헤더 1바이트 차이도 명세에 기록했다.
+
+보고서 표를 갱신하려면 `render_pilot.py`에서 `--check`를 뺀다. 그림 재생성에는 matplotlib와 한국어 글꼴이 필요하다. [시각화 코드](render_pilot.py)와 [원래 구간 그래프 코드](plot_parent_windows.py)는 서로 다른 분모를 그린다.
+
+```console
+python research/repository-audit/render_pilot.py --check --figure docs/research/pilot-yield.png
+```
+
+## 성공한 Ubuntu 실행과 별도 로컬 재현 예시
+
+실제로 성공한 런너는 Ubuntu 24.04.5, Git 2.56.1, Temurin 17.0.21+9, Python 3.12.3이었다. 추출용 JAR는 `06e755eb`의 `./gradlew --no-daemon --console=plain shadowJar`로 빌드했다. 그래프 작업은 `graph_inventory.py`를 다섯 저장소에 병렬로 실행했다. 파일럿 작업은 고정 `pins.tsv` 순서대로 다음 명령을 실행한 후, 같은 런너에서 `quality.py`로 Parquet 다섯 개를 검사했다. 전체 명령과 환경변수는 [실제 실행 워크플로](https://github.com/AIX-APLUS/aix-preprocessor/blob/a6a7c7ea2c699eb84d87c4b391e33497fd35cc5e/.github/workflows/repository-suitability-study.yml)에 고정되어 있다.
+
+```bash
+timeout 12m python research/repository-audit/pilot.py run "$repo" "$tip" \
+  --source extractor --work "$RUNNER_TEMP/pilot" --out "$RUNNER_TEMP/results"
+```
+
+다음은 로컬 Linux에서 그래프를 재사용하는 대안 절차다. 이 블록 자체의 전 과정을 이번 회수에서 다시 실행하지 않았다.
 
 아래 명령은 연구 브랜치 루트에서 Bash로 실행한다. JDK 17, `merge-tree --write-tree`를 지원하는 Git, Python 3.10 이상, 하드 링크를 지원하는 로컬 파일시스템이 필요하다. 정량 JSON의 프로그램 버전과 이력·파일 크기를 함께 비교한다.
 
@@ -26,7 +63,23 @@ python "$scripts/quality.py" --jar "$work/extractor/build/libs/aix-preprocessor.
   "$work"/pilot/datasets/*.parquet
 ```
 
-토크나이저 없이 실행하면 코드 포인트와 UTF-8 바이트 분포가 남고 토큰 필드는 비어 있다. 호스티드 연구 실행은 Qwen2.5-Coder-0.5B 리비전 `8123ea2e9354afb7ffcc6c8641d1b2f5ecf18301`의 `tokenizer.json`과 `tokenizers==0.21.4`를 요청한다. 같은 토큰 분포를 재현하려면 해당 파일을 내려받아 결과 JSON의 SHA-256과 일치하는지 확인하고 `quality.py`에 `--tokenizer-json FILE --tokenizer-sha256 SHA256`을 추가한다. 코드 문자열에 특수 토큰·패딩·잘림을 적용하지 않는다. [토크나이저](https://huggingface.co/Qwen/Qwen2.5-Coder-0.5B/tree/8123ea2e9354afb7ffcc6c8641d1b2f5ecf18301)
+호스티드 실행은 Qwen2.5-Coder-0.5B 리비전 `8123ea2e9354afb7ffcc6c8641d1b2f5ecf18301`, `tokenizers==0.21.4`, `tokenizer.json` SHA-256 `c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539`로 실제 토큰을 셌다. 같은 결과를 얻으려면 위 `quality.py` 호출에 `--tokenizer-json FILE --tokenizer-sha256 HASH`를 추가한다. 생략하면 코드 포인트와 UTF-8 바이트만 기록하고 토큰은 미측정이다. 원 실행과 추가 측정 모두 base 코드에 특수 토큰, 패딩, 잘림을 적용하지 않았다. [토크나이저](https://huggingface.co/Qwen/Qwen2.5-Coder-0.5B/tree/8123ea2e9354afb7ffcc6c8641d1b2f5ecf18301)
+
+## 논리 행을 재생성한 뒤 추가로 측정하기
+
+이전 ZIP의 집계에는 양성 병합 수와 정확한 토큰 상한 초과 건수가 없었다. 다섯 고정 anchor에서 재생성한 Parquet에 동일한 독립 디코더를 적용했다. 저장소별 15개 자료형 전체의 논리 해시, 레이블 수, 고정 토크나이저 분위수가 Ubuntu 원본과 일치할 때만 아래 분석을 진행한다. 위 Linux 재현 절차의 `$work/pilot/datasets`에도 필요한 입력이 생긴다. 재추출 시간·메모리는 원래 Ubuntu 수치에 합산하지 않는다. [추가 측정 JSON](evidence/pilot-enrichment.json) · [Windows에서 실행한 경로와 코드](pilot-enrichment.md)
+
+다음 명령은 재생성한 다섯 Parquet에서 실행했다. 경로는 로컬 입력으로 바꾼다. 결과는 저장소·병합 식별자 수, 여섯 이력 피처 분포, 소스코드의 토큰·바이트 기준 초과 행 수다.
+
+```console
+python research/repository-audit/pilot_enrichment.py --datasets DATASETS --jar JAR --tokenizer-json TOKENIZER_JSON --output OUTPUT_JSON
+```
+
+JabRef·Jenkins의 과거 소스 헤더 두 건이 어떤 파일럿 행에 실제로 포함됐는지도 대조했다. 같은 다섯 파일에 아래 명령을 실행해 [저장된 두 양성 행과 파일 해시](evidence/validation/license-row-match.json)를 재현한다. 여기서도 소스 본문은 결과 JSON에 쓰지 않는다.
+
+```console
+python research/repository-audit/verify_license_rows.py --parquet-dir DATASETS --jar JAR --output LICENSE_ROWS_JSON
+```
 
 ## 이력 범위
 

@@ -27,3 +27,15 @@
 - MIT 소프트웨어의 복사본 또는 상당 부분을 제공할 때에는 저작권과 허락 고지를 함께 제공한다. Apache-2.0에서는 라이선스 사본 제공, 변경한 파일에 대한 변경 표시, 적용되는 고지의 보존 및 원저작물의 NOTICE가 있는 경우 관련 고지 전달 등 제4조 조건을 확인한다. 외부 배포 묶음에는 해당 소스 헤더와 라이선스·고지 문서, 행과 출처 간 대응표를 함께 제공하는 방안이 있다. [MIT 원문](https://opensource.org/license/mit) · [Apache-2.0 제4조](https://www.apache.org/licenses/LICENSE-2.0#redistribution)
 - Jenkins 코어의 주 라이선스는 MIT이며 공식 정책은 제3자 구성요소별 여러 라이선스를 설명한다. 실제 행에 들어가는 복사된 코드·생성 코드·예제는 출처별 조건을 확인한다. 패키지 실행에 필요한 의존성이 있다는 이유만으로 그 라이선스를 데이터의 모든 Java 파일에 부여할 수는 없다. [Jenkins 거버넌스 문서](https://www.jenkins.io/project/governance/) · [Quarkus 기여 지침](https://github.com/quarkusio/quarkus/blob/61d971888943ff815b86a179fbfcd1db22857730/CONTRIBUTING.md)
 - 팀 내부 추출과 외부 Parquet 배포의 범위를 구분하고 공개 자료에는 출처·집계·고정 SHA·재현 명령을 먼저 제공한다. 파일별 조건이나 재라이선스 범위를 확인하기 어려운 행은 공개 원본 묶음에서 보류한다. 발표용 집계, 소스코드 데이터, 향후 모델 가중치는 서로 다른 산출물이며, 이번 조사는 모델 가중치 배포에 대한 법적 판단을 다루지 않았다.
+### Ubuntu 파일럿의 과거 소스 표본
+
+JabRef와 Jenkins에서 파일럿 기준점의 조상 중 두 부모가 같은 Java 파일을 수정한 병합을 하나씩 골랐다. GitHub의 양방향 부모 비교에서 같은 공통 조상과 `modified` 경로를 확인하고, 해당 공통 조상에 있는 파일 전문의 Git blob SHA를 원문 바이트로 다시 계산했다. 이후 동일한 파일럿을 재현해 Ubuntu 집계 해시와 일치한 Parquet에서 두 표본의 행을 찾았다. [과거 파일 헤더와 조회 URL](../../research/repository-audit/evidence/historical-license-spot-check.json) · [Parquet 행 대조 결과](../../research/repository-audit/evidence/validation/license-row-match.json)
+
+| 저장소와 실제 파일럿 시점 | 범위 안에서 확인한 파일 | 데이터 선정에 미치는 영향 |
+| --- | --- | --- |
+| JabRef · 2015-08-14 · `8d22827b` | 병합 `baf58627`의 공통 조상 `cf0cde78`에서 `MODSEntry.java` 헤더는 **GPL-2.0-or-later**다. 해당 기준점의 README도 같은 조건을 명시한다. [파일 헤더](https://github.com/JabRef/jabref/blob/cf0cde78a0ea22204891eae7a245ba9332dd4e91/src/main/java/net/sf/jabref/logic/mods/MODSEntry.java#L1-L5) · [파일럿 시점 README](https://github.com/JabRef/jabref/blob/8d22827be20de435b01844f8643fe014aa910daa/README.md#L129-L135) | 현재 MIT 표기를 과거 행에 일괄 부여하면 이 표본에서 오류가 난다. 공개할 코드 행마다 당시 공통 조상, 파일 헤더, 적용 고지를 연결한다. |
+| Jenkins · 2011-06-07 · `285741a5` | 병합 `5abc651c`의 공통 조상 `fe452bfb`에서 `ExtensionComponent.java` 헤더는 **MIT**다. 공통 조상과 파일럿 기준점의 루트 `LICENSE.txt`는 같은 blob이다. [파일 헤더](https://github.com/jenkinsci/jenkins/blob/fe452bfbc5a4332c81a7cdf2cbd52c3af37ee36d/core/src/main/java/hudson/ExtensionComponent.java#L1-L21) · [파일럿 시점 LICENSE](https://github.com/jenkinsci/jenkins/blob/285741a5240f3658c6e5191edc9ba65fe7d5793c/LICENSE.txt) | 이 소스 표본은 현재 라이선스 표기와 일치한다. 나머지 행의 제3자 코드 및 개별 고지는 별도 확인 대상이다. |
+
+**두 표본 모두 실제 충돌 양성 행이었다.** 기준 파일의 Git blob은 JabRef `b1b6d41f`, Jenkins `8b0af778`이다. 두 행에서 저장소·병합 SHA·경로로 구성된 키, 두 부모의 SHA와 순서, 공통 조상 SHA, 기준 blob SHA가 모두 일치했다. Parquet에 담긴 소스를 UTF-8로 다시 인코딩한 길이와 SHA-256도 원문과 일치했다. 따라서 JabRef 과거 파일럿에는 GPL-2.0-or-later 고지를 가진 양성 행이 적어도 한 건 들어 있다. 나머지 파일럿 행의 개별 고지는 전수 확인하지 않았다. [행별 검증 기록](../../research/repository-audit/evidence/validation/license-row-match.json)
+
+같은 판독에서 충돌 양성이 한 번이라도 나온 고유 `base_path` 문자열은 JabRef 20개, Jenkins 16개, Spring Boot 7개, Card Forge·Quarkus 각 0개였다. 저장소를 구분한 경로는 총 43개다. 파일명을 바꾸면 별도 경로가 되며 여러 병합에서 같은 경로에 양성이 나와도 한 번만 센다. 연구 폴더에서 `python verify_license_rows.py --parquet-dir <재현-Parquet-폴더> --jar <전처리기-JAR> --java <JDK17-java>`로 다시 검사할 수 있다. [재현 스크립트](../../research/repository-audit/verify_license_rows.py)
