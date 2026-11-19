@@ -19,3 +19,33 @@ GitHub Compare는 하나의 merge base를 반환하며 파일 목록 상한은 3
 1. 원자료의 `repositories[].windows[].evidence`를 호출해 커밋별 `parents` 원소 수를 센다. URL은 기본 브랜치 이름 대신 고정 SHA를 사용한다.
 2. `both_parent_path_checks[].compare_urls` 양쪽 응답의 `files`에서 상태가 `modified`이고 이름이 소문자 `.java`로 끝나는 경로의 교집합을 구한다. 파일 수가 300인 응답에서 교집합이 비어도 누락 가능성이 있다.
 3. Jackson을 실험할 때는 본조사와 동일한 전처리기 SHA와 통제한 refs로 `extract`와 `stats`를 실행한 뒤 학습 후보로 승격할지 결정한다.
+
+### 고정 SHA의 규모와 파일 단위 재검사
+
+기존 다섯 추가 후보 가운데 Jackson을 다음 제한 추출에 올릴 근거가 늘었다. 2018년과 2025년 표본에서 서로 다른 세 병합의 Java 파일 세 개가 독립적인 3방향 텍스트 병합에서 충돌했다. 같은 기준으로 검사한 최신 경로 3건은 모두 깨끗하게 병합됐다. 이 다섯 후보에 전처리기 전체를 실행해 얻은 Parquet 행 수·양성 수·시간·RSS는 아직 측정하지 않았다.
+
+| 고정 기본 브랜치 후보 | 도달 가능 커밋 | Java 파일 수 | Java 바이트 | GitHub 저장소 크기(KiB) | 두 부모 / 75커밋 | 양쪽 수정 비교 병합 | 겹친 Java 경로 건수 | 파일 단독 충돌 / 깨끗한 병합 |
+|---|---:|---:|---:|---:|---:|---:|---:|---|
+| Jackson Databind | 13,947 | 1,439 | 12,147,326 | 90,669 | 22 | 11 | ≥8 | 3 / 5 |
+| Mockito | 6,383 | 1,015 | 3,648,723 | 49,825 | 4 | 4 | 0 | 미검사 |
+| GraphHopper | 7,141 | 975 | 6,895,050 | 143,763 | 1 | 1 | 0 | 미검사 |
+| JGraphT | 3,586 | 1,011 | 8,836,725 | 351,480 | 1 | 1 | 0 | 미검사 |
+| Apache Kafka | 18,732 | 6,309 | 74,281,825 | 327,962 | 0 | 0 | 미측정 | 미검사 |
+
+커밋 수는 고정 SHA부터 GitHub 커밋 목록으로 도달하는 조상 수다. 다른 heads·tags까지 합친 수와 전체 두 부모 병합 수는 미측정이다. Java 규모는 해당 tip의 완전한 재귀 트리에서 일반 파일 모드로 끝이 `.java`인 경로를 세고 각 blob 바이트를 합산했다. 테스트 소스도 포함된다. KiB는 기존 GitHub 메타데이터의 `size` 필드로, 실제 추출 비용은 `extract` 실행 후에 측정해야 한다. Kafka와 JGraphT는 이 값이 크고 75커밋에서 두 부모가 각각 0·1건이었다. 한쪽 부모만 관측되는 커밋은 일반 개발, squash, rebase 등을 구분하기 어렵다. [고정 SHA·Git 트리·마지막 커밋 페이지와 다음 빈 페이지](../../research/repository-audit/evidence/supplementary-followup/inventory.json)
+
+**Jackson에서 검사를 확대한 범위.** 최신 구간에서 이미 조사한 병합 5건을 유지하고 2025년·2018년 각 25커밋에서 순서대로 앞의 두 부모 병합 3건씩을 골랐다. SHA와 양방향 비교를 확인한 11건 중 6개 병합에서 수정 경로 8건을 찾았고, 원본 경로 기준 7개가 서로 달랐다. 비교가 300파일 상한에 닿은 사례가 있어 경로 수는 하한이다. 각 경로에서 GitHub가 선택한 base와 두 부모의 트리를 대조하고 blob SHA와 바이트 수를 확인했다.
+
+| Jackson 관측 구간 | 검사한 두 부모 병합 | 발견한 양쪽 수정 경로 | 파일 단독 충돌 | 파일 단독 비충돌 |
+|---|---:|---:|---:|---:|
+| 고정 tip 부근 | 5 | 3 | 0 | 3 |
+| 2025-11-19 이전 | 3 | 2 | 1 | 1 |
+| 2018-11-19 이전 | 3 | 3 | 2 | 1 |
+
+충돌을 재현한 파일은 `InjectableValues.java`, `SerializationConfig.java`, `JsonMapper.java`다. 8개 경로만 골라 검사한 결과이므로 3/8을 Jackson의 충돌률로 사용할 수 없다. 실제 전처리기는 유일 merge base와 전체 트리 병합·이력 통계를 검사하며 `.gitattributes`, 경로 변경, 충돌 유형에 따라 제외할 수 있다. Jackson은 서로 다른 기간을 고정한 소규모 전처리기 파일럿 후보로 권한다. Mockito는 과거 표본을 늘릴 때 재검토한다. GraphHopper·JGraphT는 다른 도메인이 더 필요해질 때 탐색할 수 있고, Kafka는 최신·과거 세 표본 모두 두 부모가 없어 전체 추출은 후순위다. [양방향 부모 비교 및 개별 근거 URL](../../research/repository-audit/evidence/supplementary-followup/additional-comparisons.json) · [8개 경로의 SHA·Git 버전·반환 코드](../../research/repository-audit/evidence/supplementary-followup/jackson-file-probes.json)
+
+**재현 절차.**
+
+1. `inventory.json` 각 항목의 `last_commit_page_url`에서 저장된 SHA 1개, `first_empty_page_url`에서 빈 배열을 확인한다. `git_tree_url`의 `truncated`가 false인지 확인하고 `type == blob`, `mode ∈ {100644, 100755}`, 이름이 소문자 `.java`로 끝나는 항목 수와 `size` 합계를 구한다.
+2. 기존 비교와 추가 비교의 `compare_urls` 두 곳에서 파일 상태가 모두 `modified`인 동일 Java 경로를 교차한다. 같은 경로가 다른 병합에서 등장하면 별도 건으로 센다. 300개 상한과 rename 누락은 하한 해석에 반영한다.
+3. `jackson-file-probes.json`의 각 관측에서 `refs` 순서는 base, 첫 부모, 둘째 부모다. 해당 트리의 경로와 `files`의 blob SHA를 대조한다. 파일 3개의 원본 바이트를 각각 `base`, `p1`, `p2`에 저장하고 길이와 Git blob SHA, 엄격한 UTF-8 디코딩 및 NUL 부재를 확인한다. 실제 검사에서 빈 디렉터리 내 `git merge-file --stdout p1 base p2`를 실행해 종료 코드 0을 비충돌, 1~127을 충돌로 기록했다. 병합 출력을 버리고 오류는 표본에서 분리한다.
