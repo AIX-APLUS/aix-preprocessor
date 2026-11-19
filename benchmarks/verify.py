@@ -34,6 +34,16 @@ def snapshot(repo):
     }
 
 
+def check_workspace(repo, initial, output_dir):
+    after = snapshot(repo)
+    changed = [field for field in initial if after[field] != initial[field]]
+    if changed:
+        raise AssertionError(f"Source repository changed: {changed}")
+    leftovers = [entry.name for entry in output_dir.glob(".aix-*")]
+    if leftovers:
+        raise AssertionError(f"Temporary extraction paths remain: {leftovers}")
+
+
 def verify(jar, java):
     with tempfile.TemporaryDirectory(prefix="aix-golden-") as directory:
         root = Path(directory)
@@ -46,17 +56,19 @@ def verify(jar, java):
         (repo / "local-only.txt").write_bytes(b"private working copy\n")
         initial = snapshot(repo)
         observations = []
+        command = [java, "-jar", str(jar), "extract", str(repo), "--repo-id", "sprint0/fixture"]
         for threads in (1, 4):
             parquet = root / f"threads-{threads}.parquet"
             try:
-                subprocess.run([java, "-jar", str(jar), "extract", str(repo), "--threads",
-                                str(threads), "--repo-id", "sprint0/fixture",
-                                "--output", str(parquet)], check=True)
+                subprocess.run([*command, "--threads", str(threads), "--output", str(parquet)], check=True)
+            except subprocess.CalledProcessError as failed:
+                if parquet.is_file():
+                    # A late cleanup failure can follow a successful atomic publication.
+                    published = inspect_dataset(jar, parquet, java=java, golden=GOLDEN)
+                    print(f"CLI exited {failed.returncode} with a published Parquet: {published}", flush=True)
+                raise
             finally:
-                after = snapshot(repo)
-                changed = [field for field in initial if after[field] != initial[field]]
-                if changed:
-                    raise AssertionError(f"Source repository changed: {changed}")
+                check_workspace(repo, initial, root)
             report = inspect_dataset(jar, parquet, java=java, golden=GOLDEN)
             if (report["samples"], report["positive"], report["negative"]) != (4, 2, 2):
                 raise AssertionError(f"Unexpected fixture counts: {report}")
@@ -65,6 +77,18 @@ def verify(jar, java):
             observations.append(dict(threads=threads, file_sha256=byte_hash, **report))
         if observations[0]["logical_sha256"] != observations[1]["logical_sha256"]:
             raise AssertionError("Thread counts produced different logical data")
+
+        # A distinct sentinel detects a clobber even if repeated extractions produce identical bytes.
+        existing = root / "existing.parquet"
+        sentinel = b"pre-existing output\n"
+        existing.write_bytes(sentinel)
+        refused = subprocess.run([*command, "--threads", "1", "--output", str(existing)],
+                                 stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        if refused.returncode == 0 or existing.read_bytes() != sentinel:
+            raise AssertionError(f"Existing output was accepted or changed (exit {refused.returncode})")
+        if b"FileAlreadyExistsException" not in refused.stdout:
+            raise AssertionError(f"Unexpected failure with existing output: {refused.stdout!r}")
+        check_workspace(repo, initial, root)
         return observations
 
 

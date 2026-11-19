@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [main]
   push:
-    branches: [test/extraction-baseline]
+    branches: [test/extraction-baseline, integration/sprint0-windows-cleanup]
   workflow_dispatch:
     inputs:
       benchmark:
@@ -17,28 +17,12 @@ permissions:
 
 jobs:
   test:
-    if: github.event_name != 'push' || contains(github.event.head_commit.message, '[benchmark]')
-    runs-on: ubuntu-24.04
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
-      - name: Build and run the existing test suite
-        run: ./gradlew --no-daemon --console=plain build
-      - name: Show JUnit result
-        if: always()
-        run: python -c "import glob, xml.etree.ElementTree as E; [print(E.parse(p).getroot().attrib) for p in glob.glob('build/test-results/test/TEST-*.xml')]"
-      - name: Check comparator behavior
-        run: python -m unittest discover -s benchmarks -p 'test_*.py' -v
-      - name: Check packaged CLI, Parquet rows and source preservation
-        run: python benchmarks/verify.py
-
-  benchmark:
-    if: inputs.benchmark || (github.event_name == 'push' && contains(github.event.head_commit.message, '[benchmark]'))
-    runs-on: ubuntu-24.04
+    if: github.event_name != 'push' || github.ref_name == 'integration/sprint0-windows-cleanup' || contains(github.event.head_commit.message, '[benchmark]')
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest]
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
@@ -46,28 +30,100 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Prepare extractor
-        run: ./gradlew --no-daemon --console=plain shadowJar
-      - name: Measure the fixed fixture
-        run: python benchmarks/benchmark.py --threads 1 2 --warmups 1 --repeats 3 --report "$RUNNER_TEMP/fixture.json"
-      - name: Pin a small public Java history
-        run: |
-          git init -q --bare -b pinned "$RUNNER_TEMP/minimal-json.git"
-          git -C "$RUNNER_TEMP/minimal-json.git" fetch -q --no-tags https://github.com/ralfstx/minimal-json.git c091e6985620da04d5abcd902aafb6c9583c48ea:refs/heads/pinned
-      - name: Measure minimal-json
-        run: python benchmarks/benchmark.py --threads 1 2 --warmups 1 --repeats 3 --repo "$RUNNER_TEMP/minimal-json.git" --repo-id ralfstx/minimal-json --report "$RUNNER_TEMP/minimal-json.json"
-      - name: Print measurements
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build and run JUnit on Linux
+        if: runner.os == 'Linux'
+        run: ./gradlew --no-daemon --console=plain build
+      - name: Build and run JUnit on Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: .\gradlew.bat --no-daemon --console=plain build
+      - name: Show executed JUnit cases
         if: always()
+        shell: python
         run: |
-          for name in fixture minimal-json; do
-            file="$RUNNER_TEMP/$name.json"
-            if test -f "$file"; then cat "$file"; fi
-          done
+          from pathlib import Path
+          from xml.etree import ElementTree
+          cases = []
+          for path in Path('build/test-results/test').glob('TEST-*.xml'):
+              suite = ElementTree.parse(path).getroot()
+              print(suite.attrib)
+              for case in suite.findall('testcase'):
+                  print(case.get('classname'), case.get('name'))
+                  cases.append(case)
+          if not cases or any(case.find(tag) is not None for case in cases for tag in ('skipped', 'failure', 'error')):
+              raise SystemExit('Missing, skipped or failed JUnit test cases')
+      - name: Check comparator behavior
+        if: ${{ !cancelled() }}
+        run: python -m unittest discover -s benchmarks -p "test_*.py" -v
+      - name: Check packaged CLI, Parquet rows and source preservation
+        if: ${{ !cancelled() }}
+        run: python benchmarks/verify.py
+
+  benchmark:
+    if: inputs.benchmark || (github.event_name == 'push' && contains(github.event.head_commit.message, '[benchmark]'))
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare extractor on Linux
+        if: runner.os == 'Linux'
+        run: ./gradlew --no-daemon --console=plain shadowJar
+      - name: Prepare extractor on Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: .\gradlew.bat --no-daemon --console=plain shadowJar
+      - name: Measure the fixed fixture
+        run: python benchmarks/benchmark.py --threads 1 2 --warmups 1 --repeats 3 --report build/measurements/fixture.json
+      - name: Create a bare input repository
+        run: git init --quiet --bare -b pinned build/minimal-json.git
+      - name: Pin a small public Java history
+        run: git -C build/minimal-json.git fetch --quiet --no-tags https://github.com/ralfstx/minimal-json.git c091e6985620da04d5abcd902aafb6c9583c48ea:refs/heads/pinned
+      - name: Measure minimal-json
+        run: python benchmarks/benchmark.py --threads 1 2 --warmups 1 --repeats 3 --repo build/minimal-json.git --repo-id ralfstx/minimal-json --report build/measurements/minimal-json.json
+      - name: Print and check both baseline reports
+        if: always()
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+          expected = {
+              'fixture': (2, 4, 2, 2, 'b93b6d16e1ec0e95f924ac92d7e6a5b560b79677a5ca85583a30f77548dd4bcc'),
+              'minimal-json': (7, 1, 0, 1, '8e4078e84ac01f4e86f2443972da696dbbc049d8ac24f4415560e131f261ba66'),
+          }
+          for name, baseline in expected.items():
+              raw = (Path('build/measurements') / (name + '.json')).read_text(encoding='utf-8')
+              print(raw)
+              report = json.loads(raw)
+              if not report['success'] or not report['snapshot_refs_unchanged']:
+                  raise SystemExit(f'{name}: extraction failed or input snapshot changed')
+              if name == 'minimal-json' and not report['source_refs_unchanged']:
+                  raise SystemExit(f'{name}: original refs changed')
+              for run in report['runs']:
+                  observed = tuple(run[k] for k in ('merges', 'samples', 'positive', 'negative', 'logical_sha256'))
+                  if not run['success'] or run['exit_code'] != 0 or observed != baseline:
+                      raise SystemExit(f'{name}: unexpected trial {run}')
+              expected_trials = sorted((t, phase, i) for t in (1, 2) for phase, rounds in
+                                       (('warmup', 1), ('measured', 3)) for i in range(1, rounds + 1))
+              if sorted((r['threads'], r['phase'], r['round']) for r in report['runs']) != expected_trials:
+                  raise SystemExit(f'{name}: trial schedule differs from baseline')
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sprint0-measurements
+          name: sprint0-measurements-${{ matrix.os }}
           retention-days: 14
-          path: |
-            ${{ runner.temp }}/fixture.json
-            ${{ runner.temp }}/minimal-json.json
+          path: build/measurements/*.json
+          if-no-files-found: error
