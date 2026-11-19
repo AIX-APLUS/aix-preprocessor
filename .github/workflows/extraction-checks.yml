@@ -40,24 +40,43 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: .\gradlew.bat --no-daemon --console=plain build
-      - name: Show executed JUnit cases
+      - name: Verify executed JUnit cases
         if: always()
         shell: python
         run: |
+          import os
           from pathlib import Path
           from xml.etree import ElementTree
-          cases = []
+          passed = set()
           for path in Path('build/test-results/test').glob('TEST-*.xml'):
               suite = ElementTree.parse(path).getroot()
               print(suite.attrib)
               for case in suite.findall('testcase'):
-                  print(case.get('classname'), case.get('name'))
-                  cases.append(case)
-          if not cases or any(case.find(tag) is not None for case in cases for tag in ('skipped', 'failure', 'error')):
-              raise SystemExit('Missing, skipped or failed JUnit test cases')
-      - name: Check comparator behavior
+                  name = case.attrib['name'].removesuffix('()')
+                  classname = case.attrib['classname']
+                  print(classname, name)
+                  if any(case.find(tag) is not None for tag in ('skipped', 'failure', 'error')):
+                      raise SystemExit(f'Skipped or failed JUnit case: {classname}.{name}')
+                  if classname == 'io.aix.preprocessor.ExtractionTest':
+                      passed.add(name)
+          required = {'extractsSideBranchesAndWritesIdenticalParallelOutput'}
+          cleanup_case = 'deletesReadOnlyObjectFilesWrittenByGit'
+          test_source = Path('src/test/java/io/aix/preprocessor/ExtractionTest.java').read_text(encoding='utf-8')
+          if os.environ['GITHUB_REF_NAME'] == 'integration/sprint0-windows-cleanup' or cleanup_case in test_source:
+              required.add(cleanup_case)
+          if required - passed:
+              raise SystemExit(f'Missing executed JUnit cases: {sorted(required - passed)}')
+      - name: Run Python harness tests
         if: ${{ !cancelled() }}
-        run: python -m unittest discover -s benchmarks -p "test_*.py" -v
+        shell: python
+        run: |
+          import unittest
+          suite = unittest.defaultTestLoader.discover('benchmarks', pattern='test_*.py')
+          if suite.countTestCases() == 0:
+              raise SystemExit('Discovered zero Python harness tests')
+          results = unittest.TextTestRunner(verbosity=2).run(suite)
+          if not results.wasSuccessful() or results.testsRun == len(results.skipped):
+              raise SystemExit('Python harness failed or ran no active tests')
       - name: Check packaged CLI, Parquet rows and source preservation
         if: ${{ !cancelled() }}
         run: python benchmarks/verify.py
@@ -93,7 +112,11 @@ jobs:
       - name: Pin a small public Java history
         run: git -C build/minimal-json.git fetch --quiet --no-tags https://github.com/ralfstx/minimal-json.git c091e6985620da04d5abcd902aafb6c9583c48ea:refs/heads/pinned
       - name: Measure minimal-json
-        run: python benchmarks/benchmark.py --threads 1 2 --warmups 1 --repeats 3 --repo build/minimal-json.git --repo-id ralfstx/minimal-json --report build/measurements/minimal-json.json
+        run: >-
+          python benchmarks/benchmark.py --threads 1 2 --warmups 1 --repeats 3
+          --repo build/minimal-json.git --repo-id ralfstx/minimal-json
+          --expect-logical-sha256 8e4078e84ac01f4e86f2443972da696dbbc049d8ac24f4415560e131f261ba66
+          --expect-samples 1 --report build/measurements/minimal-json.json
       - name: Print and check both baseline reports
         if: always()
         shell: python
