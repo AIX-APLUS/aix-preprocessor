@@ -1,0 +1,124 @@
+{
+  "retrieved": "2026-11-19",
+  "scope": "Root licenses at identity snapshots. User identified Card-Forge/forge during the audit. MinecraftForge/MinecraftForge and forge/core are former identity alternatives only.",
+  "repositories": [
+    {
+      "repository": "spring-projects/spring-boot",
+      "github_url": "https://github.com/spring-projects/spring-boot",
+      "pinned_sha": "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+      "default_branch": "main",
+      "archived": false,
+      "github_spdx": "Apache-2.0",
+      "github_api_size_kib": 226975,
+      "license_files": [
+        "https://github.com/spring-projects/spring-boot/blob/dd87919e93e71b2ba270ec4f2f142645e06c7610/LICENSE.txt"
+      ],
+      "repository_metadata_source": "https://api.github.com/repos/spring-projects/spring-boot",
+      "head_source": "https://github.com/spring-projects/spring-boot/commit/dd87919e93e71b2ba270ec4f2f142645e06c7610",
+      "scope": "primary_candidate"
+    },
+    {
+      "repository": "jenkinsci/jenkins",
+      "github_url": "https://github.com/jenkinsci/jenkins",
+      "pinned_sha": "e8ba485c828e25422d54c1d46e0bea1cb0305d03",
+      "default_branch": "master",
+      "archived": false,
+      "github_spdx": "MIT",
+      "github_api_size_kib": 174915,
+      "license_files": [
+        "https://github.com/jenkinsci/jenkins/blob/e8ba485c828e25422d54c1d46e0bea1cb0305d03/LICENSE.txt",
+        "https://github.com/jenkinsci/jenkins/blob/e8ba485c828e25422d54c1d46e0bea1cb0305d03/licenseCompleter.groovy"
+      ],
+      "repository_metadata_source": "https://api.github.com/repos/jenkinsci/jenkins",
+      "head_source": "https://github.com/jenkinsci/jenkins/commit/e8ba485c828e25422d54c1d46e0bea1cb0305d03",
+      "scope": "primary_candidate"
+    },
+    {
+      "repository": "JabRef/jabref",
+      "github_url": "https://github.com/JabRef/jabref",
+      "pinned_sha": "75b35b962c1d1f45cbd5be8af025b16cde9cc290",
+      "default_branch": "main",
+      "archived": false,
+      "github_spdx": "MIT",
+      "github_api_size_kib": 289139,
+      "license_files": [
+        "https://github.com/JabRef/jabref/blob/75b35b962c1d1f45cbd5be8af025b16cde9cc290/LICENSE",
+        "https://github.com/JabRef/jabref/tree/75b35b962c1d1f45cbd5be8af025b16cde9cc290/licenses"
+      ],
+      "repository_metadata_source": "https://api.github.com/repos/JabRef/jabref",
+      "head_source": "https://github.com/JabRef/jabref/commit/75b35b962c1d1f45cbd5be8af025b16cde9cc290",
+      "scope": "primary_candidate"
+    },
+    {
+      "repository": "quarkusio/quarkus",
+      "github_url": "https://github.com/quarkusio/quarkus",
+      "pinned_sha": "61d971888943ff815b86a179fbfcd1db22857730",
+      "default_branch": "main",
+      "archived": false,
+      "github_spdx": "Apache-2.0",
+      "github_api_size_kib": 550560,
+      "license_files": [
+        "https://github.com/quarkusio/quarkus/blob/61d971888943ff815b86a179fbfcd1db22857730/LICENSE"
+      ],
+      "repository_metadata_source": "https://api.github.com/repos/quarkusio/quarkus",
+      "head_source": "https://github.com/quarkusio/quarkus/commit/61d971888943ff815b86a179fbfcd1db22857730",
+      "scope": "primary_candidate"
+    },
+    {
+      "repository": "MinecraftForge/MinecraftForge",
+      "github_url": "https://github.com/MinecraftForge/MinecraftForge",
+      "pinned_sha": "6a06826b149192c72faca0bb68df35bc28238c18",
+      "default_branch": "26.3",
+      "archived": false,
+      "github_spdx": "NOASSERTION",
+      "github_api_size_kib": 126759,
+      "license_files": [
+        "https://github.com/MinecraftForge/MinecraftForge/blob/6a06826b149192c72faca0bb68df35bc28238c18/LICENSE-header.txt",
+        "https://github.com/MinecraftForge/MinecraftForge/blob/6a06826b149192c72faca0bb68df35bc28238c18/LICENSE.txt"
+      ],
+      "repository_metadata_source": "https://api.github.com/repos/MinecraftForge/MinecraftForge",
+      "head_source": "https://github.com/MinecraftForge/MinecraftForge/commit/6a06826b149192c72faca0bb68df35bc28238c18",
+      "scope": "identity_alternative_only"
+    },
+    {
+      "repository": "forge/core",
+      "github_url": "https://github.com/forge/core",
+      "pinned_sha": "ab9e146691617029861b4be59e01a83df682e7e4",
+      "default_branch": "master",
+      "archived": true,
+      "github_spdx": "EPL-1.0",
+      "github_api_size_kib": 36637,
+      "license_files": [
+        "https://github.com/forge/core/blob/ab9e146691617029861b4be59e01a83df682e7e4/LICENSE"
+      ],
+      "repository_metadata_source": "https://api.github.com/repos/forge/core",
+      "head_source": "https://github.com/forge/core/commit/ab9e146691617029861b4be59e01a83df682e7e4",
+      "scope": "identity_alternative_only"
+    },
+    {
+      "repository": "Card-Forge/forge",
+      "github_url": "https://github.com/Card-Forge/forge",
+      "pinned_sha": "9748ef2c96d18bcb55271e20e63c32bdee3e991c",
+      "default_branch": "master",
+      "archived": false,
+      "github_spdx": "GPL-3.0",
+      "github_api_size_kib": 1095163,
+      "license_files": [
+        "https://github.com/Card-Forge/forge/blob/9748ef2c96d18bcb55271e20e63c32bdee3e991c/LICENSE"
+      ],
+      "repository_metadata_source": "https://api.github.com/repos/Card-Forge/forge",
+      "head_source": "https://github.com/Card-Forge/forge/commit/9748ef2c96d18bcb55271e20e63c32bdee3e991c",
+      "scope": "primary_candidate"
+    }
+  ],
+  "historical_example": {
+    "repository": "JabRef/jabref",
+    "tag": "v2.11",
+    "commit": "4bdf5e142511278d8dd2a466bf611994caf4d091",
+    "source_file_license": "GPL-2.0-or-later",
+    "evidence": [
+      "https://github.com/JabRef/jabref/blob/4bdf5e142511278d8dd2a466bf611994caf4d091/README.md",
+      "https://github.com/JabRef/jabref/blob/4bdf5e142511278d8dd2a466bf611994caf4d091/src/main/java/net/sf/jabref/JabRef.java"
+    ]
+  }
+}

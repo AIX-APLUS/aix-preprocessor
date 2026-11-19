@@ -1,0 +1,262 @@
+[
+  {
+    "repository": "spring-projects/spring-boot",
+    "github_url": "https://github.com/spring-projects/spring-boot",
+    "pinned_sha": "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+    "default_branch": "main",
+    "analyzed_refs": {
+      "default_git_graph": "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+      "all_graph": null,
+      "sample_parquet": null
+    },
+    "total_commits": 64085,
+    "two_parent_merges": null,
+    "octopus_merges": null,
+    "all_default_merges": null,
+    "default_unique_base_merges": null,
+    "all_heads_tags": null,
+    "github_size_kib": 226975,
+    "java_paths_at_tip": 8729,
+    "public_heads": 27,
+    "public_tags": 399,
+    "latest_closed_30d_total": 678,
+    "latest_closed_30d_two_parent": 341,
+    "eight_merge_proxy": {
+      "year": 2026,
+      "merges": 8,
+      "overlapping_java_paths": 0
+    },
+    "pilot_sha": null,
+    "pilot_two_parent_merges": null,
+    "eligible_samples": null,
+    "positive_samples": null,
+    "negative_samples": null,
+    "positive_rate": null,
+    "extraction_seconds": null,
+    "parquet_bytes": null,
+    "max_process_rss_kib": null,
+    "pilot_git_bytes": null,
+    "git_version": null,
+    "extractor_sha": "06e755ebabed1707a3413ec99ffa2511b046c543",
+    "extraction_status": "unmeasured",
+    "evidence": [
+      "https://api.github.com/repos/spring-projects/spring-boot",
+      "https://api.github.com/repos/spring-projects/spring-boot/git/trees/2533e24286cd9f1377b2b8fc7ec7982e26e6ed44?recursive=1",
+      "https://api.github.com/repos/spring-projects/spring-boot/commits?sha=dd87919e93e71b2ba270ec4f2f142645e06c7610&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "https://api.github.com/repos/spring-projects/spring-boot/commits?sha=dd87919e93e71b2ba270ec4f2f142645e06c7610&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100"
+    ],
+    "limitations": [
+      "Full default history and historical pilot are distinct populations.",
+      "Full-scope eligible rows, labels and current conflict prevalence were not measured.",
+      "No validated production Parquet in this scope."
+    ]
+  },
+  {
+    "repository": "jenkinsci/jenkins",
+    "github_url": "https://github.com/jenkinsci/jenkins",
+    "pinned_sha": "e8ba485c828e25422d54c1d46e0bea1cb0305d03",
+    "default_branch": "master",
+    "analyzed_refs": {
+      "default_git_graph": "e8ba485c828e25422d54c1d46e0bea1cb0305d03",
+      "all_graph": null,
+      "sample_parquet": null
+    },
+    "total_commits": 38921,
+    "two_parent_merges": null,
+    "octopus_merges": null,
+    "all_default_merges": null,
+    "default_unique_base_merges": null,
+    "all_heads_tags": null,
+    "github_size_kib": 174915,
+    "java_paths_at_tip": 1988,
+    "public_heads": 55,
+    "public_tags": 1943,
+    "latest_closed_30d_total": 130,
+    "latest_closed_30d_two_parent": 0,
+    "eight_merge_proxy": {
+      "year": 2020,
+      "merges": 8,
+      "overlapping_java_paths": 0
+    },
+    "pilot_sha": null,
+    "pilot_two_parent_merges": null,
+    "eligible_samples": null,
+    "positive_samples": null,
+    "negative_samples": null,
+    "positive_rate": null,
+    "extraction_seconds": null,
+    "parquet_bytes": null,
+    "max_process_rss_kib": null,
+    "pilot_git_bytes": null,
+    "git_version": null,
+    "extractor_sha": "06e755ebabed1707a3413ec99ffa2511b046c543",
+    "extraction_status": "unmeasured",
+    "evidence": [
+      "https://api.github.com/repos/jenkinsci/jenkins",
+      "https://api.github.com/repos/jenkinsci/jenkins/git/trees/6cf2a9982455342faaaf57c91abc39731684c6ef?recursive=1",
+      "https://api.github.com/repos/jenkinsci/jenkins/commits?sha=e8ba485c828e25422d54c1d46e0bea1cb0305d03&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "https://api.github.com/repos/jenkinsci/jenkins/commits?sha=e8ba485c828e25422d54c1d46e0bea1cb0305d03&since=2020-10-20T00:00:00Z&until=2020-11-18T23:59:59Z&per_page=100"
+    ],
+    "limitations": [
+      "Full default history and historical pilot are distinct populations.",
+      "Full-scope eligible rows, labels and current conflict prevalence were not measured.",
+      "No validated production Parquet in this scope."
+    ]
+  },
+  {
+    "repository": "Card-Forge/forge",
+    "github_url": "https://github.com/Card-Forge/forge",
+    "pinned_sha": "9748ef2c96d18bcb55271e20e63c32bdee3e991c",
+    "default_branch": "master",
+    "analyzed_refs": {
+      "default_git_graph": "9748ef2c96d18bcb55271e20e63c32bdee3e991c",
+      "all_graph": null,
+      "sample_parquet": null
+    },
+    "total_commits": 76296,
+    "two_parent_merges": null,
+    "octopus_merges": null,
+    "all_default_merges": null,
+    "default_unique_base_merges": null,
+    "all_heads_tags": null,
+    "github_size_kib": 1094914,
+    "java_paths_at_tip": 2919,
+    "public_heads": 145,
+    "public_tags": 197,
+    "latest_closed_30d_total": 936,
+    "latest_closed_30d_two_parent": 75,
+    "eight_merge_proxy": {
+      "year": 2026,
+      "merges": 8,
+      "overlapping_java_paths": 1
+    },
+    "pilot_sha": null,
+    "pilot_two_parent_merges": null,
+    "eligible_samples": null,
+    "positive_samples": null,
+    "negative_samples": null,
+    "positive_rate": null,
+    "extraction_seconds": null,
+    "parquet_bytes": null,
+    "max_process_rss_kib": null,
+    "pilot_git_bytes": null,
+    "git_version": null,
+    "extractor_sha": "06e755ebabed1707a3413ec99ffa2511b046c543",
+    "extraction_status": "unmeasured",
+    "evidence": [
+      "https://api.github.com/repos/Card-Forge/forge",
+      "https://api.github.com/repos/Card-Forge/forge/git/trees/8b9be6fca016a4b61e97be96e2d48720a3f76f14?recursive=1",
+      "https://api.github.com/repos/Card-Forge/forge/commits?sha=9748ef2c96d18bcb55271e20e63c32bdee3e991c&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "https://api.github.com/repos/Card-Forge/forge/commits?sha=9748ef2c96d18bcb55271e20e63c32bdee3e991c&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100"
+    ],
+    "limitations": [
+      "Full default history and historical pilot are distinct populations.",
+      "Full-scope eligible rows, labels and current conflict prevalence were not measured.",
+      "No validated production Parquet in this scope."
+    ]
+  },
+  {
+    "repository": "JabRef/jabref",
+    "github_url": "https://github.com/JabRef/jabref",
+    "pinned_sha": "75b35b962c1d1f45cbd5be8af025b16cde9cc290",
+    "default_branch": "main",
+    "analyzed_refs": {
+      "default_git_graph": "75b35b962c1d1f45cbd5be8af025b16cde9cc290",
+      "all_graph": null,
+      "sample_parquet": null
+    },
+    "total_commits": 25390,
+    "two_parent_merges": null,
+    "octopus_merges": null,
+    "all_default_merges": null,
+    "default_unique_base_merges": null,
+    "all_heads_tags": null,
+    "github_size_kib": 289139,
+    "java_paths_at_tip": 3290,
+    "public_heads": 101,
+    "public_tags": 66,
+    "latest_closed_30d_total": 280,
+    "latest_closed_30d_two_parent": 0,
+    "eight_merge_proxy": {
+      "year": 2023,
+      "merges": 8,
+      "overlapping_java_paths": 0
+    },
+    "pilot_sha": null,
+    "pilot_two_parent_merges": null,
+    "eligible_samples": null,
+    "positive_samples": null,
+    "negative_samples": null,
+    "positive_rate": null,
+    "extraction_seconds": null,
+    "parquet_bytes": null,
+    "max_process_rss_kib": null,
+    "pilot_git_bytes": null,
+    "git_version": null,
+    "extractor_sha": "06e755ebabed1707a3413ec99ffa2511b046c543",
+    "extraction_status": "unmeasured",
+    "evidence": [
+      "https://api.github.com/repos/JabRef/jabref",
+      "https://api.github.com/repos/JabRef/jabref/git/trees/e6de09d60eea87733f09ca5141b1d25fe27e03f8?recursive=1",
+      "https://api.github.com/repos/JabRef/jabref/commits?sha=75b35b962c1d1f45cbd5be8af025b16cde9cc290&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "https://api.github.com/repos/JabRef/jabref/commits?sha=75b35b962c1d1f45cbd5be8af025b16cde9cc290&since=2023-10-20T00:00:00Z&until=2023-11-18T23:59:59Z&per_page=100"
+    ],
+    "limitations": [
+      "Full default history and historical pilot are distinct populations.",
+      "Full-scope eligible rows, labels and current conflict prevalence were not measured.",
+      "No validated production Parquet in this scope."
+    ]
+  },
+  {
+    "repository": "quarkusio/quarkus",
+    "github_url": "https://github.com/quarkusio/quarkus",
+    "pinned_sha": "61d971888943ff815b86a179fbfcd1db22857730",
+    "default_branch": "main",
+    "analyzed_refs": {
+      "default_git_graph": "61d971888943ff815b86a179fbfcd1db22857730",
+      "all_graph": null,
+      "sample_parquet": null
+    },
+    "total_commits": 64169,
+    "two_parent_merges": null,
+    "octopus_merges": null,
+    "all_default_merges": null,
+    "default_unique_base_merges": null,
+    "all_heads_tags": null,
+    "github_size_kib": 550560,
+    "java_paths_at_tip": 23762,
+    "public_heads": 132,
+    "public_tags": 535,
+    "latest_closed_30d_total": 1037,
+    "latest_closed_30d_two_parent": 448,
+    "eight_merge_proxy": {
+      "year": 2026,
+      "merges": 8,
+      "overlapping_java_paths": 2
+    },
+    "pilot_sha": null,
+    "pilot_two_parent_merges": null,
+    "eligible_samples": null,
+    "positive_samples": null,
+    "negative_samples": null,
+    "positive_rate": null,
+    "extraction_seconds": null,
+    "parquet_bytes": null,
+    "max_process_rss_kib": null,
+    "pilot_git_bytes": null,
+    "git_version": null,
+    "extractor_sha": "06e755ebabed1707a3413ec99ffa2511b046c543",
+    "extraction_status": "unmeasured",
+    "evidence": [
+      "https://api.github.com/repos/quarkusio/quarkus",
+      "https://api.github.com/repos/quarkusio/quarkus/git/trees/ccdf24da802ce57eda1d5073ccc509b0f4c67a46?recursive=1",
+      "https://api.github.com/repos/quarkusio/quarkus/commits?sha=61d971888943ff815b86a179fbfcd1db22857730&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "https://api.github.com/repos/quarkusio/quarkus/commits?sha=61d971888943ff815b86a179fbfcd1db22857730&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100"
+    ],
+    "limitations": [
+      "Full default history and historical pilot are distinct populations.",
+      "Full-scope eligible rows, labels and current conflict prevalence were not measured.",
+      "No validated production Parquet in this scope."
+    ]
+  }
+]

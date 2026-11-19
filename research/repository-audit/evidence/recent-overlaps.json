@@ -1,0 +1,1242 @@
+{
+  "protocol": "From the three fixed Oct 20–Nov 18 (inclusive UTC) windows, use the latest with >=8 two-parent commits. From the immutable default SHA commits REST listing select the first 8 entries with exactly 2 parents, in returned order. Both parent directions use GitHub compare page 1 per_page=1. Filter status modified/renamed, both old and new names ending in .java. If the 300-file cap is reached on one side, an empty complete side implies zero, otherwise check the small side's origin paths in the opposite regular-blob tree. A missing/retyped path would leave that merge unresolved. Confirm all positive candidates by regular blob mode and object IDs at the selected base and both parents. Each API compare reported the same selected base in both directions. API-selected-base uniqueness, production rename heuristics, conflicts, textual eligibility, history and extracted rows not measured. This convenience sample is not unbiased; commits share dependencies. This file contains no Java content.",
+  "observed_utc": "2026-11-19T14:43:22.283Z",
+  "repositories": [
+    {
+      "repository": "spring-projects/spring-boot",
+      "pinned_sha": "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+      "year": 2026,
+      "url": "https://api.github.com/repos/spring-projects/spring-boot/commits?sha=dd87919e93e71b2ba270ec4f2f142645e06c7610&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "sample_size": 8,
+      "merges_with_candidate": 0,
+      "candidate_paths": 0,
+      "observations": [
+        {
+          "merge": "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+          "parents": [
+            "9789b24c8f8a52e59ff4c816f2591d0163a0bad4",
+            "65e0b9c7678cdbf2f904e99cf5ea9026ed2ee608"
+          ],
+          "committer_date": "2026-11-17T15:23:44Z",
+          "merge_base": "21fde01b9ebfa94273abcc7b5c2b85867a5d0268",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/spring-projects/spring-boot/compare/65e0b9c7678cdbf2f904e99cf5ea9026ed2ee608...9789b24c8f8a52e59ff4c816f2591d0163a0bad4?per_page=1&page=1",
+            "returned_files": 300,
+            "returned_java_edits": 88
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/spring-projects/spring-boot/compare/9789b24c8f8a52e59ff4c816f2591d0163a0bad4...65e0b9c7678cdbf2f904e99cf5ea9026ed2ee608?per_page=1&page=1",
+            "returned_files": 1,
+            "returned_java_edits": 0
+          },
+          "method": "one_complete_empty",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "65e0b9c7678cdbf2f904e99cf5ea9026ed2ee608",
+          "parents": [
+            "1b3b8fa77e58af5335fd6cd2e5c2c2417a8ac9f1",
+            "6b0450dc12fff178fa0be07fc1d65300b031c735"
+          ],
+          "committer_date": "2026-11-17T15:23:40Z",
+          "merge_base": "778023c4ea0cc831197851da33ada848d83477c7",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/spring-projects/spring-boot/compare/6b0450dc12fff178fa0be07fc1d65300b031c735...1b3b8fa77e58af5335fd6cd2e5c2c2417a8ac9f1?per_page=1&page=1",
+            "returned_files": 300,
+            "returned_java_edits": 131
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/spring-projects/spring-boot/compare/1b3b8fa77e58af5335fd6cd2e5c2c2417a8ac9f1...6b0450dc12fff178fa0be07fc1d65300b031c735?per_page=1&page=1",
+            "returned_files": 1,
+            "returned_java_edits": 0
+          },
+          "method": "one_complete_empty",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "3d8ad8ecf3899381514e413877a90e16e6a52b00",
+          "parents": [
+            "0cdcd62b4a2503e907ab6ed57e845258fdf042b2",
+            "3c81843362ec9c5826df8b7e564b02d290fa3fd5"
+          ],
+          "committer_date": "2026-11-15T16:44:33Z",
+          "merge_base": "0cdcd62b4a2503e907ab6ed57e845258fdf042b2",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/spring-projects/spring-boot/compare/3c81843362ec9c5826df8b7e564b02d290fa3fd5...0cdcd62b4a2503e907ab6ed57e845258fdf042b2?per_page=1&page=1",
+            "returned_files": 0,
+            "returned_java_edits": 0
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/spring-projects/spring-boot/compare/0cdcd62b4a2503e907ab6ed57e845258fdf042b2...3c81843362ec9c5826df8b7e564b02d290fa3fd5?per_page=1&page=1",
+            "returned_files": 5,
+            "returned_java_edits": 5
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "0cdcd62b4a2503e907ab6ed57e845258fdf042b2",
+          "parents": [
+            "9e8d20d7417af0220bd2780a4bcb51ce9e84722f",
+            "ba43ded1a9c2745f692e724d40139e799205b526"
+          ],
+          "committer_date": "2026-11-15T16:41:58Z",
+          "merge_base": "9e8d20d7417af0220bd2780a4bcb51ce9e84722f",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/spring-projects/spring-boot/compare/ba43ded1a9c2745f692e724d40139e799205b526...9e8d20d7417af0220bd2780a4bcb51ce9e84722f?per_page=1&page=1",
+            "returned_files": 0,
+            "returned_java_edits": 0
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/spring-projects/spring-boot/compare/9e8d20d7417af0220bd2780a4bcb51ce9e84722f...ba43ded1a9c2745f692e724d40139e799205b526?per_page=1&page=1",
+            "returned_files": 1,
+            "returned_java_edits": 0
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "9e8d20d7417af0220bd2780a4bcb51ce9e84722f",
+          "parents": [
+            "f458ae90c8a6a7fee377242a2e60d5429fd61521",
+            "78c191b92a89a8b3fd6f117b9700e72c64c570a2"
+          ],
+          "committer_date": "2026-11-13T17:46:52Z",
+          "merge_base": "f458ae90c8a6a7fee377242a2e60d5429fd61521",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/spring-projects/spring-boot/compare/78c191b92a89a8b3fd6f117b9700e72c64c570a2...f458ae90c8a6a7fee377242a2e60d5429fd61521?per_page=1&page=1",
+            "returned_files": 0,
+            "returned_java_edits": 0
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/spring-projects/spring-boot/compare/f458ae90c8a6a7fee377242a2e60d5429fd61521...78c191b92a89a8b3fd6f117b9700e72c64c570a2?per_page=1&page=1",
+            "returned_files": 1,
+            "returned_java_edits": 0
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "f458ae90c8a6a7fee377242a2e60d5429fd61521",
+          "parents": [
+            "af1aa21a7215b97deab9ae5e247a92662a7b034b",
+            "9266c23c4c94452ef1329cbf4da21161fec5ffac"
+          ],
+          "committer_date": "2026-11-13T17:45:06Z",
+          "merge_base": "af1aa21a7215b97deab9ae5e247a92662a7b034b",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/spring-projects/spring-boot/compare/9266c23c4c94452ef1329cbf4da21161fec5ffac...af1aa21a7215b97deab9ae5e247a92662a7b034b?per_page=1&page=1",
+            "returned_files": 0,
+            "returned_java_edits": 0
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/spring-projects/spring-boot/compare/af1aa21a7215b97deab9ae5e247a92662a7b034b...9266c23c4c94452ef1329cbf4da21161fec5ffac?per_page=1&page=1",
+            "returned_files": 1,
+            "returned_java_edits": 1
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "af1aa21a7215b97deab9ae5e247a92662a7b034b",
+          "parents": [
+            "9c07418e8bd94895afbcb3f52a2c29ee4d50b77c",
+            "d5d6de5f82354c5e800ea420dc96bbeccfc6f5cc"
+          ],
+          "committer_date": "2026-11-13T17:41:14Z",
+          "merge_base": "9c07418e8bd94895afbcb3f52a2c29ee4d50b77c",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/spring-projects/spring-boot/compare/d5d6de5f82354c5e800ea420dc96bbeccfc6f5cc...9c07418e8bd94895afbcb3f52a2c29ee4d50b77c?per_page=1&page=1",
+            "returned_files": 0,
+            "returned_java_edits": 0
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/spring-projects/spring-boot/compare/9c07418e8bd94895afbcb3f52a2c29ee4d50b77c...d5d6de5f82354c5e800ea420dc96bbeccfc6f5cc?per_page=1&page=1",
+            "returned_files": 2,
+            "returned_java_edits": 2
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "9c07418e8bd94895afbcb3f52a2c29ee4d50b77c",
+          "parents": [
+            "eaa64081937a430b1cf94061bebf8b860c584af6",
+            "21fde01b9ebfa94273abcc7b5c2b85867a5d0268"
+          ],
+          "committer_date": "2026-11-13T17:39:26Z",
+          "merge_base": "91807618b41de4ab4b948bf23457eb70c1579211",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/spring-projects/spring-boot/compare/21fde01b9ebfa94273abcc7b5c2b85867a5d0268...eaa64081937a430b1cf94061bebf8b860c584af6?per_page=1&page=1",
+            "returned_files": 300,
+            "returned_java_edits": 88
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/spring-projects/spring-boot/compare/eaa64081937a430b1cf94061bebf8b860c584af6...21fde01b9ebfa94273abcc7b5c2b85867a5d0268?per_page=1&page=1",
+            "returned_files": 11,
+            "returned_java_edits": 0
+          },
+          "method": "one_complete_empty",
+          "path_probes": [],
+          "overlaps": []
+        }
+      ]
+    },
+    {
+      "repository": "jenkinsci/jenkins",
+      "pinned_sha": "e8ba485c828e25422d54c1d46e0bea1cb0305d03",
+      "year": 2020,
+      "url": "https://api.github.com/repos/jenkinsci/jenkins/commits?sha=e8ba485c828e25422d54c1d46e0bea1cb0305d03&since=2020-10-20T00:00:00Z&until=2020-11-18T23:59:59Z&per_page=100",
+      "sample_size": 8,
+      "merges_with_candidate": 0,
+      "candidate_paths": 0,
+      "observations": [
+        {
+          "merge": "7657ae3f6e2c171f385b0066fc4db713434d3465",
+          "parents": [
+            "ffe0fa8a53a10572ca555ae61fb6a720da7ff4cb",
+            "618ccc39c1b0a313cabdf0544eb8f3861a836b7c"
+          ],
+          "committer_date": "2020-11-09T09:40:19Z",
+          "merge_base": "0ce4268d219f249615ced798ed23b1cb3ecce93c",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/jenkinsci/jenkins/compare/618ccc39c1b0a313cabdf0544eb8f3861a836b7c...ffe0fa8a53a10572ca555ae61fb6a720da7ff4cb?per_page=1&page=1",
+            "returned_files": 300,
+            "returned_java_edits": 173
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/jenkinsci/jenkins/compare/ffe0fa8a53a10572ca555ae61fb6a720da7ff4cb...618ccc39c1b0a313cabdf0544eb8f3861a836b7c?per_page=1&page=1",
+            "returned_files": 1,
+            "returned_java_edits": 1
+          },
+          "method": "capped_opposite_path_probe",
+          "path_probes": [
+            {
+              "path": "core/src/main/java/jenkins/mvn/GlobalMavenConfig.java",
+              "target": "ffe0fa8a53a10572ca555ae61fb6a720da7ff4cb",
+              "before": {
+                "mode": "100644",
+                "sha": "032d194b9324d6841e4ab783bcac9565ee8fee28",
+                "folder_tree": "dd4aff104d6cdf643e17ff2d2a1e39dfc94d2eda"
+              },
+              "after": {
+                "mode": "100644",
+                "sha": "032d194b9324d6841e4ab783bcac9565ee8fee28",
+                "folder_tree": "dd4aff104d6cdf643e17ff2d2a1e39dfc94d2eda"
+              }
+            }
+          ],
+          "overlaps": []
+        },
+        {
+          "merge": "748e8b2b2d69a4fd5155f5faa7cf68eeaf317b5b",
+          "parents": [
+            "d16833579c8a6b668006aea38f72576d6eced691",
+            "30f65149352c2633696f4d9dd3fb17ed7fe46a62"
+          ],
+          "committer_date": "2020-11-06T11:00:07Z",
+          "merge_base": "87b72f57c3eaee2814fd63c12a9bc88b46015f28",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/jenkinsci/jenkins/compare/30f65149352c2633696f4d9dd3fb17ed7fe46a62...d16833579c8a6b668006aea38f72576d6eced691?per_page=1&page=1",
+            "returned_files": 65,
+            "returned_java_edits": 17
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/jenkinsci/jenkins/compare/d16833579c8a6b668006aea38f72576d6eced691...30f65149352c2633696f4d9dd3fb17ed7fe46a62?per_page=1&page=1",
+            "returned_files": 2,
+            "returned_java_edits": 2
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "d16833579c8a6b668006aea38f72576d6eced691",
+          "parents": [
+            "f54314f4742fa6df011e841c0a16c569d38b33f9",
+            "75fdc91fa5e5a25eab218d044d86c7e5c4b81a28"
+          ],
+          "committer_date": "2020-11-06T09:43:00Z",
+          "merge_base": "93428a432d6e8aa7c3201e69763f8a632caa3461",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/jenkinsci/jenkins/compare/75fdc91fa5e5a25eab218d044d86c7e5c4b81a28...f54314f4742fa6df011e841c0a16c569d38b33f9?per_page=1&page=1",
+            "returned_files": 122,
+            "returned_java_edits": 34
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/jenkinsci/jenkins/compare/f54314f4742fa6df011e841c0a16c569d38b33f9...75fdc91fa5e5a25eab218d044d86c7e5c4b81a28?per_page=1&page=1",
+            "returned_files": 1,
+            "returned_java_edits": 0
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "f54314f4742fa6df011e841c0a16c569d38b33f9",
+          "parents": [
+            "8427b7d1a2c67d303536166861b7812dd3b8b5b6",
+            "04c46dcfac1d13e83ffe27111a3d4be0344c505b"
+          ],
+          "committer_date": "2020-11-05T20:38:37Z",
+          "merge_base": "169e26d187b972b85dda2f12ee8cd43ec6d571be",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/jenkinsci/jenkins/compare/04c46dcfac1d13e83ffe27111a3d4be0344c505b...8427b7d1a2c67d303536166861b7812dd3b8b5b6?per_page=1&page=1",
+            "returned_files": 4,
+            "returned_java_edits": 0
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/jenkinsci/jenkins/compare/8427b7d1a2c67d303536166861b7812dd3b8b5b6...04c46dcfac1d13e83ffe27111a3d4be0344c505b?per_page=1&page=1",
+            "returned_files": 1,
+            "returned_java_edits": 1
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "8427b7d1a2c67d303536166861b7812dd3b8b5b6",
+          "parents": [
+            "5190fca96858d55d51b9c6025241e16b213448f8",
+            "1706cbd7c1299397fd1b0c2f8c123483a1dd537a"
+          ],
+          "committer_date": "2020-11-05T07:57:16Z",
+          "merge_base": "d03b8cfdffb8d1a5bd499a7eac0bbbf4679dbf54",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/jenkinsci/jenkins/compare/1706cbd7c1299397fd1b0c2f8c123483a1dd537a...5190fca96858d55d51b9c6025241e16b213448f8?per_page=1&page=1",
+            "returned_files": 4,
+            "returned_java_edits": 1
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/jenkinsci/jenkins/compare/5190fca96858d55d51b9c6025241e16b213448f8...1706cbd7c1299397fd1b0c2f8c123483a1dd537a?per_page=1&page=1",
+            "returned_files": 3,
+            "returned_java_edits": 0
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "5190fca96858d55d51b9c6025241e16b213448f8",
+          "parents": [
+            "17c8116f1535ea408f144cb6613f69bd8de953ae",
+            "e9612d54ff5fd343135cc38baa65d68f8975aa29"
+          ],
+          "committer_date": "2020-11-04T08:56:09Z",
+          "merge_base": "d03b8cfdffb8d1a5bd499a7eac0bbbf4679dbf54",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/jenkinsci/jenkins/compare/e9612d54ff5fd343135cc38baa65d68f8975aa29...17c8116f1535ea408f144cb6613f69bd8de953ae?per_page=1&page=1",
+            "returned_files": 4,
+            "returned_java_edits": 1
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/jenkinsci/jenkins/compare/17c8116f1535ea408f144cb6613f69bd8de953ae...e9612d54ff5fd343135cc38baa65d68f8975aa29?per_page=1&page=1",
+            "returned_files": 1,
+            "returned_java_edits": 0
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "d03b8cfdffb8d1a5bd499a7eac0bbbf4679dbf54",
+          "parents": [
+            "4c20429e734c8d1b85a4315553bec2565233e0ba",
+            "ed3a3e05af88ea97822abfd0dfa18ca8ad36db15"
+          ],
+          "committer_date": "2020-11-02T11:03:25Z",
+          "merge_base": "b710b8af41107ce5bf73bf7bf794cf3f7603cacd",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/jenkinsci/jenkins/compare/ed3a3e05af88ea97822abfd0dfa18ca8ad36db15...4c20429e734c8d1b85a4315553bec2565233e0ba?per_page=1&page=1",
+            "returned_files": 15,
+            "returned_java_edits": 6
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/jenkinsci/jenkins/compare/4c20429e734c8d1b85a4315553bec2565233e0ba...ed3a3e05af88ea97822abfd0dfa18ca8ad36db15?per_page=1&page=1",
+            "returned_files": 1,
+            "returned_java_edits": 1
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "4c20429e734c8d1b85a4315553bec2565233e0ba",
+          "parents": [
+            "1a0a4809f15991c69ebab52adcfecf18c6a63dc0",
+            "746e9cf68a6dc4c47f30fdd495223ec2cf6caf10"
+          ],
+          "committer_date": "2020-11-01T02:47:46Z",
+          "merge_base": "b710b8af41107ce5bf73bf7bf794cf3f7603cacd",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/jenkinsci/jenkins/compare/746e9cf68a6dc4c47f30fdd495223ec2cf6caf10...1a0a4809f15991c69ebab52adcfecf18c6a63dc0?per_page=1&page=1",
+            "returned_files": 14,
+            "returned_java_edits": 6
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/jenkinsci/jenkins/compare/1a0a4809f15991c69ebab52adcfecf18c6a63dc0...746e9cf68a6dc4c47f30fdd495223ec2cf6caf10?per_page=1&page=1",
+            "returned_files": 1,
+            "returned_java_edits": 0
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        }
+      ]
+    },
+    {
+      "repository": "JabRef/jabref",
+      "pinned_sha": "75b35b962c1d1f45cbd5be8af025b16cde9cc290",
+      "year": 2023,
+      "url": "https://api.github.com/repos/JabRef/jabref/commits?sha=75b35b962c1d1f45cbd5be8af025b16cde9cc290&since=2023-10-20T00:00:00Z&until=2023-11-18T23:59:59Z&per_page=100",
+      "sample_size": 8,
+      "merges_with_candidate": 0,
+      "candidate_paths": 0,
+      "observations": [
+        {
+          "merge": "5fb1c2c7ee522927340bc2404f14e2a406e59bd9",
+          "parents": [
+            "e5ddf1fdc2b8167810c8dc603c12c90ff479f922",
+            "85cd85f8ed0237940da9ac183839f90623a4e8c5"
+          ],
+          "committer_date": "2023-11-16T06:13:55Z",
+          "merge_base": "bdee9b6abb4fd974f46a0a9fceffcc5c54d838a8",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/JabRef/jabref/compare/85cd85f8ed0237940da9ac183839f90623a4e8c5...e5ddf1fdc2b8167810c8dc603c12c90ff479f922?per_page=1&page=1",
+            "returned_files": 8,
+            "returned_java_edits": 5
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/JabRef/jabref/compare/e5ddf1fdc2b8167810c8dc603c12c90ff479f922...85cd85f8ed0237940da9ac183839f90623a4e8c5?per_page=1&page=1",
+            "returned_files": 3,
+            "returned_java_edits": 0
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "e5ddf1fdc2b8167810c8dc603c12c90ff479f922",
+          "parents": [
+            "660dd03e81d43624e46f34dc0ac0b3597e8e5206",
+            "bdee9b6abb4fd974f46a0a9fceffcc5c54d838a8"
+          ],
+          "committer_date": "2023-11-15T16:02:05Z",
+          "merge_base": "c75506f6f404d759d757837ac2b2ae2e57f40a23",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/JabRef/jabref/compare/bdee9b6abb4fd974f46a0a9fceffcc5c54d838a8...660dd03e81d43624e46f34dc0ac0b3597e8e5206?per_page=1&page=1",
+            "returned_files": 8,
+            "returned_java_edits": 5
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/JabRef/jabref/compare/660dd03e81d43624e46f34dc0ac0b3597e8e5206...bdee9b6abb4fd974f46a0a9fceffcc5c54d838a8?per_page=1&page=1",
+            "returned_files": 1,
+            "returned_java_edits": 0
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "660dd03e81d43624e46f34dc0ac0b3597e8e5206",
+          "parents": [
+            "d97608f1995f270c12a606663f703a3738703f1e",
+            "c75506f6f404d759d757837ac2b2ae2e57f40a23"
+          ],
+          "committer_date": "2023-11-14T12:29:26Z",
+          "merge_base": "eb44690d93763d1c1ebb279b27ee36b5e74430df",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/JabRef/jabref/compare/c75506f6f404d759d757837ac2b2ae2e57f40a23...d97608f1995f270c12a606663f703a3738703f1e?per_page=1&page=1",
+            "returned_files": 8,
+            "returned_java_edits": 5
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/JabRef/jabref/compare/d97608f1995f270c12a606663f703a3738703f1e...c75506f6f404d759d757837ac2b2ae2e57f40a23?per_page=1&page=1",
+            "returned_files": 3,
+            "returned_java_edits": 1
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "d97608f1995f270c12a606663f703a3738703f1e",
+          "parents": [
+            "7a083217eeb0c69d4e50ad3ff03f1e0c02d93cc2",
+            "eb44690d93763d1c1ebb279b27ee36b5e74430df"
+          ],
+          "committer_date": "2023-11-14T01:18:03Z",
+          "merge_base": "a1d783f22c296ec47d144def7a69d8b2cba3b1f2",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/JabRef/jabref/compare/eb44690d93763d1c1ebb279b27ee36b5e74430df...7a083217eeb0c69d4e50ad3ff03f1e0c02d93cc2?per_page=1&page=1",
+            "returned_files": 8,
+            "returned_java_edits": 5
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/JabRef/jabref/compare/7a083217eeb0c69d4e50ad3ff03f1e0c02d93cc2...eb44690d93763d1c1ebb279b27ee36b5e74430df?per_page=1&page=1",
+            "returned_files": 1,
+            "returned_java_edits": 0
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "7a083217eeb0c69d4e50ad3ff03f1e0c02d93cc2",
+          "parents": [
+            "8b89bf6d9090e3ee2fc57f90c4e36837a7aee26c",
+            "a1d783f22c296ec47d144def7a69d8b2cba3b1f2"
+          ],
+          "committer_date": "2023-11-11T18:48:54Z",
+          "merge_base": "f4a44ba1d8caad3dcf81d13e9bf55d7c7d3dd20a",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/JabRef/jabref/compare/a1d783f22c296ec47d144def7a69d8b2cba3b1f2...8b89bf6d9090e3ee2fc57f90c4e36837a7aee26c?per_page=1&page=1",
+            "returned_files": 8,
+            "returned_java_edits": 5
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/JabRef/jabref/compare/8b89bf6d9090e3ee2fc57f90c4e36837a7aee26c...a1d783f22c296ec47d144def7a69d8b2cba3b1f2?per_page=1&page=1",
+            "returned_files": 3,
+            "returned_java_edits": 2
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "a1d783f22c296ec47d144def7a69d8b2cba3b1f2",
+          "parents": [
+            "f4a44ba1d8caad3dcf81d13e9bf55d7c7d3dd20a",
+            "d0c8b25ab98f7ce64036e06078a5d38596fdd57e"
+          ],
+          "committer_date": "2023-11-10T21:01:39Z",
+          "merge_base": "f4a44ba1d8caad3dcf81d13e9bf55d7c7d3dd20a",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/JabRef/jabref/compare/d0c8b25ab98f7ce64036e06078a5d38596fdd57e...f4a44ba1d8caad3dcf81d13e9bf55d7c7d3dd20a?per_page=1&page=1",
+            "returned_files": 0,
+            "returned_java_edits": 0
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/JabRef/jabref/compare/f4a44ba1d8caad3dcf81d13e9bf55d7c7d3dd20a...d0c8b25ab98f7ce64036e06078a5d38596fdd57e?per_page=1&page=1",
+            "returned_files": 3,
+            "returned_java_edits": 2
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "0ae4ce3bd5c7c2eb48f401f1010ffa78947c8009",
+          "parents": [
+            "52c7689a5a0086cdd2f856f5a994735964ca901e",
+            "f4a44ba1d8caad3dcf81d13e9bf55d7c7d3dd20a"
+          ],
+          "committer_date": "2023-11-10T20:45:35Z",
+          "merge_base": "a2aa2c638c910c3eadb45ed69388acb121b3dae7",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/JabRef/jabref/compare/f4a44ba1d8caad3dcf81d13e9bf55d7c7d3dd20a...52c7689a5a0086cdd2f856f5a994735964ca901e?per_page=1&page=1",
+            "returned_files": 3,
+            "returned_java_edits": 2
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/JabRef/jabref/compare/52c7689a5a0086cdd2f856f5a994735964ca901e...f4a44ba1d8caad3dcf81d13e9bf55d7c7d3dd20a?per_page=1&page=1",
+            "returned_files": 36,
+            "returned_java_edits": 22
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "2b92fc8d9204dbe32dec6b6c39fc86ab29fe7c8d",
+          "parents": [
+            "78bce2aaaf2828734f494e9d58e2799833bfa143",
+            "f4a44ba1d8caad3dcf81d13e9bf55d7c7d3dd20a"
+          ],
+          "committer_date": "2023-11-10T06:56:54Z",
+          "merge_base": "2afd1f622a3ab85fc2cf5fa879c5a4d41c245eca",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/JabRef/jabref/compare/f4a44ba1d8caad3dcf81d13e9bf55d7c7d3dd20a...78bce2aaaf2828734f494e9d58e2799833bfa143?per_page=1&page=1",
+            "returned_files": 8,
+            "returned_java_edits": 5
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/JabRef/jabref/compare/78bce2aaaf2828734f494e9d58e2799833bfa143...f4a44ba1d8caad3dcf81d13e9bf55d7c7d3dd20a?per_page=1&page=1",
+            "returned_files": 36,
+            "returned_java_edits": 22
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        }
+      ]
+    },
+    {
+      "repository": "quarkusio/quarkus",
+      "pinned_sha": "61d971888943ff815b86a179fbfcd1db22857730",
+      "year": 2026,
+      "url": "https://api.github.com/repos/quarkusio/quarkus/commits?sha=61d971888943ff815b86a179fbfcd1db22857730&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "sample_size": 8,
+      "merges_with_candidate": 2,
+      "candidate_paths": 2,
+      "observations": [
+        {
+          "merge": "e5bb3cadaa5044a8957de37a09c8fda297ac8544",
+          "parents": [
+            "dd963ba9cc51c8b677719689c9e4cc4e57d37a2e",
+            "8ceb8a5a6ad22f26b4a1d51e8ba7c6afb028b4a0"
+          ],
+          "committer_date": "2026-11-18T22:29:03Z",
+          "merge_base": "a14205b8bcc0dfeb6c9054823b441470b9a54fd7",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/quarkusio/quarkus/compare/8ceb8a5a6ad22f26b4a1d51e8ba7c6afb028b4a0...dd963ba9cc51c8b677719689c9e4cc4e57d37a2e?per_page=1&page=1",
+            "returned_files": 70,
+            "returned_java_edits": 23
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/quarkusio/quarkus/compare/dd963ba9cc51c8b677719689c9e4cc4e57d37a2e...8ceb8a5a6ad22f26b4a1d51e8ba7c6afb028b4a0?per_page=1&page=1",
+            "returned_files": 50,
+            "returned_java_edits": 38
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "dd963ba9cc51c8b677719689c9e4cc4e57d37a2e",
+          "parents": [
+            "c975cb6912753a30d6c0fedc41dddb89c594ddf9",
+            "036eff0851d6663d6dbf53be63c9fb5de9b3fb87"
+          ],
+          "committer_date": "2026-11-18T20:48:18Z",
+          "merge_base": "cb373da3c9506ffc2253d053b1df5f7e34dd0358",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/quarkusio/quarkus/compare/036eff0851d6663d6dbf53be63c9fb5de9b3fb87...c975cb6912753a30d6c0fedc41dddb89c594ddf9?per_page=1&page=1",
+            "returned_files": 300,
+            "returned_java_edits": 131
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/quarkusio/quarkus/compare/c975cb6912753a30d6c0fedc41dddb89c594ddf9...036eff0851d6663d6dbf53be63c9fb5de9b3fb87?per_page=1&page=1",
+            "returned_files": 3,
+            "returned_java_edits": 1
+          },
+          "method": "capped_opposite_path_probe",
+          "path_probes": [
+            {
+              "path": "extensions/netty/deployment/src/main/java/io/quarkus/netty/deployment/NettyProcessor.java",
+              "target": "c975cb6912753a30d6c0fedc41dddb89c594ddf9",
+              "before": {
+                "mode": "100644",
+                "sha": "3426459d2753cf7681e720b691bcbab5a75c3391",
+                "folder_tree": "f9eb79316848b40c159ab33255bfa5552b7717ca"
+              },
+              "after": {
+                "mode": "100644",
+                "sha": "3426459d2753cf7681e720b691bcbab5a75c3391",
+                "folder_tree": "f9eb79316848b40c159ab33255bfa5552b7717ca"
+              }
+            }
+          ],
+          "overlaps": []
+        },
+        {
+          "merge": "c975cb6912753a30d6c0fedc41dddb89c594ddf9",
+          "parents": [
+            "8b3e3d606e71bd6010963766ac88c860d3c131c3",
+            "ff932c5cafb6c8535ae1b2659ca9fde2cd52714b"
+          ],
+          "committer_date": "2026-11-18T19:25:47Z",
+          "merge_base": "85c1afd03acda73dff8e3e76909d7d667b9d9901",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/quarkusio/quarkus/compare/ff932c5cafb6c8535ae1b2659ca9fde2cd52714b...8b3e3d606e71bd6010963766ac88c860d3c131c3?per_page=1&page=1",
+            "returned_files": 15,
+            "returned_java_edits": 12
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/quarkusio/quarkus/compare/8b3e3d606e71bd6010963766ac88c860d3c131c3...ff932c5cafb6c8535ae1b2659ca9fde2cd52714b?per_page=1&page=1",
+            "returned_files": 6,
+            "returned_java_edits": 3
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "8b3e3d606e71bd6010963766ac88c860d3c131c3",
+          "parents": [
+            "27bd98671fa76e63fe850a05fc3363b51b3cde71",
+            "756388f2245d2aaf8c2f99adb831183acb75e63e"
+          ],
+          "committer_date": "2026-11-18T17:27:35Z",
+          "merge_base": "a14205b8bcc0dfeb6c9054823b441470b9a54fd7",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/quarkusio/quarkus/compare/756388f2245d2aaf8c2f99adb831183acb75e63e...27bd98671fa76e63fe850a05fc3363b51b3cde71?per_page=1&page=1",
+            "returned_files": 58,
+            "returned_java_edits": 17
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/quarkusio/quarkus/compare/27bd98671fa76e63fe850a05fc3363b51b3cde71...756388f2245d2aaf8c2f99adb831183acb75e63e?per_page=1&page=1",
+            "returned_files": 3,
+            "returned_java_edits": 2
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "27bd98671fa76e63fe850a05fc3363b51b3cde71",
+          "parents": [
+            "85c1afd03acda73dff8e3e76909d7d667b9d9901",
+            "63b2f7931d0b8dcb137ca259fc62701457311512"
+          ],
+          "committer_date": "2026-11-18T15:18:10Z",
+          "merge_base": "0c1493a1f14593e4fc8276990276cacb4a9f0ce6",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/quarkusio/quarkus/compare/63b2f7931d0b8dcb137ca259fc62701457311512...85c1afd03acda73dff8e3e76909d7d667b9d9901?per_page=1&page=1",
+            "returned_files": 300,
+            "returned_java_edits": 119
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/quarkusio/quarkus/compare/85c1afd03acda73dff8e3e76909d7d667b9d9901...63b2f7931d0b8dcb137ca259fc62701457311512?per_page=1&page=1",
+            "returned_files": 12,
+            "returned_java_edits": 10
+          },
+          "method": "capped_opposite_path_probe",
+          "path_probes": [
+            {
+              "path": "extensions/datasource/deployment/src/main/java/io/quarkus/datasource/deployment/devservices/DevServicesDatasourceProcessor.java",
+              "target": "85c1afd03acda73dff8e3e76909d7d667b9d9901",
+              "before": {
+                "mode": "100644",
+                "sha": "20a0bd336f7659221a1ddd3877f1621febefe984",
+                "folder_tree": "544bbf643914475796cd1d558ae35170285053e0"
+              },
+              "after": {
+                "mode": "100644",
+                "sha": "20a0bd336f7659221a1ddd3877f1621febefe984",
+                "folder_tree": "544bbf643914475796cd1d558ae35170285053e0"
+              }
+            },
+            {
+              "path": "extensions/datasource/runtime/src/main/java/io/quarkus/datasource/runtime/DevServicesBuildTimeConfig.java",
+              "target": "85c1afd03acda73dff8e3e76909d7d667b9d9901",
+              "before": {
+                "mode": "100644",
+                "sha": "37506960727a3e958134ac916d02c7741727b6f4",
+                "folder_tree": "a57535986b8ed01ac3a33b5b4edf9645a2153297"
+              },
+              "after": {
+                "mode": "100644",
+                "sha": "37506960727a3e958134ac916d02c7741727b6f4",
+                "folder_tree": "a57535986b8ed01ac3a33b5b4edf9645a2153297"
+              }
+            },
+            {
+              "path": "extensions/devservices/datasource-common/src/main/java/io/quarkus/devservices/datasource/common/DevServicesDatasourceContainerConfig.java",
+              "target": "85c1afd03acda73dff8e3e76909d7d667b9d9901",
+              "before": {
+                "mode": "100644",
+                "sha": "88c27d1561fa9ad0fb13b08afcc49f4be7015acb",
+                "folder_tree": "1c40c246892d123f2f9519b4ca8b544ecd3f7e96"
+              },
+              "after": {
+                "mode": "100644",
+                "sha": "88c27d1561fa9ad0fb13b08afcc49f4be7015acb",
+                "folder_tree": "1c40c246892d123f2f9519b4ca8b544ecd3f7e96"
+              }
+            },
+            {
+              "path": "extensions/devservices/datasource-common/src/main/java/io/quarkus/devservices/datasource/common/DevServicesDatasourceProvider.java",
+              "target": "85c1afd03acda73dff8e3e76909d7d667b9d9901",
+              "before": {
+                "mode": "100644",
+                "sha": "7206b8009d8f1e7f56a175eb676e466a1e42a3db",
+                "folder_tree": "1c40c246892d123f2f9519b4ca8b544ecd3f7e96"
+              },
+              "after": {
+                "mode": "100644",
+                "sha": "7206b8009d8f1e7f56a175eb676e466a1e42a3db",
+                "folder_tree": "1c40c246892d123f2f9519b4ca8b544ecd3f7e96"
+              }
+            },
+            {
+              "path": "extensions/devservices/db2/src/main/java/io/quarkus/devservices/db2/deployment/DB2DevServicesProcessor.java",
+              "target": "85c1afd03acda73dff8e3e76909d7d667b9d9901",
+              "before": {
+                "mode": "100644",
+                "sha": "832f290729d7b25cab3d8ee0f34d16bce656186e",
+                "folder_tree": "3b5f6b594427f2cd6130f527b234c3633d58512d"
+              },
+              "after": {
+                "mode": "100644",
+                "sha": "832f290729d7b25cab3d8ee0f34d16bce656186e",
+                "folder_tree": "3b5f6b594427f2cd6130f527b234c3633d58512d"
+              }
+            },
+            {
+              "path": "extensions/devservices/mariadb/src/main/java/io/quarkus/devservices/mariadb/deployment/MariaDBDevServicesProcessor.java",
+              "target": "85c1afd03acda73dff8e3e76909d7d667b9d9901",
+              "before": {
+                "mode": "100644",
+                "sha": "49824aba0e3e9bbc91722c5d57b56aaad26b7fff",
+                "folder_tree": "8d41389cdc8f253d0c1a2cefec5e47486f0e40cd"
+              },
+              "after": {
+                "mode": "100644",
+                "sha": "49824aba0e3e9bbc91722c5d57b56aaad26b7fff",
+                "folder_tree": "8d41389cdc8f253d0c1a2cefec5e47486f0e40cd"
+              }
+            },
+            {
+              "path": "extensions/devservices/mssql/src/main/java/io/quarkus/devservices/mssql/deployment/MSSQLDevServicesProcessor.java",
+              "target": "85c1afd03acda73dff8e3e76909d7d667b9d9901",
+              "before": {
+                "mode": "100644",
+                "sha": "fed9e13104bcac30015997db438bac86645d935f",
+                "folder_tree": "df2ef62846f339d81a6471860f3557869252c429"
+              },
+              "after": {
+                "mode": "100644",
+                "sha": "fed9e13104bcac30015997db438bac86645d935f",
+                "folder_tree": "df2ef62846f339d81a6471860f3557869252c429"
+              }
+            },
+            {
+              "path": "extensions/devservices/mysql/src/main/java/io/quarkus/devservices/mysql/deployment/MySQLDevServicesProcessor.java",
+              "target": "85c1afd03acda73dff8e3e76909d7d667b9d9901",
+              "before": {
+                "mode": "100644",
+                "sha": "a9930f5e59425d81c20dce402442ea6bd21b87d5",
+                "folder_tree": "2d57fce6ff2fb5d851aaf04e6e8d927f9840705f"
+              },
+              "after": {
+                "mode": "100644",
+                "sha": "ce59933380c49fa53ddb3b86d796628c512a7273",
+                "folder_tree": "1e6a09e21f952862cf2697d0a049017e98e0cd4b"
+              }
+            },
+            {
+              "path": "extensions/devservices/oracle/src/main/java/io/quarkus/devservices/oracle/deployment/OracleDevServicesProcessor.java",
+              "target": "85c1afd03acda73dff8e3e76909d7d667b9d9901",
+              "before": {
+                "mode": "100644",
+                "sha": "bc2456139483fae68f265ce4d18eaa6795978ebd",
+                "folder_tree": "b2c264e05739e6596be40e00f33596e932fb248b"
+              },
+              "after": {
+                "mode": "100644",
+                "sha": "bc2456139483fae68f265ce4d18eaa6795978ebd",
+                "folder_tree": "b2c264e05739e6596be40e00f33596e932fb248b"
+              }
+            },
+            {
+              "path": "extensions/devservices/postgresql/src/main/java/io/quarkus/devservices/postgresql/deployment/PostgresqlDevServicesProcessor.java",
+              "target": "85c1afd03acda73dff8e3e76909d7d667b9d9901",
+              "before": {
+                "mode": "100644",
+                "sha": "b544f0af2bf756cb5f94dc886a6904964fd3e298",
+                "folder_tree": "5cfc7ea8db02dd2cb99915b410de91becb4a4e3a"
+              },
+              "after": {
+                "mode": "100644",
+                "sha": "b544f0af2bf756cb5f94dc886a6904964fd3e298",
+                "folder_tree": "5cfc7ea8db02dd2cb99915b410de91becb4a4e3a"
+              }
+            }
+          ],
+          "overlaps": [
+            {
+              "original": "extensions/devservices/mysql/src/main/java/io/quarkus/devservices/mysql/deployment/MySQLDevServicesProcessor.java",
+              "left": [
+                "extensions/devservices/mysql/src/main/java/io/quarkus/devservices/mysql/deployment/MySQLDevServicesProcessor.java",
+                "ce59933380c49fa53ddb3b86d796628c512a7273"
+              ],
+              "right": [
+                "extensions/devservices/mysql/src/main/java/io/quarkus/devservices/mysql/deployment/MySQLDevServicesProcessor.java",
+                "1afe4742dcaa49d8cfa9a28be6135d2719db87c8"
+              ],
+              "blobs": [
+                {
+                  "mode": "100644",
+                  "sha": "a9930f5e59425d81c20dce402442ea6bd21b87d5",
+                  "folder_tree": "2d57fce6ff2fb5d851aaf04e6e8d927f9840705f"
+                },
+                {
+                  "mode": "100644",
+                  "sha": "ce59933380c49fa53ddb3b86d796628c512a7273",
+                  "folder_tree": "1e6a09e21f952862cf2697d0a049017e98e0cd4b"
+                },
+                {
+                  "mode": "100644",
+                  "sha": "1afe4742dcaa49d8cfa9a28be6135d2719db87c8",
+                  "folder_tree": "8e9d8878d9816f14520ccac7d175727e278ca5ba"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "merge": "85c1afd03acda73dff8e3e76909d7d667b9d9901",
+          "parents": [
+            "8649495780a266e8559790dbfbf5a3f292d4f480",
+            "9143c8b359de79aca21fef9cfb6a8e6668a2c6b9"
+          ],
+          "committer_date": "2026-11-18T14:17:38Z",
+          "merge_base": "e1e91b864a70904c491f3d75fb8a8746b640d4b5",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/quarkusio/quarkus/compare/9143c8b359de79aca21fef9cfb6a8e6668a2c6b9...8649495780a266e8559790dbfbf5a3f292d4f480?per_page=1&page=1",
+            "returned_files": 157,
+            "returned_java_edits": 72
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/quarkusio/quarkus/compare/8649495780a266e8559790dbfbf5a3f292d4f480...9143c8b359de79aca21fef9cfb6a8e6668a2c6b9?per_page=1&page=1",
+            "returned_files": 20,
+            "returned_java_edits": 5
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": [
+            {
+              "original": "extensions/resteasy-classic/resteasy-client/runtime/src/main/java/io/quarkus/restclient/runtime/RestClientBase.java",
+              "left": [
+                "extensions/resteasy-classic/resteasy-client/runtime/src/main/java/io/quarkus/restclient/runtime/RestClientBase.java",
+                "e5374a141154bad0c9dce5fc0c8afd7c961997d0"
+              ],
+              "right": [
+                "extensions/resteasy-classic/resteasy-client/runtime/src/main/java/io/quarkus/restclient/runtime/RestClientBase.java",
+                "f854e94d3c4123b2d8765c498794b0b951782963"
+              ],
+              "blobs": [
+                {
+                  "mode": "100644",
+                  "sha": "4b23da30d16980f8a3def3b86f14b00a40d58709",
+                  "folder_tree": "0224ee2fcd9ab92926829b74e3b59943ddc502f8"
+                },
+                {
+                  "mode": "100644",
+                  "sha": "e5374a141154bad0c9dce5fc0c8afd7c961997d0",
+                  "folder_tree": "fb453c7b7204dace7d421914ae2e3018987852b6"
+                },
+                {
+                  "mode": "100644",
+                  "sha": "f854e94d3c4123b2d8765c498794b0b951782963",
+                  "folder_tree": "fcade97f05d9af7fbbb90e2f14711bb266557512"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "merge": "8649495780a266e8559790dbfbf5a3f292d4f480",
+          "parents": [
+            "b625f4bc85ed3bfb0190964d3ad6699b30f47dff",
+            "f978d492bd9ece1324d033e8c6065b7b462b9edc"
+          ],
+          "committer_date": "2026-11-18T14:03:42Z",
+          "merge_base": "847912a312fd068896bf7f92f17a94243f77dd6e",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/quarkusio/quarkus/compare/f978d492bd9ece1324d033e8c6065b7b462b9edc...b625f4bc85ed3bfb0190964d3ad6699b30f47dff?per_page=1&page=1",
+            "returned_files": 31,
+            "returned_java_edits": 14
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/quarkusio/quarkus/compare/b625f4bc85ed3bfb0190964d3ad6699b30f47dff...f978d492bd9ece1324d033e8c6065b7b462b9edc?per_page=1&page=1",
+            "returned_files": 17,
+            "returned_java_edits": 1
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "b625f4bc85ed3bfb0190964d3ad6699b30f47dff",
+          "parents": [
+            "a14205b8bcc0dfeb6c9054823b441470b9a54fd7",
+            "665216c577439ef769fabd7218bca05d52a82330"
+          ],
+          "committer_date": "2026-11-18T12:20:27Z",
+          "merge_base": "5f4dcb9225c2d27aafe42141c7d638f8ef6077ba",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/quarkusio/quarkus/compare/665216c577439ef769fabd7218bca05d52a82330...a14205b8bcc0dfeb6c9054823b441470b9a54fd7?per_page=1&page=1",
+            "returned_files": 110,
+            "returned_java_edits": 55
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/quarkusio/quarkus/compare/a14205b8bcc0dfeb6c9054823b441470b9a54fd7...665216c577439ef769fabd7218bca05d52a82330?per_page=1&page=1",
+            "returned_files": 9,
+            "returned_java_edits": 1
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        }
+      ]
+    },
+    {
+      "repository": "Card-Forge/forge",
+      "pinned_sha": "9748ef2c96d18bcb55271e20e63c32bdee3e991c",
+      "year": 2026,
+      "url": "https://api.github.com/repos/Card-Forge/forge/commits?sha=9748ef2c96d18bcb55271e20e63c32bdee3e991c&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "sample_size": 8,
+      "merges_with_candidate": 1,
+      "candidate_paths": 1,
+      "observations": [
+        {
+          "merge": "fc63c86bff1e1c3fe2412a660d485d4ead23916b",
+          "parents": [
+            "4cd2143cbc81f0d703c946788b2722f1c44622da",
+            "54f61476a68138f569eb634f3777f0f8049140fe"
+          ],
+          "committer_date": "2026-11-18T09:56:56Z",
+          "merge_base": "54c1ec72c2ae128e90427aadbe9b3663355c7d6d",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/Card-Forge/forge/compare/54f61476a68138f569eb634f3777f0f8049140fe...4cd2143cbc81f0d703c946788b2722f1c44622da?per_page=1&page=1",
+            "returned_files": 272,
+            "returned_java_edits": 105
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/Card-Forge/forge/compare/4cd2143cbc81f0d703c946788b2722f1c44622da...54f61476a68138f569eb634f3777f0f8049140fe?per_page=1&page=1",
+            "returned_files": 5,
+            "returned_java_edits": 1
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "5d71305499119a9033fae67a743d829a7d6b7662",
+          "parents": [
+            "b1dc6144b2fb76b94248e582ec7f5bb266af51d1",
+            "cabe89e85e9b5b38d16e96cbfbb25a3a26cacd5b"
+          ],
+          "committer_date": "2026-11-17T10:18:45Z",
+          "merge_base": "0f82b4f4693357638c368b9fb0b64833eb44faf8",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/Card-Forge/forge/compare/cabe89e85e9b5b38d16e96cbfbb25a3a26cacd5b...b1dc6144b2fb76b94248e582ec7f5bb266af51d1?per_page=1&page=1",
+            "returned_files": 8,
+            "returned_java_edits": 6
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/Card-Forge/forge/compare/b1dc6144b2fb76b94248e582ec7f5bb266af51d1...cabe89e85e9b5b38d16e96cbfbb25a3a26cacd5b?per_page=1&page=1",
+            "returned_files": 4,
+            "returned_java_edits": 0
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "5c29fe899a2559d3d7e9ac1b14c1246d89335aa9",
+          "parents": [
+            "fc65fb7a6aef3e8237a6af2662409195d2b2a51c",
+            "33928abfc20bc13e15e4a85385c709669ea81baa"
+          ],
+          "committer_date": "2026-11-16T09:46:37Z",
+          "merge_base": "54c1ec72c2ae128e90427aadbe9b3663355c7d6d",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/Card-Forge/forge/compare/33928abfc20bc13e15e4a85385c709669ea81baa...fc65fb7a6aef3e8237a6af2662409195d2b2a51c?per_page=1&page=1",
+            "returned_files": 90,
+            "returned_java_edits": 38
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/Card-Forge/forge/compare/fc65fb7a6aef3e8237a6af2662409195d2b2a51c...33928abfc20bc13e15e4a85385c709669ea81baa?per_page=1&page=1",
+            "returned_files": 4,
+            "returned_java_edits": 0
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "619c8ec11913c64a3b3b73e30a6d78f7a8498274",
+          "parents": [
+            "f818e4b2751a8237c5e1ba35248f6373745217aa",
+            "b5d34b962606dcf1594d66ca8a742d43f403fa8f"
+          ],
+          "committer_date": "2026-11-15T11:43:46Z",
+          "merge_base": "f818e4b2751a8237c5e1ba35248f6373745217aa",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/Card-Forge/forge/compare/b5d34b962606dcf1594d66ca8a742d43f403fa8f...f818e4b2751a8237c5e1ba35248f6373745217aa?per_page=1&page=1",
+            "returned_files": 0,
+            "returned_java_edits": 0
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/Card-Forge/forge/compare/f818e4b2751a8237c5e1ba35248f6373745217aa...b5d34b962606dcf1594d66ca8a742d43f403fa8f?per_page=1&page=1",
+            "returned_files": 13,
+            "returned_java_edits": 3
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "b5d34b962606dcf1594d66ca8a742d43f403fa8f",
+          "parents": [
+            "f44279b9ec1b9f81d815236a82949de944496214",
+            "f818e4b2751a8237c5e1ba35248f6373745217aa"
+          ],
+          "committer_date": "2026-11-15T10:26:10Z",
+          "merge_base": "bdcce440b7c3e39b41e7efe72e5851d14ac574a6",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/Card-Forge/forge/compare/f818e4b2751a8237c5e1ba35248f6373745217aa...f44279b9ec1b9f81d815236a82949de944496214?per_page=1&page=1",
+            "returned_files": 13,
+            "returned_java_edits": 3
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/Card-Forge/forge/compare/f44279b9ec1b9f81d815236a82949de944496214...f818e4b2751a8237c5e1ba35248f6373745217aa?per_page=1&page=1",
+            "returned_files": 300,
+            "returned_java_edits": 232
+          },
+          "method": "capped_opposite_path_probe",
+          "path_probes": [
+            {
+              "path": "forge-gui-desktop/src/main/java/forge/screens/deckeditor/controllers/ACEditorBase.java",
+              "target": "f818e4b2751a8237c5e1ba35248f6373745217aa",
+              "before": {
+                "mode": "100644",
+                "sha": "efb878c3c5728ae44044615f4b52cdd5a3219ba2",
+                "folder_tree": "3871c9a72d78ddc7665c12404124980075b908ba"
+              },
+              "after": {
+                "mode": "100644",
+                "sha": "efb878c3c5728ae44044615f4b52cdd5a3219ba2",
+                "folder_tree": "1a05b0caa29d05f9713943633f881f71746c67f7"
+              }
+            },
+            {
+              "path": "forge-gui-desktop/src/main/java/forge/screens/deckeditor/controllers/CEditorConstructed.java",
+              "target": "f818e4b2751a8237c5e1ba35248f6373745217aa",
+              "before": {
+                "mode": "100644",
+                "sha": "d8aa880259101e7f7d19d78a21c079ebd624e52e",
+                "folder_tree": "3871c9a72d78ddc7665c12404124980075b908ba"
+              },
+              "after": {
+                "mode": "100644",
+                "sha": "110e02c560c324e7e9961aaca758f487ecf2866b",
+                "folder_tree": "1a05b0caa29d05f9713943633f881f71746c67f7"
+              }
+            },
+            {
+              "path": "forge-gui-desktop/src/main/java/forge/toolbox/FSkin.java",
+              "target": "f818e4b2751a8237c5e1ba35248f6373745217aa",
+              "before": {
+                "mode": "100644",
+                "sha": "be872ea5323bb780e36b319628a3e27db73e678d",
+                "folder_tree": "d7301681244a6acef4fb04fb7bc29cc94112f5d8"
+              },
+              "after": {
+                "mode": "100644",
+                "sha": "be872ea5323bb780e36b319628a3e27db73e678d",
+                "folder_tree": "d82d616887247d8a768d51dbef2d05eed7611bcc"
+              }
+            }
+          ],
+          "overlaps": [
+            {
+              "original": "forge-gui-desktop/src/main/java/forge/screens/deckeditor/controllers/CEditorConstructed.java",
+              "left": [
+                "forge-gui-desktop/src/main/java/forge/screens/deckeditor/controllers/CEditorConstructed.java",
+                "4874c537d918874b3e0d3af9e007fa200453d939"
+              ],
+              "right": [
+                "forge-gui-desktop/src/main/java/forge/screens/deckeditor/controllers/CEditorConstructed.java",
+                "110e02c560c324e7e9961aaca758f487ecf2866b"
+              ],
+              "blobs": [
+                {
+                  "mode": "100644",
+                  "sha": "d8aa880259101e7f7d19d78a21c079ebd624e52e",
+                  "folder_tree": "3871c9a72d78ddc7665c12404124980075b908ba"
+                },
+                {
+                  "mode": "100644",
+                  "sha": "4874c537d918874b3e0d3af9e007fa200453d939",
+                  "folder_tree": "fa46fbc8c03ecf2ca859379bdddc23e9bf7c6f6d"
+                },
+                {
+                  "mode": "100644",
+                  "sha": "110e02c560c324e7e9961aaca758f487ecf2866b",
+                  "folder_tree": "1a05b0caa29d05f9713943633f881f71746c67f7"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "merge": "016d9e8b3231d6e2fd5df8c17d874fa4fa9f17c7",
+          "parents": [
+            "f65df0c12816d3573d5ebfda33fa0f8991eb01cc",
+            "16b1b4d6ba21323a5babc290edafa33d3e6c5d29"
+          ],
+          "committer_date": "2026-11-14T13:15:20Z",
+          "merge_base": "f65df0c12816d3573d5ebfda33fa0f8991eb01cc",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/Card-Forge/forge/compare/16b1b4d6ba21323a5babc290edafa33d3e6c5d29...f65df0c12816d3573d5ebfda33fa0f8991eb01cc?per_page=1&page=1",
+            "returned_files": 0,
+            "returned_java_edits": 0
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/Card-Forge/forge/compare/f65df0c12816d3573d5ebfda33fa0f8991eb01cc...16b1b4d6ba21323a5babc290edafa33d3e6c5d29?per_page=1&page=1",
+            "returned_files": 1,
+            "returned_java_edits": 1
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "f65df0c12816d3573d5ebfda33fa0f8991eb01cc",
+          "parents": [
+            "5a7f95b72a3f933aa17cc50afa2dafdf1bc23ff5",
+            "58d367414adb83556e4760299555f418866f3b1b"
+          ],
+          "committer_date": "2026-11-14T11:42:59Z",
+          "merge_base": "5a7f95b72a3f933aa17cc50afa2dafdf1bc23ff5",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/Card-Forge/forge/compare/58d367414adb83556e4760299555f418866f3b1b...5a7f95b72a3f933aa17cc50afa2dafdf1bc23ff5?per_page=1&page=1",
+            "returned_files": 0,
+            "returned_java_edits": 0
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/Card-Forge/forge/compare/5a7f95b72a3f933aa17cc50afa2dafdf1bc23ff5...58d367414adb83556e4760299555f418866f3b1b?per_page=1&page=1",
+            "returned_files": 9,
+            "returned_java_edits": 0
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        },
+        {
+          "merge": "3cfec26d1ed1a4737972a566c5ac0f5289b620b0",
+          "parents": [
+            "a8695ac23e23db22df0693b3d12a321e25d9aaca",
+            "c778e98705e6feada0b1157f3ed286aeb70c727a"
+          ],
+          "committer_date": "2026-11-13T18:39:48Z",
+          "merge_base": "a2643644cd1a4bf06d06813d82e89533fbebd7ec",
+          "first_parent_diff": {
+            "url": "https://api.github.com/repos/Card-Forge/forge/compare/c778e98705e6feada0b1157f3ed286aeb70c727a...a8695ac23e23db22df0693b3d12a321e25d9aaca?per_page=1&page=1",
+            "returned_files": 13,
+            "returned_java_edits": 10
+          },
+          "second_parent_diff": {
+            "url": "https://api.github.com/repos/Card-Forge/forge/compare/a8695ac23e23db22df0693b3d12a321e25d9aaca...c778e98705e6feada0b1157f3ed286aeb70c727a?per_page=1&page=1",
+            "returned_files": 14,
+            "returned_java_edits": 0
+          },
+          "method": "two_complete_lists",
+          "path_probes": [],
+          "overlaps": []
+        }
+      ]
+    }
+  ]
+}

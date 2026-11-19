@@ -1,0 +1,149 @@
+{
+  "population": "Two fixed historical 30-day UTC windows repeated for the same 5 default commits, GitHub REST since/until, deduplicated by SHA, all pages through final short page. Not all historical years. Reachable graph, not first-parent. Absent histogram buckets are zero.",
+  "repositories": [
+    {
+      "repository": "spring-projects/spring-boot",
+      "pinned_sha": "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+      "utc_start": "2020-10-20T00:00:00Z",
+      "utc_end": "2020-11-18T23:59:59Z",
+      "commits": 541,
+      "parent_count_histogram": {
+        "1": 356,
+        "2": 185
+      },
+      "page_count": 6,
+      "base_url": "https://api.github.com/repos/spring-projects/spring-boot/commits?sha=dd87919e93e71b2ba270ec4f2f142645e06c7610&since=2020-10-20T00:00:00Z&until=2020-11-18T23:59:59Z&per_page=100"
+    },
+    {
+      "repository": "spring-projects/spring-boot",
+      "pinned_sha": "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+      "utc_start": "2023-10-20T00:00:00Z",
+      "utc_end": "2023-11-18T23:59:59Z",
+      "commits": 487,
+      "parent_count_histogram": {
+        "1": 251,
+        "2": 236
+      },
+      "page_count": 5,
+      "base_url": "https://api.github.com/repos/spring-projects/spring-boot/commits?sha=dd87919e93e71b2ba270ec4f2f142645e06c7610&since=2023-10-20T00:00:00Z&until=2023-11-18T23:59:59Z&per_page=100"
+    },
+    {
+      "repository": "jenkinsci/jenkins",
+      "pinned_sha": "e8ba485c828e25422d54c1d46e0bea1cb0305d03",
+      "utc_start": "2020-10-20T00:00:00Z",
+      "utc_end": "2020-11-18T23:59:59Z",
+      "commits": 73,
+      "parent_count_histogram": {
+        "1": 50,
+        "2": 23
+      },
+      "page_count": 1,
+      "base_url": "https://api.github.com/repos/jenkinsci/jenkins/commits?sha=e8ba485c828e25422d54c1d46e0bea1cb0305d03&since=2020-10-20T00:00:00Z&until=2020-11-18T23:59:59Z&per_page=100"
+    },
+    {
+      "repository": "jenkinsci/jenkins",
+      "pinned_sha": "e8ba485c828e25422d54c1d46e0bea1cb0305d03",
+      "utc_start": "2023-10-20T00:00:00Z",
+      "utc_end": "2023-11-18T23:59:59Z",
+      "commits": 76,
+      "parent_count_histogram": {
+        "1": 75,
+        "2": 1
+      },
+      "page_count": 1,
+      "base_url": "https://api.github.com/repos/jenkinsci/jenkins/commits?sha=e8ba485c828e25422d54c1d46e0bea1cb0305d03&since=2023-10-20T00:00:00Z&until=2023-11-18T23:59:59Z&per_page=100"
+    },
+    {
+      "repository": "JabRef/jabref",
+      "pinned_sha": "75b35b962c1d1f45cbd5be8af025b16cde9cc290",
+      "utc_start": "2020-10-20T00:00:00Z",
+      "utc_end": "2020-11-18T23:59:59Z",
+      "commits": 90,
+      "parent_count_histogram": {
+        "1": 79,
+        "2": 11
+      },
+      "page_count": 1,
+      "base_url": "https://api.github.com/repos/JabRef/jabref/commits?sha=75b35b962c1d1f45cbd5be8af025b16cde9cc290&since=2020-10-20T00:00:00Z&until=2020-11-18T23:59:59Z&per_page=100"
+    },
+    {
+      "repository": "JabRef/jabref",
+      "pinned_sha": "75b35b962c1d1f45cbd5be8af025b16cde9cc290",
+      "utc_start": "2023-10-20T00:00:00Z",
+      "utc_end": "2023-11-18T23:59:59Z",
+      "commits": 197,
+      "parent_count_histogram": {
+        "1": 155,
+        "2": 42
+      },
+      "page_count": 2,
+      "base_url": "https://api.github.com/repos/JabRef/jabref/commits?sha=75b35b962c1d1f45cbd5be8af025b16cde9cc290&since=2023-10-20T00:00:00Z&until=2023-11-18T23:59:59Z&per_page=100"
+    },
+    {
+      "repository": "quarkusio/quarkus",
+      "pinned_sha": "61d971888943ff815b86a179fbfcd1db22857730",
+      "utc_start": "2020-10-20T00:00:00Z",
+      "utc_end": "2020-11-18T23:59:59Z",
+      "commits": 623,
+      "parent_count_histogram": {
+        "1": 341,
+        "2": 282
+      },
+      "page_count": 7,
+      "base_url": "https://api.github.com/repos/quarkusio/quarkus/commits?sha=61d971888943ff815b86a179fbfcd1db22857730&since=2020-10-20T00:00:00Z&until=2020-11-18T23:59:59Z&per_page=100"
+    },
+    {
+      "repository": "quarkusio/quarkus",
+      "pinned_sha": "61d971888943ff815b86a179fbfcd1db22857730",
+      "utc_start": "2023-10-20T00:00:00Z",
+      "utc_end": "2023-11-18T23:59:59Z",
+      "commits": 570,
+      "parent_count_histogram": {
+        "1": 317,
+        "2": 253
+      },
+      "page_count": 6,
+      "base_url": "https://api.github.com/repos/quarkusio/quarkus/commits?sha=61d971888943ff815b86a179fbfcd1db22857730&since=2023-10-20T00:00:00Z&until=2023-11-18T23:59:59Z&per_page=100"
+    },
+    {
+      "repository": "Card-Forge/forge",
+      "pinned_sha": "9748ef2c96d18bcb55271e20e63c32bdee3e991c",
+      "utc_start": "2020-10-20T00:00:00Z",
+      "utc_end": "2020-11-18T23:59:59Z",
+      "commits": 500,
+      "parent_count_histogram": {
+        "1": 363,
+        "2": 137
+      },
+      "page_count": 6,
+      "first_sha": "3ba8892c4fed2725bd71bdb8e313ea3381504ffc",
+      "last_sha": "d3bfef974dac70c9f2134b20fe5288807eedd268",
+      "base_url": "https://api.github.com/repos/Card-Forge/forge/commits?sha=9748ef2c96d18bcb55271e20e63c32bdee3e991c&since=2020-10-20T00:00:00Z&until=2020-11-18T23:59:59Z&per_page=100",
+      "two_parent_sample": [
+        "1a5cc99249018a4547d51b62c74bcf87acb79e7c",
+        "6ef6c0739130955aaed3e684dc11cbf51a6d1af6",
+        "a93703ea559ecf7327ddb8339625610df171115b"
+      ]
+    },
+    {
+      "repository": "Card-Forge/forge",
+      "pinned_sha": "9748ef2c96d18bcb55271e20e63c32bdee3e991c",
+      "utc_start": "2023-10-20T00:00:00Z",
+      "utc_end": "2023-11-18T23:59:59Z",
+      "commits": 317,
+      "parent_count_histogram": {
+        "1": 255,
+        "2": 62
+      },
+      "page_count": 4,
+      "first_sha": "380e17972edf3fd4eac337e2639a2ae0c6fd8272",
+      "last_sha": "3d83dff84969ab042e9743b44bb173bd69e59164",
+      "base_url": "https://api.github.com/repos/Card-Forge/forge/commits?sha=9748ef2c96d18bcb55271e20e63c32bdee3e991c&since=2023-10-20T00:00:00Z&until=2023-11-18T23:59:59Z&per_page=100",
+      "two_parent_sample": [
+        "46ad61095c6f1cd867647b2171e7a59b08520bfc",
+        "cd1f6b255a84d1bdee24a262c37a7d40a3141fee",
+        "ebc3450998d215326e410490f86d79523e9ce58e"
+      ]
+    }
+  ]
+}

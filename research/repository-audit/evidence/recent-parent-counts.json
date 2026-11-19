@@ -1,0 +1,89 @@
+{
+  "utc_start": "2026-10-20T00:00:00Z",
+  "utc_end": "2026-11-18T23:59:59Z",
+  "population": "GitHub REST commits reachable from the pinned default SHA filtered by since and until; includes merged side-branch commits, not a first-parent count. Fetched every page, checked distinct SHA count against independently bracketed last/empty page. Parent fields from commit objects. A histogram key not present has count zero.",
+  "repositories": [
+    {
+      "repository": "spring-projects/spring-boot",
+      "pinned_sha": "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+      "commits": 678,
+      "parent_count_histogram": {
+        "1": 337,
+        "2": 341
+      },
+      "page_count": 7,
+      "first_sha": "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+      "last_sha": "8d0359e3e5d24f968eb882792cd0dd8502715ff5",
+      "base_url": "https://api.github.com/repos/spring-projects/spring-boot/commits?sha=dd87919e93e71b2ba270ec4f2f142645e06c7610&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "two_parent_sample": [
+        "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+        "65e0b9c7678cdbf2f904e99cf5ea9026ed2ee608",
+        "3d8ad8ecf3899381514e413877a90e16e6a52b00"
+      ]
+    },
+    {
+      "repository": "jenkinsci/jenkins",
+      "pinned_sha": "e8ba485c828e25422d54c1d46e0bea1cb0305d03",
+      "commits": 130,
+      "parent_count_histogram": {
+        "1": 130
+      },
+      "page_count": 2,
+      "first_sha": "58b54e94f8f5d7eaeaf7b3ef7867613f06315e03",
+      "last_sha": "9626398d75cbd86bd28822a64b86fb8e7da11872",
+      "base_url": "https://api.github.com/repos/jenkinsci/jenkins/commits?sha=e8ba485c828e25422d54c1d46e0bea1cb0305d03&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "two_parent_sample": []
+    },
+    {
+      "repository": "JabRef/jabref",
+      "pinned_sha": "75b35b962c1d1f45cbd5be8af025b16cde9cc290",
+      "commits": 280,
+      "parent_count_histogram": {
+        "1": 280
+      },
+      "page_count": 3,
+      "first_sha": "59e1dcf6ab4c2a92906c1c7c68b9c1c8cff0cadf",
+      "last_sha": "e4fb3c0d3d07de301d33913283305d326e0997d3",
+      "base_url": "https://api.github.com/repos/JabRef/jabref/commits?sha=75b35b962c1d1f45cbd5be8af025b16cde9cc290&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "two_parent_sample": []
+    },
+    {
+      "repository": "quarkusio/quarkus",
+      "pinned_sha": "61d971888943ff815b86a179fbfcd1db22857730",
+      "commits": 1037,
+      "parent_count_histogram": {
+        "1": 589,
+        "2": 448
+      },
+      "page_count": 11,
+      "first_sha": "e5bb3cadaa5044a8957de37a09c8fda297ac8544",
+      "last_sha": "9a248a258715c556432c3f750c746d638741db1a",
+      "base_url": "https://api.github.com/repos/quarkusio/quarkus/commits?sha=61d971888943ff815b86a179fbfcd1db22857730&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "two_parent_sample": [
+        "e5bb3cadaa5044a8957de37a09c8fda297ac8544",
+        "dd963ba9cc51c8b677719689c9e4cc4e57d37a2e",
+        "c975cb6912753a30d6c0fedc41dddb89c594ddf9"
+      ]
+    },
+    {
+      "repository": "Card-Forge/forge",
+      "pinned_sha": "9748ef2c96d18bcb55271e20e63c32bdee3e991c",
+      "utc_start": "2026-10-20T00:00:00Z",
+      "utc_end": "2026-11-18T23:59:59Z",
+      "commits": 936,
+      "parent_count_histogram": {
+        "1": 861,
+        "2": 75
+      },
+      "page_count": 10,
+      "first_sha": "2d8fef80a0a201c75fd18097d0066dab1c440771",
+      "last_sha": "7d862c4aae9e786ffb515e87aa37cc4bd687b03a",
+      "base_url": "https://api.github.com/repos/Card-Forge/forge/commits?sha=9748ef2c96d18bcb55271e20e63c32bdee3e991c&since=2026-10-20T00:00:00Z&until=2026-11-18T23:59:59Z&per_page=100",
+      "two_parent_sample": [
+        "fc63c86bff1e1c3fe2412a660d485d4ead23916b",
+        "5d71305499119a9033fae67a743d829a7d6b7662",
+        "5c29fe899a2559d3d7e9ac1b14c1246d89335aa9"
+      ]
+    }
+  ]
+}

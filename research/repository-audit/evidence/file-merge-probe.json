@@ -1,0 +1,43 @@
+{
+  "git_version": "git version 2.55.0.windows.5",
+  "command": "git merge-file --stdout p1 base p2",
+  "scope": "Default Git file merge on three verified UTF-8 non-NUL blobs in an empty directory. No repository attributes, custom drivers, tree/rename/context replay, history or production eligibility. These experimental flags are not extractor labels.",
+  "observations": [
+    {
+      "repo": "quarkusio/quarkus",
+      "merge": "27bd98671fa76e63fe850a05fc3363b51b3cde71",
+      "path": "extensions/devservices/mysql/src/main/java/io/quarkus/devservices/mysql/deployment/MySQLDevServicesProcessor.java",
+      "blob_ids_base_p1_p2": [
+        "a9930f5e59425d81c20dce402442ea6bd21b87d5",
+        "ce59933380c49fa53ddb3b86d796628c512a7273",
+        "1afe4742dcaa49d8cfa9a28be6135d2719db87c8"
+      ],
+      "returncode": 0,
+      "file_text_conflict": false
+    },
+    {
+      "repo": "quarkusio/quarkus",
+      "merge": "85c1afd03acda73dff8e3e76909d7d667b9d9901",
+      "path": "extensions/resteasy-classic/resteasy-client/runtime/src/main/java/io/quarkus/restclient/runtime/RestClientBase.java",
+      "blob_ids_base_p1_p2": [
+        "4b23da30d16980f8a3def3b86f14b00a40d58709",
+        "e5374a141154bad0c9dce5fc0c8afd7c961997d0",
+        "f854e94d3c4123b2d8765c498794b0b951782963"
+      ],
+      "returncode": 0,
+      "file_text_conflict": false
+    },
+    {
+      "repo": "Card-Forge/forge",
+      "merge": "b5d34b962606dcf1594d66ca8a742d43f403fa8f",
+      "path": "forge-gui-desktop/src/main/java/forge/screens/deckeditor/controllers/CEditorConstructed.java",
+      "blob_ids_base_p1_p2": [
+        "d8aa880259101e7f7d19d78a21c079ebd624e52e",
+        "4874c537d918874b3e0d3af9e007fa200453d939",
+        "110e02c560c324e7e9961aaca758f487ecf2866b"
+      ],
+      "returncode": 0,
+      "file_text_conflict": false
+    }
+  ]
+}
