@@ -1,0 +1,87 @@
+name: Repository suitability study
+on:
+  push:
+    branches: [research/dataset-repository-audit]
+    paths: ['research/repository-audit/launch.txt']
+permissions:
+  contents: read
+jobs:
+  graph:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 24
+    strategy:
+      fail-fast: false
+      matrix:
+        slug: [spring, jenkins, forge, jabref, quarkus]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Count complete commit graphs
+        env:
+          SLUG: ${{ matrix.slug }}
+        run: |
+          set -eu
+          read -r slug repo branch tip < <(awk -v s="$SLUG" '$1 == s {print}' research/repository-audit/pins.tsv)
+          python research/repository-audit/graph_inventory.py --repository "$repo" --branch "$branch" --sha "$tip" --work-dir "$RUNNER_TEMP/graph" --output "$RUNNER_TEMP/results/$slug.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: graph-${{ matrix.slug }}
+          path: ${{ runner.temp }}/results/
+          if-no-files-found: error
+          retention-days: 14
+  pilot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 06e755ebabed1707a3413ec99ffa2511b046c543
+          path: extractor
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Build pinned production CLI
+        working-directory: extractor
+        run: ./gradlew --no-daemon --console=plain shadowJar
+      - name: Extract complete ancestral prefixes
+        run: |
+          status=0
+          while read -r slug repo branch tip; do
+            echo "Starting $repo"
+            timeout 12m python research/repository-audit/pilot.py run "$repo" "$tip" --source extractor --work "$RUNNER_TEMP/pilot" --out "$RUNNER_TEMP/results" || status=1
+          done < research/repository-audit/pins.tsv
+          exit "$status"
+      - name: Compare labels, content, splits and tokenizer lengths
+        if: success() || failure()
+        run: |
+          set -eu
+          shopt -s nullglob
+          inputs=("$RUNNER_TEMP"/pilot/datasets/*.parquet)
+          if [ "${#inputs[@]}" -eq 0 ]; then exit 1; fi
+          tok=()
+          if python -m pip install --disable-pip-version-check 'tokenizers==0.21.4' && curl -fsSL --max-time 60 'https://huggingface.co/Qwen/Qwen2.5-Coder-0.5B/resolve/8123ea2e9354afb7ffcc6c8641d1b2f5ecf18301/tokenizer.json' -o "$RUNNER_TEMP/qwen.json"; then
+            tok=(--tokenizer-json "$RUNNER_TEMP/qwen.json" --tokenizer-sha256 "$(sha256sum "$RUNNER_TEMP/qwen.json" | cut -d' ' -f1)")
+          fi
+          python research/repository-audit/quality.py --jar extractor/build/libs/aix-preprocessor.jar --benchmarks extractor/benchmarks --output "$RUNNER_TEMP/results/quality.json" "${tok[@]}" "${inputs[@]}"
+      - name: Report aggregate evidence
+        if: always()
+        run: |
+          python - <<'PY'
+          import base64, gzip, os
+          from pathlib import Path
+          for p in sorted((Path(os.environ['RUNNER_TEMP'])/'results').glob('*.json')):
+              print('SUMMARY', p.name, base64.b64encode(gzip.compress(p.read_bytes(),mtime=0)).decode())
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: aggregate-pilot-results
+          path: ${{ runner.temp }}/results/*.json
+          if-no-files-found: error
+          retention-days: 14
