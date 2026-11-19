@@ -1,14 +1,18 @@
 package io.aix.preprocessor;
 
+import java.io.Closeable;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.DosFileAttributeView;
 import java.util.Arrays;
-import java.util.Comparator;
 
 /** CLI for extracting a single unsplit Java merge dataset from a local repository. */
 public final class Main {
-    private static final String USAGE = "aix-preprocessor extract REPO [--output FILE] [--threads N] [--repo-id OWNER/REPO]";
+    private static final String USAGE = "aix-preprocessor extract REPO [--output FILE] [--threads N] [--rename-limit N] [--repo-id OWNER/REPO]\n"
+            + DatasetSplitter.USAGE + "\n" + DatasetStats.USAGE + "\n" + DatasetMerger.USAGE;
     private Main() {}
 
     /** Runs extraction from local refs and publishes the finished Parquet file. */
@@ -19,6 +23,32 @@ public final class Main {
         }
         if (args[0].equals("extract")) {
             extract(Arrays.copyOfRange(args, 1, args.length));
+        } else if (args[0].equals("merge")) {
+            DatasetMerger.run(Arrays.copyOfRange(args, 1, args.length));
+        } else if (args[0].equals("stats")) {
+            if (args.length == 2 && args[1].equals("--help")) {
+                System.out.println(DatasetStats.USAGE);
+                return;
+            }
+            if (args.length != 2) {
+                System.err.println(DatasetStats.USAGE);
+                System.exit(2);
+            }
+            try {
+                DatasetStats.print(Path.of(args[1]));
+            } catch (IOException | RuntimeException ex) {
+                System.err.println("Cannot read " + args[1] + ". Provide a readable 15-column Parquet file produced by extract or split.");
+                System.exit(2);
+            }
+        } else if (args[0].equals("split")) {
+            if (args.length == 2 && args[1].equals("--help")) {
+                System.out.println(DatasetSplitter.USAGE);
+                return;
+            }
+            if (args.length != 2 && !(args.length == 4 && args[2].equals("--output-dir"))) {
+                throw new IllegalArgumentException(DatasetSplitter.USAGE);
+            }
+            DatasetSplitter.run(Path.of(args[1]), Path.of(args.length == 4 ? args[3] : "splits"));
         } else if (Files.isDirectory(Path.of(args[0]))) {
             extract(args); // Accept the original repository-first invocation.
         } else {
@@ -37,11 +67,16 @@ public final class Main {
         int threads = Math.min(8, Runtime.getRuntime().availableProcessors());
         Path output = Path.of("samples.parquet").toAbsolutePath();
         String repo = null;
+        Integer renameLimit = null;
         for (int i = 1; i < args.length; i += 2) {
             if (i + 1 == args.length) throw new IllegalArgumentException(USAGE);
             switch (args[i]) {
                 case "--output" -> output = Path.of(args[i + 1]).toAbsolutePath();
                 case "--threads" -> threads = Integer.parseInt(args[i + 1]);
+                case "--rename-limit" -> {
+                    renameLimit = Integer.parseInt(args[i + 1]);
+                    if (renameLimit < 0) throw new IllegalArgumentException("--rename-limit must be nonnegative");
+                }
                 case "--repo-id" -> repo = args[i + 1];
                 default -> throw new IllegalArgumentException(USAGE);
             }
@@ -53,19 +88,59 @@ public final class Main {
         if (repo == null) repo = repositoryId(source, original);
         Files.createDirectories(output.getParent());
         Path temp = Files.createTempDirectory(output.getParent(), ".aix-");
-        try {
+        // Preserve the extraction error if removing the temporary tree fails as well.
+        try (Closeable cleanup = () -> deleteTree(temp)) {
             Path mirror = temp.resolve("mirror.git");
             original.read("clone", "--quiet", "--mirror", "--shared", "--", source.toString(), mirror.toString());
+            var snapshot = new Git(mirror);
+            if (renameLimit != null) snapshot.read("config", "--local", "diff.renameLimit", renameLimit.toString());
             Path partial = temp.resolve("dataset.parquet");
             try (var writer = new DatasetWriter(partial)) {
-                Extraction.run(new Git(mirror), repo, threads, writer);
+                Extraction.run(snapshot, repo, threads, writer);
             }
             Files.createLink(output, partial); // Atomically publish without clobbering concurrent output.
-            System.err.println("Saved " + output);
-        } finally {
-            try (var paths = Files.walk(temp)) {
-                for (Path path : paths.sorted(Comparator.reverseOrder()).toList()) Files.delete(path);
+        }
+        System.err.println("Saved " + output);
+    }
+
+    /** Deletes a private extraction tree without descending through links or Windows junctions. */
+    static void deleteTree(Path root) throws IOException {
+        Files.walkFileTree(root, new SimpleFileVisitor<>() {
+            @Override public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attributes)
+                    throws IOException {
+                // JDK 17 reports directory junctions as both directories and "other" files.
+                if (attributes.isOther()) {
+                    Files.delete(dir);
+                    return FileVisitResult.SKIP_SUBTREE;
+                }
+                return FileVisitResult.CONTINUE;
             }
+
+            @Override public FileVisitResult visitFile(Path file, BasicFileAttributes attributes) throws IOException {
+                deleteFile(file);
+                return FileVisitResult.CONTINUE;
+            }
+
+            @Override public FileVisitResult postVisitDirectory(Path dir, IOException failure) throws IOException {
+                if (failure != null) throw failure;
+                Files.delete(dir);
+                return FileVisitResult.CONTINUE;
+            }
+        });
+    }
+
+    private static void deleteFile(Path path) throws IOException {
+        try {
+            Files.delete(path);
+        } catch (AccessDeniedException denied) {
+            if (File.separatorChar != '\\') throw denied;
+            var view = Files.getFileAttributeView(path, DosFileAttributeView.class, LinkOption.NOFOLLOW_LINKS);
+            if (view == null) throw denied;
+            var attributes = view.readAttributes();
+            if (!attributes.isRegularFile() || !attributes.isReadOnly()) throw denied;
+            // Git for Windows marks loose objects read-only. Do not change filesystem ACLs.
+            view.setReadOnly(false);
+            Files.delete(path);
         }
     }
 

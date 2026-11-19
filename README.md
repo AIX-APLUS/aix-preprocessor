@@ -4,13 +4,13 @@
 
 ## Build
 
-Install JDK 17 and Git 2.43 or later, then run this from the project directory:
+Install a JDK supported by the bundled Gradle wrapper (tested with JDK 17 and 25) and Git 2.43 or later, then run this from the project directory:
 
 ```sh
 ./gradlew build
 ```
 
-The Gradle wrapper runs the tests and builds **`build/libs/aix-preprocessor.jar`** with its Java dependencies included. To run it on another machine, copy that JAR and make sure `java` and `git` are on the machine's `PATH`.
+The Gradle wrapper runs the tests and builds **`build/libs/aix-preprocessor.jar`** with its Java dependencies included. To run it on another machine, copy that JAR and make sure Java 17 or later and Git are on its `PATH`. In IntelliJ IDEA, use the Gradle wrapper and select your installed JDK as the Gradle JVM.
 
 ## Extract a dataset
 
@@ -21,12 +21,13 @@ java -jar build/libs/aix-preprocessor.jar extract ../jabref \
   --output jabref.parquet --threads 4
 ```
 
-Only the repository path is required. The command expects a full Git history and rejects shallow clones. When extraction finishes, it prints the number of two-parent merges visited, rows written, and positive samples.
+Only the repository path is required. The command expects a full Git history and rejects shallow clones. At startup, it indexes commit parents and Java path changes in memory. Each merge shares that index and restricts lookups to ancestors of its own base. The index lasts for one run. When extraction finishes, it prints the number of two-parent merges visited, rows written, and positive samples.
 
 | Option | What it controls | Default |
 | --- | --- | --- |
 | `--output FILE` | Path for the new Parquet file. Choose a fresh filename for each run. | `samples.parquet` in the current directory |
 | `--threads N` | Maximum number of merges to analyze concurrently. Use a positive integer. | Available processors, capped at 8 |
+| `--rename-limit N` | Set Git’s `diff.renameLimit` in the temporary mirror. For a warning recommending 3411, try 5000. Higher limits can slow down large comparisons. | Git default |
 | `--repo-id ID` | Value written to the `repo_id` column, e.g. `JabRef/jabref`. | Inferred from the origin URL, with the repository directory name as a fallback |
 
 ### Which branches does it read?
@@ -67,3 +68,39 @@ The 90-day window ends at the merge base's committer timestamp. History includes
 ```
 
 The integration test creates a local repository with side-branch merges, runs the extractor with one and four workers, and reads the Parquet output back to check the rows and labels.
+
+## Split a dataset
+
+```sh
+java -jar build/libs/aix-preprocessor.jar split jabref.parquet --output-dir splits
+```
+
+The input is a Parquet file produced by `extract`. The command creates
+`train.parquet`, `val.parquet`, and `test.parquet` under the output directory
+(default `./splits`). Choose a directory where all three filenames are available.
+The summary shows each file's row count, percentage of all input rows, and positive count.
+
+Within each repository, all rows for a given file path stay together.
+The splitter targets 70/15/15 for both rows and positive examples.
+Large file groups can shift the final percentages, and very small datasets can yield
+empty splits. Assignment is deterministic even if the input rows are reordered.
+Each output preserves all 15 columns and the relative input order of its rows.
+
+## Check the class balance
+
+Run `java -jar build/libs/aix-preprocessor.jar stats jabref.parquet` to print the
+total samples, conflict-positive samples, and positive percentage. This works on
+the full dataset or any single split. An empty dataset reports `N/A` for the
+percentage. Invalid inputs produce an error and a nonzero exit code.
+
+## Merge datasets
+
+```sh
+java -jar build/libs/aix-preprocessor.jar merge jabref.parquet spring-boot.parquet --output combined.parquet
+```
+
+Pass two or more files from `extract` or `split`. Rows are copied in input order,
+with all 15 columns preserved. Repeated sample keys (repository, merge SHA, and
+base path) cause an error, including duplicates within one input. The command
+publishes the output only after all inputs pass and requires a fresh output filename.
+It prints the row count for each input and the combined positive count and rate.
