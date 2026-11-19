@@ -80,6 +80,12 @@ jobs:
       - name: Check packaged CLI, Parquet rows and source preservation
         if: ${{ !cancelled() }}
         run: python benchmarks/verify.py
+      - name: Check the pinned minimal-json records against the pre-optimization baseline
+        if: github.ref_name == 'integration/sprint0-windows-cleanup'
+        run: |
+          git init --quiet --bare -b pinned build/compatibility-input.git
+          git -C build/compatibility-input.git fetch --quiet --no-tags https://github.com/ralfstx/minimal-json.git c091e6985620da04d5abcd902aafb6c9583c48ea:refs/heads/pinned
+          python benchmarks/benchmark.py --threads 1 4 --warmups 0 --repeats 1 --repo build/compatibility-input.git --repo-id ralfstx/minimal-json --expect-samples 1 --expect-logical-sha256 8e4078e84ac01f4e86f2443972da696dbbc049d8ac24f4415560e131f261ba66 --report build/compatibility.json
 
   benchmark:
     if: inputs.benchmark || (github.event_name == 'push' && contains(github.event.head_commit.message, '[benchmark]'))
