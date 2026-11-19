@@ -7,8 +7,11 @@ import org.apache.parquet.hadoop.example.GroupReadSupport;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import java.io.File;
+import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.attribute.DosFileAttributes;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,6 +51,10 @@ class ExtractionTest {
         Path serial = temp.resolve("serial.parquet"), parallel = temp.resolve("parallel.parquet");
         Main.main(new String[]{repo.toString(), "--output", serial.toString(), "--threads", "1"});
         Main.main(new String[]{"extract", repo.toString(), "--output", parallel.toString(), "--threads", "4"});
+        try (var entries = Files.list(temp)) {
+            assertTrue(entries.noneMatch(path -> path.getFileName().toString().startsWith(".aix-")),
+                    "temporary extraction directory left next to the output");
+        }
         assertEquals(-1L, Files.mismatch(serial, parallel));
         var target = new org.apache.hadoop.fs.Path(serial.toUri());
         var counts = new HashMap<String, Integer>();
@@ -69,6 +76,55 @@ class ExtractionTest {
         assertEquals("", git.read("status", "--porcelain").text());
         assertThrows(java.nio.file.FileAlreadyExistsException.class,
                 () -> Main.main(new String[]{repo.toString(), "--output", serial.toString()}));
+    }
+
+    @Test void deletesReadOnlyObjectFilesWrittenByGit() throws Exception {
+        var tree = Files.createDirectory(temp.resolve("tree"));
+        var git = new Git(tree);
+        git.read("init", "-q");
+        Files.writeString(tree.resolve("blob.txt"), "loose object\n");
+        String id = git.read("hash-object", "-w", "--", "blob.txt").text().strip();
+        Path object = tree.resolve(".git/objects/" + id.substring(0, 2) + "/" + id.substring(2));
+        assertTrue(Files.isRegularFile(object));
+        if (File.separatorChar == '\\') {
+            assertTrue(Files.readAttributes(object, DosFileAttributes.class).isReadOnly(),
+                    "expected a DOS read-only loose object from Git for Windows");
+            assertThrows(AccessDeniedException.class, () -> Files.delete(object));
+        }
+        Main.deleteTree(tree);
+        assertFalse(Files.exists(tree));
+    }
+
+    @Test void closingBlobReaderReleasesMirrorForImmediateDeletion() throws Exception {
+        Path mirror = Files.createDirectory(temp.resolve("mirror.git"));
+        Path source = Files.writeString(temp.resolve("example.txt"), "a blob\n");
+        var git = new Git(mirror);
+        git.read("init", "--bare", "-q");
+        String sha = git.read("hash-object", "-w", "--", source.toString()).text().strip();
+        try (var blobs = new BlobReader(git)) {
+            assertArrayEquals(Files.readAllBytes(source), blobs.read(sha));
+        }
+        Main.deleteTree(mirror);
+        assertFalse(Files.exists(mirror));
+    }
+
+    @Test void cleanupPreservesDirectoryLinkTarget() throws Exception {
+        Path outside = Files.createDirectory(temp.resolve("outside"));
+        Path sentinel = Files.writeString(outside.resolve("sentinel.txt"), "keep me");
+        Path tree = Files.createDirectory(temp.resolve("tree"));
+        Path link = tree.resolve("link");
+        if (File.separatorChar == '\\') {
+            // Directory junctions require no symlink privilege on normal NTFS volumes.
+            var command = new ProcessBuilder("cmd.exe", "/d", "/c", "mklink", "/J", "tree\\link", "outside")
+                    .directory(temp.toFile()).inheritIO().start();
+            assertEquals(0, command.waitFor(), "could not create fixture directory junction");
+        } else {
+            Files.createSymbolicLink(link, outside);
+        }
+        assertTrue(Files.isSameFile(link.resolve("sentinel.txt"), sentinel));
+        Main.deleteTree(tree);
+        assertFalse(Files.exists(tree));
+        assertEquals("keep me", Files.readString(sentinel));
     }
 
     private static void change(Path repo, String clean, String conflict) throws Exception {

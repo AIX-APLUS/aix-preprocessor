@@ -1,10 +1,13 @@
 package io.aix.preprocessor;
 
+import java.io.Closeable;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.DosFileAttributeView;
 import java.util.Arrays;
-import java.util.Comparator;
 
 /** CLI for extracting a single unsplit Java merge dataset from a local repository. */
 public final class Main {
@@ -85,7 +88,8 @@ public final class Main {
         if (repo == null) repo = repositoryId(source, original);
         Files.createDirectories(output.getParent());
         Path temp = Files.createTempDirectory(output.getParent(), ".aix-");
-        try {
+        // Preserve the extraction error if removing the temporary tree fails as well.
+        try (Closeable cleanup = () -> deleteTree(temp)) {
             Path mirror = temp.resolve("mirror.git");
             original.read("clone", "--quiet", "--mirror", "--shared", "--", source.toString(), mirror.toString());
             var snapshot = new Git(mirror);
@@ -95,11 +99,48 @@ public final class Main {
                 Extraction.run(snapshot, repo, threads, writer);
             }
             Files.createLink(output, partial); // Atomically publish without clobbering concurrent output.
-            System.err.println("Saved " + output);
-        } finally {
-            try (var paths = Files.walk(temp)) {
-                for (Path path : paths.sorted(Comparator.reverseOrder()).toList()) Files.delete(path);
+        }
+        System.err.println("Saved " + output);
+    }
+
+    /** Deletes a private extraction tree without descending through links or Windows junctions. */
+    static void deleteTree(Path root) throws IOException {
+        Files.walkFileTree(root, new SimpleFileVisitor<>() {
+            @Override public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attributes)
+                    throws IOException {
+                // JDK 17 reports directory junctions as both directories and "other" files.
+                if (attributes.isOther()) {
+                    Files.delete(dir);
+                    return FileVisitResult.SKIP_SUBTREE;
+                }
+                return FileVisitResult.CONTINUE;
             }
+
+            @Override public FileVisitResult visitFile(Path file, BasicFileAttributes attributes) throws IOException {
+                deleteFile(file);
+                return FileVisitResult.CONTINUE;
+            }
+
+            @Override public FileVisitResult postVisitDirectory(Path dir, IOException failure) throws IOException {
+                if (failure != null) throw failure;
+                Files.delete(dir);
+                return FileVisitResult.CONTINUE;
+            }
+        });
+    }
+
+    private static void deleteFile(Path path) throws IOException {
+        try {
+            Files.delete(path);
+        } catch (AccessDeniedException denied) {
+            if (File.separatorChar != '\\') throw denied;
+            var view = Files.getFileAttributeView(path, DosFileAttributeView.class, LinkOption.NOFOLLOW_LINKS);
+            if (view == null) throw denied;
+            var attributes = view.readAttributes();
+            if (!attributes.isRegularFile() || !attributes.isReadOnly()) throw denied;
+            // Git for Windows marks loose objects read-only. Do not change filesystem ACLs.
+            view.setReadOnly(false);
+            Files.delete(path);
         }
     }
 
