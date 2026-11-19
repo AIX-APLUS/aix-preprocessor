@@ -1,12 +1,40 @@
 # Sprint 0 · 추출 결과와 처리 시간의 기준선
 
-## Windows 정리 수정 후 통합 검증
+## PR #1이 병합된 최신 main에서의 재검증
+
+최초 검증 이후 팀에서 PR #1을 병합해 main이 `bc7e09c`에서 `8fbc0f01e71d6d8515781b5c4bd09e9b9a4c6fc7`로 이동했다. 이 변경은 CLI와 Parquet 작성기도 건드리므로 새 기준에서 다시 검증했다. 독립 수정 브랜치 `54d858998c83c70b3443632d9c9a59ba59dfc931`의 최신 main 대비 변경은 `Main.java`, `ExtractionTest.java`, `git-mirror-cleanup.yml` 세 파일이다. 팀원이 추가한 `DatasetSplitter.java`와 `DatasetWriter.java`는 main과 동일하다. 이 검증은 추출 경로를 대상으로 한다. [팀의 PR #1](https://github.com/AIX-APLUS/aix-preprocessor/pull/1) · [수정 브랜치의 양 OS JUnit 3/3](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44516844265)
+
+수정과 PR #2를 합친 `084484b6a785771cc1a6c0be7258ef094ce77fb5`에서는 두 OS의 JUnit 3건·Python 14건·실제 CLI가 모두 통과했다. Windows 벤치마크는 16/16회 성공했다. Ubuntu 벤치마크는 Maven Central이 의존성 다운로드에 HTTP 429를 반환해 측정을 시작하지 못했다. 해당 실패에서 성능 수치를 계산하지 않았다. 재실행 커밋 `d0bdc825ac6fbbc9a420b57c3a132e12b872a525`는 이전 커밋과 트리 ID `9ad3183bd819dbdc39cf8350fcfc59c76b942f55`가 같다. [최초 실행과 실패 로그](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44516900544/job/135535140908) · [동일 트리 재실행](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44517223600)
+
+양쪽 러너 모두 체크아웃의 SHA 일치와 변경 파일 0건을 확인했다. 두 입력의 스키마 및 논리 해시는 최초 기준과 같았다. OS별 기능 검사는 JUnit 3/3, Python 14/14, CLI 1·4스레드 골든 비교, 원본 fixture 보존 및 임시 디렉터리 정리를 포함한다. [Windows 기능 검사](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44517223600/job/135536265247) · [Ubuntu 기능 검사](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44517223600/job/135536265073)
+
+| OS | 입력 | 스레드 | 병합 | 행 (양성 / 음성) | 중앙값 초 | 최소–최대 초 | 표본 표준편차 초 | 병합/초 | 행/초 | Parquet 바이트 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Ubuntu | fixture | 1 | 2 | 4 (2 / 2) | 0.6338 | 0.5568–0.6351 | 0.0448 | 3.156 | 6.311 | 5,130 |
+| Ubuntu | fixture | 2 | 2 | 4 (2 / 2) | 0.5843 | 0.5189–0.5876 | 0.0388 | 3.423 | 6.845 | 5,130 |
+| Ubuntu | minimal-json | 1 | 7 | 1 (0 / 1) | 0.6009 | 0.5724–0.6090 | 0.0192 | 11.649 | 1.664 | 13,162 |
+| Ubuntu | minimal-json | 2 | 7 | 1 (0 / 1) | 0.5939 | 0.5348–0.6014 | 0.0365 | 11.786 | 1.684 | 13,162 |
+| Windows | fixture | 1 | 2 | 4 (2 / 2) | 1.4562 | 1.4287–1.4647 | 0.0188 | 1.373 | 2.747 | 5,130 |
+| Windows | fixture | 2 | 2 | 4 (2 / 2) | 1.2315 | 1.2306–1.2605 | 0.0170 | 1.624 | 3.248 | 5,130 |
+| Windows | minimal-json | 1 | 7 | 1 (0 / 1) | 1.4367 | 1.4162–1.4601 | 0.0220 | 4.872 | 0.696 | 13,162 |
+| Windows | minimal-json | 2 | 7 | 1 (0 / 1) | 1.3163 | 1.3109–1.4703 | 0.0905 | 5.318 | 0.760 | 13,162 |
+
+| 러너 | OS / 커널 | CPU | 논리 CPU | 인식 RAM (바이트) | Python | Git | JAR SHA-256 |
+| --- | --- | --- | ---: | ---: | --- | --- | --- |
+| Ubuntu | Linux-7.0.0-1017-azure-x86_64-with-glibc2.39 | AMD EPYC 9V45 96-Core Processor | 4 | 16760344576 | 3.12.16 | 2.56.1 | `9a5c3255b18c51ae5dbffabe2b27d589cb1ba639820e9ac6f1937cf18a17700b` |
+| Windows | Windows-2025Server-10.0.26100-SP0 | AMD EPYC 9V74 80-Core Processor | 4 | 17174360064 | 3.12.10 | 2.56.0.windows.4 | `d80e534864d961d33aec5657b7381477eb6b8a590ed949f4da258cffdc180399` |
+
+두 OS 각각 Temurin 17.0.21+9, Gradle 8.14.3에서 준비 4회와 본측정 12회가 모두 성공했다. 실행별 중앙값·범위·표본 표준편차와 처리량을 검산했다. 캐시는 비우지 않았다. 최대 메모리·Git 호출 수·단계별 시간은 N/A다. 이 수치는 각 환경의 다음 실험을 위한 기준이다. [Windows 원자료](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44517223600/artifacts/14526301877) · [Ubuntu 원자료](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44517223600/artifacts/14525638997)
+
+병합 순서는 독립 Windows 수정 → PR #2에 최신 main 반영 → PR #2 자체의 Windows·Ubuntu 기능 검사 통과 확인 → PR #2 병합이다. 각 화살표의 병합은 담당자의 승인을 거친다.
+
+## 최초 main 기준의 Windows 정리 수정 후 통합 검증
 
 독립 버그 수정은 `main`에서 분기했고, PR #2에는 테스트·측정 도구·문서만 들어간다. 두 변경을 결합한 임시 브랜치의 실행과 PR #2 단독 실행은 SHA로 구분했다. 먼저 버그 수정을 병합한 뒤 PR #2에 최신 main을 반영하고 양 OS 기능 검사가 통과하는지 확인해야 한다. PR #1의 데이터 분할 작업은 이 검증에서 사용하지 않았다.
 
 첫 통합 커밋 `53cb97139f8bf50645d4b6669969e6ed7dd7e0fe`에서 양 OS 모두 JUnit 3건·Python 13건·골든 CLI·두 입력 벤치마크를 통과했다. Windows 보고서는 측정 도구의 체크아웃을 `dirty=true`로 기록했다. 로컬 재현에서 Git의 개행 변환 설정을 끄고 상태를 읽으면 실제로 변경하지 않은 CRLF 파일도 수정된 것으로 표시됐다. 첫 러너는 해당 경로를 기록하지 않아 그 실행의 원인까지 특정할 수 없다. 아래 최종 측정은 러너의 일반 Git 설정으로 실제 SHA와 깨끗한 상태를 확인하는 절차를 추가한 실행이다. [첫 통합 실행과 원자료](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44511702821)
 
-### 최종 측정과 CI
+### 최초 main에서 체크아웃까지 검증한 측정과 CI
 
 측정한 코드의 커밋은 `81a823d89031432a9ff3ffadcc039cfbc511f12e`이다. 추출 코드·JUnit은 수정 브랜치 `7ca793f`와 같고 측정 코드·검증 워크플로는 PR #2의 `c84b9f4185f3a841e1f64965d8886972a51658b2`와 같다. 두 러너에서 일반 Git의 변경 경로는 0건이었으며, 네 벤치마크 JSON 모두 같은 HEAD와 `dirty=false`를 기록했다. Windows에서 설정을 격리한 Git으로 같은 시점에 읽으면 26개 경로가 달라 보였다. 이 러너에서 일반 설정의 `core.autocrlf`는 `true`, 격리 설정에서는 미지정이었다. [통합 실행](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44512599507)
 
