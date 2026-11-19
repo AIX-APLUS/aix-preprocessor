@@ -5,9 +5,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.DosFileAttributeView;
 import java.util.Arrays;
-import java.util.Comparator;
 
 /** CLI for extracting a single unsplit Java merge dataset from a local repository. */
 public final class Main {
@@ -69,23 +69,44 @@ public final class Main {
         System.err.println("Saved " + output);
     }
 
-    /** Deletes a private extraction tree without following symbolic links. */
+    /** Deletes a private extraction tree without descending through links or Windows junctions. */
     static void deleteTree(Path root) throws IOException {
-        try (var paths = Files.walk(root)) {
-            for (Path path : paths.sorted(Comparator.reverseOrder()).toList()) {
-                try {
-                    Files.delete(path);
-                } catch (AccessDeniedException denied) {
-                    if (File.separatorChar != '\\') throw denied;
-                    var view = Files.getFileAttributeView(path, DosFileAttributeView.class, LinkOption.NOFOLLOW_LINKS);
-                    if (view == null) throw denied;
-                    var attributes = view.readAttributes();
-                    if (!attributes.isRegularFile() || !attributes.isReadOnly()) throw denied;
-                    // Git for Windows marks loose objects read-only. Do not change filesystem ACLs.
-                    view.setReadOnly(false);
-                    Files.delete(path);
+        Files.walkFileTree(root, new SimpleFileVisitor<>() {
+            @Override public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attributes)
+                    throws IOException {
+                // JDK 17 reports directory junctions as both directories and "other" files.
+                if (attributes.isOther()) {
+                    Files.delete(dir);
+                    return FileVisitResult.SKIP_SUBTREE;
                 }
+                return FileVisitResult.CONTINUE;
             }
+
+            @Override public FileVisitResult visitFile(Path file, BasicFileAttributes attributes) throws IOException {
+                deleteFile(file);
+                return FileVisitResult.CONTINUE;
+            }
+
+            @Override public FileVisitResult postVisitDirectory(Path dir, IOException failure) throws IOException {
+                if (failure != null) throw failure;
+                Files.delete(dir);
+                return FileVisitResult.CONTINUE;
+            }
+        });
+    }
+
+    private static void deleteFile(Path path) throws IOException {
+        try {
+            Files.delete(path);
+        } catch (AccessDeniedException denied) {
+            if (File.separatorChar != '\\') throw denied;
+            var view = Files.getFileAttributeView(path, DosFileAttributeView.class, LinkOption.NOFOLLOW_LINKS);
+            if (view == null) throw denied;
+            var attributes = view.readAttributes();
+            if (!attributes.isRegularFile() || !attributes.isReadOnly()) throw denied;
+            // Git for Windows marks loose objects read-only. Do not change filesystem ACLs.
+            view.setReadOnly(false);
+            Files.delete(path);
         }
     }
 
