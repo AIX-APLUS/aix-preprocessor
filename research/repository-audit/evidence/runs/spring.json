@@ -1,0 +1,51 @@
+{
+  "repository": "spring-projects/spring-boot",
+  "pinned_default_sha": "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+  "default_branch": "main",
+  "fetched_default_tip": "dd87919e93e71b2ba270ec4f2f142645e06c7610",
+  "default": {
+    "total_commits": 64085,
+    "two_parent_merges": 21489,
+    "octopus_merges": 0,
+    "all_merge_commits": 21489,
+    "two_parent_merge_bases": {
+      "unique": 21459,
+      "multiple": 30,
+      "none": 0
+    },
+    "oldest_committer_time": "2012-10-21T17:53:52Z",
+    "newest_committer_time": "2026-11-17T15:23:44Z",
+    "commits_since_recent_from": 678
+  },
+  "all_heads_tags": {
+    "total_commits": 64737,
+    "two_parent_merges": 21497,
+    "octopus_merges": 0,
+    "all_merge_commits": 21497,
+    "two_parent_merge_bases": {
+      "unique": 21466,
+      "multiple": 30,
+      "none": 1
+    },
+    "oldest_committer_time": "2012-10-21T17:53:52Z",
+    "newest_committer_time": "2026-11-17T19:53:09Z",
+    "commits_since_recent_from": 683
+  },
+  "fetch_refspecs": [
+    "refs/heads/*",
+    "refs/tags/*"
+  ],
+  "shallow": false,
+  "filter": "tree:0",
+  "recent_from_inclusive": "2026-10-20T00:00:00Z",
+  "fetched_at_utc": "2026-11-19T14:57:16.065157Z",
+  "evidence_url": "https://github.com/spring-projects/spring-boot/commit/dd87919e93e71b2ba270ec4f2f142645e06c7610",
+  "head_count": 27,
+  "tag_count": 399,
+  "ref_manifest": "spring.refs.tsv.gz",
+  "refs_uncompressed_sha256": "f3f4480ef2eedb696559776b9ff1661a5d363368c4494fdf18a540025c7513b8",
+  "metadata_mirror_file_bytes": 20056735,
+  "git_version": "git version 2.56.1",
+  "fetch_seconds": 1.331,
+  "inventory_seconds": 27.128
+}

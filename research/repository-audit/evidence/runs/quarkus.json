@@ -1,0 +1,51 @@
+{
+  "repository": "quarkusio/quarkus",
+  "pinned_default_sha": "61d971888943ff815b86a179fbfcd1db22857730",
+  "default_branch": "main",
+  "fetched_default_tip": "61d971888943ff815b86a179fbfcd1db22857730",
+  "default": {
+    "total_commits": 64169,
+    "two_parent_merges": 27298,
+    "octopus_merges": 0,
+    "all_merge_commits": 27298,
+    "two_parent_merge_bases": {
+      "unique": 27297,
+      "multiple": 0,
+      "none": 1
+    },
+    "oldest_committer_time": "2018-06-22T06:05:28Z",
+    "newest_committer_time": "2026-11-19T13:43:42Z",
+    "commits_since_recent_from": 1044
+  },
+  "all_heads_tags": {
+    "total_commits": 81641,
+    "two_parent_merges": 28552,
+    "octopus_merges": 0,
+    "all_merge_commits": 28552,
+    "two_parent_merge_bases": {
+      "unique": 28551,
+      "multiple": 0,
+      "none": 1
+    },
+    "oldest_committer_time": "2018-06-22T06:05:28Z",
+    "newest_committer_time": "2026-11-19T13:43:42Z",
+    "commits_since_recent_from": 1457
+  },
+  "fetch_refspecs": [
+    "refs/heads/*",
+    "refs/tags/*"
+  ],
+  "shallow": false,
+  "filter": "tree:0",
+  "recent_from_inclusive": "2026-10-20T00:00:00Z",
+  "fetched_at_utc": "2026-11-19T14:57:10.314038Z",
+  "evidence_url": "https://github.com/quarkusio/quarkus/commit/61d971888943ff815b86a179fbfcd1db22857730",
+  "head_count": 132,
+  "tag_count": 535,
+  "ref_manifest": "quarkus.refs.tsv.gz",
+  "refs_uncompressed_sha256": "b098e282ea53b50a0edf31561d93ee5a9ca5df2f6ec8d4a3c2a1b8b8bfe5955b",
+  "metadata_mirror_file_bytes": 56463419,
+  "git_version": "git version 2.56.1",
+  "fetch_seconds": 3.189,
+  "inventory_seconds": 61.63
+}

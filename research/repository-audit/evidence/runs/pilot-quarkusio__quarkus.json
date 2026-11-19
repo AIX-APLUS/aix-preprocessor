@@ -1,0 +1,79 @@
+{
+  "repository": "quarkusio/quarkus",
+  "default_tip": "61d971888943ff815b86a179fbfcd1db22857730",
+  "status": "success",
+  "started_utc": "2026-11-19T14:58:57.568959+00:00",
+  "extractor_sha": "06e755ebabed1707a3413ec99ffa2511b046c543",
+  "git_version": "git version 2.56.1",
+  "java_version": "openjdk version \"17.0.21\" 2026-10-20\nOpenJDK Runtime Environment Temurin-17.0.21+9 (build 17.0.21+9)\nOpenJDK 64-Bit Server VM Temurin-17.0.21+9 (build 17.0.21+9, mixed mode, sharing)",
+  "python_version": "3.12.3",
+  "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+  "cpu": 4,
+  "disk_free_at_start": 90912423936,
+  "threads": 2,
+  "anchor_policy": {
+    "first_parent_two_parent_milestone": 100,
+    "max_reachable_commits": 14000,
+    "max_reachable_two_parent_merges": 450
+  },
+  "pilot_anchor": "0ef2742d330604ca4ea130db6323b8f577b9260e",
+  "milestone_used": 100,
+  "available_first_parent_milestones": 26348,
+  "analyzed_refs": [
+    "0ef2742d330604ca4ea130db6323b8f577b9260e refs/heads/pilot"
+  ],
+  "pilot_git_bytes": 9604487,
+  "pilot_total_commits": 815,
+  "pilot_all_merges": 101,
+  "pilot_octopus_merges": 0,
+  "pilot_tip_committed_at": "2018-11-29T13:11:19+11:00",
+  "max_process_rss_kib": 124080,
+  "extraction_seconds": 1.515219,
+  "extraction_exit": 0,
+  "extraction_stderr": "[main] INFO org.apache.hadoop.io.compress.CodecPool - Got brand-new compressor [.snappy]\nIndexing commit ancestry and Java file changes...\n100 merges, 9 samples\n101 two-parent merges, 9 samples, 0 positives. Skips: {no unique merge base=1}\nSaved /home/runner/work/_temp/pilot/quarkusio__quarkus/pilot.parquet\n",
+  "parquet_bytes": 28014,
+  "stats_stdout": "Samples: 9\nPositives: 0\nPositive rate: 0.00%",
+  "eligible_samples": 9,
+  "positive_samples": 0,
+  "negative_samples": 9,
+  "positive_rate": 0.0,
+  "parquet_validation": {
+    "samples": 9,
+    "positive": 0,
+    "negative": 9,
+    "logical_sha256": "8401e8ce3d35a3203b9b85cf4377c134915f4b225e357118087b1515be5d62fd"
+  },
+  "parquet_schema_columns": [
+    "repo_id",
+    "merge_sha",
+    "parent1_sha",
+    "parent2_sha",
+    "base_sha",
+    "base_path",
+    "base_blob_sha",
+    "base_code",
+    "commit_count_90d",
+    "days_since_last_change",
+    "author_count_90d",
+    "top_author_share_90d",
+    "lines_added_90d",
+    "lines_deleted_90d",
+    "has_text_conflict"
+  ],
+  "funnel": {
+    "two_parent_merges": 101,
+    "zero_base": 1,
+    "multiple_bases": 0,
+    "unique_base": 100,
+    "parent_is_base": 41,
+    "left_has_no_java_edit": 7,
+    "no_joint_java_edit": 46,
+    "merges_with_joint_edits": 6,
+    "joint_java_file_occurrences": 9
+  },
+  "reported_skips": {
+    "no unique merge base": 1
+  },
+  "source_refs_preserved": true,
+  "output_temp_clean": true
+}
