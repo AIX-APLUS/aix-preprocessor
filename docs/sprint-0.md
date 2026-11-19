@@ -1,6 +1,38 @@
 # Sprint 0 · 추출 결과와 처리 시간의 기준선
 
-## 2026-11-19 기준 측정
+## Windows 정리 수정 후 통합 검증
+
+독립 버그 수정은 `main`에서 분기했고, PR #2에는 테스트·측정 도구·문서만 들어간다. 두 변경을 결합한 임시 브랜치의 실행과 PR #2 단독 실행은 SHA로 구분했다. 먼저 버그 수정을 병합한 뒤 PR #2에 최신 main을 반영하고 양 OS 기능 검사가 통과하는지 확인해야 한다. PR #1의 데이터 분할 작업은 이 검증에서 사용하지 않았다.
+
+첫 통합 커밋 `53cb97139f8bf50645d4b6669969e6ed7dd7e0fe`에서 양 OS 모두 JUnit 3건·Python 13건·골든 CLI·두 입력 벤치마크를 통과했다. Windows 보고서는 측정 도구의 체크아웃을 `dirty=true`로 기록했다. 로컬 재현에서 Git의 개행 변환 설정을 끄고 상태를 읽으면 실제로 변경하지 않은 CRLF 파일도 수정된 것으로 표시됐다. 첫 러너는 해당 경로를 기록하지 않아 그 실행의 원인까지 특정할 수 없다. 아래 최종 측정은 러너의 일반 Git 설정으로 실제 SHA와 깨끗한 상태를 확인하는 절차를 추가한 실행이다. [첫 통합 실행과 원자료](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44511702821)
+
+### 최종 측정과 CI
+
+측정한 코드의 커밋은 `81a823d89031432a9ff3ffadcc039cfbc511f12e`이다. 추출 코드·JUnit은 수정 브랜치 `7ca793f`와 같고 측정 코드·검증 워크플로는 PR #2의 `c84b9f4185f3a841e1f64965d8886972a51658b2`와 같다. 두 러너에서 일반 Git의 변경 경로는 0건이었으며, 네 벤치마크 JSON 모두 같은 HEAD와 `dirty=false`를 기록했다. Windows에서 설정을 격리한 Git으로 같은 시점에 읽으면 26개 경로가 달라 보였다. 이 러너에서 일반 설정의 `core.autocrlf`는 `true`, 격리 설정에서는 미지정이었다. [통합 실행](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44512599507)
+
+| OS | 입력 | 스레드 | 병합 | 행 (양성 / 음성) | 중앙값 초 | 최소–최대 초 | 표본 표준편차 초 | 병합/초 | 행/초 | Parquet 바이트 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Ubuntu | fixture | 1 | 2 | 4 (2 / 2) | 0.5373 | 0.5131–0.5391 | 0.0145 | 3.722 | 7.444 | 5,130 |
+| Ubuntu | fixture | 2 | 2 | 4 (2 / 2) | 0.5139 | 0.5079–0.5180 | 0.0051 | 3.892 | 7.783 | 5,130 |
+| Ubuntu | minimal-json | 1 | 7 | 1 (0 / 1) | 0.5313 | 0.5249–0.5440 | 0.0097 | 13.175 | 1.882 | 13,162 |
+| Ubuntu | minimal-json | 2 | 7 | 1 (0 / 1) | 0.5096 | 0.5044–0.5235 | 0.0099 | 13.736 | 1.962 | 13,162 |
+| Windows | fixture | 1 | 2 | 4 (2 / 2) | 1.8210 | 1.8197–1.8232 | 0.0018 | 1.098 | 2.197 | 5,130 |
+| Windows | fixture | 2 | 2 | 4 (2 / 2) | 1.5697 | 1.5426–1.5749 | 0.0173 | 1.274 | 2.548 | 5,130 |
+| Windows | minimal-json | 1 | 7 | 1 (0 / 1) | 1.8451 | 1.8342–1.8502 | 0.0081 | 3.794 | 0.542 | 13,162 |
+| Windows | minimal-json | 2 | 7 | 1 (0 / 1) | 1.7029 | 1.6953–1.7174 | 0.0112 | 4.111 | 0.587 | 13,162 |
+
+각 OS에서 입력별·스레드별로 준비 1회와 본측정 3회를 실행했다. 총 32회 중 준비 8회, 본측정 24회이며 모두 검증을 통과했다. 표는 본측정만 집계했다. 각 JSON의 개별 실행 시간과 건수로 중앙값·범위·표본 표준편차·처리량을 다시 계산해 대조했다. 두 운영체제는 장비와 Git 버전이 다르고, 최초 Ubuntu 측정과 이번 Ubuntu 측정도 CPU와 러너가 다르다. 이 표에서 수정으로 인한 속도 변화는 추론하지 않는다. 최대 메모리·Git 호출 수·단계별 시간은 N/A다. [Ubuntu 측정 로그](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44512599507/job/135520369390) · [Windows 측정 로그](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44512599507/job/135520369075)
+
+| 러너 | OS / 커널 | CPU | 논리 CPU | 인식 RAM (바이트) | Python | Git | JAR SHA-256 |
+| --- | --- | --- | ---: | ---: | --- | --- | --- |
+| Ubuntu | Linux-7.0.0-1014-aws-x86_64-with-glibc2.39 | Intel(R) Xeon(R) 6975P-C | 4 | 16464297984 | 3.12.16 | 2.56.1 | `c7d8034a9f2ccc698df5657a49713ff60f8a92c51c2a80efb2c53121282795fc` |
+| Windows | Windows-2025Server-10.0.26100-SP0 | AMD EPYC 7763 64-Core Processor | 4 | 17174360064 | 3.12.10 | 2.56.0.windows.4 | `08e658e91124d0db5436dea21d49fcc674b96a5c5ea7b86bcd413466214f0a5a` |
+
+양쪽 모두 Temurin 17.0.21+9, Gradle 8.14.3에서 JUnit 3/3, Python 14/14, 실제 CLI 1·4스레드 검증을 통과했다. 두 입력의 논리 SHA-256은 아래 최초 기준값과 같다. fixture Parquet의 바이트 해시는 이번 Windows에서 `42d4ec4d…`, Ubuntu에서 `5ac4da08…`였다. 원본 fixture의 파일·Git 저장소 보존, 기존 출력 덮어쓰기 거부, 정상 완료 후 임시 디렉터리 0건도 검사했다. 아래 두 아티팩트(14일 보존)와 측정 로그에 네 JSON이 남는다. [Ubuntu 기능 검사](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44512599507/job/135520369446) · [Windows 기능 검사](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44512599507/job/135520369465) · [Ubuntu 원자료](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44512599507/artifacts/14524417152) · [Windows 원자료](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44512599507/artifacts/14523983273)
+
+PR #2 단독 코드 `c84b9f4`에서는 Ubuntu 기능 검사가 통과하고 Windows 검사가 기존 생산 코드 정리 오류로 실패했다. 수정 브랜치와 통합 브랜치의 성공이 PR #2 자체의 Windows 실행을 대체하지 않는다. 최종 판정은 수정 PR 병합과 PR #2 갱신 후 양 OS 재확인을 조건으로 한다. [PR #2 단독 검사](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44512538598)
+
+## 2026-11-19 최초 기준 측정 · Windows 정리 수정 전
 
 기준 생산 코드 `bc7e09c9e2244b3e93d9b2d6c89e3335275a80da`와 측정 도구 `fd222b50e326b8ace80a0fe6572217a9c4d7b31c`의 조합으로 실행했다. 두 커밋 사이에 생산 Java 코드, Gradle 빌드 설정, 기존 테스트의 변경은 없다. 기존 JUnit 통합 테스트 1개, 비교기 테스트 3개, 패키징된 CLI의 1·4스레드 Parquet 검증이 통과했다. 성능 측정은 같은 러너에서 입력 2종 × 스레드 설정 2종 × (준비 1회 + 본측정 3회), 총 16회 성공했다. [기능 검증 로그](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44486889091/job/135432469642) · [측정 로그 및 원자료](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44486889091/job/135432469383)
 
@@ -22,7 +54,38 @@
 | minimal-json 논리 SHA-256 | `8e4078e84ac01f4e86f2443972da696dbbc049d8ac24f4415560e131f261ba66` |
 | 원본 보존 | 고정 fixture의 작업 파일·인덱스·설정·객체·refs 대조 통과. 실제 입력 및 미러의 refs와 HEAD 대조 통과 |
 
-로컬 Windows에서는 Gradle 배포 서버 DNS 조회가 실패해 기존 테스트가 시작되지 않았다. 위 표는 Gradle 빌드와 패키징까지 완료한 Ubuntu 러너의 수치다. 공개 Java 입력으로는 크기가 작은 minimal-json의 단일 고정 ref를 선택했다. JabRef 전체 이력, 특수 경로와 복잡한 병합은 이번 결과의 검증 범위 밖이다. 두 측정 JSON은 원자료 아티팩트의 보존 기간 동안 받을 수 있다. [원본 JSON 두 개](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44486889091/artifacts/14510599033)
+최초 로컬 Windows 시도는 Gradle 배포 서버의 DNS 조회 단계에서 중단돼 JUnit까지 도달하지 못했다. 이후 의존성을 확보한 같은 프로젝트에서 별도의 Windows 런타임 결함이 드러났다. 위 표는 최초 Ubuntu 러너의 측정치다. 공개 Java 입력은 minimal-json의 단일 고정 ref로 한정했다. JabRef 전체 이력과 복잡한 병합은 후속 검증 대상이다. 두 측정 JSON은 원자료 아티팩트의 보존 기간 동안 받을 수 있다. [원본 JSON 두 개](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44486889091/artifacts/14510599033)
+
+## 독립 리뷰와 재검증
+
+Claude가 검토한 PR #2 HEAD는 `9904344256f62eea3ba5c1e2ca3f68282915fdfe`, 기준 main은 `bc7e09c9e2244b3e93d9b2d6c89e3335275a80da`다. 이 두 버전의 생산 코드가 같다. 해당 HEAD에 대한 최초 PR 검사는 Ubuntu에서 통과했다. 별도 Windows 리뷰 worktree에서 작성된 전체 리뷰(F1–F8, 최초 판정 Comment), 후속 수정 보고, 미커밋 Java 패치를 확인했다. [최초 PR 검사](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44491608573) · [PR #2](https://github.com/AIX-APLUS/aix-preprocessor/pull/2)
+
+**Windows 실패 경로.** Git for Windows가 임시 미러에 쓴 loose object는 DOS 읽기 전용 속성을 갖는다. 기존 CLI는 Parquet를 하드 링크로 게시하고 `Saved`를 출력한 뒤 `finally`에서 이 객체를 `Files.delete`로 지웠다. 보존된 실패 로그에는 정상 집계(병합 2, 샘플 4, 양성 2), 게시 메시지, `Main.java:67`의 `AccessDeniedException`, 종료 코드 1이 차례로 있다. 출력 파일과 `.aix-*`가 남으며 같은 출력 경로를 다시 쓰면 기존 파일 보호 검사에 걸린다.
+
+**Claude의 Windows 측정.** JDK 17.0.1, Git 2.55.0.windows.5에서 기존 PR HEAD의 통합 테스트가 실패했다. 회귀 사례를 추가한 수정 전 시험은 2/2 실패, Claude의 미커밋 수정안에서는 2/2 통과로 보고됐다. 비교기 3건, 1·4스레드 4행(양성 2, 음성 2), 한글 경로 CLI와 임시 폴더 정리를 확인했다고 보고했다. 해당 수정안의 보존된 벤치마크 JSON에서 fixture와 minimal-json 각각 8/8 성공과 위의 논리 해시를 확인했다. 1·2스레드 중앙값은 fixture 2.802·2.049초, minimal-json 3.071·2.546초였다. 이 시간은 Claude의 로컬 수정안으로 얻은 관측값이며, 아래 독립 버그 수정 커밋의 측정과 구분한다.
+
+**독립 버그 수정.** main에서 분기한 `fix/windows-git-object-cleanup`의 `886de5c1319b8ebdc7ebea261e190315f6522abf`는 Claude의 삭제 재시도 범위를 좁혔다. Windows에서 삭제가 거부된 경우에만 링크를 따라가지 않고 DOS 속성을 읽는다. 읽기 전용 일반 파일이면 해당 속성만 해제하고 한 번 다시 지운다. ACL·디렉터리·심볼릭 링크 권한을 바꾸지 않으며 다른 삭제 실패는 호출자에게 전달한다. POSIX에서 파일 삭제는 부모 디렉터리 권한의 영향을 받으므로 Windows용 복구를 수행하지 않는다. 회귀 테스트는 실제 `git hash-object -w`로 객체를 생성하며, Windows에서는 Git이 붙인 속성과 첫 삭제 실패까지 검사한다. 추출 규칙·15열 스키마·하드 링크 게시 순서는 유지했다.
+
+| 항목 | 독립 확인과 반영 | 검증 범위와 남은 조건 |
+| --- | --- | --- |
+| F1 · Windows 정리 실패 | 실패 로그와 기존 코드의 경로가 일치했다. 별도 수정 커밋의 JUnit은 Git 객체 삭제와 추출 후 임시 폴더 잔존을 검사한다. | 정리와 추출이 모두 실패하면 Java의 try-with-resources가 원래 예외를 보존하고 정리 예외를 suppressed로 남긴다. 게시 후 다른 정리 오류가 생기면 출력이 존재해도 종료 1이 가능하다. `Saved`는 정리 성공 후에만 출력하며 실패한 trial은 집계 대상에서 빠진다. |
+| F2 · 외부 저장소의 고정 기준 | 최초 도구는 첫 trial도 정답으로 삼을 수 있었다. 현재 도구는 선택한 기대 행 수와 논리 해시를 준비 실행부터 매번 적용한다. 첫 실행이 일관되게 0행이어도 1행 기준에서 실패하는 회귀 사례가 있다. | minimal-json CI에 두 기준을 모두 고정했다. 임의 저장소에서 둘 다 생략한 경우 보고서에 `repeatability_only`가 표시된다. |
+| F3 · JAR 출처 | 기존 JSON에는 측정 도구 HEAD·dirty 상태가 없었고 JAR 엔트리에는 빌드 시각이 들어갔다. 새 JSON은 `benchmark_checkout.head`와 `dirty`, 실제 사용한 JAR SHA-256을 구분해 기록한다. | Git 밖에서는 상태가 `null`이다. 외부에서 넘긴 JAR의 소스 커밋은 이 정보만으로 증명할 수 없다. 바이트 재현 빌드는 이후 과제다. |
+| F4 · 테스트 0건, Windows CI 부재 | 양쪽 OS에서 Gradle 빌드 후 XML의 필수 JUnit 메서드가 실제 통과했는지 검사한다. Python 테스트 0건을 거부하고 CLI와 Golden 검증도 수행한다. | 수정 전 PR #2에는 정리 테스트 자체가 없다. 버그 수정이 포함된 통합 버전에서 해당 회귀 메서드의 실행까지 확인한다. 기능 검사는 PR마다, 반복 벤치마크는 별도로 실행한다. |
+| F5 · Golden 타입과 float32 | 기존 비교기가 boolean과 같은 값의 정수를 받아들이고 FLOAT와 동등한 소수 `0.6666667`을 거부하는 현상을 재현했다. 15열의 문자열·boolean·int32·유한 FLOAT 자료형과 범위를 검사한다. 예상 소수는 Parquet FLOAT와 같은 IEEE 754 binary32로 반올림한다. | 잘못된 타입·범위, 같은 float32로 표현되는 소수와 바로 이웃한 다른 float32를 단위 테스트로 구분했다. 기존 4행의 논리 해시가 유지된다. |
+| F6 · 원본 보존 검사 범위 | 기존 검사가 hook 변경을 놓치는 현상을 재현했다. 고정 fixture에서는 `.git`까지 이름·파일 종류·모드·읽기 전용 여부·파일 내용 해시·링크 대상을 대조한다. hook·exclude·alternates, repack과 인덱스 표현 변경을 검증하는 테스트가 있다. | 링크 대상 파일은 따라가지 않는다. 시각·ACL까지 보증하지 않는다. 외부 저장소는 원본 및 스냅샷의 refs·HEAD 확인으로 한정한다. |
+| F7 · 실패 보고서에 남던 부분 통계 | 기존 보고서는 일부 trial이 실패해도 먼저 성공한 trial의 중앙값을 노출했다. 현재 보고서는 전체 성공 시에만 시간·처리량 분포를 계산한다. | 실패 시 원인과 개별 관측, 검증·실패 건수는 진단용으로 남긴다. 결과 소비자는 `success`를 먼저 확인한다. |
+| F8 · Parquet 물리 해시 차이 | 최초 Ubuntu와 Claude의 Windows에서 파일 크기 5,130바이트와 fixture 논리 해시가 일치했다. 파일 바이트 해시 접두사는 각각 `9c5949a3`, `5ac4da08`였다. | 물리 바이트가 다른 원인은 미확정이다. 플랫폼 간 합격 기준은 스키마와 식별자별 15열 값이다. |
+
+**확인과 조치.** F1·F2·F4·F5·F6·F7은 Confirmed로 수용했다. F1은 읽기 전용 처리 대상을 좁히고, 디렉터리 링크가 가리키는 외부 파일까지 보호하도록 수정 후 수용했다. F3는 출처 정보 누락을 확인해 보완했다. 빌드 환경 간 JAR 차이가 전적으로 타임스탬프 때문인지는 미검증이며, 바이트 단위 재현 빌드는 Deferred다. F8은 관측된 현상으로 Confirmed, 논리 동등성 검사 결함으로는 Not Applicable이다. PR #2에서 `1bd6c54`는 양 OS 기능검사, `073ef7f`는 타입·원본 보존, `a99d316`은 외부 기준·통계·실제 실행 건수 검증에 해당한다.
+
+**Golden의 독립 근거.** Astra는 고정 fixture의 Git 트리에서 코드·경로·blob·부모와 기준 커밋을 읽고, 세 버전의 파일을 `git merge-file`로 합쳐 레이블을 구했다. 파일별 비병합 커밋과 줄 수 변화를 직접 집계한 결과는 4행 × 15열, 총 60개 값에서 Golden과 일치했다. 최초 Ubuntu 원자료와 Claude의 수정안 원자료에서 준비 실행을 빼고 시간·처리량 분포도 다시 계산했다. Claude는 별도로 Parquet 변형 21종, 장애 주입 5종, 한글·공백·이모지 문자열과 minimal-json의 유일한 음성 후보까지 조사했다. 이 추가 사례의 수치는 Claude가 실행한 범위다.
+
+**독립 재현과 수정 후 JUnit.** Windows JDK 17.0.12와 Git 2.55.0.windows.5에서 실제 객체의 DOS 읽기 전용 속성과 첫 삭제 실패를 확인했다. 별도 실험에서 추출과 정리를 함께 실패시키자 기존 코드는 추출 오류를 잃었다. 수정 후에는 쓰기 가능한 파일의 삭제 잠금을 그대로 보고하며, 원래 Git 오류와 정리 예외 하나가 함께 전달됐다. 이 관리 환경에서는 MSYS 미러 복제와 junction 생성이 차단돼 최종 JUnit 3건 중 실제 객체 시험 1건만 로컬 통과했다. 쓰기 가능한 임시 경로에서 최종 Python 14건 중 13건이 통과했고, 링크 생성 권한이 필요한 1건은 생략됐다.
+
+GitHub의 수정 전 Windows 러너에서는 1·4스레드 통합 JUnit이 첫 추출에서 실패했다. 별도로 실행한 CLI는 종료 1이었지만 게시된 출력은 골든 4행과 일치했고 `.aix-*`가 남았다. 같은 커밋의 Ubuntu 검사는 통과했다. 수정 브랜치의 `27db630`은 디렉터리 junction 및 심볼릭 링크를 따라가지 않고 제거한다. `7ca793fe85426304fa8c723129b4f728c282d874`의 양 OS 러너는 기존 통합 추출, 실제 읽기 전용 Git 객체, 외부 디렉터리 링크 대상 보존 세 테스트를 각각 모두 실행하고 통과했다. [수정 전 Windows](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44511178870/job/135515512656) · [수정 전 Ubuntu](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44511178870/job/135515513291) · [수정 브랜치 양 OS JUnit](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44511530836)
+
+JabRef 전체, 강제 종료 뒤 자동 복구, 네트워크 드라이브와 하드 링크를 지원하지 않는 파일시스템, Windows 보호 경로는 검증 범위에 포함되지 않았다. 출력을 게시한 뒤 실제 ACL이나 파일 잠금으로 정리가 실패하는 경우에는 종료 코드와 출력의 존재를 각각 확인해야 한다. 후속 Sprint 1에서 이 실패 계약과 경계 사례의 레이블을 점검한다.
 
 ## 기준 버전과 실행 경로
 
@@ -61,7 +124,7 @@ README에 적힌 전체 refs 탐색, 단일 기준점, 기준 시점의 소스�
 
 `benchmarks/golden.json`은 예상 네 행의 15개 값을 모두 담는다. `DumpParquet.java`가 실제 파일의 열 이름·순서·필수 여부·물리 타입·논리 타입을 검사한다. `dataset.py`는 `(repo_id, merge_sha, base_path)`로 식별자를 확인하고 중복·누락·예상 밖의 행·개별 값 차이를 보고한다. 열 순서대로 직렬화한 각 행을 SHA-256으로 해싱하고, 식별자순으로 정렬한 행 해시들로 전체 논리 해시를 만든다. 물리 파일의 해시는 진단용이다. 행 순서나 Parquet 메타데이터가 달라도 논리 해시는 유지된다.
 
-`verify.py`는 고정 입력에 스테이징한 수정, 스테이징 이후의 추가 수정, 추적하지 않는 파일을 남긴 상태로 실제 CLI를 1·4스레드로 실행한다. 각 실행 전후의 HEAD, refs, Git 객체 ID 집합, 인덱스 항목, 로컬 설정, 작업 파일 내용을 대조한다. 임의의 실제 저장소 성능 실행에서는 원본을 읽기 전용으로 사용하고 스냅샷과 원본 refs 및 HEAD를 전후에 확인한다. 그 입력의 모든 파일·인덱스·설정을 대조하는 검사는 고정 fixture에 한정한다.
+`verify.py`는 고정 입력에 스테이징한 수정, 스테이징 이후의 추가 수정, 추적하지 않는 파일을 남긴 상태로 실제 CLI를 1·4스레드로 실행한다. 각 실행 전후에 작업 트리와 `.git` 내부를 물리 파일 단위로 대조한다. 기존 출력에 식별 가능한 바이트를 써 둔 별도 호출로 종료 코드·거부 사유·파일 보존을 확인하고, 출력 옆에 남은 `.aix-*`도 검사한다. 실제 저장소 성능 실행에서는 원본을 읽기 전용으로 사용하고 스냅샷과 원본 refs 및 HEAD를 전후에 확인한다. 그 입력의 전체 파일·인덱스·설정을 대조하는 검사는 고정 fixture에 한정한다.
 
 ## 재현 방법
 
@@ -79,7 +142,7 @@ python benchmarks/benchmark.py --threads 1 2 --warmups 1 --repeats 3 --report bu
 ```sh
 git init -q --bare -b pinned ../minimal-json-sprint0.git
 git -C ../minimal-json-sprint0.git fetch -q --no-tags https://github.com/ralfstx/minimal-json.git c091e6985620da04d5abcd902aafb6c9583c48ea:refs/heads/pinned
-python benchmarks/benchmark.py --repo ../minimal-json-sprint0.git --repo-id ralfstx/minimal-json --threads 1 2 --warmups 1 --repeats 3 --report build/benchmarks/minimal-json.json
+python benchmarks/benchmark.py --repo ../minimal-json-sprint0.git --repo-id ralfstx/minimal-json --threads 1 2 --warmups 1 --repeats 3 --expect-logical-sha256 8e4078e84ac01f4e86f2443972da696dbbc049d8ac24f4415560e131f261ba66 --expect-samples 1 --report build/benchmarks/minimal-json.json
 ```
 
 보고서는 새 파일만 만든다. 이전 실행과 비교할 때는 새 출력 이름을 쓰고 refs·JDK·Git·하드웨어·스레드 수·반복 수를 맞춘다. 동일 논리 해시가 재현되는지 먼저 확인한 다음 시간을 비교한다. 실제 저장소에서 반복 간 출력이 같다는 사실만으로 개별 레이블의 정답 여부가 검증되지는 않는다.
