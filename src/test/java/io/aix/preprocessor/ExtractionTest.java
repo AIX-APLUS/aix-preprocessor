@@ -95,6 +95,25 @@ class ExtractionTest {
         assertFalse(Files.exists(tree));
     }
 
+    @Test void cleanupPreservesDirectoryLinkTarget() throws Exception {
+        Path outside = Files.createDirectory(temp.resolve("outside"));
+        Path sentinel = Files.writeString(outside.resolve("sentinel.txt"), "keep me");
+        Path tree = Files.createDirectory(temp.resolve("tree"));
+        Path link = tree.resolve("link");
+        if (File.separatorChar == '\\') {
+            // Directory junctions require no symlink privilege on normal NTFS volumes.
+            var command = new ProcessBuilder("cmd.exe", "/d", "/c", "mklink", "/J", "tree\\link", "outside")
+                    .directory(temp.toFile()).inheritIO().start();
+            assertEquals(0, command.waitFor(), "could not create fixture directory junction");
+        } else {
+            Files.createSymbolicLink(link, outside);
+        }
+        assertTrue(Files.isSameFile(link.resolve("sentinel.txt"), sentinel));
+        Main.deleteTree(tree);
+        assertFalse(Files.exists(tree));
+        assertEquals("keep me", Files.readString(sentinel));
+    }
+
     private static void change(Path repo, String clean, String conflict) throws Exception {
         Files.writeString(repo.resolve("Clean.java"), clean);
         Files.writeString(repo.resolve("Conflict.java"), conflict + "\n");
