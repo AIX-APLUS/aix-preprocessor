@@ -4,7 +4,9 @@ import argparse
 import base64
 import hashlib
 import json
+import math
 from pathlib import Path
+import struct
 import subprocess
 
 
@@ -24,10 +26,34 @@ def identity(row):
 
 def read_golden(path):
     expected = {}
-    for row in json.loads(Path(path).read_text(encoding="utf-8")):
+    rows = json.loads(Path(path).read_text(encoding="utf-8"))
+    if not isinstance(rows, list):
+        raise ValueError("Golden dataset must be an array of rows")
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict) or row.keys() != set(COLUMNS):
+            raise ValueError(f"Invalid golden fields in row {index}")
+        for name in COLUMNS[:8]:
+            if not isinstance(row[name], str):
+                raise ValueError(f"Golden row {index}: {name} must be a string")
+        for name in COLUMNS[8:11] + COLUMNS[12:14]:
+            value = row[name]
+            # bool is a subclass of int in Python.
+            if type(value) is not int or not -(2**31) <= value < 2**31:
+                raise ValueError(f"Golden row {index}: {name} must be an int32")
+        if type(row["has_text_conflict"]) is not bool:
+            raise ValueError(f"Golden row {index}: has_text_conflict must be a boolean")
+        share = row["top_author_share_90d"]
+        if type(share) is not float or not math.isfinite(share):
+            raise ValueError(f"Golden row {index}: top_author_share_90d must be a finite float")
+        # Match the Parquet FLOAT's representable value, including for a rounded
+        # decimal such as 0.6666667. Adjacent float32 values remain distinct.
+        try:
+            row["top_author_share_90d"] = struct.unpack(">f", struct.pack(">f", share))[0]
+        except OverflowError as exc:
+            raise ValueError(f"Golden row {index}: top_author_share_90d exceeds float32") from exc
         key = identity(row)
-        if set(row) != set(COLUMNS) or key in expected:
-            raise ValueError(f"Invalid golden fields or duplicate key: {key!r}")
+        if key in expected:
+            raise ValueError(f"Duplicate golden key: {key!r}")
         expected[key] = row
     return expected
 
