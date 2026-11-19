@@ -20,11 +20,67 @@ import tempfile
 
 
 SPLITS = ("train", "val", "test")
+QWEN_SHA256 = "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539"
+EXTRACTOR_SHA = "06e755ebabed1707a3413ec99ffa2511b046c543"
 
 
 def require(condition, message):
     if not condition:
         raise ValueError(message)
+
+
+def study_pilots(directory, inputs, *, payloads=None):
+    """Bind each planned input to the successful extractor report before reading any Parquet."""
+    here = Path(__file__).resolve().parent
+    pins = (here / "pins.tsv").read_text(encoding="utf-8").splitlines()
+    expected = {repo.replace("/", "__") + ".parquet": (repo, tip)
+                for slug, repo, branch, tip in (line.split() for line in pins)}
+    require(len(inputs) == len(expected) == len(pins) == 5 and
+            {path.name for path in inputs} == expected.keys(), "Expected all five pinned Parquet inputs")
+    ancestry = json.loads((here / "evidence/validation/anchor-ancestry.json").read_bytes())["comparisons"]
+    anchors = {(item["repository"], item["head"]): item["base"] for item in ancestry}
+    require(len(ancestry) == len(anchors) and set(anchors) == set(expected.values()),
+            "Pinned default tips and recorded study anchors differ")
+    reports = {}
+    for name, (repo, tip) in expected.items():
+        report = directory / ("pilot-" + Path(name).stem + ".json")
+        try:
+            data = json.loads(report.read_bytes() if payloads is None else payloads[report.name])
+        except (OSError, ValueError, KeyError) as error:
+            raise ValueError(f"{report.name}: missing or invalid pilot report") from error
+        require(data.get("status") == "success" and data.get("extraction_exit") == 0, f"{repo}: pilot failed")
+        require((data["repository"], data["default_tip"], data["extractor_sha"]) == (repo, tip, EXTRACTOR_SHA),
+                f"{repo}: pinned repository, default tip or extractor differs")
+        anchor = data["pilot_anchor"]
+        require(anchor == anchors[repo, tip] and data["analyzed_refs"] == [anchor + " refs/heads/pilot"]
+                and data["source_refs_preserved"] is True, f"{repo}: analyzed pilot ref differs")
+        reports[name] = data
+    return reports
+
+
+def check_study_rows(report, records):
+    repo = report["repository"]
+    require(all(key[0] == repo for key in records), f"{repo}: Parquet repository differs")
+    digest = hashlib.sha256(b"aix-merge-sample-v1\n")
+    for key in sorted(records):
+        digest.update(records[key].full_hash)
+    positive = sum(row.positive for row in records.values())
+    counts = (len(records), positive, len(records) - positive)
+    validation = report["parquet_validation"]
+    require(counts == (report["eligible_samples"], report["positive_samples"], report["negative_samples"])
+            == (validation["samples"], validation["positive"], validation["negative"])
+            and digest.hexdigest() == validation["logical_sha256"], f"{repo}: Parquet validation differs")
+
+
+def tokenizer_digest(path, expected, *, required):
+    if not path:
+        require(not required and expected is None, "The study requires the pinned tokenizer file")
+        return None
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    require(digest == (expected or QWEN_SHA256), "Unexpected tokenizer file SHA-256")
+    if required:
+        require(digest == QWEN_SHA256, "Unexpected Qwen tokenizer SHA-256")
+    return digest
 
 
 @dataclass(frozen=True)
@@ -124,6 +180,8 @@ def corrupt_schema(source, target):
 
 
 def run(args, work):
+    reports = study_pilots(args.study_results, args.inputs) if args.study_results else {}
+    token_file_sha256 = tokenizer_digest(args.tokenizer_json, args.tokenizer_sha256, required=bool(reports))
     dataset_dir = args.benchmarks.resolve()
     sys.path.insert(0, str(dataset_dir))
     import dataset  # Pinned extractor's benchmark decoder and canonical column order.
@@ -141,11 +199,8 @@ def run(args, work):
         return proc.stdout
 
     tokenizer = None
-    token_file_sha256 = None
     if args.tokenizer_json:
         from tokenizers import Tokenizer
-        token_file_sha256 = hashlib.sha256(args.tokenizer_json.read_bytes()).hexdigest()
-        require(args.tokenizer_sha256 == token_file_sha256, "Unexpected tokenizer file SHA-256")
         tokenizer = Tokenizer.from_file(str(args.tokenizer_json))
         tokenizer.no_truncation()
         tokenizer.no_padding()
@@ -203,7 +258,11 @@ def run(args, work):
     nonempty_file = None
     for path in args.inputs:
         records = read(path, measure_tokens=True)
+        if reports:
+            check_study_rows(reports[path.name], records)
         repo_ids = {key[0] for key in records}
+        if reports:
+            repo_ids.add(reports[path.name]["repository"])  # An empty pilot has no row-level repo_id.
         require(len(repo_ids) <= 1 and not repo_ids & seen_repos, "Expected one complete pilot per distinct repo_id")
         seen_repos.update(repo_ids)
         all_rows.update(records)
@@ -219,6 +278,9 @@ def run(args, work):
     result["rows_matching_code_in_another_repository"] = sum(len(code_repos[r.code_hash]) > 1 for r in all_rows.values())
     result["layout_hashes_at_multiple_repositories"] = sum(len(r) > 1 for r in layout_repos.values())
     result["combined_profile"] = profile(all_rows)
+    result["token_analysis"] = "not_requested"
+    if tokenizer:
+        result["token_analysis"] = "measured" if all_rows else "no_rows"
     result["merged"] = None
     if len(args.inputs) >= 2:
         src = work / "combined.parquet"
@@ -272,6 +334,7 @@ if __name__ == "__main__":
     parser.add_argument("--jar", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--benchmarks", type=Path, default=Path("benchmarks"))
+    parser.add_argument("--study-results", type=Path, help="Require every pilot in pins.tsv, its report and the pinned tokenizer")
     parser.add_argument("--tokenizer-json", type=Path)
     parser.add_argument("--tokenizer-sha256", help="Pinned SHA-256 of the optional Qwen tokenizer.json")
     opts = parser.parse_args()

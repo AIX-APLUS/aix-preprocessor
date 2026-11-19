@@ -10,6 +10,7 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
 import time
 
 
@@ -229,12 +230,23 @@ if __name__ == "__main__":
     result = {"repository": arg.repository, "default_tip": arg.tip, "status": "failed",
               "started_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()}
     path = arg.out / ("pilot-" + arg.repository.replace("/", "__") + ".json")
-    with path.open("x", encoding="utf-8") as fp:
+    if path.exists():
+        raise FileExistsError(path)
+    try:
+        main(arg, result)
+    except Exception as error:
+        result["error"] = str(error)
+        raise
+    finally:
+        # A hard timeout may interrupt any write. Publish only a closed, complete JSON, exclusively.
+        fp = tempfile.NamedTemporaryFile(mode="w", dir=arg.out, encoding="utf-8", delete=False)
         try:
-            main(arg, result)
-        except Exception as error:
-            result["error"] = str(error)
-            raise
+            with fp:
+                json.dump(result, fp, ensure_ascii=False, indent=2)
+                fp.write("\n")
+            if os.name == "nt":
+                os.rename(fp.name, path)  # Windows rename fails if the destination exists.
+            else:
+                os.link(fp.name, path)
         finally:
-            json.dump(result, fp, ensure_ascii=False, indent=2)
-            fp.write("\n")
+            Path(fp.name).unlink(missing_ok=True)

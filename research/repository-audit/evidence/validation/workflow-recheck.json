@@ -1,0 +1,63 @@
+{
+  "scope": "Local reproduction of study failure handling. Historical GitHub run 44549292132 used the old workflow.",
+  "old_study_commit": "a6a7c7ea2c699eb84d87c4b391e33497fd35cc5e",
+  "extractor_source_reported_for_local_jar": "06e755ebabed1707a3413ec99ffa2511b046c543",
+  "local_extractor_jar_sha256": "7fa721cd099f18f997f9bdd02368b46708584ddaec1e7e3079372d8e909b2fd7",
+  "environment": {"os": "Windows", "python": "3.10.2", "java": "Oracle 17.0.12", "tokenizers": "0.21.4"},
+  "old_workflow": {
+    "pilot_terminated": "Paused the real pilot.py at its first subprocess, terminated the Python process, and observed an empty published pilot JSON. Old timeout/nonzero extraction already fails the extraction step and job via the shell status accumulator.",
+    "summary": "Executed the old workflow's Python heredoc with copied run JSON. Removing quality.json, making it zero bytes, or replacing it with an unterminated object each returned exit 0 and emitted SUMMARY records.",
+    "subset_and_self_pinned_tokenizer": {
+      "inputs": ["quarkusio__quarkus.parquet", "spring-projects__spring-boot.parquet"],
+      "tokenizer_sha256": "80512c6945742bb2260eb8deceab45901b18f8bfdfdf9b82fb77664e8bf9a021",
+      "rows_profiled": 36,
+      "positive": 7,
+      "astra_observation": "A line trace of the old quality.run captured combined_profile immediately before the CLI merge. The subset and caller-supplied self-hash passed all profiling and per-file CLI stats checks.",
+      "claude_finished_quality_json_sha256": "cde0503ed91599ccf2723db2fcedbcfd95157a070fb3e166eefb108d39c0684b"
+    },
+    "tokenizer_omitted": {
+      "input": "quarkusio__quarkus.parquet",
+      "rows_profiled": 9,
+      "base_code_tokens": null,
+      "astra_observation": "Reached the split path in the old CLI; the old workflow continued after failed pip/curl. Claude's separately completed JSON also contains nine rows and no tokenizer digest.",
+      "claude_finished_quality_json_sha256": "48b8fa1882613dfee114cac7bbcab50a5a758a7704140c07230d39467b08cf54"
+    }
+  },
+  "amended_workflow": {
+    "command": "python -B -m unittest discover -s research/repository-audit -p test_workflow.py -v",
+    "tests_passed": 12,
+    "inputs": "Five replayed Parquets in original logical order per file; five Ubuntu pilot JSONs and quality.json from the archived run.",
+    "quality_cli": "python research/repository-audit/quality.py --jar JAR --benchmarks BENCHMARKS --study-results REPORTS --tokenizer-json QWEN --output OUT PARQUETS...",
+    "normal_pre_merge": {
+      "rows": 380, "positive": 54, "negative": 326,
+      "tokenizer_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+      "all_five_repo_counts_and_15_column_logical_hashes_matched_pilot_reports": true,
+      "all_five_complete_input_profiles_and_combined_profile_equal_ubuntu": true,
+      "comparison_method": "Captured quality.run locals at the line result['merged'] = None, after it read each full Parquet, verified repo/count/digest and ran CLI stats. Compared inputs keyed by filename and the combined_profile dictionary with original quality.json."
+    },
+    "negative_cases": {
+      "missing_parquet": "Amended study CLI invoked on two actual Parquets exited 1 before Java. Tests additionally reject one missing of five and a duplicate basename.",
+      "missing_empty_or_invalid_json": "Missing, zero-byte and malformed pilot reports rejected. The workflow's report_study.py emitted zero SUMMARY records and failed when quality.json was missing, blank, malformed, or an empty object.",
+      "failed_pilot": "Failed status or nonzero extraction_exit rejected. A forced missing-JAR error returned nonzero and published a readable failed JSON. Hard termination before completion published no named JSON.",
+      "wrong_input_or_extractor_sha": "Mutating default_tip, extractor_sha, analyzed_refs, or the attestation that input refs were preserved made the validation fail.",
+      "coordinated_anchor_and_ref_change": "Before adding the independent anchor lookup, replacing both pilot_anchor and analyzed_refs consistently passed validation even though they named another SHA. The fixed study now compares the pair with the GitHub comparison's base for that repository and pinned default head in evidence/validation/anchor-ancestry.json. The regression substitutes the valid default head for the actual pilot anchor and is rejected. An intentional change of study window requires updating the independently recorded anchor reference.",
+      "wrong_tokenizer": "Five actual input paths with a different tokenizer plus its own correct SHA-256 exited 1 in study mode.",
+      "tokenizer_omitted": "Five actual input paths without the tokenizer exited 1 in study mode. Generic profiling of the Quarkus file returned not_requested and 9 rows prior to merge/split.",
+      "artifact": "The summary step reconstructed six byte-identical JSON payloads on the complete archived input. Offline action-process failures are detailed below."
+    },
+    "all_five_zero_yield": "Manifest/summary unit control only: five explicitly successful inputs with zero rows per repo remain a measured zero yield. The expected token mode is no_rows.",
+    "end_to_end_local": "Both the unmodified old and the amended quality CLI stopped in the pinned Java merge/split publication code: java.nio.file.AccessDeniedException at Files.createLink in the Windows sandbox. The production CLI and tests were not patched. A successful full amended hosted run is not established by these local checks."
+  },
+  "artifact_upload_action_offline": {
+    "action": "actions/upload-artifact@v4",
+    "resolved_commit": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+    "entrypoint": "node dist/upload/index.js",
+    "local_node": "24.20.0",
+    "declared_runner_node": "20",
+    "if_no_files_found": "error",
+    "empty_glob": {"exit": 1, "message": "No files were found with the provided path"},
+    "one_dummy_file_no_credentials": {"exit": 1, "message": "Unable to get the ACTIONS_RUNTIME_TOKEN env variable"},
+    "no_remote_upload_attempt": true,
+    "hosted_upload_success_on_amended_workflow": null
+  }
+}
