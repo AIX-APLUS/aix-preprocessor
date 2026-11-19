@@ -5,10 +5,6 @@ import java.nio.file.*;
 import java.util.*;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.parquet.example.data.Group;
-import org.apache.parquet.hadoop.ParquetFileReader;
-import org.apache.parquet.hadoop.ParquetReader;
-import org.apache.parquet.hadoop.example.GroupReadSupport;
-import org.apache.parquet.io.LocalInputFile;
 
 /** Assigns entire repository paths to splits, then streams the original rows to disk. */
 final class DatasetSplitter {
@@ -43,11 +39,7 @@ final class DatasetSplitter {
             Path target = output.resolve(name + ".parquet");
             if (Files.exists(target)) throw new FileAlreadyExistsException(target.toString());
         }
-        try (var footer = ParquetFileReader.open(new LocalInputFile(input))) {
-            if (!DatasetWriter.SCHEMA.equals(footer.getFooter().getFileMetaData().getSchema())) {
-                throw new IOException("Expected the 15-column Parquet schema produced by extract");
-            }
-        }
+        DatasetInput.validate(input);
         var repositories = new HashMap<String, Map<String, FileGroup>>();
         var config = new Configuration();
         config.set("parquet.read.schema", """
@@ -57,7 +49,7 @@ final class DatasetSplitter {
                   required boolean has_text_conflict;
                 }
                 """);
-        try (var reader = reader(input, config)) {
+        try (var reader = DatasetInput.reader(input, config)) {
             Group row;
             while ((row = reader.read()) != null) {
                 String repo = row.getString("repo_id", 0);
@@ -76,7 +68,7 @@ final class DatasetSplitter {
             try (var train = new DatasetWriter(stage.resolve("train.parquet"));
                  var val = new DatasetWriter(stage.resolve("val.parquet"));
                  var test = new DatasetWriter(stage.resolve("test.parquet"));
-                 var reader = reader(input, new Configuration())) {
+                 var reader = DatasetInput.reader(input, new Configuration())) {
                 var writers = List.of(train, val, test);
                 Group row;
                 while ((row = reader.read()) != null) {
@@ -103,11 +95,6 @@ final class DatasetSplitter {
                     output.resolve(NAMES.get(i) + ".parquet"), c.rows,
                     total == 0 ? 0 : 100.0 * c.rows / total, total, c.positives);
         }
-    }
-
-    private static ParquetReader<Group> reader(Path path, Configuration config) throws IOException {
-        return ParquetReader.builder(new GroupReadSupport(), new org.apache.hadoop.fs.Path(path.toUri()))
-                .withConf(config).build();
     }
 
     /** Greedily minimizes the increase in squared error of row and positive shares. */

@@ -85,3 +85,10 @@ The splitter targets 70/15/15 for both rows and positive examples.
 Large file groups can shift the final percentages, and very small datasets can yield
 empty splits. Assignment is deterministic even if the input rows are reordered.
 Each output preserves all 15 columns and the relative input order of its rows.
+
+## Check the class balance
+
+Run `java -jar build/libs/aix-preprocessor.jar stats jabref.parquet` to print the
+total samples, conflict-positive samples, and positive percentage. This works on
+the full dataset or any single split. An empty dataset reports `N/A` for the
+percentage. Invalid inputs produce an error and a nonzero exit code.
