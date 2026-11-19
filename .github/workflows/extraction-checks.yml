@@ -105,6 +105,35 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: .\gradlew.bat --no-daemon --console=plain shadowJar
+      - name: Verify benchmark checkout before timing
+        shell: python
+        run: |
+          import os
+          import subprocess
+          head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          cmd = ['git', '--no-optional-locks', '-c', 'core.quotePath=true', 'status',
+                 '--porcelain=v1', '--untracked-files=all']
+          entries = subprocess.check_output(cmd, text=True).splitlines()
+          print(f'Checkout HEAD: {head}; ordinary Git status: {len(entries)} entries')
+          for entry in entries[:20]:
+              print(entry[:240])
+          # Compare the extractor's isolated Git configuration for diagnostics only.
+          isolated = {k: v for k, v in os.environ.items() if not k.upper().startswith('GIT_')}
+          isolated.update(GIT_CONFIG_NOSYSTEM='1', GIT_CONFIG_GLOBAL=os.devnull, GIT_ATTR_NOSYSTEM='1')
+          other = subprocess.run(cmd, env=isolated, text=True, capture_output=True)
+          if other.returncode:
+              print(f'Isolated Git status unavailable: exit {other.returncode}')
+          elif other.stdout.splitlines() != entries:
+              differences = other.stdout.splitlines()
+              print(f'Isolated Git status differs: {len(differences)} entries, first 20 below')
+              for entry in differences[:20]:
+                  print(entry[:240])
+              for name, env in [('ordinary', None), ('isolated', isolated)]:
+                  setting = subprocess.run(['git', 'config', '--get', 'core.autocrlf'],
+                                           env=env, text=True, capture_output=True)
+                  print(f'{name} core.autocrlf: {setting.stdout.strip() or "(unset)"}')
+          if head != os.environ['GITHUB_SHA'] or entries:
+              raise SystemExit('Benchmark requires the exact, clean GitHub Actions checkout')
       - name: Measure the fixed fixture
         run: python benchmarks/benchmark.py --threads 1 2 --warmups 1 --repeats 3 --report build/measurements/fixture.json
       - name: Create a bare input repository
@@ -122,6 +151,7 @@ jobs:
         shell: python
         run: |
           import json
+          import os
           from pathlib import Path
           expected = {
               'fixture': (2, 4, 2, 2, 'b93b6d16e1ec0e95f924ac92d7e6a5b560b79677a5ca85583a30f77548dd4bcc'),
@@ -131,6 +161,9 @@ jobs:
               raw = (Path('build/measurements') / (name + '.json')).read_text(encoding='utf-8')
               print(raw)
               report = json.loads(raw)
+              checkout = report['benchmark_checkout']
+              if checkout['head'] != os.environ['GITHUB_SHA'] or checkout['dirty'] is not False:
+                  raise SystemExit(f'{name}: unexpected benchmark checkout {checkout}')
               if not report['success'] or not report['snapshot_refs_unchanged']:
                   raise SystemExit(f'{name}: extraction failed or input snapshot changed')
               if name == 'minimal-json' and not report['source_refs_unchanged']:

@@ -23,22 +23,29 @@ HERE = Path(__file__).resolve().parent
 SUMMARY = re.compile(r"(\d+) two-parent merges, (\d+) samples, (\d+) positives\. Skips: \{(.*)\}")
 
 
-def git(repo, *args, stderr=None):
-    # Match the extractor's isolation from caller-specific Git config/overrides.
+def git(repo, *args, checkout_config=False):
     env = {k: v for k, v in os.environ.items() if not k.upper().startswith("GIT_")}
-    env.update(GIT_CONFIG_NOSYSTEM="1", GIT_CONFIG_GLOBAL=os.devnull,
-               GIT_ATTR_NOSYSTEM="1", GIT_OPTIONAL_LOCKS="0", LC_ALL="C")
-    return subprocess.check_output(["git", "-C", str(repo), *args], env=env, stderr=stderr)
+    if checkout_config:
+        # Git status must use the checkout's real line-ending, attribute and ignore rules.
+        # Keep its configuration sources, but never redirect the selected repository or index.
+        env.update({k: v for k, v in os.environ.items()
+                    if k.upper().startswith("GIT_CONFIG_") or k.upper() == "GIT_ATTR_NOSYSTEM"})
+    else:
+        # Dataset commands share the extractor's isolation from system/global config.
+        env.update(GIT_CONFIG_NOSYSTEM="1", GIT_CONFIG_GLOBAL=os.devnull, GIT_ATTR_NOSYSTEM="1")
+    env.update(GIT_OPTIONAL_LOCKS="0", LC_ALL="C")
+    return subprocess.check_output(["git", "-C", str(repo), *args], env=env,
+                                   stderr=subprocess.DEVNULL if checkout_config else None)
 
 
 def checkout_state(repo):
     # This identifies the harness checkout. The separately supplied JAR is identified by its bytes.
     try:
-        top = git(repo, "rev-parse", "--show-toplevel", stderr=subprocess.DEVNULL)
+        top = git(repo, "rev-parse", "--show-toplevel", checkout_config=True)
         if not Path(os.fsdecode(top).rstrip("\r\n")).samefile(repo):
             return {"head": None, "dirty": None}
-        head = git(repo, "rev-parse", "--verify", "HEAD", stderr=subprocess.DEVNULL)
-        changes = git(repo, "status", "--porcelain", "-z", stderr=subprocess.DEVNULL)
+        head = git(repo, "rev-parse", "--verify", "HEAD", checkout_config=True)
+        changes = git(repo, "status", "--porcelain", "--untracked-files=all", "-z", checkout_config=True)
     except (OSError, subprocess.CalledProcessError):
         return {"head": None, "dirty": None}
     return {"head": head.decode("ascii").strip(), "dirty": bool(changes)}
