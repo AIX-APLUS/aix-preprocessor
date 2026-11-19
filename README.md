@@ -67,3 +67,20 @@ The 90-day window ends at the merge base's committer timestamp. History includes
 ```
 
 The integration test creates a local repository with side-branch merges, runs the extractor with one and four workers, and reads the Parquet output back to check the rows and labels.
+
+## Split a dataset
+
+```sh
+java -jar build/libs/aix-preprocessor.jar split jabref.parquet --output-dir splits
+```
+
+The input is a Parquet file produced by `extract`. The command creates
+`train.parquet`, `val.parquet`, and `test.parquet` under the output directory
+(default `./splits`). Choose a directory where all three filenames are available.
+The summary shows each file's row count, percentage of all input rows, and positive count.
+
+Within each repository, all rows for a given file path stay together.
+The splitter targets 70/15/15 for both rows and positive examples.
+Large file groups can shift the final percentages, and very small datasets can yield
+empty splits. Assignment is deterministic even if the input rows are reordered.
+Each output preserves all 15 columns and the relative input order of its rows.

@@ -14,7 +14,7 @@ import org.apache.parquet.schema.MessageTypeParser;
 
 /** Single-owner Parquet sink. Every column is required, including zero-activity statistics. */
 final class DatasetWriter implements Closeable {
-    private static final MessageType SCHEMA = MessageTypeParser.parseMessageType("""
+    static final MessageType SCHEMA = MessageTypeParser.parseMessageType("""
             message merge_sample {
               required binary repo_id (STRING);
               required binary merge_sha (STRING);
@@ -40,6 +40,8 @@ final class DatasetWriter implements Closeable {
         writer = ExampleParquetWriter.builder(new LocalOutputFile(file)).withType(SCHEMA)
                 .withCompressionCodec(CompressionCodecName.SNAPPY).build();
     }
+
+    void write(Group row) throws IOException { writer.write(row); }
 
     void write(Sample s) throws IOException {
         var h = s.history();
