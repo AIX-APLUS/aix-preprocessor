@@ -1,6 +1,6 @@
 # 저장소 적합성 실험 재현
 
-고정 전처리기는 `06e755ebabed1707a3413ec99ffa2511b046c543`이다. 본조사 대상 다섯 곳과 고정 기본 브랜치는 [pins.tsv](pins.tsv)에 있다. 파일 한 줄은 공백으로 구분한 별칭, owner/repository, 기본 브랜치, SHA다. 모든 실행은 새 작업 디렉터리를 사용한다. 저장소 클론, 소스가 든 Parquet, 토크나이저, 빌드 산출물은 연구 브랜치에 넣지 않는다.
+고정 전처리기는 `06e755ebabed1707a3413ec99ffa2511b046c543`이다. 본조사 대상 다섯 곳과 고정 기본 브랜치는 [pins.tsv](pins.tsv)에 있다. 파일 한 줄은 공백으로 구분한 별칭, owner/repository, 기본 브랜치, SHA다. `pilot.py`를 중단한 뒤 재시도할 때는 `--work`와 `--out`을 둘 다 새 경로로 지정한다. 같은 작업 경로를 재사용하면 실패 JSON이 게시될 수 있고, 기존 출력 경로는 덮어쓸 수 없다. 저장소 클론, 소스가 든 Parquet, 토크나이저, 빌드 산출물은 연구 브랜치에 넣지 않는다.
 
 ## 보관된 원자료에서 재검산하기
 
@@ -83,7 +83,7 @@ python research/repository-audit/verify_license_rows.py --parquet-dir DATASETS -
 
 ## 독립 리뷰에서 다시 실행한 검사
 
-저장소에 보존한 집계만으로 아래 회귀 테스트를 실행할 수 있다. 테스트가 만드는 임시 산출물은 네트워크나 대형 저장소를 요구하지 않는다. 원래 Ubuntu 실행의 링크는 `a6a7c7e`용이다. 아래 테스트와 수정된 워크플로의 호스티드 실행을 구분한다.
+저장소에 보존한 집계만으로 아래 회귀 테스트를 실행할 수 있다. 테스트가 만드는 임시 산출물은 네트워크나 대형 저장소를 요구하지 않는다. 이 문서 첫 절의 기본 검증 대상은 최초 Ubuntu 실행 `a6a7c7e`다. 수정 후 Ubuntu 실행 `4b623d5`의 ZIP 6개와 로그를 검산할 때는 [두 번째 실행의 명세와 명령](../../docs/research/final-ci-validation.md)을 사용한다. 호스티드 연구 회귀 검사는 13개이고 아래 로컬 연구 테스트에는 비교표 출처 검사 2개가 추가된다.
 
 ```console
 python -B -m unittest discover -s research/repository-audit -p "test_*.py" -v

@@ -2,6 +2,8 @@
 
 2026년 11월 19일 UTC에 실행한 다섯 파일럿에서 380행을 생성했다. 양성은 54행(14.21%), 음성은 326행이다. 1행은 같은 병합에서 양쪽 부모가 모두 변경한 Java 기준 파일 한 개다. 양성은 고정 Git 버전으로 부모를 다시 병합했을 때 해당 경로에 텍스트 내용 충돌이 발생했다는 뜻이다. 사람이 실제로 어떤 해결 방법을 사용했는지, 의미적 충돌·빌드 오류가 있었는지는 이 레이블로 알 수 없다. [원본 품질 집계](../../research/repository-audit/evidence/runs/quality.json) · [병합 판정 코드](https://github.com/AIX-APLUS/aix-preprocessor/blob/06e755ebabed1707a3413ec99ffa2511b046c543/src/main/java/io/aix/preprocessor/MergeAnalyzer.java)
 
+수정 후 Ubuntu 실행에서도 380행과 다섯 논리 해시, 분할 267/57/56이 일치했다. 이 보고서에 인용한 실행 시간과 자원 사용량은 최초 실행에서 측정했다. [재실행 결과와 품질 JSON 비교](final-ci-validation.md)
+
 ## 어떤 이력을 실제로 추출했나
 
 아래의 기본 브랜치 수치는 고정 SHA까지의 모든 도달 가능 커밋이다. 공개 heads·tags 전체는 별도로 보존한 refs 목록 기준이다. 파일럿에서는 고정 SHA에서 첫 부모를 역추적해 초기의 두 부모 병합 이정표를 선택했다. 새 bare 저장소의 유일한 ref `refs/heads/pilot`이 그 SHA를 가리키는지 검사한 뒤 해당 조상을 모두 추출했다. 다섯 anchor의 GitHub Compare에서도 `behind_by=0`을 확인했다. 고정 SHA 쪽의 추가 커밋 수와 파일럿 커밋 수의 합이 고정 기본 브랜치 이력과 모두 일치했다. JabRef에서는 그래프 수집 당시 기본 브랜치가 앞으로 이동했으므로 함께 보관한 실시간 heads·tags 수치와 고정 SHA 수치를 구분한다. [고정 SHA 목록](../../research/repository-audit/pins.tsv) · [독립적인 조상 관계 확인](../../research/repository-audit/evidence/validation/anchor-ancestry.json)

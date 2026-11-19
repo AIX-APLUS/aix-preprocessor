@@ -2,7 +2,7 @@
 
 **다음 수집 실험은 JabRef와 Jenkins를 우선 추천한다.** 2015년까지의 JabRef 표본은 195행·양성 26행(16개 병합), 2011년까지의 Jenkins 표본은 148행·양성 21행(13개 병합)이었다. 과거 원문 사용 범위를 정한 뒤 두 곳을 같은 기준으로 확장해 양성이 계속 확보되는지 확인한다. 전체 저장소의 수율 순위와 최종 학습·테스트 구성은 아직 정할 수 없다. 성능 시험의 첫 후보는 Quarkus, 큰 파일과 오래된 이력의 부하는 Card Forge에서 점검한다. [독립 리뷰 대응과 재현 결과](claude-review-response.md)
 
-2026-11-20 한국 기준. 대상 전처리기는 [`06e755eb`](https://github.com/AIX-APLUS/aix-preprocessor/commit/06e755ebabed1707a3413ec99ffa2511b046c543), 연구 실행은 [`a6a7c7ea` · Ubuntu run 44549292132](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132)이다. 팀 지정 후보 5곳은 실제 전처리기로, 그 밖의 10곳은 고정 시점의 GitHub 이력과 파일 조사로 평가했다. Card Forge는 카드 게임 규칙 엔진이다. [정량 JSON](repository-suitability.json) · [원본 대조 기록](../../research/repository-audit/evidence/run-44549292132-provenance.json) · [재현 방법](../../research/repository-audit/REPRODUCE.md)
+2026-11-20 한국 기준. 대상 전처리기는 [`06e755eb`](https://github.com/AIX-APLUS/aix-preprocessor/commit/06e755ebabed1707a3413ec99ffa2511b046c543), 최초 실측은 [`a6a7c7ea` · Ubuntu run 44549292132](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132)에서 얻었다. 수정 후 [`4b623d55` · Ubuntu run 44579446949](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44579446949)에서 380행과 저장소별 논리 해시 5개가 재현됐다. [두 실행의 비교와 Artifact 명세](final-ci-validation.md) 팀 지정 후보 5곳은 실제 전처리기로, 그 밖의 10곳은 고정 시점의 GitHub 이력과 파일 조사로 평가했다. Card Forge는 카드 게임 규칙 엔진이다. [정량 JSON](repository-suitability.json) · [원본 대조 기록](../../research/repository-audit/evidence/run-44549292132-provenance.json) · [재현 방법](../../research/repository-audit/REPRODUCE.md)
 
 ## 고정 입력과 규모
 
