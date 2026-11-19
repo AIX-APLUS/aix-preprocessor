@@ -1,18 +1,18 @@
 plugins {
     id 'application'
-    id 'com.gradleup.shadow' version '8.3.6'
+    id 'com.gradleup.shadow' version '9.2.2'
 }
 
 repositories { mavenCentral() }
 
-java { toolchain { languageVersion = JavaLanguageVersion.of(17) } }
+tasks.withType(JavaCompile).configureEach { options.release = 17 }
 
 application { mainClass = 'io.aix.preprocessor.Main' }
 
 dependencies {
     implementation 'org.apache.parquet:parquet-hadoop:1.15.2'
-    implementation 'org.apache.hadoop:hadoop-client-api:3.4.1'
-    runtimeOnly 'org.apache.hadoop:hadoop-client-runtime:3.4.1'
+    implementation 'org.apache.hadoop:hadoop-client-api:3.4.3'
+    runtimeOnly 'org.apache.hadoop:hadoop-client-runtime:3.4.3'
     runtimeOnly 'org.apache.parquet:parquet-jackson:1.15.2'
     runtimeOnly 'org.slf4j:slf4j-simple:1.7.36'
 
