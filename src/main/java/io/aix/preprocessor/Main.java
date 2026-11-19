@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 /** CLI for extracting a single unsplit Java merge dataset from a local repository. */
 public final class Main {
-    private static final String USAGE = "aix-preprocessor extract REPO [--output FILE] [--threads N] [--repo-id OWNER/REPO]\n"
+    private static final String USAGE = "aix-preprocessor extract REPO [--output FILE] [--threads N] [--rename-limit N] [--repo-id OWNER/REPO]\n"
             + DatasetSplitter.USAGE;
     private Main() {}
 
@@ -50,11 +50,16 @@ public final class Main {
         int threads = Math.min(8, Runtime.getRuntime().availableProcessors());
         Path output = Path.of("samples.parquet").toAbsolutePath();
         String repo = null;
+        Integer renameLimit = null;
         for (int i = 1; i < args.length; i += 2) {
             if (i + 1 == args.length) throw new IllegalArgumentException(USAGE);
             switch (args[i]) {
                 case "--output" -> output = Path.of(args[i + 1]).toAbsolutePath();
                 case "--threads" -> threads = Integer.parseInt(args[i + 1]);
+                case "--rename-limit" -> {
+                    renameLimit = Integer.parseInt(args[i + 1]);
+                    if (renameLimit < 0) throw new IllegalArgumentException("--rename-limit must be nonnegative");
+                }
                 case "--repo-id" -> repo = args[i + 1];
                 default -> throw new IllegalArgumentException(USAGE);
             }
@@ -70,9 +75,11 @@ public final class Main {
         try (Closeable cleanup = () -> deleteTree(temp)) {
             Path mirror = temp.resolve("mirror.git");
             original.read("clone", "--quiet", "--mirror", "--shared", "--", source.toString(), mirror.toString());
+            var snapshot = new Git(mirror);
+            if (renameLimit != null) snapshot.read("config", "--local", "diff.renameLimit", renameLimit.toString());
             Path partial = temp.resolve("dataset.parquet");
             try (var writer = new DatasetWriter(partial)) {
-                Extraction.run(new Git(mirror), repo, threads, writer);
+                Extraction.run(snapshot, repo, threads, writer);
             }
             Files.createLink(output, partial); // Atomically publish without clobbering concurrent output.
         }

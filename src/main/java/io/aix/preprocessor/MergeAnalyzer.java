@@ -13,7 +13,15 @@ final class MergeAnalyzer {
     private final String repo;
     private final Map<String, LongAdder> skipped = new ConcurrentHashMap<>();
 
-    MergeAnalyzer(Git git, String repo) { this.git = git; this.repo = repo; }
+    private final HistoryIndex historyIndex;
+    private final BlobReader blobs;
+
+    MergeAnalyzer(Git git, String repo, HistoryIndex historyIndex, BlobReader blobs) {
+        this.git = git;
+        this.repo = repo;
+        this.historyIndex = historyIndex;
+        this.blobs = blobs;
+    }
     private void skip(String reason) { skipped.computeIfAbsent(reason, k -> new LongAdder()).increment(); }
     Map<String, LongAdder> skips() { return new TreeMap<>(skipped); }
 
@@ -46,25 +54,26 @@ final class MergeAnalyzer {
         var ancestors = bases.text().lines().toList();
         if (ancestors.size() != 1) { skip("no unique merge base"); return List.of(); }
         String base = ancestors.get(0);
+        if (base.equals(first) || base.equals(second)) return List.of();
         var left = edits(base, first);
         if (left.isEmpty()) return List.of();
         var right = edits(base, second);
         left.keySet().retainAll(right.keySet());
         if (left.isEmpty()) return List.of();
         var replay = Replay.of(git, first, second);
-        long time = Long.parseLong(git.read("show", "-s", "--format=%ct", base).text().strip());
+        var snapshot = historyIndex.at(base);
         var rows = new ArrayList<Sample>();
         for (var entry : left.entrySet()) {
             String path = entry.getKey();
             Edit edit = entry.getValue();
             var names = List.of(path, edit.destination(), right.get(path).destination());
             if (names.stream().anyMatch(replay.other()::contains)) { skip("non-text conflict"); continue; }
-            var bytes = git.read("cat-file", "blob", edit.blob()).bytes();
+            var bytes = blobs.read(edit.blob());
             String code;
             try { code = StandardCharsets.UTF_8.newDecoder().decode(ByteBuffer.wrap(bytes)).toString(); }
             catch (CharacterCodingException ex) { skip("non-UTF-8 source"); continue; }
             if (code.indexOf(0) >= 0) { skip("binary base"); continue; }
-            var history = History.collect(git, base, time, path);
+            var history = snapshot.history(path);
             if (history == null) { skip("unavailable history"); continue; }
             rows.add(new Sample(repo, merge, first, second, base, path, edit.blob(), code, history,
                     names.stream().anyMatch(replay.text()::contains)));
