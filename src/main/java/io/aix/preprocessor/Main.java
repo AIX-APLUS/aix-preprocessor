@@ -1,0 +1,83 @@
+package io.aix.preprocessor;
+
+import java.io.IOException;
+import java.net.URI;
+import java.nio.file.*;
+import java.util.Arrays;
+import java.util.Comparator;
+
+/** CLI for extracting a single unsplit Java merge dataset from a local repository. */
+public final class Main {
+    private static final String USAGE = "aix-preprocessor extract REPO [--output FILE] [--threads N] [--repo-id OWNER/REPO]";
+    private Main() {}
+
+    /** Runs extraction from local refs and publishes the finished Parquet file. */
+    public static void main(String[] args) throws Exception {
+        if (args.length == 0 || args[0].equals("--help")) {
+            System.out.println(USAGE);
+            return;
+        }
+        if (args[0].equals("extract")) {
+            extract(Arrays.copyOfRange(args, 1, args.length));
+        } else if (Files.isDirectory(Path.of(args[0]))) {
+            extract(args); // Accept the original repository-first invocation.
+        } else {
+            throw new IllegalArgumentException("Unknown command: " + args[0] + "\n" + USAGE);
+        }
+    }
+
+    private static void extract(String[] args) throws Exception {
+        if (args.length == 1 && args[0].equals("--help")) {
+            System.out.println(USAGE);
+            return;
+        }
+        if (args.length == 0) throw new IllegalArgumentException(USAGE);
+        Path source = Path.of(args[0]).toRealPath();
+        var original = new Git(source);
+        int threads = Math.min(8, Runtime.getRuntime().availableProcessors());
+        Path output = Path.of("samples.parquet").toAbsolutePath();
+        String repo = null;
+        for (int i = 1; i < args.length; i += 2) {
+            if (i + 1 == args.length) throw new IllegalArgumentException(USAGE);
+            switch (args[i]) {
+                case "--output" -> output = Path.of(args[i + 1]).toAbsolutePath();
+                case "--threads" -> threads = Integer.parseInt(args[i + 1]);
+                case "--repo-id" -> repo = args[i + 1];
+                default -> throw new IllegalArgumentException(USAGE);
+            }
+        }
+        if (threads < 1) throw new IllegalArgumentException("--threads must be positive");
+        if (Files.exists(output)) throw new FileAlreadyExistsException(output.toString());
+        if (original.read("rev-parse", "--is-shallow-repository").text().strip().equals("true"))
+            throw new IOException("Full repository history is required");
+        if (repo == null) repo = repositoryId(source, original);
+        Files.createDirectories(output.getParent());
+        Path temp = Files.createTempDirectory(output.getParent(), ".aix-");
+        try {
+            Path mirror = temp.resolve("mirror.git");
+            original.read("clone", "--quiet", "--mirror", "--shared", "--", source.toString(), mirror.toString());
+            Path partial = temp.resolve("dataset.parquet");
+            try (var writer = new DatasetWriter(partial)) {
+                Extraction.run(new Git(mirror), repo, threads, writer);
+            }
+            Files.createLink(output, partial); // Atomically publish without clobbering concurrent output.
+            System.err.println("Saved " + output);
+        } finally {
+            try (var paths = Files.walk(temp)) {
+                for (Path path : paths.sorted(Comparator.reverseOrder()).toList()) Files.delete(path);
+            }
+        }
+    }
+
+    private static String repositoryId(Path source, Git git) throws Exception {
+        var remote = git.run("config", "--get", "remote.origin.url");
+        if (remote.status() == 0) {
+            String url = remote.text().strip();
+            String path = null;
+            if (url.contains("://")) path = URI.create(url).getPath();
+            else if (url.matches("[^/]+:.+")) path = url.substring(url.indexOf(':') + 1);
+            if (path != null && !path.isBlank()) return path.replaceFirst("^/+", "").replaceFirst("\\.git/?$", "");
+        }
+        return source.getFileName().toString().replaceFirst("\\.git$", "");
+    }
+}
