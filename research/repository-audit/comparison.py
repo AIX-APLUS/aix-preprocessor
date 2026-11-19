@@ -89,7 +89,8 @@ def screened_candidate(repo, url, tip, branch, license_name, size_kib, commits, 
     return {
         "record_type": "supplementary_candidate", "repository": repo, "github_url": url,
         "pinned_sha": tip, "default_branch": branch, "github_license_metadata": license_name,
-        "github_size_kib": size_kib, "total_commits": commits, "java_paths_at_tip": java_paths,
+        "github_size_kib": size_kib, "total_commits": commits,
+        "total_commits_source": "github_rest" if commits is not None else None, "java_paths_at_tip": java_paths,
         "two_parent_merges": None, "pilot_sha": None, "pilot_two_parent_merges": None,
         "eligible_samples": None, "positive_samples": None, "negative_samples": None,
         "positive_rate": None, "extraction_seconds": None, "max_process_rss_kib": None,
@@ -175,6 +176,8 @@ def collect(evidence):
     profiles = {r["filename"]: r for r in quality.get("inputs", [])}
     integrity_source = "validation/pilot-integrity.json"
     integrity = {r["repository"]: r for r in nullable(evidence / integrity_source).get("repositories", [])}
+    notice_source = "validation/pilot-notices.json"
+    notices = nullable(evidence / notice_source).get("repositories", {})
     replay_source = "pilot-enrichment.json"
     enrichment = nullable(evidence / replay_source)
     replays = enrichment.get("repositories", {})
@@ -209,9 +212,10 @@ def collect(evidence):
             notes.append("No validated production Parquet in this scope.")
         records.append({
             "repository": repo, "github_url": api["url"], "pinned_sha": tip, "default_branch": branch,
-            "analyzed_refs": {"default_git_graph": tip, "all_graph": graph.get("fetch_refspecs"),
+            "analyzed_refs": {"default_git_graph": graph.get("pinned_default_sha"), "all_graph": graph.get("fetch_refspecs"),
                               "sample_parquet": study.get("analyzed_refs")},
             "total_commits": default.get("total_commits", api["reachable_default_rest"]),
+            "total_commits_source": "git_rev_list" if graph else "github_rest",
             "two_parent_merges": default.get("two_parent_merges"), "octopus_merges": default.get("octopus_merges"),
             "all_default_merges": default.get("all_merge_commits"),
             "default_unique_base_merges": default.get("two_parent_merge_bases", {}).get("unique"),
@@ -230,7 +234,7 @@ def collect(evidence):
             "extraction_seconds": study.get("extraction_seconds"), "parquet_bytes": study.get("parquet_bytes"),
             "max_process_rss_kib": study.get("max_process_rss_kib"), "pilot_git_bytes":study.get("pilot_git_bytes"),
             "git_version": study.get("git_version", graph.get("git_version")),
-            "extractor_sha":"06e755ebabed1707a3413ec99ffa2511b046c543", "extraction_status": study.get("status","unmeasured"),
+            "extractor_sha": study.get("extractor_sha"), "extraction_status": study.get("status","unmeasured"),
             "evidence":[api["evidence"]["metadata"],api["evidence"]["tree"],recent["base_url"],pairs["url"]]
                         + ([f"evidence/runs/{slug}.json"] if graph else [])
                         + ([f"evidence/runs/pilot-{repo.replace('/', '__')}.json"] if study else []),
@@ -245,9 +249,11 @@ def collect(evidence):
         )
         if passed:
             profile = profiles[repo.replace("/", "__") + ".parquet"]
-            if profile["repo_id"] != (repo if study["eligible_samples"] else None):
+            # Earlier empty Parquets had no row-level repo_id; the strict runner supplies the manifest ID.
+            if profile["repo_id"] != repo and not (study["eligible_samples"] == 0 and profile["repo_id"] is None):
                 raise ValueError("Quality file identifies a different repository: " + repo)
             record.update(pilot_measurements(repo, study, profile, quality["schema_columns_validated"]))
+            record["pilot_two_parent_share_of_default"] = ratio(record["pilot_two_parent_merges"], record["two_parent_merges"])
             record["evidence"].append("evidence/runs/quality.json")
             if repo in integrity:
                 validated = integrity[repo]
@@ -267,6 +273,15 @@ def collect(evidence):
                 record["evidence"].append("evidence/" + provenance_name)
             if repo in replays:
                 add_remeasurement(record, replays[repo], "evidence/" + replay_source)
+            if repo in notices:
+                header_scan = notices[repo]
+                if header_scan["logical_sha256"] != record["parquet_validation"]["logical_sha256"]:
+                    raise ValueError("Historical notice scan used different rows: " + repo)
+                record["historical_notice_rows"] = {
+                    notice: {"rows": counts["rows"], "positive": counts["positive"]}
+                    for notice, counts in header_scan["notices"].items()
+                }
+                record["evidence"].append("evidence/" + notice_source)
     records.extend(original_supplementary(evidence))
     records.extend(additional_supplementary(evidence))
     if len({r["repository"].lower() for r in records}) != len(records):

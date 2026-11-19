@@ -19,8 +19,8 @@ END = "<!-- pilot-tables:end -->"
 
 def tables(records):
     history = [
-        "| 저장소 | 기본 tip 커밋 / 두 부모 병합 | 전체 heads·tags 커밋 / 두 부모 병합 | 파일럿 ref 끝점 | 파일럿 커밋 / 두 부모 병합 | 행을 낸 병합 |",
-        "|---|---:|---:|---|---:|---:|",
+        "| 저장소 | 기본 tip 커밋 / 두 부모 병합 | 전체 heads·tags 커밋 / 두 부모 병합 | 파일럿 ref 끝점 | 파일럿 커밋 / 두 부모 병합 | 기본 tip 두 부모 병합 중 파일럿 비율 | 행을 낸 병합 |",
+        "|---|---:|---:|---|---:|---:|---:|",
     ]
     samples = [
         "| 저장소 | 유효 행 | 양성 | 음성 | 양성률 | 추출(초) | 최대 RSS(KiB) | Parquet(B) | 행/병합 | 행/초 |",
@@ -41,7 +41,8 @@ def tables(records):
         history.append(f"| {name} | {r['total_commits']:,} / {r['two_parent_merges']:,} | "
                        f"{all_refs['total_commits']:,} / {all_refs['two_parent_merges']:,} | "
                        f"[{date} · `{anchor[:8]}`](https://github.com/{repo}/commit/{anchor}) | "
-                       f"{p['pilot_total_commits']:,} / {m:,} | {p['funnel']['merges_with_joint_edits']} |")
+                       f"{p['pilot_total_commits']:,} / {m:,} | {m / r['two_parent_merges']:.2%} | "
+                       f"{p['funnel']['merges_with_joint_edits']} |")
         samples.append(f"| {name} | {n} | {pos} | {neg} | {pos / n:.2%} | {sec:.3f} | "
                        f"{r['max_process_rss_kib']:,} | {r['parquet_bytes']:,} | {n / m:.3f} | {n / sec:.2f} |")
     return "\n".join(history) + "\n\n" + "\n".join(samples)

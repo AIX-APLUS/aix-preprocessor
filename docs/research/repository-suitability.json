@@ -15,6 +15,7 @@
       ]
     },
     "total_commits": 64085,
+    "total_commits_source": "git_rev_list",
     "two_parent_merges": 21489,
     "octopus_merges": 0,
     "all_default_merges": 21489,
@@ -67,7 +68,8 @@
       "evidence/runs/quality.json",
       "evidence/validation/pilot-integrity.json",
       "evidence/run-44549292132-provenance.json",
-      "evidence/pilot-enrichment.json"
+      "evidence/pilot-enrichment.json",
+      "evidence/validation/pilot-notices.json"
     ],
     "limitations": [
       "Full default history and historical pilot are distinct populations.",
@@ -227,6 +229,7 @@
     "full_default_rows": null,
     "full_default_positive": null,
     "full_default_positive_rate": null,
+    "pilot_two_parent_share_of_default": 0.00470007911024245,
     "ubuntu_run": {
       "run_id": 44549292132,
       "run_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132",
@@ -314,6 +317,12 @@
         "16384": 2,
         "65536": 0
       }
+    },
+    "historical_notice_rows": {
+      "Apache-2.0": {
+        "rows": 27,
+        "positive": 7
+      }
     }
   },
   {
@@ -332,6 +341,7 @@
       ]
     },
     "total_commits": 38921,
+    "total_commits_source": "git_rev_list",
     "two_parent_merges": 5529,
     "octopus_merges": 0,
     "all_default_merges": 5529,
@@ -384,7 +394,8 @@
       "evidence/runs/quality.json",
       "evidence/validation/pilot-integrity.json",
       "evidence/run-44549292132-provenance.json",
-      "evidence/pilot-enrichment.json"
+      "evidence/pilot-enrichment.json",
+      "evidence/validation/pilot-notices.json"
     ],
     "limitations": [
       "Full default history and historical pilot are distinct populations.",
@@ -546,6 +557,7 @@
     "full_default_rows": null,
     "full_default_positive": null,
     "full_default_positive_rate": null,
+    "pilot_two_parent_share_of_default": 0.0385241454150841,
     "ubuntu_run": {
       "run_id": 44549292132,
       "run_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132",
@@ -633,6 +645,16 @@
         "16384": 63,
         "65536": 24
       }
+    },
+    "historical_notice_rows": {
+      "MIT": {
+        "rows": 140,
+        "positive": 20
+      },
+      "no listed notice matched": {
+        "rows": 8,
+        "positive": 1
+      }
     }
   },
   {
@@ -651,6 +673,7 @@
       ]
     },
     "total_commits": 76296,
+    "total_commits_source": "git_rev_list",
     "two_parent_merges": 11038,
     "octopus_merges": 0,
     "all_default_merges": 11038,
@@ -703,7 +726,8 @@
       "evidence/runs/quality.json",
       "evidence/validation/pilot-integrity.json",
       "evidence/run-44549292132-provenance.json",
-      "evidence/pilot-enrichment.json"
+      "evidence/pilot-enrichment.json",
+      "evidence/validation/pilot-notices.json"
     ],
     "limitations": [
       "Full default history and historical pilot are distinct populations.",
@@ -843,6 +867,7 @@
     "full_default_rows": null,
     "full_default_positive": null,
     "full_default_positive_rate": null,
+    "pilot_two_parent_share_of_default": 0.0001811922449719152,
     "ubuntu_run": {
       "run_id": 44549292132,
       "run_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132",
@@ -930,6 +955,12 @@
         "16384": 1,
         "65536": 1
       }
+    },
+    "historical_notice_rows": {
+      "GPL-3.0-or-later": {
+        "rows": 1,
+        "positive": 0
+      }
     }
   },
   {
@@ -948,6 +979,7 @@
       ]
     },
     "total_commits": 25390,
+    "total_commits_source": "git_rev_list",
     "two_parent_merges": 2817,
     "octopus_merges": 0,
     "all_default_merges": 2817,
@@ -1000,7 +1032,8 @@
       "evidence/runs/quality.json",
       "evidence/validation/pilot-integrity.json",
       "evidence/run-44549292132-provenance.json",
-      "evidence/pilot-enrichment.json"
+      "evidence/pilot-enrichment.json",
+      "evidence/validation/pilot-notices.json"
     ],
     "limitations": [
       "Full default history and historical pilot are distinct populations.",
@@ -1143,6 +1176,7 @@
     "full_default_rows": null,
     "full_default_positive": null,
     "full_default_positive_rate": null,
+    "pilot_two_parent_share_of_default": 0.08306709265175719,
     "ubuntu_run": {
       "run_id": 44549292132,
       "run_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132",
@@ -1230,6 +1264,16 @@
         "16384": 114,
         "65536": 37
       }
+    },
+    "historical_notice_rows": {
+      "GPL-2.0-or-later": {
+        "rows": 161,
+        "positive": 20
+      },
+      "no listed notice matched": {
+        "rows": 34,
+        "positive": 6
+      }
     }
   },
   {
@@ -1248,6 +1292,7 @@
       ]
     },
     "total_commits": 64169,
+    "total_commits_source": "git_rev_list",
     "two_parent_merges": 27298,
     "octopus_merges": 0,
     "all_default_merges": 27298,
@@ -1300,7 +1345,8 @@
       "evidence/runs/quality.json",
       "evidence/validation/pilot-integrity.json",
       "evidence/run-44549292132-provenance.json",
-      "evidence/pilot-enrichment.json"
+      "evidence/pilot-enrichment.json",
+      "evidence/validation/pilot-notices.json"
     ],
     "limitations": [
       "Full default history and historical pilot are distinct populations.",
@@ -1462,6 +1508,7 @@
     "full_default_rows": null,
     "full_default_positive": null,
     "full_default_positive_rate": null,
+    "pilot_two_parent_share_of_default": 0.003699904754927101,
     "ubuntu_run": {
       "run_id": 44549292132,
       "run_url": "https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44549292132",
@@ -1549,6 +1596,20 @@
         "16384": 0,
         "65536": 0
       }
+    },
+    "historical_notice_rows": {
+      "Apache-2.0": {
+        "rows": 1,
+        "positive": 0
+      },
+      "LGPL-2.1-or-later": {
+        "rows": 1,
+        "positive": 0
+      },
+      "no listed notice matched": {
+        "rows": 7,
+        "positive": 0
+      }
     }
   },
   {
@@ -1560,6 +1621,7 @@
     "github_license_metadata": "MIT",
     "github_size_kib": 49825,
     "total_commits": 6383,
+    "total_commits_source": "github_rest",
     "java_paths_at_tip": 1015,
     "two_parent_merges": null,
     "pilot_sha": null,
@@ -1612,6 +1674,7 @@
     "github_license_metadata": "EPL-2.0",
     "github_size_kib": 351480,
     "total_commits": 3586,
+    "total_commits_source": "github_rest",
     "java_paths_at_tip": 1011,
     "two_parent_merges": null,
     "pilot_sha": null,
@@ -1664,6 +1727,7 @@
     "github_license_metadata": "Apache-2.0",
     "github_size_kib": 327962,
     "total_commits": 18732,
+    "total_commits_source": "github_rest",
     "java_paths_at_tip": 6309,
     "two_parent_merges": null,
     "pilot_sha": null,
@@ -1716,6 +1780,7 @@
     "github_license_metadata": "Apache-2.0",
     "github_size_kib": 143763,
     "total_commits": 7141,
+    "total_commits_source": "github_rest",
     "java_paths_at_tip": 975,
     "two_parent_merges": null,
     "pilot_sha": null,
@@ -1768,6 +1833,7 @@
     "github_license_metadata": "Apache-2.0",
     "github_size_kib": 90669,
     "total_commits": 13947,
+    "total_commits_source": "github_rest",
     "java_paths_at_tip": 1439,
     "two_parent_merges": null,
     "pilot_sha": null,
@@ -1820,6 +1886,7 @@
     "github_license_metadata": "Apache-2.0",
     "github_size_kib": 474806,
     "total_commits": 32631,
+    "total_commits_source": "github_rest",
     "java_paths_at_tip": 6540,
     "two_parent_merges": null,
     "pilot_sha": null,
@@ -1873,6 +1940,7 @@
     "github_license_metadata": "NOASSERTION",
     "github_size_kib": 93629,
     "total_commits": 14919,
+    "total_commits_source": "github_rest",
     "java_paths_at_tip": 1261,
     "two_parent_merges": null,
     "pilot_sha": null,
@@ -1926,6 +1994,7 @@
     "github_license_metadata": "NOASSERTION",
     "github_size_kib": 163160,
     "total_commits": 11678,
+    "total_commits_source": "github_rest",
     "java_paths_at_tip": 1905,
     "two_parent_merges": null,
     "pilot_sha": null,
@@ -1978,6 +2047,7 @@
     "github_license_metadata": "GPL-3.0",
     "github_size_kib": 2013704,
     "total_commits": 21598,
+    "total_commits_source": "github_rest",
     "java_paths_at_tip": 871,
     "two_parent_merges": null,
     "pilot_sha": null,
@@ -2031,6 +2101,7 @@
     "github_license_metadata": "NOASSERTION",
     "github_size_kib": 1513822,
     "total_commits": 112424,
+    "total_commits_source": "github_rest",
     "java_paths_at_tip": 3467,
     "two_parent_merges": null,
     "pilot_sha": null,

@@ -81,6 +81,28 @@ JabRef·Jenkins의 과거 소스 헤더 두 건이 어떤 파일럿 행에 실�
 python research/repository-audit/verify_license_rows.py --parquet-dir DATASETS --jar JAR --output LICENSE_ROWS_JSON
 ```
 
+## 독립 리뷰에서 다시 실행한 검사
+
+저장소에 보존한 집계만으로 아래 회귀 테스트를 실행할 수 있다. 테스트가 만드는 임시 산출물은 네트워크나 대형 저장소를 요구하지 않는다. 원래 Ubuntu 실행의 링크는 `a6a7c7e`용이다. 아래 테스트와 수정된 워크플로의 호스티드 실행을 구분한다.
+
+```console
+python -B -m unittest discover -s research/repository-audit -p "test_*.py" -v
+python -B -m unittest discover -s benchmarks -p test_dataset.py -v
+```
+
+수정된 연구 워크플로에서 품질 분석을 재현하려면 위 Bash 예시의 `quality.py`에 `--study-results "$work/results" --tokenizer-json "$TOKENIZER_JSON"`을 추가한다. 다섯 성공 보고서와 다섯 Parquet가 필요하다. 고정 tip과 파일럿 ref는 별도 [조상 관계 명세](evidence/validation/anchor-ancestry.json)에서 확인한다. 다른 tip이나 시점으로 연구 범위를 바꾸면 그에 맞는 조상 관계를 먼저 검증해 기록한다. 토크나이저 파일의 기대 해시는 코드에 고정했다. 일반 탐색 모드는 일부 저장소 또는 토큰 미측정 실행을 지원한다. 최종 SUMMARY를 재현하려면 다섯 파일럿 JSON과 `quality.json`만 있는 디렉터리에 `python -B research/repository-audit/report_study.py SIX_JSON_DIR`를 실행한다. 그래프 산출물은 별도 디렉터리에 둔다.
+
+아래는 리뷰 대응에서 실행한 행 단위 검사의 이식 가능한 명령이다. `DATASETS`는 Ubuntu와 논리 해시가 같은 다섯 Parquet, `JAR`는 고정 전처리기와 Parquet 의존성이 든 JAR, `*_BARE`는 각 단일 파일럿 ref의 완전한 조상이 있는 bare 저장소다. `SPLITS`는 이 다섯 입력을 합쳐 고정 분할기로 나눈 디렉터리다. 결과는 새 임시 경로에 쓴다. 각 명령은 저장소 루트에서 실행한다.
+
+```console
+python -B research/repository-audit/replay_pilot_labels.py --datasets DATASETS --bare-dirs FORGE_BARE JABREF_BARE JENKINS_BARE QUARKUS_BARE SPRING_BARE --jar JAR --java JAVA17 --output NEW_LABELS_JSON
+python -B research/repository-audit/verify_split_associations.py --jar JAR --split-dir SPLITS --check research/repository-audit/evidence/validation/split-associations.json
+```
+
+레이블 검사의 Git은 `merge-file --object-id`를 지원해야 한다. 이번에는 2.55.0.windows.5에서 실행했다. 고지 스캔의 다섯 입력과 명령은 [라이선스 조사](../../docs/research/identity-license.md)에 있다. 행·레이블·분할·토큰은 Windows 재현본, 시간·RSS·Parquet 물리 크기는 Ubuntu 측정값을 사용한다. Windows 샌드박스에서 정상 CLI의 미러 생성과 하드링크 게시가 각각 막힌 경로는 [리뷰 대응의 실행 범위](../../docs/research/claude-review-response.md)에 기록했다.
+
+Jenkins rename 대조는 동일한 단일 ref 입력에서 `extract --repo-id jenkinsci/jenkins --threads 2`를 기본값과 `--rename-limit 0`으로 실행한 후 각 출력을 `python benchmarks/dataset.py OUTPUT_PARQUET --jar JAR`로 읽는다. 이번 Windows 재실행은 독립된 두 임시 bare 저장소에서 같은 고정 JAR의 `Extraction.run`과 `DatasetWriter`를 직접 호출했다. [고정 입력, 실제 호출과 결과](evidence/validation/jenkins-rename.json)
+
 ## 이력 범위
 
 - 전체 그래프는 체크아웃 없이 `--filter=tree:0`으로 모든 공개 heads/tags를 한 번에 가져온다. 커밋 부모 이력은 완전하다. 숨은 PR refs, 포크, 삭제된 브랜치는 범위 밖이다. 기본 브랜치 고정 SHA와 이 로컬 미러의 `--all`을 각각 집계한다. `git rev-list --parents`, `git merge-base --all P1 P2` 결과로 부모 수와 유일 base를 센다.
