@@ -95,6 +95,19 @@ class ExtractionTest {
         assertFalse(Files.exists(tree));
     }
 
+    @Test void closingBlobReaderReleasesMirrorForImmediateDeletion() throws Exception {
+        Path mirror = Files.createDirectory(temp.resolve("mirror.git"));
+        Path source = Files.writeString(temp.resolve("example.txt"), "a blob\n");
+        var git = new Git(mirror);
+        git.read("init", "--bare", "-q");
+        String sha = git.read("hash-object", "-w", "--", source.toString()).text().strip();
+        try (var blobs = new BlobReader(git)) {
+            assertArrayEquals(Files.readAllBytes(source), blobs.read(sha));
+        }
+        Main.deleteTree(mirror);
+        assertFalse(Files.exists(mirror));
+    }
+
     @Test void cleanupPreservesDirectoryLinkTarget() throws Exception {
         Path outside = Files.createDirectory(temp.resolve("outside"));
         Path sentinel = Files.writeString(outside.resolve("sentinel.txt"), "keep me");

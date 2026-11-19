@@ -31,8 +31,15 @@ final class BlobReader implements AutoCloseable {
         return body;
     }
 
-    public void close() throws IOException {
-        process.destroy();
-        input.close();
+    @Override public void close() throws IOException {
+        try (input) {
+            // EOF lets cat-file exit normally, including behind the Git for Windows launcher.
+            process.getOutputStream().close();
+        } finally {
+            // Keep the mirror until Git exits, even if the calling thread is interrupted.
+            process.onExit().join();
+        }
+        int status = process.exitValue();
+        if (status != 0) throw new IOException("git cat-file --batch failed (" + status + ")");
     }
 }
