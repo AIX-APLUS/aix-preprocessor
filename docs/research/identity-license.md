@@ -36,6 +36,32 @@ JabRef와 Jenkins에서 파일럿 기준점의 조상 중 두 부모가 같은 J
 | JabRef · 2015-08-14 · `8d22827b` | 병합 `baf58627`의 공통 조상 `cf0cde78`에서 `MODSEntry.java` 헤더는 **GPL-2.0-or-later**다. 해당 기준점의 README도 같은 조건을 명시한다. [파일 헤더](https://github.com/JabRef/jabref/blob/cf0cde78a0ea22204891eae7a245ba9332dd4e91/src/main/java/net/sf/jabref/logic/mods/MODSEntry.java#L1-L5) · [파일럿 시점 README](https://github.com/JabRef/jabref/blob/8d22827be20de435b01844f8643fe014aa910daa/README.md#L129-L135) | 현재 MIT 표기를 과거 행에 일괄 부여하면 이 표본에서 오류가 난다. 공개할 코드 행마다 당시 공통 조상, 파일 헤더, 적용 고지를 연결한다. |
 | Jenkins · 2011-06-07 · `285741a5` | 병합 `5abc651c`의 공통 조상 `fe452bfb`에서 `ExtensionComponent.java` 헤더는 **MIT**다. 공통 조상과 파일럿 기준점의 루트 `LICENSE.txt`는 같은 blob이다. [파일 헤더](https://github.com/jenkinsci/jenkins/blob/fe452bfbc5a4332c81a7cdf2cbd52c3af37ee36d/core/src/main/java/hudson/ExtensionComponent.java#L1-L21) · [파일럿 시점 LICENSE](https://github.com/jenkinsci/jenkins/blob/285741a5240f3658c6e5191edc9ba65fe7d5793c/LICENSE.txt) | 이 소스 표본은 현재 라이선스 표기와 일치한다. 나머지 행의 제3자 코드 및 개별 고지는 별도 확인 대상이다. |
 
-**두 표본 모두 실제 충돌 양성 행이었다.** 기준 파일의 Git blob은 JabRef `b1b6d41f`, Jenkins `8b0af778`이다. 두 행에서 저장소·병합 SHA·경로로 구성된 키, 두 부모의 SHA와 순서, 공통 조상 SHA, 기준 blob SHA가 모두 일치했다. Parquet에 담긴 소스를 UTF-8로 다시 인코딩한 길이와 SHA-256도 원문과 일치했다. 따라서 JabRef 과거 파일럿에는 GPL-2.0-or-later 고지를 가진 양성 행이 적어도 한 건 들어 있다. 나머지 파일럿 행의 개별 고지는 전수 확인하지 않았다. [행별 검증 기록](../../research/repository-audit/evidence/validation/license-row-match.json)
+**두 표본 모두 실제 충돌 양성 행이었다.** 기준 파일의 Git blob은 JabRef `b1b6d41f`, Jenkins `8b0af778`이다. 두 행에서 저장소·병합 SHA·경로로 구성된 키, 두 부모의 SHA와 순서, 공통 조상 SHA, 기준 blob SHA가 모두 일치했다. Parquet에 담긴 소스를 UTF-8로 다시 인코딩한 길이와 SHA-256도 원문과 일치했다. 이 두 건은 초기 표본 대조 결과다. 아래 후속 검사는 같은 파일럿의 380행 전체를 대상으로 한다. [행별 검증 기록](../../research/repository-audit/evidence/validation/license-row-match.json)
 
 같은 판독에서 충돌 양성이 한 번이라도 나온 고유 `base_path` 문자열은 JabRef 20개, Jenkins 16개, Spring Boot 7개, Card Forge·Quarkus 각 0개였다. 저장소를 구분한 경로는 총 43개다. 파일명을 바꾸면 별도 경로가 되며 여러 병합에서 같은 경로에 양성이 나와도 한 번만 센다. 연구 폴더에서 `python verify_license_rows.py --parquet-dir <재현-Parquet-폴더> --jar <전처리기-JAR> --java <JDK17-java>`로 다시 검사할 수 있다. [재현 스크립트](../../research/repository-audit/verify_license_rows.py)
+
+### 380행의 과거 파일 고지 재검산
+
+Ubuntu 실행 `44549292132`에 보존된 15개 컬럼의 논리 해시와 일치하는 재현 Parquet 5개를 읽었다. 380행 각각의 공통 조상 커밋에서 기록된 경로를 열어 Git blob 식별자와 원문 바이트를 확인했다. 모두 같은 행의 `base_blob_sha` 및 UTF-8로 인코딩한 `base_code`와 일치했다. 소스 첫 6,000자의 주석에서 아래 고지 문구를 셌다. 같은 경로가 여러 병합에 나타나면 각 행에 한 번씩 포함된다. [저장소별 집계와 원본 파일 식별자](../../research/repository-audit/evidence/validation/pilot-notices.json)
+
+| 저장소 | 식별한 고지 | 해당 행 / 전체 행 | 해당 양성 행 / 전체 양성 행 |
+| --- | --- | ---: | ---: |
+| JabRef | GPL-2.0-or-later | 161 / 195 | 20 / 26 |
+| Jenkins | MIT | 140 / 148 | 20 / 21 |
+| Spring Boot | Apache-2.0 | 27 / 27 | 7 / 7 |
+| Card Forge | GPL-3.0-or-later | 1 / 1 | 양성 없음 |
+| Quarkus | LGPL-2.1-or-later | 1 / 9 | 양성 없음 |
+| Quarkus | Apache-2.0 | 1 / 9 | 양성 없음 |
+
+JabRef에서 GPL 고지를 포함한 양성 20행의 경로는 17개다. 전체 양성 경로는 20개다. Quarkus의 LGPL 고지는 병합 `43dc7dc7`의 `DataSourceProducer.java`에서 확인했고, 헤더가 2.1 및 이후 버전을 명시한다. 검사한 문구와 일치하지 않은 JabRef 34행, Jenkins 8행, Quarkus 7행은 당시 상위 디렉터리 고지와 별도 저작권 표시 등을 추가로 확인해야 한다. [Quarkus 과거 파일](https://github.com/quarkusio/quarkus/blob/ff404300a4ca9ef034af81f70d6003b1029ca617/agroal/runtime/src/main/java/org/jboss/shamrock/agroal/runtime/DataSourceProducer.java)
+
+팀은 내부 추출·모델 학습에 포함할 행의 기준을 정하고, 외부에 Java 원문을 포함한 Parquet를 제공할 경우 파일별 출처·해당 시점 고지·포함 범위를 따로 검토한다. 공개할 산출물이 통계표인지 모델 가중치인지도 기록한다. 이 집계에서 판정한 것은 헤더의 문구이며, 학습 또는 외부 배포의 법률 적합성은 미판정이다.
+
+아래 명령은 저장소 루트에서 재현 Parquet와 각 파일럿의 로컬 Git 객체를 사용한다. `DATASETS`, `JAR`와 다섯 Git 경로를 실제 입력으로 바꾼다. Python 표준 라이브러리, Git, JDK 17로 실행했다. [검산 스크립트](../../research/repository-audit/verify_pilot_notices.py)
+
+```bash
+python research/repository-audit/verify_pilot_notices.py --parquet-dir DATASETS --jar JAR \
+  --git-dir Card-Forge/forge FORGE_GIT --git-dir JabRef/jabref JABREF_GIT \
+  --git-dir jenkinsci/jenkins JENKINS_GIT --git-dir quarkusio/quarkus QUARKUS_GIT \
+  --git-dir spring-projects/spring-boot SPRING_GIT
+```

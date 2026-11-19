@@ -1,0 +1,35 @@
+{
+  "source_run": 44549292132,
+  "verified_repository_digests": 5,
+  "merges_in_multiple_splits": 36,
+  "multiple_row_merges": 57,
+  "multiple_row_merges_with_mixed_labels": 21,
+  "splits": {
+    "train": {
+      "rows": 267,
+      "positives": 38
+    },
+    "val": {
+      "rows": 57,
+      "positives": 8
+    },
+    "test": {
+      "rows": 56,
+      "positives": 8
+    }
+  },
+  "held_out": {
+    "val": {
+      "merges": 25,
+      "merges_also_in_train": 19,
+      "rows_whose_merge_is_in_train": 51,
+      "positive_rows_whose_merge_is_in_train": 6
+    },
+    "test": {
+      "merges": 29,
+      "merges_also_in_train": 27,
+      "rows_whose_merge_is_in_train": 54,
+      "positive_rows_whose_merge_is_in_train": 7
+    }
+  }
+}

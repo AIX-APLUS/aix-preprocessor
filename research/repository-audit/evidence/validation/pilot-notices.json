@@ -1,0 +1,161 @@
+{
+  "run_id": 44549292132,
+  "artifact_id": 14543915089,
+  "scope": "Listed notice markers in leading complete comments in the first 6000 Unicode characters of base_code. Each repeated sample counts separately. No inference about unmarked files or permissions.",
+  "repositories": {
+    "Card-Forge/forge": {
+      "samples": 1,
+      "positive": 0,
+      "negative": 1,
+      "logical_sha256": "7c45f551eb50f4bfcb268afbdcbb489962a1c53b7a6a928a9e991f225f0ff6c0",
+      "source_texts_matched": 1,
+      "source_utf8_bytes_matched": 1,
+      "distinct_positive_paths": 0,
+      "notices": {
+        "GPL-3.0-or-later": {
+          "rows": 1,
+          "positive": 0,
+          "distinct_positive_paths": 0,
+          "example": {
+            "merge_sha": "215699c878fbeee37cef6ebd78e15e338b32a37b",
+            "base_sha": "2ec23fa7f403c16a33f5d794a329ed9805209045",
+            "base_path": "src/main/java/forge/Card.java",
+            "base_blob_sha": "870b0f55d6a8b35dbe5eb248bef47d2f4ab213fd"
+          }
+        }
+      }
+    },
+    "JabRef/jabref": {
+      "samples": 195,
+      "positive": 26,
+      "negative": 169,
+      "logical_sha256": "30087ec40ca43c74d8de5a728ff79c3ec96514f783507a2a2162239023a9642b",
+      "source_texts_matched": 195,
+      "source_utf8_bytes_matched": 195,
+      "distinct_positive_paths": 20,
+      "notices": {
+        "GPL-2.0-or-later": {
+          "rows": 161,
+          "positive": 20,
+          "distinct_positive_paths": 17,
+          "example": {
+            "merge_sha": "136afe13381d0f7faf5d9689b27e9a85419b840b",
+            "base_sha": "14b8c8ebd5cc01565ac4f001eb2403c334f52b9b",
+            "base_path": "src/java/net/sf/jabref/BasePanel.java",
+            "base_blob_sha": "4d97b3754771045e9bd03ee44b9815b8de2258e3"
+          }
+        },
+        "no listed notice matched": {
+          "rows": 34,
+          "positive": 6,
+          "distinct_positive_paths": 3,
+          "example": {
+            "merge_sha": "1439b71b2789542d2ccb5d345d3ab590375a150a",
+            "base_sha": "a2afe397a95a8909b4a3f8a5d3290a65f8d3bdb5",
+            "base_path": "src/main/java/spl/PdfImporter.java",
+            "base_blob_sha": "d13a0bf36acc66a8082aa15c2d2a1b4c3fa8300d"
+          }
+        }
+      }
+    },
+    "jenkinsci/jenkins": {
+      "samples": 148,
+      "positive": 21,
+      "negative": 127,
+      "logical_sha256": "62ae7852c3b87c83c0019e28b4f86b623e18d561e71848a8c1477b94ab343ea3",
+      "source_texts_matched": 148,
+      "source_utf8_bytes_matched": 148,
+      "distinct_positive_paths": 16,
+      "notices": {
+        "MIT": {
+          "rows": 140,
+          "positive": 20,
+          "distinct_positive_paths": 15,
+          "example": {
+            "merge_sha": "067fcb824bc1d9bb8c62ff1437e3a9a6be11a427",
+            "base_sha": "ea0ed93558a0d34bc5d4aea125c92a587fbc7cf3",
+            "base_path": "core/src/main/java/hudson/tools/ZipExtractionInstaller.java",
+            "base_blob_sha": "b2dbd58d8561c3ce9efeacb76839b6303950c945"
+          }
+        },
+        "no listed notice matched": {
+          "rows": 8,
+          "positive": 1,
+          "distinct_positive_paths": 1,
+          "example": {
+            "merge_sha": "067fcb824bc1d9bb8c62ff1437e3a9a6be11a427",
+            "base_sha": "ea0ed93558a0d34bc5d4aea125c92a587fbc7cf3",
+            "base_path": "core/src/main/java/hudson/model/DownloadService.java",
+            "base_blob_sha": "5aa247ab9e6b5198be835af97a93d373c2a763f5"
+          }
+        }
+      }
+    },
+    "quarkusio/quarkus": {
+      "samples": 9,
+      "positive": 0,
+      "negative": 9,
+      "logical_sha256": "8401e8ce3d35a3203b9b85cf4377c134915f4b225e357118087b1515be5d62fd",
+      "source_texts_matched": 9,
+      "source_utf8_bytes_matched": 9,
+      "distinct_positive_paths": 0,
+      "notices": {
+        "Apache-2.0": {
+          "rows": 1,
+          "positive": 0,
+          "distinct_positive_paths": 0,
+          "example": {
+            "merge_sha": "dab54f7cc69fb34e3265a88cc468a891694b2720",
+            "base_sha": "89ad3dddafdbabfba95da4eb77522460b3aa14fe",
+            "base_path": "builder/src/main/java/org/jboss/builder/BuildChainBuilder.java",
+            "base_blob_sha": "33810cf9130700dcf02b510c11613dbf3be1a2eb"
+          }
+        },
+        "LGPL-2.1-or-later": {
+          "rows": 1,
+          "positive": 0,
+          "distinct_positive_paths": 0,
+          "example": {
+            "merge_sha": "43dc7dc79c364dfa3d2303fa0ff0b0bd42eb9840",
+            "base_sha": "ff404300a4ca9ef034af81f70d6003b1029ca617",
+            "base_path": "agroal/runtime/src/main/java/org/jboss/shamrock/agroal/runtime/DataSourceProducer.java",
+            "base_blob_sha": "a151aa209aea12af0565126aae5bdf1548113ac3"
+          }
+        },
+        "no listed notice matched": {
+          "rows": 7,
+          "positive": 0,
+          "distinct_positive_paths": 0,
+          "example": {
+            "merge_sha": "01d572737f89db959a5a744767c642acf762a808",
+            "base_sha": "7942c6beba750ca9e325d8ed833210150282ccaf",
+            "base_path": "arc/deployment/src/main/java/org/jboss/shamrock/arc/deployment/ArcAnnotationProcessor.java",
+            "base_blob_sha": "81b40d26429ab55f18446a7d159419a513f734be"
+          }
+        }
+      }
+    },
+    "spring-projects/spring-boot": {
+      "samples": 27,
+      "positive": 7,
+      "negative": 20,
+      "logical_sha256": "2f12249ad98017643b8d8a11ae2395d0d6eb04ade1d89be6ea2879ae910cc1c3",
+      "source_texts_matched": 27,
+      "source_utf8_bytes_matched": 27,
+      "distinct_positive_paths": 7,
+      "notices": {
+        "Apache-2.0": {
+          "rows": 27,
+          "positive": 7,
+          "distinct_positive_paths": 7,
+          "example": {
+            "merge_sha": "27aa644b5291675935fdc8be3de23d93e501c0ee",
+            "base_sha": "362df05f651c917873dc64b7f251dacf3e23a4e4",
+            "base_path": "spring-boot-actuator/src/main/java/org/springframework/boot/actuate/autoconfigure/ErrorMvcAutoConfiguration.java",
+            "base_blob_sha": "502e0bc425fa3662d96bed269aa6f3621b4a0a75"
+          }
+        }
+      }
+    }
+  }
+}
