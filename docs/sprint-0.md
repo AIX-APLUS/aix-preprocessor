@@ -1,5 +1,13 @@
 # Sprint 0 · 추출 결과와 처리 시간의 기준선
 
+## 2026-11-19 · 팀의 데이터셋 명령과 최종 통합
+
+PR #4는 데이터 분할, 이력 인덱스, `stats`와 `merge`가 들어간 main `1f146695`를 반영한 뒤 병합됐다. PR HEAD `07a59e32`, 실제 PR 검사 커밋 `66dc981d`, 병합 커밋 `ca8df223`의 Git 트리는 모두 `14269079dfb78430fac2dad059384a91597d79f9`다. Windows·Ubuntu에서 읽기 전용 객체 삭제, 링크 대상 보존, Git 프로세스 종료 직후 미러 삭제, 실제 추출 테스트가 통과했다. [PR #4 병합](https://github.com/AIX-APLUS/aix-preprocessor/pull/4) · [정리 회귀 검사](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44531341969)
+
+두 OS에서 같은 제품 커밋의 JAR로 fixture를 추출하고, 나눈 파일을 다시 병합해 4행의 순서와 15개 컬럼을 확인했다. `stats`는 충돌 2건(50%)을 보고했다. 중복·스키마 불일치·기존 출력 경로는 거부했고, 입력 파일과 원본 저장소를 보존했다. 외부 프로세스가 임시 미러를 잠그면 게시된 Parquet가 남은 채 종료 코드 1을 받을 수 있다. 이 경우 같은 출력 경로로 다시 실행하면 기존 파일 보호 검사에 걸린다. [네 CLI 명령의 실제 실행](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44531965085)
+
+Sprint 0 브랜치는 병합된 main을 `e4bb73fc`에서 반영했다. 최종 기능 검사는 PR의 `pull_request` 실행에서, 고정 fixture와 minimal-json의 1·2스레드 반복 측정은 같은 HEAD의 `push` 실행에서 확인할 수 있다. 아래의 이전 실패 사례와 성능표에는 각각의 당시 SHA를 유지했다. [PR #2 검사 이력](https://github.com/AIX-APLUS/aix-preprocessor/pull/2/checks) · [브랜치별 벤치마크 실행 이력](https://github.com/AIX-APLUS/aix-preprocessor/actions/workflows/extraction-checks.yml?query=branch%3Atest%2Fextraction-baseline+event%3Apush)
+
 ## 팀 최적화 병합 후의 호환성 검사
 
 팀의 PR #3이 main `d7a6c921f841109a00682a212bfbd8b55ba0eb1a`에 병합되면서 이력 인덱스, 상주 `git cat-file --batch`, 이름 변경 한도, Gradle 9.1이 도입됐다. 아래 `d0bdc825` 성능표는 이 최적화 **이전**의 Sprint 0 기준선이다. 새 main은 동일 레코드를 생성하고 정상 종료하는지를 확인하는 호환성 검사 대상으로 삼았다. [팀의 PR #3](https://github.com/AIX-APLUS/aix-preprocessor/pull/3)
