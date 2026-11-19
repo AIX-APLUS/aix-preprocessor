@@ -1,6 +1,40 @@
 # Sprint 0 · 추출 결과와 처리 시간의 기준선
 
-## PR #1이 병합된 최신 main에서의 재검증
+## 팀 최적화 병합 후의 호환성 검사
+
+팀의 PR #3이 main `d7a6c921f841109a00682a212bfbd8b55ba0eb1a`에 병합되면서 이력 인덱스, 상주 `git cat-file --batch`, 이름 변경 한도, Gradle 9.1이 도입됐다. 아래 `d0bdc825` 성능표는 이 최적화 **이전**의 Sprint 0 기준선이다. 새 main은 동일 레코드를 생성하고 정상 종료하는지를 확인하는 호환성 검사 대상으로 삼았다. [팀의 PR #3](https://github.com/AIX-APLUS/aix-preprocessor/pull/3)
+
+첫 결합 검사 `dcfc4ad55b4d3ef97181246f63fc3c1f341c6312`에서 읽기 전용 Git 객체와 junction에 대한 회귀 검사는 Windows에서 통과했다. 그러나 CLI는 골든과 일치하는 4행을 게시한 뒤 `mirror.git` **디렉터리**를 삭제할 때 공유 위반으로 실패했다. 종료 코드는 1이었고 임시 트리가 남았다. 수정 브랜치 단독 Windows JUnit도 같은 통합 테스트에서 실패했다. Ubuntu 첫 시도는 Maven Central HTTP 429로 의존성을 받지 못해 JUnit을 실행하지 못했다. [Windows CLI 실패 로그](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44518179078/job/135539563549) · [Ubuntu 준비 실패 로그](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44518179078/job/135539564025)
+
+로컬 Windows에서 실제 blob을 쓰고 읽은 뒤 런처와 자식 프로세스를 관찰했다. 기존 `destroy()`는 런처를 종료했지만 자식이 남아 미러 즉시 삭제가 10/10회 실패했다. `destroy()` 뒤 런처만 기다려도 10/10회 실패했다. 표준 입력을 닫아 EOF를 보내고 Git이 정상 종료할 때까지 기다린 대조군은 자식 잔존 0건, 즉시 삭제 10/10회 성공이었다. 호환성 수정은 `BlobReader.close()`의 종료 순서와 그 회귀 검사에 한정했다. 이력 인덱스, blob 읽기, 행 선택, 스키마는 팀 커밋을 그대로 사용한다.
+
+수정 커밋은 `9660be44adc9777333e4fb934df58639409fa388`이다. 동일한 Git 객체로 만든 새 JUnit은 이전 코드에서 디렉터리 공유 위반으로 실패했고 수정 후 통과했다. 호출 스레드의 인터럽트 상태가 보존되는 것도 로컬에서 확인했다. 독립 수정 CI는 양 OS에서 네 개의 필수 추출·정리 테스트가 실제로 실행돼 통과했는지 확인했다. 통합 `4a0828c0ce9f2f6a54c004447340ed7794880db6`에서는 양 OS에서 이 네 건과 팀의 이력 인덱스 테스트까지 JUnit 5/5, Python 14/14가 통과했다. 실제 CLI로 fixture와 고정 minimal-json을 모두 1·4스레드에서 실행했고, 각각 4행(양성 2·음성 2)과 1행(음성 1)의 기존 논리 해시를 재현했다. [독립 수정 CI](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44519426115) · [통합 Windows 검사](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44519464506/job/135544049459) · [통합 Ubuntu 검사](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44519464506/job/135544049829)
+
+### 최종 생산 코드 조합의 별도 측정
+
+`aac7b74a2881227df8c2f1cc251599627a6cb473`은 위 기능 검증 커밋과 문서만 다르다. Windows·Ubuntu의 각 보고서에서 실제 checkout HEAD와 변경 파일 0건을 확인했다. 입력별·스레드별로 준비 1회와 본측정 3회를 수행했다. 총 32회가 모두 성공했고 준비 8회는 표에서 제외했다. fixture의 전체 논리 해시는 `b93b6d16e1ec0e95f924ac92d7e6a5b560b79677a5ca85583a30f77548dd4bcc`, minimal-json은 `8e4078e84ac01f4e86f2443972da696dbbc049d8ac24f4415560e131f261ba66`이다. [기능 검사와 벤치마크 4개 작업](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44519600887)
+
+| OS | 입력 | 스레드 | 병합 | 행 (양성 / 음성) | 중앙값 초 | 최소–최대 초 | 표본 표준편차 초 | 병합/초 | 행/초 | Parquet 바이트 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Ubuntu | fixture | 1 | 2 | 4 (2 / 2) | 0.5979 | 0.5960–0.9791 | 0.2206 | 3.345 | 6.690 | 5,130 |
+| Ubuntu | fixture | 2 | 2 | 4 (2 / 2) | 0.5927 | 0.5799–0.5984 | 0.0095 | 3.374 | 6.748 | 5,130 |
+| Ubuntu | minimal-json | 1 | 7 | 1 (0 / 1) | 0.6862 | 0.6787–0.9003 | 0.1258 | 10.201 | 1.457 | 13,162 |
+| Ubuntu | minimal-json | 2 | 7 | 1 (0 / 1) | 0.6724 | 0.6723–0.7424 | 0.0405 | 10.410 | 1.487 | 13,162 |
+| Windows | fixture | 1 | 2 | 4 (2 / 2) | 1.2533 | 1.2449–1.2957 | 0.0272 | 1.596 | 3.192 | 5,130 |
+| Windows | fixture | 2 | 2 | 4 (2 / 2) | 1.1961 | 1.1831–1.2651 | 0.0441 | 1.672 | 3.344 | 5,130 |
+| Windows | minimal-json | 1 | 7 | 1 (0 / 1) | 1.4387 | 1.4353–1.5290 | 0.0532 | 4.866 | 0.695 | 13,162 |
+| Windows | minimal-json | 2 | 7 | 1 (0 / 1) | 1.4031 | 1.3155–1.4848 | 0.0847 | 4.989 | 0.713 | 13,162 |
+
+| 러너 | OS / 커널 | CPU | 논리 CPU | 인식 RAM (바이트) | Python | Git | JAR SHA-256 |
+| --- | --- | --- | ---: | ---: | --- | --- | --- |
+| Ubuntu | Linux-7.0.0-1017-azure-x86_64-with-glibc2.39 | AMD EPYC 9V74 80-Core Processor | 4 | 16760348672 | 3.12.16 | 2.56.1 | `d9cff46620caec1d373bb5dd1d651471b58797cd5d7091a2367c819a05339aaa` |
+| Windows | Windows-2025Server-10.0.26100-SP0 | AMD EPYC 9V74 80-Core Processor | 4 | 17174360064 | 3.12.10 | 2.56.0.windows.4 | `d9cff46620caec1d373bb5dd1d651471b58797cd5d7091a2367c819a05339aaa` |
+
+양쪽 모두 Temurin 17.0.21+9, Gradle Wrapper 9.1.0이다. 고정된 소형 입력과 이 러너 조합의 관측값이며, Ubuntu 1스레드는 특히 실행별 편차가 컸다. 캐시와 장비가 다른 아래의 과거 측정으로 최적화나 정리 수정의 인과적 속도 변화를 계산할 수 없다. 최대 메모리·Git 호출 수·단계별 시간은 N/A다. [Windows 측정 로그](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44519600887/job/135544521425) · [Ubuntu 측정 로그](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44519600887/job/135544520858) · [Windows 원자료](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44519600887/artifacts/14528001150) · [Ubuntu 원자료](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44519600887/artifacts/14526269202)
+
+병합 조건은 독립 수정 브랜치를 먼저 main에 병합하고, 그 main을 반영한 PR #2 자체에서 양 OS 검사가 통과하는 것이다. PR #2에는 생산 코드 수정을 포함하지 않았다. [독립 수정 브랜치와 main 비교](https://github.com/AIX-APLUS/aix-preprocessor/compare/main...fix/windows-git-object-cleanup) · [Sprint 0 PR #2](https://github.com/AIX-APLUS/aix-preprocessor/pull/2)
+
+## PR #1 병합 후, 추출 최적화 이전의 성능 기준선
 
 최초 검증 이후 팀에서 PR #1을 병합해 main이 `bc7e09c`에서 `8fbc0f01e71d6d8515781b5c4bd09e9b9a4c6fc7`로 이동했다. 이 변경은 CLI와 Parquet 작성기도 건드리므로 새 기준에서 다시 검증했다. 독립 수정 브랜치 `54d858998c83c70b3443632d9c9a59ba59dfc931`의 최신 main 대비 변경은 `Main.java`, `ExtractionTest.java`, `git-mirror-cleanup.yml` 세 파일이다. 팀원이 추가한 `DatasetSplitter.java`와 `DatasetWriter.java`는 main과 동일하다. 이 검증은 추출 경로를 대상으로 한다. [팀의 PR #1](https://github.com/AIX-APLUS/aix-preprocessor/pull/1) · [수정 브랜치의 양 OS JUnit 3/3](https://github.com/AIX-APLUS/aix-preprocessor/actions/runs/44516844265)
 
