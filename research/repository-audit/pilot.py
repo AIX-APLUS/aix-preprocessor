@@ -114,6 +114,17 @@ def funnel(repo):
     return counters
 
 
+def claim_output(lock_file):
+    """Keep one writer per output name. Closing the descriptor releases even a killed worker's lock."""
+    lock_file.seek(0)
+    if os.name == "nt":
+        import msvcrt
+        msvcrt.locking(lock_file.fileno(), msvcrt.LK_NBLCK, 1)
+    else:
+        import fcntl
+        fcntl.flock(lock_file, fcntl.LOCK_EX | fcntl.LOCK_NB)
+
+
 def main(args, meta):
     source = args.source.resolve()
     work = args.work.resolve()
@@ -230,23 +241,26 @@ if __name__ == "__main__":
     result = {"repository": arg.repository, "default_tip": arg.tip, "status": "failed",
               "started_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()}
     path = arg.out / ("pilot-" + arg.repository.replace("/", "__") + ".json")
-    if path.exists():
-        raise FileExistsError(path)
-    try:
-        main(arg, result)
-    except Exception as error:
-        result["error"] = str(error)
-        raise
-    finally:
-        # A hard timeout may interrupt any write. Publish only a closed, complete JSON, exclusively.
-        fp = tempfile.NamedTemporaryFile(mode="w", dir=arg.out, encoding="utf-8", delete=False)
+    # Keep the sidecar's name stable across retries. Its existence carries no lock or success state.
+    with path.with_suffix(".lock").open("a+b") as lock_file:
+        claim_output(lock_file)
+        if path.exists():
+            raise FileExistsError(path)
         try:
-            with fp:
-                json.dump(result, fp, ensure_ascii=False, indent=2)
-                fp.write("\n")
-            if os.name == "nt":
-                os.rename(fp.name, path)  # Windows rename fails if the destination exists.
-            else:
-                os.link(fp.name, path)
+            main(arg, result)
+        except Exception as error:
+            result["error"] = str(error)
+            raise
         finally:
-            Path(fp.name).unlink(missing_ok=True)
+            # A hard timeout may interrupt any write. Publish only a closed, complete JSON, exclusively.
+            fp = tempfile.NamedTemporaryFile(mode="w", dir=arg.out, encoding="utf-8", delete=False)
+            try:
+                with fp:
+                    json.dump(result, fp, ensure_ascii=False, indent=2)
+                    fp.write("\n")
+                if os.name == "nt":
+                    os.rename(fp.name, path)  # Windows rename fails if the destination exists.
+                else:
+                    os.link(fp.name, path)
+            finally:
+                Path(fp.name).unlink(missing_ok=True)

@@ -1,5 +1,6 @@
 """Offline regressions for complete study artifacts. Parquet decoding is exercised by quality.py."""
 import base64
+from contextlib import contextmanager
 import gzip
 import hashlib
 import json
@@ -129,8 +130,9 @@ class StudyWorkflowTest(unittest.TestCase):
         self.assertEqual("failed", report["status"])
         self.assertIn("jar", report["error"])
 
-    def test_terminated_pilot_leaves_no_published_empty_json(self):
-        # Pause the real pilot inside its first subprocess, then terminate it as a runner timeout would.
+    @contextmanager
+    def paused_pilot(self):
+        # Pause the real pilot inside its first subprocess; the parent can test another writer or a timeout.
         (self.work / "jar").touch()
         ready = self.work / "started"
         child = """import pathlib, runpy, subprocess, sys, time
@@ -149,10 +151,27 @@ runpy.run_path(sys.argv[0], run_name='__main__')
                 while not ready.exists() and proc.poll() is None and time.monotonic() < until:
                     time.sleep(.02)
                 self.assertTrue(ready.exists(), "pilot never entered subprocess")
+                yield
             finally:
                 proc.kill()
                 proc.wait(timeout=10)
+
+    def test_terminated_pilot_leaves_no_published_empty_json(self):
+        with self.paused_pilot():
+            pass
         self.assertFalse((self.work / self.first.name).exists())
+
+    def test_concurrent_writer_and_retry_after_timeout(self):
+        args = self.pilot_args()
+        args[args.index("--jar") + 1] = str(self.work / "missing-jar")
+        command = [sys.executable, "-B", str(HERE / "pilot.py"), *args]
+        with self.paused_pilot():
+            self.assertNotEqual(0, subprocess.run(command, capture_output=True).returncode)
+            self.assertFalse((self.work / self.first.name).exists(), "second writer published during first pilot")
+        self.assertNotEqual(0, subprocess.run(command, capture_output=True).returncode)
+        report = json.loads((self.work / self.first.name).read_bytes())
+        self.assertEqual("failed", report["status"])
+        self.assertIn("missing-jar", report["error"])
 
     def test_aggregate_step_emits_only_complete_readable_payloads(self):
         def summarize():

@@ -25,7 +25,7 @@
   },
   "amended_workflow": {
     "command": "python -B -m unittest discover -s research/repository-audit -p test_workflow.py -v",
-    "tests_passed": 12,
+    "tests_passed": 13,
     "inputs": "Five replayed Parquets in original logical order per file; five Ubuntu pilot JSONs and quality.json from the archived run.",
     "quality_cli": "python research/repository-audit/quality.py --jar JAR --benchmarks BENCHMARKS --study-results REPORTS --tokenizer-json QWEN --output OUT PARQUETS...",
     "normal_pre_merge": {
@@ -39,6 +39,7 @@
       "missing_parquet": "Amended study CLI invoked on two actual Parquets exited 1 before Java. Tests additionally reject one missing of five and a duplicate basename.",
       "missing_empty_or_invalid_json": "Missing, zero-byte and malformed pilot reports rejected. The workflow's report_study.py emitted zero SUMMARY records and failed when quality.json was missing, blank, malformed, or an empty object.",
       "failed_pilot": "Failed status or nonzero extraction_exit rejected. A forced missing-JAR error returned nonzero and published a readable failed JSON. Hard termination before completion published no named JSON.",
+      "concurrent_writer_and_retry": "Against intermediate commit be3d885 a second failing invocation published its failure JSON while the original worker was still active. After adding an OS lock per output name, the same second invocation exits nonzero without publishing. Hard-terminating the first releases the lock automatically: a new invocation can acquire the same output name and publish its own missing-JAR diagnostic. The small .lock sidecar is reusable, is excluded from artifacts and is never removed from underneath another writer. A real extraction retry still needs the clean working directory already required by pilot.py.",
       "wrong_input_or_extractor_sha": "Mutating default_tip, extractor_sha, analyzed_refs, or the attestation that input refs were preserved made the validation fail.",
       "coordinated_anchor_and_ref_change": "Before adding the independent anchor lookup, replacing both pilot_anchor and analyzed_refs consistently passed validation even though they named another SHA. The fixed study now compares the pair with the GitHub comparison's base for that repository and pinned default head in evidence/validation/anchor-ancestry.json. The regression substitutes the valid default head for the actual pilot anchor and is rejected. An intentional change of study window requires updating the independently recorded anchor reference.",
       "wrong_tokenizer": "Five actual input paths with a different tokenizer plus its own correct SHA-256 exited 1 in study mode.",
