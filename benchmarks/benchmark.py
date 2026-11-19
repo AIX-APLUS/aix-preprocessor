@@ -23,12 +23,25 @@ HERE = Path(__file__).resolve().parent
 SUMMARY = re.compile(r"(\d+) two-parent merges, (\d+) samples, (\d+) positives\. Skips: \{(.*)\}")
 
 
-def git(repo, *args):
+def git(repo, *args, stderr=None):
     # Match the extractor's isolation from caller-specific Git config/overrides.
     env = {k: v for k, v in os.environ.items() if not k.upper().startswith("GIT_")}
     env.update(GIT_CONFIG_NOSYSTEM="1", GIT_CONFIG_GLOBAL=os.devnull,
                GIT_ATTR_NOSYSTEM="1", GIT_OPTIONAL_LOCKS="0", LC_ALL="C")
-    return subprocess.check_output(["git", "-C", str(repo), *args], env=env)
+    return subprocess.check_output(["git", "-C", str(repo), *args], env=env, stderr=stderr)
+
+
+def checkout_state(repo):
+    # This identifies the harness checkout. The separately supplied JAR is identified by its bytes.
+    try:
+        top = git(repo, "rev-parse", "--show-toplevel", stderr=subprocess.DEVNULL)
+        if not Path(os.fsdecode(top).rstrip("\r\n")).samefile(repo):
+            return {"head": None, "dirty": None}
+        head = git(repo, "rev-parse", "--verify", "HEAD", stderr=subprocess.DEVNULL)
+        changes = git(repo, "status", "--porcelain", "-z", stderr=subprocess.DEVNULL)
+    except (OSError, subprocess.CalledProcessError):
+        return {"head": None, "dirty": None}
+    return {"head": head.decode("ascii").strip(), "dirty": bool(changes)}
 
 
 def manifest(repo):
@@ -120,6 +133,10 @@ def one_run(record, args, repo, repo_id, work, merges, golden, reference):
         raise ValueError(f"CLI counts {counts} disagree with rev-list/Parquet {expected}")
     record.update(inspected, merges=merges, parquet_bytes=parquet.stat().st_size,
                   merges_per_second=merges / elapsed, samples_per_second=counts[1] / elapsed)
+    if args.expect_samples is not None and inspected["samples"] != args.expect_samples:
+        raise ValueError(f"Expected {args.expect_samples} samples, found {inspected['samples']}")
+    if args.expect_logical_sha256 is not None and inspected["logical_sha256"] != args.expect_logical_sha256:
+        raise ValueError(f"Logical SHA-256 differs from expected {args.expect_logical_sha256}")
     if reference is not None and reference != inspected["logical_sha256"]:
         raise ValueError("Logical dataset differs from the first trial")
     parquet.unlink()
@@ -127,14 +144,15 @@ def one_run(record, args, repo, repo_id, work, merges, golden, reference):
     return inspected["logical_sha256"]
 
 
-def summarize(runs):
+def summarize(runs, *, complete):
     summary = {}
     threads = sorted({r["threads"] for r in runs if r["phase"] == "measured"})
     for t in threads:
         measured = [r for r in runs if r["phase"] == "measured" and r["threads"] == t]
         verified = [r for r in measured if r["success"]]
         group = {"verified": len(verified), "failed": len(measured) - len(verified)}
-        if verified:
+        # If any trial, cleanup or final input check failed, keep observations but withhold statistics.
+        if complete and verified:
             for key in ("seconds", "merges_per_second", "samples_per_second"):
                 group[key] = describe([r[key] for r in verified])
         summary[str(t)] = group
@@ -218,10 +236,17 @@ def main():
     parser.add_argument("--repeats", type=int, default=3, help="measured fresh JVMs per thread count")
     parser.add_argument("--repo", type=Path, help="existing full local repository (default: fixture)")
     parser.add_argument("--repo-id", help="stable dataset ID (required with --repo)")
+    parser.add_argument("--expect-samples", type=int, help="required row count on every trial")
+    parser.add_argument("--expect-logical-sha256", type=str.lower,
+                        help="required logical digest on every trial, including the first")
     parser.add_argument("--report", type=Path, required=True, help="new JSON report path")
     args = parser.parse_args()
     if args.repeats < 1 or args.warmups < 0 or min(args.threads) < 1:
         parser.error("repeats and threads must be positive; warmups must be non-negative")
+    if args.expect_samples is not None and args.expect_samples < 0:
+        parser.error("--expect-samples must be non-negative")
+    if args.expect_logical_sha256 is not None and not re.fullmatch("[0-9a-f]{64}", args.expect_logical_sha256):
+        parser.error("--expect-logical-sha256 requires 64 hexadecimal digits")
     if len(set(args.threads)) != len(args.threads):
         parser.error("thread counts must be distinct")
     if args.repo and not args.repo_id:
@@ -235,13 +260,21 @@ def main():
         for destination in (args.report, Path(tempfile.gettempdir()).resolve()):
             if destination.is_relative_to(args.repo):
                 parser.error("keep reports and temporary files outside the input repository")
+    # Sample the checkout before creating a report that could itself appear as an untracked file.
+    checkout = checkout_state(HERE.parent)
     args.report.parent.mkdir(parents=True, exist_ok=True)
     try:
         args.report.touch(exist_ok=False)
     except FileExistsError:
         parser.error(f"report already exists: {args.report}")
-    result = {"format_version": 1, "started_utc": datetime.now(timezone.utc).isoformat(),
+    result = {"format_version": 2, "started_utc": datetime.now(timezone.utc).isoformat(),
               "success": False, "threads": args.threads,
+              "benchmark_checkout": checkout,
+              "validation": {"fixture_golden": args.repo is None,
+                             "expected_samples": args.expect_samples,
+                             "expected_logical_sha256": args.expect_logical_sha256,
+                             "repeatability_only": bool(args.repo and args.expect_samples is None
+                                                        and args.expect_logical_sha256 is None)},
               "warmups_per_setting": args.warmups, "repeats_per_setting": args.repeats, "runs": [],
               "timing": "whole fresh JVM CLI, including JIT, mirror, Parquet publication and cleanup",
               "cache": "OS/filesystem caches uncontrolled; no cache flush between warmup or measured runs",
@@ -256,7 +289,7 @@ def main():
         result["error"] = f"{type(exc).__name__}: {exc}"
         print(result["error"], file=sys.stderr)
     finally:
-        result["summary_by_threads"] = summarize(result["runs"])
+        result["summary_by_threads"] = summarize(result["runs"], complete=result["success"])
         write_report(args.report, result)
     return 0 if result["success"] else 1
 

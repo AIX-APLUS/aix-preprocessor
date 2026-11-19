@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import stat
 import subprocess
 import tempfile
 
@@ -20,23 +21,35 @@ def git(repo, *args):
 
 
 def snapshot(repo):
-    # Keep exact bytes of every file in this tiny working tree, including untracked files.
-    files = {p.relative_to(repo).as_posix(): p.read_bytes() for p in repo.rglob("*")
-             if ".git" not in p.relative_to(repo).parts and p.is_file()}
-    return {
-        "head": git(repo, "symbolic-ref", "HEAD"),
-        "refs": git(repo, "show-ref", "--head"),
-        "objects": sorted(git(repo, "cat-file", "--batch-all-objects",
-                              "--batch-check=%(objectname)").splitlines()),
-        "index_entries": git(repo, "ls-files", "--stage", "-z"),
-        "config": (repo / ".git/config").read_bytes(),
-        "files": files,
-    }
+    """Describe the tiny disposable fixture, including the physical files under .git."""
+    entries = {}
+    pending = [repo]
+    while pending:
+        path = pending.pop()
+        info = path.lstat()
+        mode = info.st_mode
+        attributes = getattr(info, "st_file_attributes", 0)
+        reparse_point = attributes and attributes & stat.FILE_ATTRIBUTE_REPARSE_POINT
+        if stat.S_ISLNK(mode) or reparse_point:
+            # Include dangling links and Windows junctions without reading outside the fixture.
+            content = os.readlink(path)
+        elif stat.S_ISDIR(mode):
+            pending.extend(path.iterdir())
+            content = None
+        elif stat.S_ISREG(mode):
+            content = hashlib.sha256(path.read_bytes()).digest()
+        else:
+            raise ValueError(f"Unexpected fixture entry: {path}")
+        # Reading can change access times. Compare names, types, mode/readonly and content.
+        readonly = bool(attributes and attributes & stat.FILE_ATTRIBUTE_READONLY)
+        entries[path.relative_to(repo).as_posix()] = (mode, readonly, content)
+    return entries
 
 
 def check_workspace(repo, initial, output_dir):
     after = snapshot(repo)
-    changed = [field for field in initial if after[field] != initial[field]]
+    changed = sorted(path for path in initial.keys() | after.keys()
+                     if initial.get(path) != after.get(path))
     if changed:
         raise AssertionError(f"Source repository changed: {changed}")
     leftovers = [entry.name for entry in output_dir.glob(".aix-*")]
