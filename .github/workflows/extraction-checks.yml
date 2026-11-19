@@ -1,0 +1,185 @@
+name: Extraction checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [test/extraction-baseline, integration/sprint0-windows-cleanup]
+  workflow_dispatch:
+    inputs:
+      benchmark:
+        description: Run the bounded performance benchmark
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    if: github.event_name != 'push' || github.ref_name == 'integration/sprint0-windows-cleanup' || contains(github.event.head_commit.message, '[benchmark]')
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build and run JUnit on Linux
+        if: runner.os == 'Linux'
+        run: ./gradlew --no-daemon --console=plain build
+      - name: Build and run JUnit on Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: .\gradlew.bat --no-daemon --console=plain build
+      - name: Verify executed JUnit cases
+        if: always()
+        shell: python
+        run: |
+          import os
+          from pathlib import Path
+          from xml.etree import ElementTree
+          passed = set()
+          for path in Path('build/test-results/test').glob('TEST-*.xml'):
+              suite = ElementTree.parse(path).getroot()
+              print(suite.attrib)
+              for case in suite.findall('testcase'):
+                  name = case.attrib['name'].removesuffix('()')
+                  classname = case.attrib['classname']
+                  print(classname, name)
+                  if any(case.find(tag) is not None for tag in ('skipped', 'failure', 'error')):
+                      raise SystemExit(f'Skipped or failed JUnit case: {classname}.{name}')
+                  if classname == 'io.aix.preprocessor.ExtractionTest':
+                      passed.add(name)
+          required = {'extractsSideBranchesAndWritesIdenticalParallelOutput'}
+          cleanup_case = 'deletesReadOnlyObjectFilesWrittenByGit'
+          test_source = Path('src/test/java/io/aix/preprocessor/ExtractionTest.java').read_text(encoding='utf-8')
+          if os.environ['GITHUB_REF_NAME'] == 'integration/sprint0-windows-cleanup' or cleanup_case in test_source:
+              required.add(cleanup_case)
+          if required - passed:
+              raise SystemExit(f'Missing executed JUnit cases: {sorted(required - passed)}')
+      - name: Run Python harness tests
+        if: ${{ !cancelled() }}
+        shell: python
+        run: |
+          import unittest
+          suite = unittest.defaultTestLoader.discover('benchmarks', pattern='test_*.py')
+          if suite.countTestCases() == 0:
+              raise SystemExit('Discovered zero Python harness tests')
+          results = unittest.TextTestRunner(verbosity=2).run(suite)
+          if not results.wasSuccessful() or results.testsRun == len(results.skipped):
+              raise SystemExit('Python harness failed or ran no active tests')
+      - name: Check packaged CLI, Parquet rows and source preservation
+        if: ${{ !cancelled() }}
+        run: python benchmarks/verify.py
+
+  benchmark:
+    if: inputs.benchmark || (github.event_name == 'push' && contains(github.event.head_commit.message, '[benchmark]'))
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare extractor on Linux
+        if: runner.os == 'Linux'
+        run: ./gradlew --no-daemon --console=plain shadowJar
+      - name: Prepare extractor on Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: .\gradlew.bat --no-daemon --console=plain shadowJar
+      - name: Verify benchmark checkout before timing
+        shell: python
+        run: |
+          import os
+          import subprocess
+          head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          cmd = ['git', '--no-optional-locks', '-c', 'core.quotePath=true', 'status',
+                 '--porcelain=v1', '--untracked-files=all']
+          entries = subprocess.check_output(cmd, text=True).splitlines()
+          print(f'Checkout HEAD: {head}; ordinary Git status: {len(entries)} entries')
+          for entry in entries[:20]:
+              print(entry[:240])
+          # Compare the extractor's isolated Git configuration for diagnostics only.
+          isolated = {k: v for k, v in os.environ.items() if not k.upper().startswith('GIT_')}
+          isolated.update(GIT_CONFIG_NOSYSTEM='1', GIT_CONFIG_GLOBAL=os.devnull, GIT_ATTR_NOSYSTEM='1')
+          other = subprocess.run(cmd, env=isolated, text=True, capture_output=True)
+          if other.returncode:
+              print(f'Isolated Git status unavailable: exit {other.returncode}')
+          elif other.stdout.splitlines() != entries:
+              differences = other.stdout.splitlines()
+              print(f'Isolated Git status differs: {len(differences)} entries, first 20 below')
+              for entry in differences[:20]:
+                  print(entry[:240])
+              for name, env in [('ordinary', None), ('isolated', isolated)]:
+                  setting = subprocess.run(['git', 'config', '--get', 'core.autocrlf'],
+                                           env=env, text=True, capture_output=True)
+                  print(f'{name} core.autocrlf: {setting.stdout.strip() or "(unset)"}')
+          if head != os.environ['GITHUB_SHA'] or entries:
+              raise SystemExit('Benchmark requires the exact, clean GitHub Actions checkout')
+      - name: Measure the fixed fixture
+        run: python benchmarks/benchmark.py --threads 1 2 --warmups 1 --repeats 3 --report build/measurements/fixture.json
+      - name: Create a bare input repository
+        run: git init --quiet --bare -b pinned build/minimal-json.git
+      - name: Pin a small public Java history
+        run: git -C build/minimal-json.git fetch --quiet --no-tags https://github.com/ralfstx/minimal-json.git c091e6985620da04d5abcd902aafb6c9583c48ea:refs/heads/pinned
+      - name: Measure minimal-json
+        run: >-
+          python benchmarks/benchmark.py --threads 1 2 --warmups 1 --repeats 3
+          --repo build/minimal-json.git --repo-id ralfstx/minimal-json
+          --expect-logical-sha256 8e4078e84ac01f4e86f2443972da696dbbc049d8ac24f4415560e131f261ba66
+          --expect-samples 1 --report build/measurements/minimal-json.json
+      - name: Print and check both baseline reports
+        if: always()
+        shell: python
+        run: |
+          import json
+          import os
+          from pathlib import Path
+          expected = {
+              'fixture': (2, 4, 2, 2, 'b93b6d16e1ec0e95f924ac92d7e6a5b560b79677a5ca85583a30f77548dd4bcc'),
+              'minimal-json': (7, 1, 0, 1, '8e4078e84ac01f4e86f2443972da696dbbc049d8ac24f4415560e131f261ba66'),
+          }
+          for name, baseline in expected.items():
+              raw = (Path('build/measurements') / (name + '.json')).read_text(encoding='utf-8')
+              print(raw)
+              report = json.loads(raw)
+              checkout = report['benchmark_checkout']
+              if checkout['head'] != os.environ['GITHUB_SHA'] or checkout['dirty'] is not False:
+                  raise SystemExit(f'{name}: unexpected benchmark checkout {checkout}')
+              if not report['success'] or not report['snapshot_refs_unchanged']:
+                  raise SystemExit(f'{name}: extraction failed or input snapshot changed')
+              if name == 'minimal-json' and not report['source_refs_unchanged']:
+                  raise SystemExit(f'{name}: original refs changed')
+              for run in report['runs']:
+                  observed = tuple(run[k] for k in ('merges', 'samples', 'positive', 'negative', 'logical_sha256'))
+                  if not run['success'] or run['exit_code'] != 0 or observed != baseline:
+                      raise SystemExit(f'{name}: unexpected trial {run}')
+              expected_trials = sorted((t, phase, i) for t in (1, 2) for phase, rounds in
+                                       (('warmup', 1), ('measured', 3)) for i in range(1, rounds + 1))
+              if sorted((r['threads'], r['phase'], r['round']) for r in report['runs']) != expected_trials:
+                  raise SystemExit(f'{name}: trial schedule differs from baseline')
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sprint0-measurements-${{ matrix.os }}
+          retention-days: 14
+          path: build/measurements/*.json
+          if-no-files-found: error

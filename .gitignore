@@ -1,3 +1,4 @@
 .gradle/
 build/
 *.parquet
+__pycache__/
