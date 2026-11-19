@@ -11,7 +11,8 @@ import java.util.Arrays;
 
 /** CLI for extracting a single unsplit Java merge dataset from a local repository. */
 public final class Main {
-    private static final String USAGE = "aix-preprocessor extract REPO [--output FILE] [--threads N] [--repo-id OWNER/REPO]";
+    private static final String USAGE = "aix-preprocessor extract REPO [--output FILE] [--threads N] [--repo-id OWNER/REPO]\n"
+            + DatasetSplitter.USAGE;
     private Main() {}
 
     /** Runs extraction from local refs and publishes the finished Parquet file. */
@@ -22,6 +23,15 @@ public final class Main {
         }
         if (args[0].equals("extract")) {
             extract(Arrays.copyOfRange(args, 1, args.length));
+        } else if (args[0].equals("split")) {
+            if (args.length == 2 && args[1].equals("--help")) {
+                System.out.println(DatasetSplitter.USAGE);
+                return;
+            }
+            if (args.length != 2 && !(args.length == 4 && args[2].equals("--output-dir"))) {
+                throw new IllegalArgumentException(DatasetSplitter.USAGE);
+            }
+            DatasetSplitter.run(Path.of(args[1]), Path.of(args.length == 4 ? args[3] : "splits"));
         } else if (Files.isDirectory(Path.of(args[0]))) {
             extract(args); // Accept the original repository-first invocation.
         } else {
