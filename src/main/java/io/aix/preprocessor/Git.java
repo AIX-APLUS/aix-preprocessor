@@ -14,7 +14,7 @@ record Git(Path directory) {
         List<String> fields() { return List.of(text().split("\u0000", -1)); }
     }
 
-    Result run(String... arguments) throws IOException, InterruptedException {
+    Process start(String... arguments) throws IOException {
         var command = new ArrayList<>(List.of("git", "--literal-pathspecs", "-C", directory.toString()));
         command.addAll(List.of(arguments));
         var builder = new ProcessBuilder(command).redirectError(ProcessBuilder.Redirect.INHERIT);
@@ -24,7 +24,11 @@ record Git(Path directory) {
         env.put("GIT_CONFIG_NOSYSTEM", "1");
         env.put("GIT_CONFIG_GLOBAL", "/dev/null");
         env.put("GIT_ATTR_NOSYSTEM", "1");
-        var process = builder.start();
+        return builder.start();
+    }
+
+    Result run(String... arguments) throws IOException, InterruptedException {
+        var process = start(arguments);
         try (var stdout = process.getInputStream()) {
             var bytes = stdout.readAllBytes();
             return new Result(process.waitFor(), bytes);
