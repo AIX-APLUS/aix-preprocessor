@@ -1,0 +1,73 @@
+name: Extraction checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [test/extraction-baseline]
+  workflow_dispatch:
+    inputs:
+      benchmark:
+        description: Run the bounded performance benchmark
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    if: github.event_name != 'push' || contains(github.event.head_commit.message, '[benchmark]')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Build and run the existing test suite
+        run: ./gradlew --no-daemon --console=plain build
+      - name: Show JUnit result
+        if: always()
+        run: python -c "import glob, xml.etree.ElementTree as E; [print(E.parse(p).getroot().attrib) for p in glob.glob('build/test-results/test/TEST-*.xml')]"
+      - name: Check comparator behavior
+        run: python -m unittest discover -s benchmarks -p 'test_*.py' -v
+      - name: Check packaged CLI, Parquet rows and source preservation
+        run: python benchmarks/verify.py
+
+  benchmark:
+    if: inputs.benchmark || (github.event_name == 'push' && contains(github.event.head_commit.message, '[benchmark]'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Prepare extractor
+        run: ./gradlew --no-daemon --console=plain shadowJar
+      - name: Measure the fixed fixture
+        run: python benchmarks/benchmark.py --threads 1 2 --warmups 1 --repeats 3 --report "$RUNNER_TEMP/fixture.json"
+      - name: Pin a small public Java history
+        run: |
+          git init -q --bare -b pinned "$RUNNER_TEMP/minimal-json.git"
+          git -C "$RUNNER_TEMP/minimal-json.git" fetch -q --no-tags https://github.com/ralfstx/minimal-json.git c091e6985620da04d5abcd902aafb6c9583c48ea:refs/heads/pinned
+      - name: Measure minimal-json
+        run: python benchmarks/benchmark.py --threads 1 2 --warmups 1 --repeats 3 --repo "$RUNNER_TEMP/minimal-json.git" --repo-id ralfstx/minimal-json --report "$RUNNER_TEMP/minimal-json.json"
+      - name: Print measurements
+        if: always()
+        run: |
+          for name in fixture minimal-json; do
+            file="$RUNNER_TEMP/$name.json"
+            if test -f "$file"; then cat "$file"; fi
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sprint0-measurements
+          retention-days: 14
+          path: |
+            ${{ runner.temp }}/fixture.json
+            ${{ runner.temp }}/minimal-json.json
