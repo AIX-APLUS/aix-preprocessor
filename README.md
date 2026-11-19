@@ -92,3 +92,15 @@ Run `java -jar build/libs/aix-preprocessor.jar stats jabref.parquet` to print th
 total samples, conflict-positive samples, and positive percentage. This works on
 the full dataset or any single split. An empty dataset reports `N/A` for the
 percentage. Invalid inputs produce an error and a nonzero exit code.
+
+## Merge datasets
+
+```sh
+java -jar build/libs/aix-preprocessor.jar merge jabref.parquet spring-boot.parquet --output combined.parquet
+```
+
+Pass two or more files from `extract` or `split`. Rows are copied in input order,
+with all 15 columns preserved. Repeated sample keys (repository, merge SHA, and
+base path) cause an error, including duplicates within one input. The command
+publishes the output only after all inputs pass and requires a fresh output filename.
+It prints the row count for each input and the combined positive count and rate.

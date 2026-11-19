@@ -9,7 +9,7 @@ import java.util.Comparator;
 /** CLI for extracting a single unsplit Java merge dataset from a local repository. */
 public final class Main {
     private static final String USAGE = "aix-preprocessor extract REPO [--output FILE] [--threads N] [--rename-limit N] [--repo-id OWNER/REPO]\n"
-            + DatasetSplitter.USAGE + "\n" + DatasetStats.USAGE;
+            + DatasetSplitter.USAGE + "\n" + DatasetStats.USAGE + "\n" + DatasetMerger.USAGE;
     private Main() {}
 
     /** Runs extraction from local refs and publishes the finished Parquet file. */
@@ -20,6 +20,8 @@ public final class Main {
         }
         if (args[0].equals("extract")) {
             extract(Arrays.copyOfRange(args, 1, args.length));
+        } else if (args[0].equals("merge")) {
+            DatasetMerger.run(Arrays.copyOfRange(args, 1, args.length));
         } else if (args[0].equals("stats")) {
             if (args.length == 2 && args[1].equals("--help")) {
                 System.out.println(DatasetStats.USAGE);
