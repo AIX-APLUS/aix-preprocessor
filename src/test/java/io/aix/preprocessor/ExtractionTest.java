@@ -7,8 +7,11 @@ import org.apache.parquet.hadoop.example.GroupReadSupport;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import java.io.File;
+import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.attribute.DosFileAttributes;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,6 +51,10 @@ class ExtractionTest {
         Path serial = temp.resolve("serial.parquet"), parallel = temp.resolve("parallel.parquet");
         Main.main(new String[]{repo.toString(), "--output", serial.toString(), "--threads", "1"});
         Main.main(new String[]{"extract", repo.toString(), "--output", parallel.toString(), "--threads", "4"});
+        try (var entries = Files.list(temp)) {
+            assertTrue(entries.noneMatch(path -> path.getFileName().toString().startsWith(".aix-")),
+                    "temporary extraction directory left next to the output");
+        }
         assertEquals(-1L, Files.mismatch(serial, parallel));
         var target = new org.apache.hadoop.fs.Path(serial.toUri());
         var counts = new HashMap<String, Integer>();
@@ -69,6 +76,23 @@ class ExtractionTest {
         assertEquals("", git.read("status", "--porcelain").text());
         assertThrows(java.nio.file.FileAlreadyExistsException.class,
                 () -> Main.main(new String[]{repo.toString(), "--output", serial.toString()}));
+    }
+
+    @Test void deletesReadOnlyObjectFilesWrittenByGit() throws Exception {
+        var tree = Files.createDirectory(temp.resolve("tree"));
+        var git = new Git(tree);
+        git.read("init", "-q");
+        Files.writeString(tree.resolve("blob.txt"), "loose object\n");
+        String id = git.read("hash-object", "-w", "--", "blob.txt").text().strip();
+        Path object = tree.resolve(".git/objects/" + id.substring(0, 2) + "/" + id.substring(2));
+        assertTrue(Files.isRegularFile(object));
+        if (File.separatorChar == '\\') {
+            assertTrue(Files.readAttributes(object, DosFileAttributes.class).isReadOnly(),
+                    "expected a DOS read-only loose object from Git for Windows");
+            assertThrows(AccessDeniedException.class, () -> Files.delete(object));
+        }
+        Main.deleteTree(tree);
+        assertFalse(Files.exists(tree));
     }
 
     private static void change(Path repo, String clean, String conflict) throws Exception {
