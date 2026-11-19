@@ -7,6 +7,7 @@ on:
     branches: [main]
     paths:
       - 'src/main/java/io/aix/preprocessor/Main.java'
+      - 'src/main/java/io/aix/preprocessor/BlobReader.java'
       - 'src/test/java/io/aix/preprocessor/ExtractionTest.java'
       - '.github/workflows/git-mirror-cleanup.yml'
 
@@ -48,6 +49,7 @@ jobs:
           expected = {
               "extractsSideBranchesAndWritesIdenticalParallelOutput()",
               "deletesReadOnlyObjectFilesWrittenByGit()",
+              "closingBlobReaderReleasesMirrorForImmediateDeletion()",
               "cleanupPreservesDirectoryLinkTarget()",
           }
           print("Passed:", sorted(passed))
