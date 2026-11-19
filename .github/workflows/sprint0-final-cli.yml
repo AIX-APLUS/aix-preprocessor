@@ -1,0 +1,139 @@
+name: Sprint 0 CLI compatibility
+on:
+  push:
+    branches: [validation/sprint0-final-cli]
+
+permissions:
+  contents: read
+
+env:
+  PRODUCT_SHA: '07a59e32a003042a2a092813fa6d82aff0f6594f'
+  ORACLE_SHA: '991add8d7793bb2cf33c73ae89d5fe74dd584e96'
+
+jobs:
+  cli:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.PRODUCT_SHA }}
+          path: product
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.ORACLE_SHA }}
+          path: oracle
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check both pinned commits, then build packaged CLI
+        shell: python
+        run: |
+          import os, subprocess
+          for folder, key in [('product', 'PRODUCT_SHA'), ('oracle', 'ORACLE_SHA')]:
+              sha = subprocess.check_output(['git', '-C', folder, 'rev-parse', 'HEAD'], text=True).strip()
+              print(folder, sha, flush=True)
+              if sha != os.environ[key]:
+                  raise SystemExit(f'{folder}: checkout mismatch')
+          wrapper = ['cmd.exe', '/d', '/c', 'gradlew.bat'] if os.name == 'nt' else ['bash', 'gradlew']
+          subprocess.run([*wrapper, '--no-daemon', '--console=plain', 'shadowJar'], cwd='product', check=True)
+      - name: Check Golden records, actual CLI round trip and rejected inputs
+        shell: python
+        run: |
+          import hashlib, json, os, struct, subprocess, sys, tempfile
+          from pathlib import Path
+          bench = Path('oracle/benchmarks').resolve(strict=True)
+          sys.path.insert(0, str(bench))
+          from dataset import COLUMNS, GOLDEN, decode_row, read_golden, summarize
+          from fixture import create_fixture
+          from verify import check_workspace, snapshot
+
+          jar = Path('product/build/libs/aix-preprocessor.jar').resolve(strict=True)
+          expected = read_golden(GOLDEN)
+          digest = 'b93b6d16e1ec0e95f924ac92d7e6a5b560b79677a5ca85583a30f77548dd4bcc'
+          def check(condition, message):
+              if not condition:
+                  raise AssertionError(message)
+          def cli(*args, reject=None):
+              result = subprocess.run(['java', '-jar', str(jar), *map(str, args)],
+                                      stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8', errors='replace')
+              print(args[0], 'exit', result.returncode, result.stdout, flush=True)
+              if reject is None:
+                  check(result.returncode == 0, f'unexpected {args[0]} failure')
+              else:
+                  check(result.returncode != 0 and reject in result.stdout, f'expected error: {reject}')
+              return result.stdout.splitlines()
+          def read_rows(file):
+              raw = subprocess.check_output(['java', '-cp', str(jar), str(bench/'DumpParquet.java'), str(file)],
+                                            text=True, encoding='ascii')
+              return [decode_row(line) for line in raw.splitlines()]
+          def check_golden(rows):
+              summary = summarize(rows, expected)
+              check(len(COLUMNS) == 15 and summary == dict(samples=4, positive=2, negative=2, logical_sha256=digest), summary)
+              print('Golden', json.dumps(summary), flush=True)
+          def file_digest(file):
+              return hashlib.sha256(file.read_bytes()).hexdigest()
+
+          with tempfile.TemporaryDirectory(prefix='aix-cli-') as tmp:
+              dest = Path(tmp)
+              repo = create_fixture(dest/'repo')
+              before = snapshot(repo)
+              for threads in [1, 4]:
+                  sample = dest/f'threads-{threads}.parquet'
+                  cli('extract', repo, '--threads', threads, '--repo-id', 'sprint0/fixture', '--output', sample)
+                  check_golden(read_rows(sample))
+                  check_workspace(repo, before, dest)
+              source = dest/'threads-1.parquet'
+              parts = dest/'parts'
+              cli('split', source, '--output-dir', parts)
+              files = [parts/(name+'.parquet') for name in ('train', 'val', 'test')]
+              input_hashes = {p: file_digest(p) for p in files + [source]}
+              joined = []
+              owners = {}
+              for part in files:
+                  rows = read_rows(part)
+                  for row in rows:
+                      group = row['repo_id'], row['base_path']
+                      check(owners.setdefault(group, part) == part, f'path group split: {group}')
+                  joined.extend(rows)
+              check_golden(joined)
+              merged = dest/'merged.parquet'
+              cli('merge', *files, '--output', merged)
+              merged_rows = read_rows(merged)
+              check_golden(merged_rows)
+              check(merged_rows == joined, 'merge input row order changed')
+              for file in (source, merged):
+                  output = cli('stats', file)
+                  check(all(line in output for line in ('Samples: 4', 'Positives: 2', 'Positive rate: 50.00%')),
+                        'incorrect stats')
+              published_hash = file_digest(merged)
+              cli('merge', *files, '--output', merged, reject='FileAlreadyExistsException')
+              check(file_digest(merged) == published_hash, 'existing output modified')
+
+              # Change a schema field name and its column path within the compact Thrift footer.
+              # Keeping the UTF-8 byte length identical preserves a valid Parquet container.
+              raw = source.read_bytes()
+              length = struct.unpack('<I', raw[-8:-4])[0]
+              start = len(raw) - 8 - length
+              footer = raw[start:-8]
+              check(raw[-4:] == b'PAR1' and footer.count(b'repo_id') >= 2, 'unexpected fixture footer')
+              bad = dest/'wrong-schema.parquet'
+              bad.write_bytes(raw[:start] + footer.replace(b'repo_id', b'repo_ix') + raw[-8:])
+              for other, reason in [(source, 'Duplicate sample:'), (bad, 'Expected the 15-column Parquet schema')]:
+                  refused = dest/'not-published.parquet'
+                  cli('merge', source, other, '--output', refused, reject=reason)
+                  check(not refused.exists(), 'rejected merge published output')
+              check(all(file_digest(p) == h for p, h in input_hashes.items()), 'input Parquet changed')
+              check(not list(dest.glob('.merge-*')) and not list(parts.glob('.split-*')), 'temporary paths remain')
+              check_workspace(repo, before, dest)
+              print('CLI round trip, 15-column data, rejection paths and source preservation verified', flush=True)
