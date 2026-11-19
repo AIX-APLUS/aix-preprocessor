@@ -1,6 +1,7 @@
 """Keep failed trials and warmups out of the published performance baseline."""
 
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -64,6 +65,32 @@ class BenchmarkTest(unittest.TestCase):
     def test_checkout_metadata_is_optional_outside_git(self):
         with tempfile.TemporaryDirectory() as directory:
             self.assertEqual({"head": None, "dirty": None}, checkout_state(Path(directory)))
+
+    def test_checkout_metadata_uses_checkout_line_ending_rules(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            repo = root / "repo"
+            config = root / "global-config"
+            config.write_text("[core]\n  autocrlf = true\n", encoding="ascii")
+            env = {k: v for k, v in os.environ.items() if not k.upper().startswith("GIT_")}
+            env.update(GIT_CONFIG_NOSYSTEM="1", GIT_CONFIG_GLOBAL=str(config), GIT_OPTIONAL_LOCKS="0")
+            with patch.dict(os.environ, env, clear=True):
+                subprocess.run(["git", "init", "--quiet", "--template=", str(repo)], check=True)
+                file = repo / "sample.txt"
+                file.write_bytes(b"original\r\n")
+                cmd = ["git", "-C", str(repo)]
+                subprocess.run([*cmd, "add", "--", file.name], check=True)
+                subprocess.run([*cmd, "-c", "user.name=Test", "-c", "user.email=test@example.test",
+                                "commit", "--quiet", "-m", "initial"], check=True)
+                head = subprocess.check_output([*cmd, "rev-parse", "HEAD"]).decode("ascii").strip()
+                self.assertEqual(b"original\n", subprocess.check_output([*cmd, "show", "HEAD:sample.txt"]))
+                # Force Git to compare file content instead of reusing the index's stat cache.
+                os.utime(file, (946684800, 946684800))
+                self.assertEqual(b"", subprocess.check_output([*cmd, "status", "--porcelain", "-z"]))
+                with patch.dict(os.environ, {"GIT_INDEX_FILE": str(root / "unrelated-index")}):
+                    self.assertEqual({"head": head, "dirty": False}, checkout_state(repo))
+                    file.write_bytes(b"changed content\r\n")
+                    self.assertEqual({"head": head, "dirty": True}, checkout_state(repo))
 
     def test_setup_failure_exits_nonzero_and_records_no_measurements(self):
         with tempfile.TemporaryDirectory() as directory:
