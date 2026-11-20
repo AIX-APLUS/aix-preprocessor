@@ -15,7 +15,11 @@ record Git(Path directory) {
     }
 
     Process start(String... arguments) throws IOException {
-        var command = new ArrayList<>(List.of("git", "--literal-pathspecs", "-C", directory.toString()));
+        // Git reads the account's attributes file ($XDG_CONFIG_HOME/git/attributes or ~/.config/git/attributes)
+        // even without global config. It could relabel conflicts or drop line counts. Replace it for this
+        // command only. The repository's .gitattributes and info/attributes still apply.
+        var command = new ArrayList<>(List.of("git", "--literal-pathspecs", "-C", directory.toString(),
+                "-c", "core.attributesFile=/dev/null"));
         command.addAll(List.of(arguments));
         var builder = new ProcessBuilder(command).redirectError(ProcessBuilder.Redirect.INHERIT);
         Map<String, String> env = builder.environment();
